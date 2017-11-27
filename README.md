@@ -15,3 +15,5 @@ gem install travis -v 1.8.8 --no-rdoc --no-ri
 (https://github.com/travis-ci/travis.rb#installation)
 
 https://docs.travis-ci.com/user/deployment/releases/
+
+https://hv.pizza/blog/setup-latex-pdf-build-using-travis-ci/
