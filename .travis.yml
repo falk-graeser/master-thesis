@@ -1,7 +1,7 @@
 deploy:
   provider: releases
-  api_key: "GITHUB OAUTH TOKEN"
-  file: "FILE TO UPLOAD"
-  skip_cleanup: true
+  api_key:
+    secure: uDCace1UKdZh/2YK2aslFkWrgOEwa8q1XkywDp+tBD1uCSUkGp9F0PmSHm2ERThIaHj6FZhR69ORJXEPGuaD4tnoDVB1Ed2Eqke3C4JD5QJgMAxQTm1taSH3bVx3DXaS1H1/jtYZs1vxdDViuuo3qD8OehRrcvFZCe3qY8lGb2/KtPuWMcfnjPszV7oo8m+OQaca1VqXrGdekP0tKa71OftC92JKQgkTQYa2dKqMISM18LnGdKX+8Ho8QVB1p6hoEurwAvOKcw6moJgPXMdnBePAZSaosbw/RTEYeBjGUMMyEMnWgv7Wh40DUl+MgiK4boz3KAOkM4WVZcV4njiXPc9W1qletIX8/IFJTxcXdYYgkWsY7ArqZd93WkePA6x5Xtfdkqrf2KCiLrd6VOxsBBsBSG+7Pfb5wnXU1jj14I/vn68PXUVk5i5mh3w1W+ramaNRX1vbS8Wh2id8+6oNmBcvk/tWpJS7SJnlOSo/UZpP5uz+3I33+yMK3kkXfU0rsprD/iNd9D0zxziVKa8jZRUU4EvPfqYOtwMSEXIyZ+OYQyqagkXMzcqkXQsmEZM4+fH1QqrFPxSBnTSyx+BzsprFb5K2G3nNJBtGV+aN7K7chzoEyk0Ofw6biFKzTzNpsL8gAdbdwF7ZPN3aADmMldU8OpcePoI47spcn356XIE=
+  file: main.pdf
   on:
-    tags: true
+    repo: falk-graeser/master-thesis
