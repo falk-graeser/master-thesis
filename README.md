@@ -1,19 +1,23 @@
-# master-thesis
+[![Build Status](https://travis-ci.org/falk-graeser/master-thesis.svg?branch=master)](https://travis-ci.org/falk-graeser/master-thesis)
 
-for including git hub releases:
-travis command line tool
+Masterarbeit “Continuous Deployment”
 
-requires ruby
-(
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-curl -sSL https://get.rvm.io -o rvm.sh
-cat rvm.sh | bash -s stable
-rvm install ruby --default
-)
+Titel:
+#Dezentrales Continuous Deployment: Werden Akzeptanz, Transparenz und Qualität der Softwareentwicklung durch den Einsatz verbessert?
 
-gem install travis -v 1.8.8 --no-rdoc --no-ri
-(https://github.com/travis-ci/travis.rb#installation)
+##Aufgabenstellung
+Continuous Integration ist, spätestens seit der Veröffentlichung “Extreme Programming Explained” von Kent Beck im Jahre 1999, eine anerkannte Basis für hochqualitative Softwareentwicklung. Knapp 20 Jahre nach dem Werk von Kent Beck ist Continuous Integration eine gängige Praxis und wird als Basis für Continuous Deployment genutzt. Die damit einhergehenden Forderungen an die Fähigkeiten der Entwickler und das notwendige Vertrauen in den automatisierten Prozess erzeugen häufig Widerwillen und Skepsis. 
 
-https://docs.travis-ci.com/user/deployment/releases/
+Während die notwendige Infrastruktur wächst und sich an die Arbeitsweise und das Projektfeld des Teams anpasst, werden immer mehr strukturelle Abhängigkeiten geschaffen. Diese können im Laufe des Lebenszyklus von Anwendung, Infrastruktur und Unternehmen für zahlreiche Herausforderungen zwischen den Teams, aber auch zwischen Administration und Team sorgen.
+Während es in der Softwareentwicklung von zentraler Wichtigkeit ist zu entkoppeln und zu modularisieren, bauen sich gerade in der Infrastruktur häufig monolithische, zentrale Konstrukte auf.
 
-https://hv.pizza/blog/setup-latex-pdf-build-using-travis-ci/
+Ziel dieser Arbeit ist es daher traditionelle, zentrale Continuous Integration und Continuous Deployment Ansätze zu analysieren und deren Stärken und Schwächen mit denen verteilter Ansätze zu vergleichen.
+
+Besonderes Augenmerk soll dabei auf die Eigenverantwortung des Entwicklers und die prozessgesicherte Qualität des Softwareproduktes durch Tests und Metriken gelegt werden.
+Im Rahmen einer produktiv genutzten, individuellen Softwarelösung soll zudem der bestehende Deployment-Prozess analysiert, dezentral konzipiert und prototypisch umgesetzt werden.
+
+Die Masterarbeit soll sich zudem mit folgenden Thesen auseinander setzen:
+“Continuous Deployment ist zu komplex um es in jedem Projekt zu verwenden.”,
+“Der Einsatz von Continuous Deployment steigert die Qualität des Entwicklungsprozesses.”, und
+“Es kann eine einheitliche Continuous-Deployment-Lösung geben, welche mithilfe einer einheitlichen, internen DSL in jedes Projekt integrierbar ist.”
+Dabei sollen Indizien oder sogar Beweise jeweils für deren Bestätigung bzw. Falsifizierung geliefert werden.
