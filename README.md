@@ -1,11 +1,11 @@
+# master-thesis
 [![Build Status](https://travis-ci.org/falk-graeser/master-thesis.svg?branch=master)](https://travis-ci.org/falk-graeser/master-thesis)
 
 Masterarbeit “Continuous Deployment”
 
 Titel:
-#Dezentrales Continuous Deployment: Werden Akzeptanz, Transparenz und Qualität der Softwareentwicklung durch den Einsatz verbessert?
+## Dezentrales Continuous Deployment: Werden Akzeptanz, Transparenz und Qualität der Softwareentwicklung durch den Einsatz verbessert?
 
-##Aufgabenstellung
 Continuous Integration ist, spätestens seit der Veröffentlichung “Extreme Programming Explained” von Kent Beck im Jahre 1999, eine anerkannte Basis für hochqualitative Softwareentwicklung. Knapp 20 Jahre nach dem Werk von Kent Beck ist Continuous Integration eine gängige Praxis und wird als Basis für Continuous Deployment genutzt. Die damit einhergehenden Forderungen an die Fähigkeiten der Entwickler und das notwendige Vertrauen in den automatisierten Prozess erzeugen häufig Widerwillen und Skepsis. 
 
 Während die notwendige Infrastruktur wächst und sich an die Arbeitsweise und das Projektfeld des Teams anpasst, werden immer mehr strukturelle Abhängigkeiten geschaffen. Diese können im Laufe des Lebenszyklus von Anwendung, Infrastruktur und Unternehmen für zahlreiche Herausforderungen zwischen den Teams, aber auch zwischen Administration und Team sorgen.
