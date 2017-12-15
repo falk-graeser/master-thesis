@@ -12,4 +12,5 @@ deploy:
   file: _build/title-and-abstract.pdf
   skip_cleanup: true
   on:
+    tags: true
     repo: falk-graeser/master-thesis
