@@ -5,20 +5,25 @@ Masterarbeit "Continuous Deployment"
 Dieses Projekt fügt automatisiert alle Teile meiner Thesis zusammen und publiziert diese als GitHub-Releases.
 Software-Code der im Zuge der Arbeit entsteht wird zudem hier veröffentlich oder über ein geeignetes Packetverwaltungstool verknüpft. (z.B. Composer)
 
-## Dezentrales Continuous Deployment: Werden Akzeptanz, Transparenz und Qualität der Softwareentwicklung durch den Einsatz verbessert?
+## Entwicklung von Visualisierungs- und Integrationsansätzen für Continuous-Integration und Feature-Branches
 
-Continuous Integration ist, spätestens seit der Veröffentlichung "Extreme Programming Explained" von Kent Beck im Jahre 1999, eine anerkannte Basis für hochqualitative Softwareentwicklung. Knapp 20 Jahre nach dem Werk von Kent Beck ist Continuous Integration eine gängige Praxis und wird als Basis für Continuous Deployment genutzt. Die damit einhergehenden Forderungen an die Fähigkeiten der Entwickler und das notwendige Vertrauen in den automatisierten Prozess erzeugen häufig Widerwillen und Skepsis.
+Continuous Integration ist, spätestens seit der Veröffentlichung "Extreme Programming Explained" von Kent Beck im Jahre 1999, eine anerkannte Basis für hochqualitative Softwareentwicklung. Knapp 20 Jahre nach dem Werk von Kent Beck ist Continuous Integration weit verbreitet und wird vollautomatisiert für Continuous Deployment genutzt. 
 
-Über die Spanne verschiedenen Projekte und Entwickler-Teams wächst die notwendige Continuous Deployment Infrastruktur und passt sich an die Arbeitsweise und das Projektfeld des Teams an. Die dabei entstehenden strukturellen Abhängigkeiten der Infrastruktur, können im Laufe des Lebenszyklus von Anwendung, Infrastruktur und Unternehmen für zahlreiche Herausforderungen zwischen den Teams, aber auch zwischen Administration und Team sorgen.
-Während es in der Softwareentwicklung von zentraler Wichtigkeit ist zu entkoppeln und zu modularisieren, bauen sich gerade in der Infrastruktur häufig monolithische, zentrale Konstrukte auf.
+Kern der Continous Integration ist das häufige Zusammenführen aller aktiven Arbeiten. Angelehnt an das "Subversion"-Versionskontrollsystem wird daher von auch "Trunk Based Development" gesprochen.
+Allerdings fordert gerade diese andauernde und nicht zu umgehende Integration, ein hohes Maß an Kommunikation und versierten Softwareentwicklern.
+Mit dem Erstarken von dezentralen Versionierungssystemen (DVCS) gab es eine alternative zur stetigen Integration. Für jede Anforderung (Feature) konnte nun unter vergleichsweise geringem Aufwand ein eigener Arbeitszweig (Branch) erstellt werden. In der Theorie konnten 
+dann alle Arbeitszweige "einfach" integriert und veröffentlicht werden.
 
-Ziel dieser Arbeit ist es daher traditionelle, zentrale Continuous Integration und Continuous Deployment Ansätze zu analysieren und deren Stärken und Schwächen mit denen verteilter Ansätze zu vergleichen.
+Während viele kommerzielle Lösungen dieses Verfahren anpreisen und zahlreiche Werkzeuge das Vorgehen unterstützen, gibt es doch immer noch deutliche Schwierigkeiten mit der Umsetzung. Häufig entwickeln sich "kurzlebige und kleine" Entwicklungszweige zu "großen und langlebigen" Veränderungen. Diese betreffen schnell verschiedene Komponenten der Anwendung und werden immer schwieriger zu integrieren. 
 
-Besonderes Augenmerk soll dabei auf die Eigenverantwortung der Entwickler und die prozessgesicherte Qualität des Softwareproduktes durch Tests und Metriken gelegt werden.
-Im Rahmen einer produktiv genutzten, individuellen Softwarelösung soll zudem der bestehende Deployment-Prozess analysiert, dezentral konzipiert und prototypisch umgesetzt werden.
+Die daraus entstehenden Diskussionen führten 2009 dazu, dass der bekannte Softwareentwickler Martin Fowler sich recht deutlich gegen "Feature Branches" aussprach.
 
-Die Masterarbeit soll sich zudem mit folgenden Thesen auseinander setzen:
+Ziel der Arbeit ist es nun den Konflikt von "Feature Branches" und "Continuous Integration" aufzuarbeiten, sowie visuelle und methodische Lösungsansätze anzubieten.
+Weiteres Augenmerk wird dazu auf die Verbindung zu "Continuous Deployment" und die damit einhergehenden notwendigen Metriken und Kriterien, für eine automatisierte und erfolgreiche Bereitstellung von Software gelegt.
+
+Die Masterarbeit soll sich zudem mit folgenden Thesen auseinander setzen:  
 "Continuous Deployment ist zu komplex um es in jedem Projekt zu verwenden.",
 "Der Einsatz von Continuous Deployment steigert die Qualität des Entwicklungsprozesses.", und
-"Es kann eine einheitliche Continuous-Deployment-Lösung geben, welche mithilfe einer einheitlichen, internen DSL in jedes Projekt integrierbar ist."
+"Feature Branches und Continous Integration sind unvereinbare Prinzipien."
 Dabei sollen Indizien oder sogar Beweise jeweils für deren Bestätigung bzw. Falsifizierung geliefert werden.
+
