@@ -1,5 +1,7 @@
 *.pdf
 *.gz
 *.lyx
+*.aux
+*.log
 .idea
 auxil/
