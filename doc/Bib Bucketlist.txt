@@ -140,3 +140,35 @@ A. Nilsson, J. Bosch, and C. Berger, “Visualizing testing activities to
 support continuous integration: A multiple case study,” in International
 Conference on Agile Software Development. Springer, 2014, pp. 171–
 186.
+
+
+M. Greiler, A. v. Deursen, and M.-A. Storey, “Test confessions: a study
+of testing practices for plug-in systems,” Piscataway, NJ, USA, pp. 244–
+254, 2012.
+
+
+C. Souza and D. Redmiles, “The awareness network: To whom should
+i display my actions? and, whose actions should i monitor?” in ECSCW
+2007, L. Bannon, I. Wagner, C. Gutwin, R. Harper, and K. Schmidt,
+Eds. Springer London, 2007, pp. 99–117.
+
+
+Osterweil L. Software processes are software too. In: Proceedings of the 9th International Conference on Software
+Engineering. Los Alamitos: IEEE, 1987. 2–13
+
+
+Jiang J J, Klein G, Hwang H-G, et al. An exploration of the relationship between software development process
+maturity and project performance. Inf Manag, 2004, 41: 279–288
+
+
+Kogut B, Metiu A. Open-source software development and distributed innovation. Oxford Rev Econ Policy, 2001, 17:
+248–264
+
+
+Barr E T, Bird C, Rigby P C, et al. Cohesive and isolated development with branches. In: Proceedings of the 15th
+International Conference on Fundamental Approaches to Software Engineering. Berlin/Heidelberg: Springer-Verlag,
+2012. 316–331
+
+
+Gousios G, Pinzger M, van Deursen A. An exploratory study of the pull-based software development model. In: Proceedings
+of the 36th International Conference on Software Engineering. New York: ACM, 2014. 345–355

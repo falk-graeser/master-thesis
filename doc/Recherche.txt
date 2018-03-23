@@ -242,6 +242,28 @@ quite interesting study for github projects that adopted ci, seems very good fac
 Creating a Shared Understanding of Testing Culture on a Social Coding Site
          * study about changing testing behaviour, caused by open communities / exchanges
          * p2 the way people approach an issue (f.e. self-assign) seems to have a major impact on the performance/motivation to find a solution 
+         * p4 the way contributions are reviewed and enforced to deliver tests are strictly bound to the trust of a contributor
+         * p4 [last section] tests are considered documentation, communication and/or regression checks
+         * p5 ci / test frameworks encourage contributors to add tests of high quality
+=> this relates to the results of the previous [f]read article 
+         * p5 if owners set the testing barrier to high, they will find their project to struggle to establish a “testing culture” and therefore will get contributions with no tests or simply no contributions
+         * p5[end] suggestion that as part of lowering barriers, supplying substantial documentation for writing tests / contributing is helpful
+         * p6 badges as part of a visualization strategy to support metrics
+         * p7 an existing test suite with automated execution allows for explorative learning and
+development with more confidence
+         * p9 github supports easy contribution and communication, this enables owners to easily communicate a testing culture
+
+
+Determinants of pull-based development in the context of continuous integration
+            * introducing with a nice round trip about git and github workflows
+            * claims:
+            * We claim that the evaluation of pull-request is a complex issue, requiring many independent variables to explain adequately. We construct a comprehensive study containing the measures in project-level, pullrequest level, submitter-level, workflow and CI-related level.
+            * We find that the presence of CI is a dominant factor for both pull-request acceptance and latency. In particular, the pull-requests with CI failures have about 89.6% greater odds of being rejected eventually; for pull-request latency, the CI running time is highly significant and covers more than 21% of the variance explained.
+            * p3 ci is widely accepted and used in the open source / github community
+            * p4 pull request and why they are rejected or accepted are a major research topic (references provided)
+            * p4 similar code style eases acceptance of code integration
+            * 
+
 
 
 Oops, my tests broke the build: An analysis of Travis CI builds
@@ -262,3 +284,4 @@ The Top 10 Adages in Continuous Deployment
 [c]?
 [d]Chapter needs a re-read if topic is important
 [e]Lookup
+[f]The Impact of Continuous Integration on Other Software Development Practices: A Large-Scale Empirical Study

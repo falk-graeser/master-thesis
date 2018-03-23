@@ -2,12 +2,29 @@
 * welcher erwartungen an die MA haben sich während der recherche geändert?
 * welche metriken sind notwendig um automatismen auf commits anzuwenden?
    * wie hoch muss die testabdeckung sein?
-   * darf eine maximale änderungsgröße nicht überschritten werden?
+   * darf eine maximale Änderungsgröße nicht überschritten werden?
 * wie lassen sich politische release entscheidungen mit branches / code branches umsetzen?
-* IDE is a partof deveopment
+* IDE is a part of development
 * erwähne TDD
 * test sind dokumentation - sie erklären wenn ein build fehlschlägt, warum
 * feature branches verschieben die Zeitpunkt des reviews?
 bzw tauschen review und merge
-* kommunikation ist ein wesentilcher faktor, wenn kommunikation über tickets erfolgt, dann ist auch der umgang mit diesen tickets ein faktor 
+* kommunikation ist ein wesentlicher faktor, wenn kommunikation über tickets erfolgt, dann ist auch der umgang mit diesen tickets ein faktor 
 also macht es einen unterschied ob man sich tickets nehmen kann oder ob sie zugewiesen werden
+* bereitstellung einer funktionierenden test-infrastruktur ist wesentlich für eine funktionierende testabdeckung um aussagekräftige metriken zu gewinnen
+* lohnt es sich failed commit flags zu erhalten?
+* dependencies mit visualisieren, für einen branch/tag/commit flag
+* semantisch / syntaktisch diffs
+* mining of software repositories
+* die “Reife” von Entwicklern ist ein zu betrachtender Faktor
+
+
+gedanken zum interview
+   * interview bogen mit “Likert-type” Skalen?
+   * warum testen?
+   * vom unternehmen gefordert
+   * extern gefordert
+   * technical lead gefordert
+   * eigene sicherheit
+   * wann schreibe ich tests?
+   * würden metriken dazu animieren tests zu schreiben?
