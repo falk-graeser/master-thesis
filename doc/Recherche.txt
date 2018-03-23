@@ -1,0 +1,264 @@
+﻿1 Continuous Delivery
+2010, Jez Humble, David Farley
+* value stream und einführung über deployment pipline krams
+* release antipattern
+   * risk
+   * manual composition of server configuration
+* * [missing] log and measurement of load data
+* system visualization
+* feedback-system
+   * compile
+   * unit tests
+   * coverage
+   * acceptance tests
+   * capacity / security tests
+* * feedback „?“ / integration in backlog
+* cross reference lean movement
+* virualisation for each ticket / branch
+* p24 „when it is painful, the way to reduce the pain is to do it more frequently, not less“
+* question: what is not automatable?
+* p27 „the earlier you catch defects, the cheaper they are to fix“
+* p134 „binaries can run everythere“ with the correct configuration and environement => configuration management
+* p135 spliting builds
+* p136 non-functional testing should be done from start on
+* p138 should measure cycletime of feature (from concept to live)
+* p139 other metrics „panopticode“
+* note: lookup mock strategies
+* p145 build chain types
+   * product oriented vs
+   * task oriented
+* * p146 dependency networks -> DSL by fowler
+* p148 build tool dsl vs real code // declarative vs imperative
+* p152 DDD in build scripts
+* p154 us packaging tools to create maintainable artifacts
+   * keep artifacts the working flow 'clean' ?
+   * phpopcache, phar ?
+* * p156 distinguish application into several clear artifacts
+* p163 use smoke tests during deployment to test connected services
+* p165 trace sources and buildtime from binaries
+* p167 test „jobs/commands“ on build time
+* p171 „Errors are easiest to fix if they are detected early, close to the point where they were introduced
+* p175 create hashes for „binaries“
+* p176  💟 graph of buildpipeline
+   * steps of happy path
+* * discussion about feature toggles and ci vs feature branches
+   * long living branches are bad
+   * always pull main branches in
+* * p190 INVEST [a]principle for all acceptance criteria
+* p191 test-layer architecture
+   * “layer away” the brittle, ui referring parts of the tests (=> gherkin)
+   * abstract ui / api access
+* because cd is about delivering small subsets of the application it is often tied to feature driven development and tightly bundled with acceptance criteria
+* p195 acceptance test are executable parts of the specification
+   * Chris Malts, Dan North[b] come up with “Given”, “When”, “Then”
+   * is this sufficient for non-user-driven behaviour? (System as a role)
+* p198 DSL’s as part ot the application driven layer
+* p199 use keys to address randomized data to make tests independent of each other
+* ICD-DSL[c]
+* p218 period of time bug introduction to fix should be minimal
+* p223 automated testing is a must for regression testing but explorative, usability, user acceptance are not automatable
+* p225 non-functional requirements
+* p227 architectural tradeoff analysis method ATAM ?
+* p228 optimization needs purpose
+   * an premature optimization without an problem is not necessary
+   * capacity testing / non functional requirements needs to be addressed early
+* p233 capacity testing[d] with binary results tend to have a too small quality value (either unstable or to loose)
+* p249 deploying should be the same script on every environment
+* p251 a release strategy should be the result of functional requirements & non-functional-r.
+   * a release plan describes all steps and tools to deploy, smoke and check an app
+* p254 modeling the release process
+   * what are the critical stories
+   * what stages has the release
+* p255 value stream mapping
+   * tools
+      * go
+      * anthill pro
+* p256 test env deployment workflow
+* p261 assets should have some sort of version in their path / name
+* p261 blue green deployment
+   * write locks on dbs are an option
+   * consider handle session/stateful stores separately
+* p263 canary releasing
+* p267 cd forces you to have a good process
+* p287 data center automation (puppet, cf engine)
+   * automation documentation
+* p289 PXE setting up new machines
+* p305 virtualisation eases up the control of non-functional criteria
+* p312 “eucalyptus” cloud computing
+* p325 managing data
+   * data migration needs to be visualized
+* p328 database versioning
+* p336 test coupling & decoupling
+* p340 test data “classes” and their “importance”
+* p344 managing data summary
+chapter 13 seems important
+* p345 component definition
+* p350 “branch by abstraction” __ Paul Hammond[e]
+* p351 “potemkinvillage” ????
+* p352 definition components vs libraries
+* p356 yet another component definition
+* p358 makes software design an art, craft and social science as much as an engineering descipline
+* p365 pipeline dependency | upstream / downstream dependency
+=> breaking dependencies
+* p370 cautious optimism [Alex Chaffee]
+static / fluid / guarded upstream deps
+* p381 three good reasons for branching
+* p388 problems of branching / merging
+* p391 “poor” branching patterns
+
+
+“how to visualize possible low effort / essential merges”
+
+
+   * p400 streams vs branches
+   * rebase on ghost, create diff, cherry pick diff?
+=> does this still conflict
+   * p410ff branch of feature branch by team
+
+
+Continuous Integration (original version)
+https://www.martinfowler.com/articles/originalContinuousIntegration.html
+“Software development is full of best practices which are often talked about but seem to be rarely done” (first sentence)
+      * Keep a single place where all the source code lives and where anyone can obtain the current sources from (and previous versions)
+      * Automate the build process so that anyone can use a single command to build the system from the sources
+      * Automate the testing so that you can run a good suite of tests on the system at any time with a single command
+      * Make sure anyone can get a current executable which you are confident is the best executable so far.
+NOTE: this requires quite a good infrastructure and a solid configuration management
+
+
+      * For many people team development just comes with certain problems that are part of the territory
+      * problem [..] is in the interaction between two pieces of work
+      * “The key point is that continuous integration catches enough bugs to be worth the cost. “
+      * “It is that it is better to integrate often than to integrate rarely”
+      * “if your integration is painful, you shouldn't take this as a sign that you can't integrate more frequently”
+      * repeatability => automatization
+      * All the latest sources are checked out of the configuration management system
+      * Every file is compiled from scratch
+      * The resulting object files (Java classes in our case) are linked and deployed for execution (put into jars).
+      * The system is started and suite of tests (in our case, around 150 test classes) is run against the system.
+      * If all of these steps execute without error or human intervention and every test passes, then we have a successful build
+ 
+      * describes a lot of building, testing, commiting
+
+
+
+
+
+
+
+
+From Continuous Integration to Continuous Assurance
+
+
+      * james a kupsch, barton p miller
+      * static code analysis (sca) “find bugs”, “pmd sca”
+      * dynamic code analysis test need to be run
+      * jenkins sonar qube
+
+
+Why Continuous Integration doesnt work
+creator of rultor.com
+
+
+is worried that ci is not respekted
+merges to master should be only be done with fast forward builds that have been tested before the merge
+
+
+Continuous Integration is Dead
+
+
+“Crucially, if the build fails, the development team stops whatever
+they are doing and /ixes the problem immediately”
+This is what doesn't work and can't work. => no one “needs” this
+
+
+“fear driven development” if devs get punishment for broken builds
+
+
+“read-only master branch.”
+
+
+Master Branch Must Be Read-Only
+http://www.yegor256.com/2014/07/21/read-only-master-branch.html
+
+
+MANAGING THE DEVELOPMENT OF LARGE SOFTWARE SYSTEM
+      * dr winston w royce
+      * p1 “An  implementation plan to manufacture larger software systems, and keyed only to these steps, however, is doomed to failure”
+rest is rather std development stuff of an old aera
+
+
+Continuous Integration Is Not About Build Systems
+      * problems with build systems
+      * The build system was considered to have a low degree of transparency
+      * The main reason for not delivering more frequently was that build and integration took too long
+      * Dependencies and merge conflicts were described as a major problem
+      * p3 difficult merge conflicts and an extensive integration process with the words “integration angst”
+      * positive target for a build pipeline
+      * A build system fast enough to enable all teams to deliver at least once within a single sprint
+      * A deterministic build system which enforces dependencies in a way that it is possible to determine whether a new build will succeed or not 
+      * A transparent build system where it is possible to describe how the build process works
+      * commit frequency
+      * The developer delivers less frequently if the delivery process is time-consuming
+      * The developer delivers less frequently if it’s too complicated to deliver
+      * The developer delivers less frequently if there is no evident value in delivering often to the mainline
+      * some devs have the opinion that “no evident value in delivering often to the mainline”
+      * p7 Herzberg's motivation-hygiene theory and the dual-factor theory
+      * motivators, hygiene factors
+      * sum
+      * interviewees’ responses clearly show that the build system should be considered as one of several factors that affect developer behaviors
+      * delivery process should not be to complicated and transparent
+      * The Impact of Continuous Integration on Other Software Development Practices: A Large-Scale Empirical Study
+quite interesting study for github projects that adopted ci, seems very good fact based
+
+
+      * p1 definition of devops: DEVOPS as a culture that emphasizes automation of the processes of building, testing, and deploying software
+      * CI has the potential to: 
+      * (i) speed up development (code change throughput) [5], [10], [11]; 
+      * (ii) help maintain code quality [12], [13]. 
+      * Clearly, CI promises to be a disruptive technology in distributed software development
+      * For example, working in large increments may lead to more meaningful change sets, but it may also complicate synchronization between team members and, if necessary, reverting changes.
+      * “noise”, where developers start to ignore the CI build status due to information overload, irrespective of whether the build is clean or broken
+      * p2 adopting TRAVIS CI. Applying this mixed methodology, we find that:
+      * the increasing number of merge commits aligns with the “commit often” guideline of Fowler, but is likely to be further encouraged by the shift to a more distributed workflow with multiple branches and pull requests;
+      * the “commit small” guideline, however, is followed only to some extent, with large differences between projects in terms of adherence to this guideline;
+      * the expected increasing trend in the number of closed pull requests manifests itself after the introduction of TRAVIS CI, and even then only after the initial plateau period; the pull request latency increases despite the code changes becoming smaller;
+      * while the number of issues closed increases, this trend is unexpectedly slowed down by TRAVIS CI;
+      * after initial adjustments when adopting TRAVIS CI, test suite sizes seem to increase.
+      * p2 Continuous integration encourages developers to “break down their work into small chunks of a few hours each”, as smaller and more frequent commits helps them keep track of their progress and reduces the debugging effort [
+      * p2 GITHUB teams are able to process (i.e., close) more PRs per unit time after adopting TRAVIS CI.
+      * p9f describes a lot of similar studies which may be used to find similar outcomes
+“All these efforts aim at improving the cost-effectiveness of CI.”
+      * p10 VII Conclusion
+         * commit often: true
+         * commit small: only followed to some extend
+         * increasing number of closed issues
+         * increasing test qualitiy
+         * pull request closed number relatively stabe > contradictionary to smaller chunks
+         * code review is maybe a quite limiting factor
+         * automatic prioritization and automatic post-merge defect prediction may help
+
+
+Creating a Shared Understanding of Testing Culture on a Social Coding Site
+         * study about changing testing behaviour, caused by open communities / exchanges
+         * p2 the way people approach an issue (f.e. self-assign) seems to have a major impact on the performance/motivation to find a solution 
+
+
+Oops, my tests broke the build: An analysis of Travis CI builds
+with GitHub
+
+
+TravisTorrent: Synthesizing Travis CI and GitHub for
+Full-Stack Research on Continuous Integration
+
+
+Work Practices and Challenges in Pull-Based
+Development: The Integrator’s Perspective
+
+
+The Top 10 Adages in Continuous Deployment
+[a]means? other references?
+[b]google that!
+[c]?
+[d]Chapter needs a re-read if topic is important
+[e]Lookup

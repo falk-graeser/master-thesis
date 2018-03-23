@@ -1,0 +1,13 @@
+﻿* was sind faktoren, die entwickler an feature branches mögen?
+* welcher erwartungen an die MA haben sich während der recherche geändert?
+* welche metriken sind notwendig um automatismen auf commits anzuwenden?
+   * wie hoch muss die testabdeckung sein?
+   * darf eine maximale änderungsgröße nicht überschritten werden?
+* wie lassen sich politische release entscheidungen mit branches / code branches umsetzen?
+* IDE is a partof deveopment
+* erwähne TDD
+* test sind dokumentation - sie erklären wenn ein build fehlschlägt, warum
+* feature branches verschieben die Zeitpunkt des reviews?
+bzw tauschen review und merge
+* kommunikation ist ein wesentilcher faktor, wenn kommunikation über tickets erfolgt, dann ist auch der umgang mit diesen tickets ein faktor 
+also macht es einen unterschied ob man sich tickets nehmen kann oder ob sie zugewiesen werden

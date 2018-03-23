@@ -1,0 +1,142 @@
+﻿J. Downs, J. Hoskins and B. Plimmer, “Status Communication in
+Agile Software Teams: A Case Study”, Fifth International
+Conference on oftware Engineering Advances (ICSEA), 2010, pp.
+82-87
+
+
+S. Dösinger, R. Mordinyi and S. Bif􀃀, “Communicating continuous
+integration servers for increasing effectiveness of automated testing”,
+27th IEEE/ACM International Conference on Automated Software
+Engineering, 2012, pp. 374–377.
+
+
+http://www.martinfowler.com/
+articles/continuousIntegration.html, 2006.
+
+
+http://martinfowler.com/articles/
+originalContinuousIntegration.html
+
+
+T. Mårtensson, D. Ståhl and J. Bosch, “Continuous Integration
+Applied to Software-Intensive Embedded Systems – Problems and
+Experiences”, 17th International Conference on Product-Focused
+Software Process Improvement, PROFES 2016, 2016, pp. 448-457.
+
+
+R. Owen Rogers, “Scaling continuous integration. Extreme
+programming and agile processes in software engineering”, Springer
+LNCS 3092, 2004, pp. 68–76.
+
+
+D. Ståhl, T. Mårtensson and J. Bosch, “The continuity of continuous
+integration: correlations and consequences”, Journal of Systems and
+Software 127, 2017, pp. 150-167.
+
+
+M. Hilton, T. Tunnell, K. Huang, D. Marinov, and D. Dig, “Usage,
+costs, and benefits of continuous integration in open-source projects,”
+in International Conference on Automated Software Engineering (ASE).
+ACM, 2016, pp. 426–437.
+
+
+G. Gousios, M. Pinzger, and A. v. Deursen, “An exploratory study of the
+pull-based software development model,” in International Conference on
+Software Engineering (ICSE). ACM, 2014, pp. 345–355.
+
+
+R. Pham, L. Singer, O. Liskin, F. Figueira Filho, and K. Schneider,
+“Creating a shared understanding of testing culture on a social coding
+site,” in International Conference on Software Engineering (ICSE).
+IEEE, 2013, pp. 112–121.
+
+
+B. Vasilescu, Y. Yu, H. Wang, P. T. Devanbu, and V. Filkov, “Quality
+and productivity outcomes relating to continuous integration in GitHub,”
+in Joint Meeting on Foundations of Software Engineering (ESEC/FSE).
+ACM, 2015, pp. 805–816.
+
+
+G. Gousios, A. Zaidman, M.-A. Storey, and A. Van Deursen, “Work
+practices and challenges in pull-based development: the integrator’s perspective,”
+in International Conference on Software Engineering (ICSE).
+IEEE, 2015, pp. 358–368.
+
+
+Y. Bugayenko, “Continuous integration is dead,” http://www.yegor256.
+com/2014/10/08/continuous-integration-is-dead.html, 2014, accessed:
+2016-10-8.
+
+
+F. Cannizzo, R. Clutton, and R. Ramesh, “Pushing the boundaries of
+testing and continuous integration,” in Agile Conference (AGILE), 2008,
+pp. 501–505.
+
+
+M. Beller, G. Gousios, and A. Zaidman, “Oops, my tests broke the build:
+An analysis of Travis CI builds with GitHub,” PeerJ PrePrints, vol. 4,
+p. e1984, 2016.
+
+
+G. Gousios and D. Spinellis, “GHTorrent: GitHub’s data from a firehose,”
+in Working Conference on Mining Software Repositories (MSR).
+IEEE, 2012, pp. 12–21.
+
+
+M. Beller, G. Gousios, and A. Zaidman, “TravisTorrent: Synthesizing
+Travis CI and GitHub for full-stack research on continuous integration,”
+in International Conference on Mining Software Repositories (MSR).
+ACM, 2017.
+________________
+
+
+B. Vasilescu, S. van Schuylenburg, J. Wulms, A. Serebrenik, and
+M. G. J. van den Brand, “Continuous integration in a social-coding
+world: Empirical evidence from GitHub,” in International Conference
+on Software Maintenance and Evolution (ICSME). IEEE, 2014, pp.
+401–405.
+
+
+G. W. Imbens and T. Lemieux, “Regression discontinuity designs: A
+guide to practice,” Journal of Econometrics, vol. 142, no. 2, pp. 615–
+635, 2008.
+
+
+C. Brindescu, M. Codoban, S. Shmarkatiuk, and D. Dig, “How do
+centralized and distributed version control systems impact software
+changes?” in International Conference on Software Engineering (ICSE).
+ACM, 2014, pp. 322–333.
+
+
+Y. Yu, H. Wang, V. Filkov, P. Devanbu, and B. Vasilescu, “Wait for it:
+Determinants of pull request evaluation latency on GitHub,” in Working
+Conference on Mining Software Repositories (MSR). IEEE, 2015, pp.
+367–371.
+
+
+Y. Yu, G. Yin, T. Wang, C. Yang, and H. Wang, “Determinants of pullbased
+development in the context of continuous integration,” Science
+China Information Sciences, vol. 59, no. 8, pp. 1–14, 2016.
+
+
+G. Gousios, M.-A. Storey, and A. Bacchelli, “Work practices and
+challenges in pull-based development: the contributor’s perspective,” in
+International Conference on Software Engineering (ICSE). ACM, 2016,
+pp. 285–296.
+
+
+J. Hu and Y. Li, “Implementation and evaluation of automatic prioritization
+for continuous integration test cases,” Master’s thesis, Chalmers
+University of Technology — University of Gothenburg, 2016.
+
+
+S. D¨osinger, R. Mordinyi, and S. Biffl, “Communicating continuous
+integration servers for increasing effectiveness of automated testing,”
+in International Conference on Automated Software Engineering (ASE).
+ACM, 2012, pp. 374–377..
+
+
+A. Nilsson, J. Bosch, and C. Berger, “Visualizing testing activities to
+support continuous integration: A multiple case study,” in International
+Conference on Agile Software Development. Springer, 2014, pp. 171–
+186.
