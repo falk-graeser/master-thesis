@@ -6,43 +6,66 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{csquotes}
+\usepackage[
+backend=biber,
+style=alphabetic,
+citestyle=authoryear
+]{biblatex}
+\addbibresource{literature.bib}
+
 \author{Falk Gräser}
+
 \title{Entwicklung von Visualisierungs- und Integrationsansätzen für Continuous-Integration und Feature-Branches}
+
 \begin{document}
 
 \maketitle
 
-\newpage
+\tableofcontents
 
 \chapter{Einleitung}
 
+Software ist kein Selbstzweck. Software wird entwickelt und ausgeliefert um die Anforderungen eines oder mehrer Kunden zu erfüllen.
+
 \chapter{Problemanalyse}
 
-In diesem Kapitel muss ich darstellen was Contiuous Integration bedeutet, wofür es verwendet wird und welche Tücken es mit sich bringt.
-Ebenso für Feature Branches.
-Und ich muss darstellen, warum Martin Fowler darüber geschrieben hat, dass 
+% In diesem Kapitel muss ich darstellen was Contiuous Integration bedeutet, wofür es verwendet wird und welche Tücken es mit sich bringt.
+% Ebenso für Feature Branches.
+% Und ich muss darstellen, warum Martin Fowler darüber geschrieben hat, dass 
 
-"When you isolate the feature branches, there is a risk of a nasty conflict growing without you realizing it"
-https://martinfowler.com/bliki/FeatureBranch.html
+%"When you isolate the feature branches, there is a risk of a nasty conflict growing without you realizing it"
+%https://martinfowler.com/bliki/FeatureBranch.html
 
+Die Zusammenführung der Arbeit von mehr als einem Entwickler ist ein komplexer und nicht trivialer Vorgang. \\
+Viele Teile eines Softwareprojektes beeinflussen andere und häufig werden an Schnittstellen in Programmen Änderungen von mehreren Entwicklern vorgenommen. \\
+Es muss sichergestellt werden, dass die Änderungen zusammengeführt werden können und dass das Ergebnis den Anforderungen entspricht.
 
-\section{Continuous Integration}
-\subsection{Begriffserklärung}
+Gerade wenn die Software einen gewissen Umfang übersteigt, ist daher ein solides Anforderungsmanagement essenziell. Zudem müssen Mechanismen geschaffen werden um sicher zustellen, dass diese Anforderungen über die komplette Laufzeit der Software erfüllt bleiben. 
 
+Leider sieht die Realität in der Softwareentwicklung nicht selten anders aus. Fehlende, nicht dokumentierte oder veraltet Anforderungen sind keine Seltenheit.\\
+Ebenso sind lange Zeitintervalle indenen sich Teile der Software in keinem lauffähigen oder einem fehlerbehaftetem Zustand befinden Normalität.
 
-\begin{itemize}
-\item Warum Continuous Integration
-\item Stärken von CI
-\item Probleme mit Continuous Integration
-\end{itemize}
+In diesen Fällen wir häufig erst zum Zeitpunkt des Testes - oder schlimmer - zum Zeitpunkt der Auslieferung, die Situation offenbart.
+
+Die Gründe für diese Schwierigkeiten sind häufig in kein homogenes Bild zu bringen. Vielmehr tragen verschiedene Faktoren dazu bei, die erst in der Kombination zu erheblichen Problemen führen können.
+
+\section{Vorgehensmodelle}
+
+Um Herr über diese Probleme zu werden wurde lange Zeit versucht über statische und umfangreiche Vorgehensmodelle (Wasserfallmodell, V-Modell) und vollständig ausformulierte Anforderungsdokumentationen mit Lasten- und Pflichtenheften ein klares Bild zu schaffen und Risiken zu fehlenden oder unklaren Anforderungen zu minimieren.
+
+Da trotz dieser Mittel immer noch zahlreiche Projekte scheiterten, wurden neue Wege gesucht um die bestehenden Probleme zu lösen.
+
+Kind dieser Suche war unter anderem die Agile Bewegung, sicherlich nicht unwesentlich beeinflusst durch die Veröffentlicheungen von Kent Beck. Die Bewegung suchte sich von den traditionellen Modellen zu lösen und prägnante Lösungen zu finden.\\
+Beinflusst von der Lean-Bewegung aus der Automobil-Fertigungsindustrie wurden zentrale Punkte, die das Verständis von Agiler Softwareentwicklung verdeutlichen sollte, im Agilen Manifest festgehalten.
+
+In den ausgeführten Prinzipen [to be continued]
+
+\section{Kodeverwaltung und Versionierungssysteme}
 
 \section{Feature Branches}
 
-\begin{itemize}
-\item Warum Feature Branches
-\item Stärken von FB
-\item Schwächen von FB
-\end{itemize}
+\section{Continuous Integration}
 
 \chapter{Visualisierung und Methodiken}
 
@@ -62,5 +85,9 @@ https://martinfowler.com/bliki/FeatureBranch.html
 
 \chapter{Zusammenfassung}
 
+
+\chapter{Literaturverzeichnis}
+
+\printbibliography
 
 \end{document}
