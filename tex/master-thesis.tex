@@ -81,15 +81,41 @@ Ein weiterer Aspekt "wertvoller" Software ist ihre Funktionalität. Diese sicher
 \section{Qualitätssicherung und Softwaretest}
 
 Die Qualitätssicherung einer Software muss als oberste Prämisse sicherstellen, dass alle Anforderungen erfüllt sind und dass die Anforderungen auch erfüllt bleiben. Nicht selten führen Neuerungen in einer Software dazu, dass bereits bestehenden Funktionalität beeinträchtigt wird. 
-Aufbauend auf der Annahme, dass alle notwendigen Anforderungen beschrieben sind, müssen diese in unterschiedlichen Stufen überprüft und sichergestellt werden.
+Aufbauend auf der Annahme, dass alle notwendigen Anforderungen beschrieben sind, müssen diese in unterschiedlichen Ebenen überprüft und sichergestellt werden.
+Diese Ebenen richten sich danach welche Anforderungen und damit verbundenen Merkmale geprüft werden müssen, aber auch danach wie komplex die damit verbundene Prüfung ist.
 
-Die Entscheidung was getestet wird und wann es getestet wird hängt dabei von verschiedenen Faktoren ab.
+In der Literatur werden meist Unit-, Funktions- und Integrationstests, sowie System- und Abnahmetests(Akzeptanztest) unterschieden.
+Die Unterscheidung liegt hier in der Größe des zu betrachtenden Ausschnitts der Software und damit der zu prüfenden Aussage. Während in einem Abnahmetest eine direkt Verbindung zwischen Anforderung und Testfall hergestellt werden kann, so ist dies in einem einzelnen Unittest meist nicht mehr möglich.
+\paragraph{Akzeptanztest}
+Akzeptanz- oder auch Abnahmetests stellen in erster Linie die Erfüllung der definierten Anforderungen sicher. Akzeptanztests werden häufig in der Form von Anwendungsszenarien (Use-Cases) beschrieben und sollte sicher daher nur auf das Zusammenspiel von Systemen und Akteuren beziehen. Die Verwendung von technische Details der Software, wie Datenbankspezifikationen oder konkrete Systemimplementierungen sollten vermieden werden. Nicht nur erhöht es den Wartungsaufwand dieser Tests, es verschiebt auch den Fokus des Tests weg von den eigentlich zu prüfenden Merkmalen und Aktionen.
+
+Nicht notwendiger Weise, aber häufig dauert die Durchführung der Akzeptanztests recht lange. Daher werden sie meist seltener ausgeführt. Die lange Ausführungszeit macht sie zudem unhandlich, um eine schnelle Validierung eines in Entwicklung befindlichen Softwarestückes zu gewährleisten.
+
+\paragraph{Funktions- und Integrationstests}
+
+Funktions- und Integrationstests dienen der Überprüfung von Schnittstellen. Es wird sichergestellt, dass verschiedenen Teile der Software, verschiedene Komponenten, nach den vereinbarten Schnittstellen miteinander kommunizieren.
+Neben der Absicherung von Seiteneffekten zu anderen Komponenten und Fremdmodulen, bieten Integrationstests auch eine gute Beschreibung einer Komponente und derer Schnittstellen.
+
+\paragraph{Unittests}
+
+Unittests bilden die unterste Ebene der Softwaretests. Maßgeblich bei Unittests ist die völlige Abkopplung von anderen Teilen, als des zu testenden Teils (Unit) der Software. Jegliche Interaktion mit externen Services sollte strikt vermieden werden.
+Ein ordnungsgemäß verfasster Unittest stellt neben der Regressionssicherheit eines Moduls auch einen Teil dessen Dokumentation sicher. Da ein Unittest das zu testende Modul initialisiert und die notwendigen Schnittstellen bereitstellt, bildet er auch anschaulich die Intention des Moduls ab.
 
 \section{Automatisierung der Softwareerstellung - Continuous Building}
 
+Die Bereitstellung einer Software baut auf mehreren Faktoren auf. Es wird ein konkreter Stand der Softwarequellen benötigt, ein ausführendes System und es muss für eine Übersetzung der Softwarequellen zu dem System.
+Je nach Anforderung der Software und des Ausführungsszenarios reicht dieser Vorgang von einer trivialen Kopie zu einem mehrstufigen, komplexen Vorgang. 
+
+Im nachfolgenden wird beschrieben wie Software in einen wohldefinierten, funktionalen Zustand gebracht und dieser validiert wird. Dazu wird auf Versionsverwaltungssysteme, Konfigurationsmanagement, die automatisierte Erstellung und deren Test eingegangen.
+
 \subsection{Kodeverwaltung und Versionskontrollsysteme}
-\subsection{Configurations Management}
-\subsection{Dependency Management}
+
+- skip - vcs braucht eh keiner..
+
+\paragraph{zentrale Versionskontrollsysteme}
+\paragraph{dezentrale Versionkontrollsysteme}
+\subsection{Konfigurationsverwaltung}
+\subsection{Abhängigkeitsverwaltung}
 \subsection{Automatisierte Erstellung}
 \subsection{Validierung und Test}
 
