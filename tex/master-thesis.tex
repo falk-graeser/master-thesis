@@ -1,11 +1,14 @@
-\documentclass[10pt,a4paper]{book}
+\documentclass[12pt,a4paper]{book}
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{mathptmx} % Times
+\usepackage{courier}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry}
+\usepackage[onehalfspacing]{setspace}
 \usepackage{csquotes}
 \usepackage[
 backend=biber,
@@ -39,14 +42,16 @@ Software ist kein Selbstzweck. Software wird entwickelt und ausgeliefert um die 
 
 Die Zusammenführung der Arbeit von mehr als einem Entwickler ist ein komplexer und nicht trivialer Vorgang. \\
 Viele Teile eines Softwareprojektes beeinflussen andere und häufig werden an Schnittstellen in Programmen Änderungen von mehreren Entwicklern vorgenommen. \\
-Es muss sichergestellt werden, dass die Änderungen zusammengeführt werden können und dass das Ergebnis den Anforderungen entspricht.
+Es muss sichergestellt werden, dass die Änderungen zusammengeführt werden können und dass das Ergebnis synataktisch und semantisch korrekt ist, sowie den Anforderungen entspricht.
 
-Gerade wenn die Software einen gewissen Umfang übersteigt, ist daher ein solides Anforderungsmanagement essenziell. Zudem müssen Mechanismen geschaffen werden um sicher zustellen, dass diese Anforderungen über die komplette Laufzeit der Software erfüllt bleiben. 
+Während die syntaktische und semantische Validierung klassische Themen der theoretischen Informatik sind, erfordert die Erhebung und Aufbereitung von Anforderungen eine ganz eigene Betrachtung durch ein konkretes Anforderungsmanagement.
+
+Gerade wenn die Software einen gewissen Umfang übersteigt, ist daher ein solides Anforderungsmanagement essenziell. Zudem müssen Mechanismen geschaffen werden, um sicherzustellen, dass diese Anforderungen über die komplette Laufzeit der Software erfüllt bleiben. 
 
 Leider sieht die Realität in der Softwareentwicklung nicht selten anders aus. Fehlende, nicht dokumentierte oder veraltet Anforderungen sind keine Seltenheit.\\
-Ebenso sind lange Zeitintervalle indenen sich Teile der Software in keinem lauffähigen oder einem fehlerbehaftetem Zustand befinden Normalität.
+Ebenso sind lange Zeitintervalle in denen sich Teile der Software in keinem lauffähigen oder einem fehlerbehaftetem Zustand befinden häufig anzutreffen.
 
-In diesen Fällen wir häufig erst zum Zeitpunkt des Testes - oder schlimmer - zum Zeitpunkt der Auslieferung, die Situation offenbart.
+Fehlende Anforderungen und fehlerhafte Umsetzungen werden häufig erst zum Zeitpunkt des Testes - oder schlimmer - zum Zeitpunkt der Auslieferung offenbart.
 
 Die Gründe für diese Schwierigkeiten sind häufig in kein homogenes Bild zu bringen. Vielmehr tragen verschiedene Faktoren dazu bei, die erst in der Kombination zu erheblichen Problemen führen können.
 
@@ -54,7 +59,7 @@ Die Gründe für diese Schwierigkeiten sind häufig in kein homogenes Bild zu br
 \paragraph{Hinweis}
 
 \begin{itemize}
-\item evtl. Untergliederung in phasen orientierte und iterations orientierte Vorgehensmodelle
+\item evtl. Untergliederung in phasen orientierte und iterative Vorgehensmodelle
 \item  evtl. Untergliederung Anforderungsmangement?
 \item Schluss warum moderne Vorgehenmodell die Benutzung von dezentralen Versionverwaltungen gefördert und gefordert haben
 \item Schluss warum iterative Vorgehen Continuous Integration fordern
@@ -62,21 +67,28 @@ Die Gründe für diese Schwierigkeiten sind häufig in kein homogenes Bild zu br
 
 \vspace{1em}
 
-Um Herr über diese Probleme zu werden wurde lange Zeit versucht über statische und umfangreiche Vorgehensmodelle (Wasserfallmodell, V-Modell) und vollständig ausformulierte Anforderungsdokumentationen mit Lasten- und Pflichtenheften ein klares Bild zu schaffen und Risiken zu fehlenden oder unklaren Anforderungen zu minimieren.
+Aus der Notwendigkeit einer strukturierten Herangehensweise an die Herausforderungen, die mit der Erstellung von komplexer Software
 
-Da trotz dieser Mittel immer noch zahlreiche Projekte scheiterten, wurden neue Wege gesucht um die bestehenden Probleme zu lösen.
+Um komplexe Software in einer strukturierten und definierten Herangehensweise zu erstellen, wurden ausführlich beschriebene und wohl definierte Vorgehensmodelle definiert. Ziel war eine klare Schrittfolge mit eindeutigen Zielstellung, wie man es aus anderen ingenieurs Disziplinen gewohnt war. 
 
-Kind dieser Suche war unter anderem die Agile Bewegung, sicherlich nicht unwesentlich beeinflusst durch die Veröffentlicheungen von Kent Beck. Die Bewegung suchte sich von den traditionellen Modellen zu lösen und prägnante Lösungen zu finden.\\
-Beinflusst von der Lean-Bewegung aus der Automobil-Fertigungsindustrie wurden zentrale Punkte, die das Verständis von Agiler Softwareentwicklung verdeutlichen sollte, im Agilen Manifest festgehalten.
+Die daraus entstehenden Modell hielten sich meist an eine klare Folge aus Planungs- Konzeptions-, Implementierungs-, Test- und Abnahmephase. Beispiele sind hier das Wasserfallmodell und das V-Modell. Gerade in bereichen höchster Sicherheit und einer starken Bindung an bürokratische Strukturen wird auch heute noch das V-Modell erfolgreich eingesetzt[quote Referenz Bund?].
+
+Mit der komplexität einer Software steigt in der Regel auch der Umsetzungaufwand und die damit verbunden Zeit. Durch die klare Phasenteilung in den klassischen Vorgehensmodellen, kann daher von der Anforderungsaufnahme bis zu Auslieferung einiges an Zeit verstreichen. Nicht selten ändern sich allerdings Anwendungsszenarien und Benutzeranforderungen an das entstehende System. Eine weitere Schwierigkeit ist die Prüfung der Umsetzung von Anforderungen. Sollte die Umsetzung einer Anforderung, zum Beispiel durch ungenaue oder mehrdeutige Angaben, nicht den maßgaben des Tests entsprechen, vergehen Wochen oder Monate bis diese Diskrepanz aufgedeckt wird.
+
+Immer wieder kam es daher zu unbefriedigenden oder sogar gescheiterten Softwareprojekten. Gerade bei komplexen Softwaresystem mit einem entsprechenden Umsetzungsaufwand, ist der Schaden dann sehr hoch.
+
+Um diesen Schaden zu minimieren entwickelte sich eine alternative Herangehensweise, welche vorallem Interaktion, Funktionalität, Kundenorientierung und Veränderungsbereitschaft als wichtig erachtet. Festgehalten im Agilen Manifest[quote manifest] proklamierten viele bekannte und angesehene Softwareexperten ihren Willen Softwareprojekte grundsätzlich anders zu fokussieren.
+
+Beinflusst von der Lean-Bewegung aus der Automobil-Fertigungsindustrie[quote extreme programming kbeck] wollte man die Produktivität deutlich steigern und aus den bürokratisch anmutenden Vorgehensmodellen ausbrechen.
 
 Das Agile Manifest stellt hohe Ansprüche an Entwickler und erzwingt ein Umdenken im Umgang mit dem Projektprozess. Während in traditionellen Vorgehensmodellen jede Phase eine längere zeitliche Periode einnimmt, so werden diese Phasen und Zeiträume in agilen Vorgehen deutlich verkürzt, um damit einhergehende Informationsflüsse deutlich zu beschleunigen.
 Diese kurzen Zeiträume und damit einhergehenden vielen Iterationen geben kontinuierlich und schnell Auskunft über den Zustand eines Projektes. Außerdem wird es einfacher zu erkennen, welche Schritte tatsächlich wertvoll sind und welche Schritte dem Projektfortschritt eher abträglich sind. 
 
-Oberstes Ziel hierbei ist die Lieferung von "wertvoller" Software, also die Einschätzung der Anforderungen mit den Stakeholdern und priorisierte Lieferung dieser Anforderungen.
+Oberstes Ziel hierbei ist die Lieferung von ``wertvoller'' Software, also die Einschätzung der Anforderungen mit den Stakeholdern und priorisierte Lieferung dieser Anforderungen.
 
 Dieses Vorgehen führt automatisch dazu, dass frühzeitig deutlich wird, ob die richtigen Anforderungen als wichtig erkannt wurden und welche Anforderungen implizit angenommen und daher im verborgenen lagen.
 
-Ein weiterer Aspekt "wertvoller" Software ist ihre Funktionalität. Diese sicherzustellen in einer kontinuierlichen Auslieferung erfordert ein hohes Maß an Qualitätssicherung. Schon sehr früh im Entwicklungsprozess eines iterativ wachsenden Systems wird deutlich, dass keine menschliche Resource mehr im Stande ist, alle Anforderungen mit jeder Auslieferung zu testen und die Qualität sicherzustellen. Die Automatisierung dieser Tests ist somit unausweichlich.
+Ein weiterer Aspekt ``wertvoller'' Software ist ihre Funktionalität. Diese sicherzustellen in einer kontinuierlichen Auslieferung erfordert ein hohes Maß an Qualitätssicherung. Schon sehr früh im Entwicklungsprozess eines iterativ wachsenden Systems wird deutlich, dass keine menschliche Resource mehr im Stande ist, alle Anforderungen mit jeder Auslieferung zu testen und die Qualität sicherzustellen. Die Automatisierung dieser Tests ist somit unausweichlich.
 
 \section{Qualitätssicherung und Softwaretest}
 
@@ -84,7 +96,7 @@ Die Qualitätssicherung einer Software muss als oberste Prämisse sicherstellen,
 Aufbauend auf der Annahme, dass alle notwendigen Anforderungen beschrieben sind, müssen diese in unterschiedlichen Ebenen überprüft und sichergestellt werden.
 Diese Ebenen richten sich danach welche Anforderungen und damit verbundenen Merkmale geprüft werden müssen, aber auch danach wie komplex die damit verbundene Prüfung ist.
 
-In der Literatur werden meist Unit-, Funktions- und Integrationstests, sowie System- und Abnahmetests(Akzeptanztest) unterschieden.
+In der Literatur werden meist Unit-, Funktions- und Integrationstests, sowie System- und Abnahmetests (Akzeptanztest) unterschieden.
 Die Unterscheidung liegt hier in der Größe des zu betrachtenden Ausschnitts der Software und damit der zu prüfenden Aussage. Während in einem Abnahmetest eine direkt Verbindung zwischen Anforderung und Testfall hergestellt werden kann, so ist dies in einem einzelnen Unittest meist nicht mehr möglich.
 \paragraph{Akzeptanztest}
 Akzeptanz- oder auch Abnahmetests stellen in erster Linie die Erfüllung der definierten Anforderungen sicher. Akzeptanztests werden häufig in der Form von Anwendungsszenarien (Use-Cases) beschrieben und sollte sicher daher nur auf das Zusammenspiel von Systemen und Akteuren beziehen. Die Verwendung von technische Details der Software, wie Datenbankspezifikationen oder konkrete Systemimplementierungen sollten vermieden werden. Nicht nur erhöht es den Wartungsaufwand dieser Tests, es verschiebt auch den Fokus des Tests weg von den eigentlich zu prüfenden Merkmalen und Aktionen.
@@ -103,16 +115,29 @@ Ein ordnungsgemäß verfasster Unittest stellt neben der Regressionssicherheit e
 
 \section{Automatisierung der Softwareerstellung - Continuous Building}
 
-Die Bereitstellung einer Software baut auf mehreren Faktoren auf. Es wird ein konkreter Stand der Softwarequellen benötigt, ein ausführendes System und es muss für eine Übersetzung der Softwarequellen zu dem System.
+Die Bereitstellung einer Software baut auf mehreren Faktoren auf. Es wird ein konkreter Stand der Softwarequellen benötigt, ein ausführendes System und es muss für eine Übersetzung der Softwarequellen zu dem System gesorgt werden.
 Je nach Anforderung der Software und des Ausführungsszenarios reicht dieser Vorgang von einer trivialen Kopie zu einem mehrstufigen, komplexen Vorgang. 
 
 Im nachfolgenden wird beschrieben wie Software in einen wohldefinierten, funktionalen Zustand gebracht und dieser validiert wird. Dazu wird auf Versionsverwaltungssysteme, Konfigurationsmanagement, die automatisierte Erstellung und deren Test eingegangen.
 
 \subsection{Kodeverwaltung und Versionskontrollsysteme}
 
-- skip - vcs braucht eh keiner..
+Bereitsfrühzeitig wurde in der Bereitstellung von Software in Programmversionen unterschieden. Anwender konnte so transparent nachvollziehen, wie fortschrittlich die Anwendung war, die sie erwerben wollten.
+Für die Entwicklung ergab sich daraus vorallem die Herausforderung nachfolgende Fehlerkorrekturen für viele verschiedene Entwicklungszustände bereit zustellen.
+Eine nachvollziehbare und wartungsarme Ablage der einzelnen Versionsstände war daher unabdingbar.
+
+Auch wenn es möglich ist alle Programmversionen in manuell gepflegten Ablagen zu verwalten, gelangt die Entwicklung einer komplexen Software schnell an den Punkt an dem eine Ablage zusätzliche Bedingungen erfüllen muss.
+
+Das dabei herausstechende Merkmal ist die Zustandssicherheit. Es muss gewährleistet sein, dass der Quellcode für eine bestimmte Version in einem konkreten, definierten Zustand ist. Als weiteres Merkmal ist die Transparenz anzuführen. Transparenz ist vorallem dann von Nöten, wenn mehr als ein Entwickler an einer Quellcodesammlung arbeitet. Schnell geht die Übersicht verloren, welche Änderungen wann, von wem und warum eingebracht wurden. Oftmals sind diese Informationen aber hilfreich um Entscheidungen im Entwicklungsprozess zu treffen.
+
+Über die Entstehung von Versionskontrollsystemen[quote Soft.Quali] haben sich vorallem zwei Prinzipien herausgebildet: Zentrale und Dezentrale Versionskontrollsysteme. Zwar unterscheiden sich die Versionsverwaltungs auch in anderen Merkmalen, zum Beispiel in der Ablage der Quellen und deren Änderungen, diese Merkmale haben aber nahezu keinen Einfluss auf die Verwendung im Softwareentwicklungsprozess.
+
+Auch wenn heutzutage die dezentralen Versionskontrollsystem stark zunehmen, so fällt bei näherer Betrachtung auf, dass diese oft primär als zentrale Versionskontrollsysteme verwendet werden.
 
 \paragraph{zentrale Versionskontrollsysteme}
+
+Zentrale Versionskontrollsysteme 
+
 \paragraph{dezentrale Versionkontrollsysteme}
 \subsection{Konfigurationsverwaltung}
 \subsection{Abhängigkeitsverwaltung}
