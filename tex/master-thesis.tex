@@ -19,7 +19,7 @@ citestyle=authoryear
 
 \author{Falk Gräser}
 
-\title{Entwicklung von Visualisierungs- und Integrationsansätzen für Continuous-Integration und Feature-Branches}
+\title{Entwicklung von Visualisierungs- und Integrationsansätzen für Continuous-Integration und Feature-Branches} 
 
 \begin{document}
 
@@ -29,7 +29,7 @@ citestyle=authoryear
 
 \chapter{Einleitung}
 
-Software ist kein Selbstzweck. Software wird entwickelt und ausgeliefert um die Anforderungen eines oder mehrer Kunden zu erfüllen.
+Software ist kein Selbstzweck. Software wird entwickelt und ausgeliefert um die Anforderungen eines oder mehrerer Kunden zu erfüllen.
 
 \chapter{Problemanalyse}
 
@@ -42,7 +42,7 @@ Software ist kein Selbstzweck. Software wird entwickelt und ausgeliefert um die 
 
 Die Zusammenführung der Arbeit von mehr als einem Entwickler ist ein komplexer und nicht trivialer Vorgang. \\
 Viele Teile eines Softwareprojektes beeinflussen andere und häufig werden an Schnittstellen in Programmen Änderungen von mehreren Entwicklern vorgenommen. \\
-Es muss sichergestellt werden, dass die Änderungen zusammengeführt werden können und dass das Ergebnis synataktisch und semantisch korrekt ist, sowie den Anforderungen entspricht.
+Es muss sichergestellt werden, dass die Änderungen zusammengeführt werden können und dass das Ergebnis syntaktisch und semantisch korrekt ist, sowie den Anforderungen entspricht.
 
 Während die syntaktische und semantische Validierung klassische Themen der theoretischen Informatik sind, erfordert die Erhebung und Aufbereitung von Anforderungen eine ganz eigene Betrachtung durch ein konkretes Anforderungsmanagement.
 
@@ -59,9 +59,9 @@ Die Gründe für diese Schwierigkeiten sind häufig in kein homogenes Bild zu br
 \paragraph{Hinweis}
 
 \begin{itemize}
-\item evtl. Untergliederung in phasen orientierte und iterative Vorgehensmodelle
-\item  evtl. Untergliederung Anforderungsmangement?
-\item Schluss warum moderne Vorgehenmodell die Benutzung von dezentralen Versionverwaltungen gefördert und gefordert haben
+\item evtl. Untergliederung in Phasen orientierte und iterative Vorgehensmodelle
+\item  evtl. Untergliederung Anforderungsmanagement?
+\item Schluss warum moderne Vorgehensmodell die Benutzung von dezentralen Versionsverwaltung gefördert und gefordert haben
 \item Schluss warum iterative Vorgehen Continuous Integration fordern
 \end{itemize}
 
@@ -69,17 +69,17 @@ Die Gründe für diese Schwierigkeiten sind häufig in kein homogenes Bild zu br
 
 Aus der Notwendigkeit einer strukturierten Herangehensweise an die Herausforderungen, die mit der Erstellung von komplexer Software
 
-Um komplexe Software in einer strukturierten und definierten Herangehensweise zu erstellen, wurden ausführlich beschriebene und wohl definierte Vorgehensmodelle definiert. Ziel war eine klare Schrittfolge mit eindeutigen Zielstellung, wie man es aus anderen ingenieurs Disziplinen gewohnt war. 
+Um komplexe Software in einer strukturierten und definierten Herangehensweise zu erstellen, wurden ausführlich beschriebene und wohl definierte Vorgehensmodelle definiert. Ziel war eine klare Schrittfolge mit eindeutigen Zielstellung, wie man es aus anderen Ingenieursdisziplinen gewohnt war. 
 
-Die daraus entstehenden Modell hielten sich meist an eine klare Folge aus Planungs- Konzeptions-, Implementierungs-, Test- und Abnahmephase. Beispiele sind hier das Wasserfallmodell und das V-Modell. Gerade in bereichen höchster Sicherheit und einer starken Bindung an bürokratische Strukturen wird auch heute noch das V-Modell erfolgreich eingesetzt[quote Referenz Bund?].
+Die daraus entstehenden Modell hielten sich meist an eine klare Folge aus Planungsphase,  Konzeptions-, Implementierungs-, Test- und Abnahmephase. Beispiele sind hier das Wasserfallmodell und das V-Modell. Gerade in bereichen höchster Sicherheit und einer starken Bindung an bürokratische Strukturen wird auch heute noch das V-Modell erfolgreich eingesetzt[quote Referenz Bund?].
 
-Mit der komplexität einer Software steigt in der Regel auch der Umsetzungaufwand und die damit verbunden Zeit. Durch die klare Phasenteilung in den klassischen Vorgehensmodellen, kann daher von der Anforderungsaufnahme bis zu Auslieferung einiges an Zeit verstreichen. Nicht selten ändern sich allerdings Anwendungsszenarien und Benutzeranforderungen an das entstehende System. Eine weitere Schwierigkeit ist die Prüfung der Umsetzung von Anforderungen. Sollte die Umsetzung einer Anforderung, zum Beispiel durch ungenaue oder mehrdeutige Angaben, nicht den maßgaben des Tests entsprechen, vergehen Wochen oder Monate bis diese Diskrepanz aufgedeckt wird.
+Mit der komplexität einer Software steigt in der Regel auch der Umsetzungsaufwand und die damit verbunden Zeit. Durch die klare Phasenteilung in den klassischen Vorgehensmodellen, kann daher von der Anforderungsaufnahme bis zu Auslieferung einiges an Zeit verstreichen. Nicht selten ändern sich allerdings Anwendungsszenarien und Benutzeranforderungen an das entstehende System. Eine weitere Schwierigkeit ist die Prüfung der Umsetzung von Anforderungen. Sollte die Umsetzung einer Anforderung, zum Beispiel durch ungenaue oder mehrdeutige Angaben, nicht den Maßgaben des Tests entsprechen, vergehen Wochen oder Monate bis diese Diskrepanz aufgedeckt wird.
 
 Immer wieder kam es daher zu unbefriedigenden oder sogar gescheiterten Softwareprojekten. Gerade bei komplexen Softwaresystem mit einem entsprechenden Umsetzungsaufwand, ist der Schaden dann sehr hoch.
 
-Um diesen Schaden zu minimieren entwickelte sich eine alternative Herangehensweise, welche vorallem Interaktion, Funktionalität, Kundenorientierung und Veränderungsbereitschaft als wichtig erachtet. Festgehalten im Agilen Manifest[quote manifest] proklamierten viele bekannte und angesehene Softwareexperten ihren Willen Softwareprojekte grundsätzlich anders zu fokussieren.
+Um diesen Schaden zu minimieren entwickelte sich eine alternative Herangehensweise, welche vor allem Interaktion, Funktionalität, Kundenorientierung und Veränderungsbereitschaft als wichtig erachtet. Festgehalten im Agilen Manifest[quote manifest] proklamierten viele bekannte und angesehene Softwareexperten ihren Willen Softwareprojekte grundsätzlich anders zu fokussieren.
 
-Beinflusst von der Lean-Bewegung aus der Automobil-Fertigungsindustrie[quote extreme programming kbeck] wollte man die Produktivität deutlich steigern und aus den bürokratisch anmutenden Vorgehensmodellen ausbrechen.
+Beeinflusst von der Lean-Bewegung aus der Automobil-Fertigungsindustrie\footcite{kent1999} wollte man die Produktivität deutlich steigern und aus den bürokratisch anmutenden Vorgehensmodellen ausbrechen.
 
 Das Agile Manifest stellt hohe Ansprüche an Entwickler und erzwingt ein Umdenken im Umgang mit dem Projektprozess. Während in traditionellen Vorgehensmodellen jede Phase eine längere zeitliche Periode einnimmt, so werden diese Phasen und Zeiträume in agilen Vorgehen deutlich verkürzt, um damit einhergehende Informationsflüsse deutlich zu beschleunigen.
 Diese kurzen Zeiträume und damit einhergehenden vielen Iterationen geben kontinuierlich und schnell Auskunft über den Zustand eines Projektes. Außerdem wird es einfacher zu erkennen, welche Schritte tatsächlich wertvoll sind und welche Schritte dem Projektfortschritt eher abträglich sind. 
@@ -113,7 +113,7 @@ Neben der Absicherung von Seiteneffekten zu anderen Komponenten und Fremdmodulen
 Unittests bilden die unterste Ebene der Softwaretests. Maßgeblich bei Unittests ist die völlige Abkopplung von anderen Teilen, als des zu testenden Teils (Unit) der Software. Jegliche Interaktion mit externen Services sollte strikt vermieden werden.
 Ein ordnungsgemäß verfasster Unittest stellt neben der Regressionssicherheit eines Moduls auch einen Teil dessen Dokumentation sicher. Da ein Unittest das zu testende Modul initialisiert und die notwendigen Schnittstellen bereitstellt, bildet er auch anschaulich die Intention des Moduls ab.
 
-\section{Automatisierung der Softwareerstellung - Continuous Building}
+\section{Automatisierung der Softwareerstellung}
 
 Die Bereitstellung einer Software baut auf mehreren Faktoren auf. Es wird ein konkreter Stand der Softwarequellen benötigt, ein ausführendes System und es muss für eine Übersetzung der Softwarequellen zu dem System gesorgt werden.
 Je nach Anforderung der Software und des Ausführungsszenarios reicht dieser Vorgang von einer trivialen Kopie zu einem mehrstufigen, komplexen Vorgang. 
@@ -134,13 +134,38 @@ Das dabei herausstechende Merkmal ist die Zustandssicherheit. Es muss gewährlei
 
 Auch wenn heutzutage die dezentralen Versionskontrollsystem stark zunehmen, so fällt bei näherer Betrachtung auf, dass diese oft primär als zentrale Versionskontrollsysteme verwendet werden.
 
-\paragraph{zentrale Versionskontrollsysteme}
+\paragraph{Zentrale Versionskontrollsysteme} folgen dem Prinzip, dass es nur einen zentralen Punkt gibt auf dem alle Versionstände gespeichert werden. Dieses ``single point of truth'' Prinzip sorgt für einen einfachen Kontrollfluss, welcher dafür sorgt, dass alle Partizipierer mit einfachen Mitteln auf den gleichen Versionsständen arbeiten. Damit einhergehend ist eine Übersicht aller Änderungen problemlos möglich.
 
-Zentrale Versionskontrollsysteme 
+Nachteil dieser Variante ist häufig der Initialaufwand, da eine zentrale Komponenten bereitgestellt werden muss. Zudem sind zentrale Systeme generell störanfälliger und Probleme betreffen immer alle Teilnehmer gleichzeitig.
+Je nach verwendeter Versionierungsstrategie kann es zudem zu einer zentralen Blockade ganzer Bereiche der Softwarequellen kommen, wenn diese für eine exklusive Bearbeitung gesperrt sind.
 
-\paragraph{dezentrale Versionkontrollsysteme}
+\paragraph{Dezentrale Versionkontrollsysteme} benötigen im Gegensatz keine zentrale Instanz und können problemlos in einem losen Verbund von Einzelsystemen betrieben werden. 
+Im Gegensatz zur zentralen Verwendung, existierend dadurch deutlich mehr Zustände, die ohne entsprechende Maßnahmen nicht zu überblicken sind. Dieser Mehraufwand bringt allerdings eine Flexibilität mit sich, welche viele Möglichkeiten bietet um Softwareänderungen zu koordinieren. Änderungen können in ihrer Reihenfolge transparent manipuliert und der Zeitpunkt der Zusammenführung beliebig gewählt werden. 
+Im Bereich ``Feature Branches'' werden Versionierungsstrategien im Detail erläutert.
+
+Ihrer dezentralen Natur geschuldet, sind sie ausfallsicherer als die zentralen Versionskontrollsysteme, benötigen allerdings die entsprechenden Informationen und Befugnisse zur Verbindung, um diesen Vorteil nutzen zu können.
+
 \subsection{Konfigurationsverwaltung}
+
+Konfigurationsverwaltung ist eine wichtige Basis für die automatisierte Erstellung eines Softwareprojektes. Sie definiert wie alle Artefakte in einem Softwareprojekt orchestriert werden. Im Detail wird dabei Erstellung, Identifikation, Validierung und Ablage geregelt. Neben den Projekteigenen Artefakten müssen aber auch deren Umgebung genau definiert sein. \footcite{humble2010}
+
+Ein lockerer Umgang mit der Konfigurationsverwaltung kann gerade zu Anfangs ohne nennenswerte Folgen einhergehen. Spätestens aber während der Reifung und Alterung eines Softwareprojektes sind Folgen deutlich zu spüren. Gerade wenn sich unbemerkt die Version oder Konfiguration der Software eines Drittanbieters ändert, kann dies zu sehr schwer zu identifizierbaren Problemen führen. In anderen Fällen reicht es allerdings auch, wenn sich die Konfiguration zwischen Entwicklungs- und Produktivumgebung leicht unterscheidet. Auch hier können damit zusammenhängende Fehler unnötig viel Zeit in Anspruch nehmen.
+
+Im Idealfall kann eine vollständige Konfiugrationverwaltung:
+\begin{itemize}
+\item eine Umgebung bereitstellen, die genau definiert welches Betriebssystem, in welcher Version, installiert ist und welche Anwendungen, mit welcher Konfiguration, darauf liegen
+\item auf jeder Umgebung jeden dieser Bestandteile einzeln inkrementell verändern und diese Änderungen auch synchronisiert bereit stellen.
+\item alle Änderungen mit Zeitpunkt und Verursacher einfach darstellen
+\item Sicherheitsregeln und Konventionen über alle Systeme sicherstellen
+\item alle diese Funktionalitäten barrierefrei dem Entwicklungsteam zur Verfügung stellen
+\end{itemize}
+
+Alle Forderungen sind sicherlich nicht immer Notwendig, sorgen aber dafür, dass Projekte langfristig, mit geringem Aufwand betreut werden können. Zudem wird deutlich, dass Virtualisierung und Versionverwaltung[quote cont.deliv] der entsprechenden Kompontent den einhergehden Aufwand deutlich verringern können.
+
 \subsection{Abhängigkeitsverwaltung}
+
+
+
 \subsection{Automatisierte Erstellung}
 \subsection{Validierung und Test}
 
