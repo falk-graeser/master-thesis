@@ -3,11 +3,11 @@ dist: trusty
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended  texlive-lang-german texlive-bibtex-extra biber
 script:
-- mkdir _build
-- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build tex/title-and-abstract.tex
-- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build tex/master-thesis.tex
-- biber master-thesis
-- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build tex/master-thesis.tex
+- mkdir tex/_build
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory tex/_build tex/title-and-abstract.tex
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory tex/_build tex/master-thesis.tex
+- biber --input-directory=_build --output-directory=_build master-thesis
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory tex/_build tex/master-thesis.tex
 deploy:
   provider: releases
   api_key:
