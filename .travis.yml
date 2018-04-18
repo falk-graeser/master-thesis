@@ -6,7 +6,7 @@ script:
 - mkdir _build
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build tex/title-and-abstract.tex
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build tex/master-thesis.tex
-- biber master-thesis.tex
+- biber master-thesis
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build tex/master-thesis.tex
 deploy:
   provider: releases
