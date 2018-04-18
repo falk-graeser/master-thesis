@@ -120,30 +120,30 @@ Je nach Anforderung der Software und des Ausführungsszenarios reicht dieser Vor
 
 Im nachfolgenden wird beschrieben wie Software in einen wohldefinierten, funktionalen Zustand gebracht und dieser validiert wird. Dazu wird auf Versionsverwaltungssysteme, Konfigurationsmanagement, die automatisierte Erstellung und deren Test eingegangen.
 
-\subsection{Kodeverwaltung und Versionskontrollsysteme}
+\subsection{Kodeverwaltung und Versionsverwaltungssysteme}
 
-Bereitsfrühzeitig wurde in der Bereitstellung von Software in Programmversionen unterschieden. Anwender konnte so transparent nachvollziehen, wie fortschrittlich die Anwendung war, die sie erwerben wollten.
-Für die Entwicklung ergab sich daraus vorallem die Herausforderung nachfolgende Fehlerkorrekturen für viele verschiedene Entwicklungszustände bereit zustellen.
+Bereits frühzeitig wurde in der Bereitstellung von Software in Programmversionen unterschieden. Anwender konnte so transparent nachvollziehen, wie fortschrittlich die Anwendung war, die sie erwerben wollten.
+Für die Entwicklung ergab sich daraus vor allem die Herausforderung nachfolgende Fehlerkorrekturen für viele verschiedene Entwicklungszustände bereit zustellen.
 Eine nachvollziehbare und wartungsarme Ablage der einzelnen Versionsstände war daher unabdingbar.
 
 Auch wenn es möglich ist alle Programmversionen in manuell gepflegten Ablagen zu verwalten, gelangt die Entwicklung einer komplexen Software schnell an den Punkt an dem eine Ablage zusätzliche Bedingungen erfüllen muss.
 
-Das dabei herausstechende Merkmal ist die Zustandssicherheit. Es muss gewährleistet sein, dass der Quellcode für eine bestimmte Version in einem konkreten, definierten Zustand ist. Als weiteres Merkmal ist die Transparenz anzuführen. Transparenz ist vorallem dann von Nöten, wenn mehr als ein Entwickler an einer Quellcodesammlung arbeitet. Schnell geht die Übersicht verloren, welche Änderungen wann, von wem und warum eingebracht wurden. Oftmals sind diese Informationen aber hilfreich um Entscheidungen im Entwicklungsprozess zu treffen.
+Das dabei herausstechende Merkmal ist die Zustandssicherheit. Es muss gewährleistet sein, dass der Quellcode für eine bestimmte Version in einem konkreten, definierten Zustand ist. Als weiteres Merkmal ist die Transparenz anzuführen. Transparenz ist vor allem dann von Nöten, wenn mehr als ein Entwickler an einer Quellcodesammlung arbeitet. Schnell geht die Übersicht verloren, welche Änderungen wann, von wem und warum eingebracht wurden. Oftmals sind diese Informationen aber hilfreich um Entscheidungen im Entwicklungsprozess zu treffen.
 
-Über die Entstehung von Versionskontrollsystemen[quote Soft.Quali] haben sich vorallem zwei Prinzipien herausgebildet: Zentrale und Dezentrale Versionskontrollsysteme. Zwar unterscheiden sich die Versionsverwaltungs auch in anderen Merkmalen, zum Beispiel in der Ablage der Quellen und deren Änderungen, diese Merkmale haben aber nahezu keinen Einfluss auf die Verwendung im Softwareentwicklungsprozess.
+Über die Entstehung von Versionsverwaltungssysteme[quote Soft.Quali] haben sich vor allem zwei Prinzipien herausgebildet: Zentrale und Dezentrale Versionsverwaltungssysteme. Zwar unterscheiden sich die Versionsverwaltungssysteme auch in anderen Merkmalen, zum Beispiel in der Ablage der Quellen und deren Änderungen, diese Merkmale haben aber nahezu keinen Einfluss auf die Verwendung im Softwareentwicklungsprozess.
 
-Auch wenn heutzutage die dezentralen Versionskontrollsystem stark zunehmen, so fällt bei näherer Betrachtung auf, dass diese oft primär als zentrale Versionskontrollsysteme verwendet werden.
+Auch wenn heutzutage die dezentralen Versionsverwaltungssystem stark zunehmen, so fällt bei näherer Betrachtung auf, dass diese oft primär als zentrale Versionsverwaltungssysteme verwendet werden.
 
-\paragraph{Zentrale Versionskontrollsysteme} folgen dem Prinzip, dass es nur einen zentralen Punkt gibt auf dem alle Versionstände gespeichert werden. Dieses ``single point of truth'' Prinzip sorgt für einen einfachen Kontrollfluss, welcher dafür sorgt, dass alle Partizipierer mit einfachen Mitteln auf den gleichen Versionsständen arbeiten. Damit einhergehend ist eine Übersicht aller Änderungen problemlos möglich.
+\paragraph{Zentrale Versionsverwaltungssysteme} folgen dem Prinzip, dass es nur einen zentralen Punkt gibt auf dem alle Versionstände gespeichert werden. Dieses ``single point of truth'' Prinzip sorgt für einen einfachen Kontrollfluss, welcher dafür sorgt, dass alle Partizipierer mit einfachen Mitteln auf den gleichen Versionsständen arbeiten. Damit einhergehend ist eine Übersicht aller Änderungen problemlos möglich.
 
 Nachteil dieser Variante ist häufig der Initialaufwand, da eine zentrale Komponenten bereitgestellt werden muss. Zudem sind zentrale Systeme generell störanfälliger und Probleme betreffen immer alle Teilnehmer gleichzeitig.
 Je nach verwendeter Versionierungsstrategie kann es zudem zu einer zentralen Blockade ganzer Bereiche der Softwarequellen kommen, wenn diese für eine exklusive Bearbeitung gesperrt sind.
 
-\paragraph{Dezentrale Versionkontrollsysteme} benötigen im Gegensatz keine zentrale Instanz und können problemlos in einem losen Verbund von Einzelsystemen betrieben werden. 
+\paragraph{Dezentrale Versionsverwaltungssysteme} benötigen im Gegensatz keine zentrale Instanz und können problemlos in einem losen Verbund von Einzelsystemen betrieben werden. 
 Im Gegensatz zur zentralen Verwendung, existierend dadurch deutlich mehr Zustände, die ohne entsprechende Maßnahmen nicht zu überblicken sind. Dieser Mehraufwand bringt allerdings eine Flexibilität mit sich, welche viele Möglichkeiten bietet um Softwareänderungen zu koordinieren. Änderungen können in ihrer Reihenfolge transparent manipuliert und der Zeitpunkt der Zusammenführung beliebig gewählt werden. 
 Im Bereich ``Feature Branches'' werden Versionierungsstrategien im Detail erläutert.
 
-Ihrer dezentralen Natur geschuldet, sind sie ausfallsicherer als die zentralen Versionskontrollsysteme, benötigen allerdings die entsprechenden Informationen und Befugnisse zur Verbindung, um diesen Vorteil nutzen zu können.
+Ihrer dezentralen Natur geschuldet, sind sie ausfallsicherer als die zentralen Versionsverwaltungssysteme, benötigen allerdings die entsprechenden Informationen und Befugnisse zur Verbindung, um diesen Vorteil nutzen zu können.
 
 \subsection{Konfigurationsverwaltung}
 
@@ -151,7 +151,7 @@ Konfigurationsverwaltung ist eine wichtige Basis für die automatisierte Erstell
 
 Ein lockerer Umgang mit der Konfigurationsverwaltung kann gerade zu Anfangs ohne nennenswerte Folgen einhergehen. Spätestens aber während der Reifung und Alterung eines Softwareprojektes sind Folgen deutlich zu spüren. Gerade wenn sich unbemerkt die Version oder Konfiguration der Software eines Drittanbieters ändert, kann dies zu sehr schwer zu identifizierbaren Problemen führen. In anderen Fällen reicht es allerdings auch, wenn sich die Konfiguration zwischen Entwicklungs- und Produktivumgebung leicht unterscheidet. Auch hier können damit zusammenhängende Fehler unnötig viel Zeit in Anspruch nehmen.
 
-Im Idealfall kann eine vollständige Konfiugrationverwaltung:
+Im Idealfall kann eine vollständige Konfigurationsverwaltung:
 \begin{itemize}
 \item eine Umgebung bereitstellen, die genau definiert welches Betriebssystem, in welcher Version, installiert ist und welche Anwendungen, mit welcher Konfiguration, darauf liegen
 \item auf jeder Umgebung jeden dieser Bestandteile einzeln inkrementell verändern und diese Änderungen auch synchronisiert bereit stellen.
@@ -160,14 +160,34 @@ Im Idealfall kann eine vollständige Konfiugrationverwaltung:
 \item alle diese Funktionalitäten barrierefrei dem Entwicklungsteam zur Verfügung stellen
 \end{itemize}
 
-Alle Forderungen sind sicherlich nicht immer Notwendig, sorgen aber dafür, dass Projekte langfristig, mit geringem Aufwand betreut werden können. Zudem wird deutlich, dass Virtualisierung und Versionverwaltung[quote cont.deliv] der entsprechenden Kompontent den einhergehden Aufwand deutlich verringern können.
+Alle Forderungen sind sicherlich nicht immer Notwendig, sorgen aber dafür, dass Projekte langfristig, mit geringem Aufwand betreut werden können. Zudem wird deutlich, dass Virtualisierung und Versionsverwaltung[quote cont.deliv] der entsprechenden Komponenten den einhergehenden Aufwand deutlich verringern können.
 
 \subsection{Abhängigkeitsverwaltung}
 
+In der Abhängigkeitsverwaltung werden die Softwareabhängigkeiten der Anwendung beschrieben. In auf  Komponenten basierenden Anwendungen schließt dies die eigenen, interne Abhängigkeiten mit ein. Diese Abhängigkeiten, meist Module genannt, sollen die mit monolithischen Strukturen einhergehenden Nachteile unterbinden. Monolithen leiden häufig unter einer schwachen Softwarearchitektur und entwickeln sich daher entsprechend schlecht weiter. Mögliche Skalierungen des Systems oder ein Austausch von einzelnen Bestandteilen sind mit einem erheblichen Mehraufwand verbunden.
 
+Ist eine Anwendung hingehen auf mehrere Komponenten aufgeteilt, kommen neben den genannten Vorteilen der Skalierbarkeit und Austauschbarkeit, auch Vorteile für das verteilte Arbeiten von Teams. Allerdings führt eine Komponenten basierende Anwendung natürlich auch zu einem organisatorischem Mehraufwand. Dieser Mehraufwand besteht in der Beschreibung der Abhängigkeiten und der Auflösung des damit entstehenden Abhängigkeitsgeflechtes. Übliche Abhängigkeitsverwaltungen verwenden hierzu Versionsnummer aus der Versionsverwaltung, sowie eine Paketbeschreibung in einem eigenen Format. 
 
-\subsection{Automatisierte Erstellung}
+Für die automatisierte Erstellung der Softwareanwendung ist es erforderlich, ähnlich wie bereits bei der Versionsverwaltung, ein eindeutiges Abhängigkeitsbild zu beschreiben. Während zum Auflösen der Abhängigkeiten meist mehrdeutige Ausdrücke verwendet werden, die eine Bandbreite an Versionen der Abhängigkeiten erlauben, ist für den Erstellungsvorgang wichtig die konkret verwendeten Versionen zu dokumentieren und mit dem erstellten Produkt auszuliefern. Ähnlich der erwähnten Paketbeschreibung, wird dies mit einer Lock-Datei gesichert.
+
+\subsection{Automatisierte Erstellung und Auslieferung}
+
+Der an sich triviale Schritt, der Erstellung (Build) einer Anwendung, birgt gewisse Tücken. So kann die Ausführung eines komplexen Erstellungsskriptes einen sehr langen Zeitraum in Anspruch nehmen und ein besonders kompliziertes Skript kann die Arbeit damit intransparent gestalten und das Entwicklungsverhalten deutlich benachteiligen. [quote paper] Werden bei einem Erstellungsskript Aspekte der vorangegangen Abschnitte zu Versions-, Konfigurations- und Abhängigkeitsverwaltung nicht berücksichtigt, können zudem inkonsistente und damit nicht wiederholbare Resultate erzeugt werden. Diese können leicht zu schwer oder nicht auffindbaren Fehlern führen.
+
+Ziel bei der Erstellung eines Erstellungsskriptes ist es folglich einen konsistenten und transparenten Ablauf zu befolgen. Dies wird unter anderem durch die korrekte Versionsverwaltung der einzelnen Komponenten, Konfigurationen und Abhängigkeiten erreicht. Mit diesen Informationen können erstellte Produkte, auch ``build artifacts'' oder Artefakte genannt, in einem zentralen Artefakt-Lager abgelegt werden. Dies gewährleistet sowohl einen schnellen Zugriff auf Teilartefakte, als auch einen konsistentes Ergebnis bei der Erstellung der Auslieferung.
+
+Die Auslieferung der Software ist direkt mit der Erstellung verwoben. Bei jeder Auslieferung muss sichergestellt werden, dass Software auf dem entsprechenden Zielsystem auch lauffähig ist und dass sie richtig konfiguriert ist für das Zielsystem. Ein vollständiges Konfigurationsmanagement beschreibt die Systemabhängigkeiten und sorgt folglich für die korrekte Auslieferung der richtigen Artefakte.
+
+Sowohl bei der Erstellung, als auch bei der Auslieferung ist insbesondere auf eine vollständige Beschreibung und die Einhaltung dieser zu achten. Gerade auf Entwicklungssystemen können Abhängigkeiten vorhanden sein, welche zwar für die Funktionalität der Anwendung sorgen, allerdings nicht beschrieben wurden. Bei der Auslieferung auf andere Systeme können diese ``Schattenabhängigkeiten'' dann zu erwartetem Verhalten oder Abstürzen führen. Ein sehr kontrollierter Ausweg aus dem Dilemma von mehrfach genutzten Entwicklungsumgebungen bietet die Virtualisierung der verwendeten Systeme. Wie bereits für Softwareabhängigkeiten der Anwendung beschrieben, können diese Virtualisierungen als Artefakte bereitgestellt werden und unterstützen Konsistenz, Transparenz sowie Skalierbarkeit[quote virtualiserung mit docker].
+
+Bei der Auslieferung der Software können grob zwei Stufen der Automatisierung unterschieden werden. Eine Stufe ist die manuell angestoßene Auslieferung, bei der der Zeitpunkt der Auslieferung davon bestimmt wird, wann das automatisierte oder automatisiert-moderierte Script ausgeführt wird. Eine Andere ist die vollautomatisierte Auslieferung, bei der der Zeitpunkt lediglich von der Durchlaufzeit einer Änderung durch die Qualitätskontrolle bestimmt wird.
+Des weiteren werden unterschiedliche Auslieferungsstrategien (``deployment strategies'') unterschieden, es seien an dieser Stelle nur exemplarisch das ``blue green deployment'' und das ``canary deployment'' genannt. Die Auslieferungsstrategien werden dabei je nach Anforderungen ausgewählt und haben Vorzüge wie Ausfallsicherheit, Bewertung der ausgelieferten Änderung oder Skalierbarkeit der Zielsysteme.
+
+Da die konkrete Auslieferung auf die Bereiche ``Continuous Integration'' und ``Feature Branches'' nur begrenzt Einfluss hat, verweise ich an dieser Stelle auf die entsprechende Fachliteratur.
+
 \subsection{Validierung und Test}
+
+
 
 \section{Feature Branches}
 
