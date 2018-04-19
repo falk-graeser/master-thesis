@@ -187,11 +187,20 @@ Da die konkrete Auslieferung auf die Bereiche ``Continuous Integration'' und ``F
 
 \subsection{Validierung und Test}
 
+Die Validierung einer Software ist ein unglaublich komplexes Unterfangen. Die vollständige Richtigkeit eines Programmes zu beweisen, scheitert bereits bei kleinen Anwendungen, da die Programmkomplexität schlicht zu schnell steigt. Zudem können nur Teile validiert und getestet werden, welche im Vorfeld bestimmt worden sind. Unklare, mehrdeutige oder fehlende Anforderung machen einen Test unvollständig oder nehmen im die Aussagekraft[quote software quali p243 kap4.6].
 
+Da eine Software nicht vollständig getestet werden kann, muss eine Strategie gewählt werden, welche Tests verwendet werden und mit welchem Ziel. Zudem können Metriken gewählt werden, die eine Aussage über die Testvollständigkeit liefern können. Bei der Entscheidung welche Strategie gewählt wird, fallen verschiedene Kriterien ins Gewicht. Zum einen muss betrachtet werden, welche Anforderungen mit welchem Testverfahren getestet werden können, zum anderen welche Granularität für jeden Test verwendet wird.
+
+Insbesondere in der automatisierten Erstellung sind diese Entscheidungen wichtig, da sie eine Basis liefern für die Aussage, wie schnell die Testsammlung ausgeführt werden kann. Und damit einhergehend, wie schnell kann eine Aussage getroffen werden, ob ein Inkrement der Software valide ist. 
+Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung, jeder Fehler der nicht von der Testsammlung erfasst wurde, muss spätestens nach der Beseitigung des Fehlers auch durch die Testsammlung validiert werden. Diese Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests [quote software quali].
+
+Da Tests und Metriken die einzigen Möglichkeiten sind um automatisch Einschätzungen der Software vorzunehmen, werden diese Bereiche erneut in einem späteren Kapitel aufgegriffen und näher auf deren Wertschöpfung eingegangen.
 
 \section{Feature Branches}
 
 \section{Continuous Integration}
+
+\section{Visualisierung von Graphen}
 
 \chapter{Visualisierung und Methodiken}
 
@@ -207,6 +216,10 @@ Da die konkrete Auslieferung auf die Bereiche ``Continuous Integration'' und ``F
 \item Continuous Delivery
 \item Configuration Management
 \item verschiedene Sichten, u.a. Feature-Sicht mit Goals?
+\item packetverwaltung mit einbeziehen - sind packete outdated?
+\item "wervolle tests" - kopplung mit anforderungen - gherkin?
+\item graphentheorie für besseres dependency management / bessere module entwerfen?
+\item lose gekoppelte software ?
 \end{itemize}
 
 \chapter{Zusammenfassung}
