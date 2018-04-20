@@ -3,5 +3,11 @@
 *.lyx
 *.aux
 *.log
+*.bak
+*.bcf
+*.blg
+*.toc
+*.dvi
+*.bbl
 .idea
 auxil/

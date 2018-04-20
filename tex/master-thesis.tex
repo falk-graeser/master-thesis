@@ -1,6 +1,7 @@
 \documentclass[12pt,a4paper]{book}
 \usepackage[utf8]{inputenc}
-\usepackage[german]{babel}
+\usepackage[babel, german=quotes]{csquotes}
+\usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -9,7 +10,6 @@
 \usepackage{courier}
 \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry}
 \usepackage[onehalfspacing]{setspace}
-\usepackage{csquotes}
 \usepackage[
 backend=biber,
 style=alphabetic,
@@ -21,209 +21,26 @@ citestyle=authoryear
 
 \title{Entwicklung von Visualisierungs- und Integrationsansätzen für Continuous-Integration und Feature-Branches} 
 
+\includeonly{
+	content/1-Abstract,
+	content/2-Problemanalyse,
+	content/3-Visualiserung-und-Methodiken,
+	content/4-Zusammenfassung
+}
+
 \begin{document}
 
 \maketitle
 
 \tableofcontents
 
-\chapter{Einleitung}
+\include{content/1-Abstract}
 
-Software ist kein Selbstzweck. Software wird entwickelt und ausgeliefert um die Anforderungen eines oder mehrerer Kunden zu erfüllen.
+\include{content/2-Problemanalyse}
 
-\chapter{Problemanalyse}
+\include{content/3-Visualiserung-und-Methodiken}
 
-% In diesem Kapitel muss ich darstellen was Contiuous Integration bedeutet, wofür es verwendet wird und welche Tücken es mit sich bringt.
-% Ebenso für Feature Branches.
-% Und ich muss darstellen, warum Martin Fowler darüber geschrieben hat, dass 
-
-%"When you isolate the feature branches, there is a risk of a nasty conflict growing without you realizing it"
-%https://martinfowler.com/bliki/FeatureBranch.html
-
-Die Zusammenführung der Arbeit von mehr als einem Entwickler ist ein komplexer und nicht trivialer Vorgang. \\
-Viele Teile eines Softwareprojektes beeinflussen andere und häufig werden an Schnittstellen in Programmen Änderungen von mehreren Entwicklern vorgenommen. \\
-Es muss sichergestellt werden, dass die Änderungen zusammengeführt werden können und dass das Ergebnis syntaktisch und semantisch korrekt ist, sowie den Anforderungen entspricht.
-
-Während die syntaktische und semantische Validierung klassische Themen der theoretischen Informatik sind, erfordert die Erhebung und Aufbereitung von Anforderungen eine ganz eigene Betrachtung durch ein konkretes Anforderungsmanagement.
-
-Gerade wenn die Software einen gewissen Umfang übersteigt, ist daher ein solides Anforderungsmanagement essenziell. Zudem müssen Mechanismen geschaffen werden, um sicherzustellen, dass diese Anforderungen über die komplette Laufzeit der Software erfüllt bleiben. 
-
-Leider sieht die Realität in der Softwareentwicklung nicht selten anders aus. Fehlende, nicht dokumentierte oder veraltet Anforderungen sind keine Seltenheit.\\
-Ebenso sind lange Zeitintervalle in denen sich Teile der Software in keinem lauffähigen oder einem fehlerbehaftetem Zustand befinden häufig anzutreffen.
-
-Fehlende Anforderungen und fehlerhafte Umsetzungen werden häufig erst zum Zeitpunkt des Testes - oder schlimmer - zum Zeitpunkt der Auslieferung offenbart.
-
-Die Gründe für diese Schwierigkeiten sind häufig in kein homogenes Bild zu bringen. Vielmehr tragen verschiedene Faktoren dazu bei, die erst in der Kombination zu erheblichen Problemen führen können.
-
-\section{Vorgehensmodelle}
-\paragraph{Hinweis}
-
-\begin{itemize}
-\item evtl. Untergliederung in Phasen orientierte und iterative Vorgehensmodelle
-\item  evtl. Untergliederung Anforderungsmanagement?
-\item Schluss warum moderne Vorgehensmodell die Benutzung von dezentralen Versionsverwaltung gefördert und gefordert haben
-\item Schluss warum iterative Vorgehen Continuous Integration fordern
-\end{itemize}
-
-\vspace{1em}
-
-Aus der Notwendigkeit einer strukturierten Herangehensweise an die Herausforderungen, die mit der Erstellung von komplexer Software
-
-Um komplexe Software in einer strukturierten und definierten Herangehensweise zu erstellen, wurden ausführlich beschriebene und wohl definierte Vorgehensmodelle definiert. Ziel war eine klare Schrittfolge mit eindeutigen Zielstellung, wie man es aus anderen Ingenieursdisziplinen gewohnt war. 
-
-Die daraus entstehenden Modell hielten sich meist an eine klare Folge aus Planungsphase,  Konzeptions-, Implementierungs-, Test- und Abnahmephase. Beispiele sind hier das Wasserfallmodell und das V-Modell. Gerade in bereichen höchster Sicherheit und einer starken Bindung an bürokratische Strukturen wird auch heute noch das V-Modell erfolgreich eingesetzt[quote Referenz Bund?].
-
-Mit der komplexität einer Software steigt in der Regel auch der Umsetzungsaufwand und die damit verbunden Zeit. Durch die klare Phasenteilung in den klassischen Vorgehensmodellen, kann daher von der Anforderungsaufnahme bis zu Auslieferung einiges an Zeit verstreichen. Nicht selten ändern sich allerdings Anwendungsszenarien und Benutzeranforderungen an das entstehende System. Eine weitere Schwierigkeit ist die Prüfung der Umsetzung von Anforderungen. Sollte die Umsetzung einer Anforderung, zum Beispiel durch ungenaue oder mehrdeutige Angaben, nicht den Maßgaben des Tests entsprechen, vergehen Wochen oder Monate bis diese Diskrepanz aufgedeckt wird.
-
-Immer wieder kam es daher zu unbefriedigenden oder sogar gescheiterten Softwareprojekten. Gerade bei komplexen Softwaresystem mit einem entsprechenden Umsetzungsaufwand, ist der Schaden dann sehr hoch.
-
-Um diesen Schaden zu minimieren entwickelte sich eine alternative Herangehensweise, welche vor allem Interaktion, Funktionalität, Kundenorientierung und Veränderungsbereitschaft als wichtig erachtet. Festgehalten im Agilen Manifest[quote manifest] proklamierten viele bekannte und angesehene Softwareexperten ihren Willen Softwareprojekte grundsätzlich anders zu fokussieren.
-
-Beeinflusst von der Lean-Bewegung aus der Automobil-Fertigungsindustrie\footcite{kent1999} wollte man die Produktivität deutlich steigern und aus den bürokratisch anmutenden Vorgehensmodellen ausbrechen.
-
-Das Agile Manifest stellt hohe Ansprüche an Entwickler und erzwingt ein Umdenken im Umgang mit dem Projektprozess. Während in traditionellen Vorgehensmodellen jede Phase eine längere zeitliche Periode einnimmt, so werden diese Phasen und Zeiträume in agilen Vorgehen deutlich verkürzt, um damit einhergehende Informationsflüsse deutlich zu beschleunigen.
-Diese kurzen Zeiträume und damit einhergehenden vielen Iterationen geben kontinuierlich und schnell Auskunft über den Zustand eines Projektes. Außerdem wird es einfacher zu erkennen, welche Schritte tatsächlich wertvoll sind und welche Schritte dem Projektfortschritt eher abträglich sind. 
-
-Oberstes Ziel hierbei ist die Lieferung von ``wertvoller'' Software, also die Einschätzung der Anforderungen mit den Stakeholdern und priorisierte Lieferung dieser Anforderungen.
-
-Dieses Vorgehen führt automatisch dazu, dass frühzeitig deutlich wird, ob die richtigen Anforderungen als wichtig erkannt wurden und welche Anforderungen implizit angenommen und daher im verborgenen lagen.
-
-Ein weiterer Aspekt ``wertvoller'' Software ist ihre Funktionalität. Diese sicherzustellen in einer kontinuierlichen Auslieferung erfordert ein hohes Maß an Qualitätssicherung. Schon sehr früh im Entwicklungsprozess eines iterativ wachsenden Systems wird deutlich, dass keine menschliche Resource mehr im Stande ist, alle Anforderungen mit jeder Auslieferung zu testen und die Qualität sicherzustellen. Die Automatisierung dieser Tests ist somit unausweichlich.
-
-\section{Qualitätssicherung und Softwaretest}
-
-Die Qualitätssicherung einer Software muss als oberste Prämisse sicherstellen, dass alle Anforderungen erfüllt sind und dass die Anforderungen auch erfüllt bleiben. Nicht selten führen Neuerungen in einer Software dazu, dass bereits bestehenden Funktionalität beeinträchtigt wird. 
-Aufbauend auf der Annahme, dass alle notwendigen Anforderungen beschrieben sind, müssen diese in unterschiedlichen Ebenen überprüft und sichergestellt werden.
-Diese Ebenen richten sich danach welche Anforderungen und damit verbundenen Merkmale geprüft werden müssen, aber auch danach wie komplex die damit verbundene Prüfung ist.
-
-In der Literatur werden meist Unit-, Funktions- und Integrationstests, sowie System- und Abnahmetests (Akzeptanztest) unterschieden.
-Die Unterscheidung liegt hier in der Größe des zu betrachtenden Ausschnitts der Software und damit der zu prüfenden Aussage. Während in einem Abnahmetest eine direkt Verbindung zwischen Anforderung und Testfall hergestellt werden kann, so ist dies in einem einzelnen Unittest meist nicht mehr möglich.
-\paragraph{Akzeptanztest}
-Akzeptanz- oder auch Abnahmetests stellen in erster Linie die Erfüllung der definierten Anforderungen sicher. Akzeptanztests werden häufig in der Form von Anwendungsszenarien (Use-Cases) beschrieben und sollte sicher daher nur auf das Zusammenspiel von Systemen und Akteuren beziehen. Die Verwendung von technische Details der Software, wie Datenbankspezifikationen oder konkrete Systemimplementierungen sollten vermieden werden. Nicht nur erhöht es den Wartungsaufwand dieser Tests, es verschiebt auch den Fokus des Tests weg von den eigentlich zu prüfenden Merkmalen und Aktionen.
-
-Nicht notwendiger Weise, aber häufig dauert die Durchführung der Akzeptanztests recht lange. Daher werden sie meist seltener ausgeführt. Die lange Ausführungszeit macht sie zudem unhandlich, um eine schnelle Validierung eines in Entwicklung befindlichen Softwarestückes zu gewährleisten.
-
-\paragraph{Funktions- und Integrationstests}
-
-Funktions- und Integrationstests dienen der Überprüfung von Schnittstellen. Es wird sichergestellt, dass verschiedenen Teile der Software, verschiedene Komponenten, nach den vereinbarten Schnittstellen miteinander kommunizieren.
-Neben der Absicherung von Seiteneffekten zu anderen Komponenten und Fremdmodulen, bieten Integrationstests auch eine gute Beschreibung einer Komponente und derer Schnittstellen.
-
-\paragraph{Unittests}
-
-Unittests bilden die unterste Ebene der Softwaretests. Maßgeblich bei Unittests ist die völlige Abkopplung von anderen Teilen, als des zu testenden Teils (Unit) der Software. Jegliche Interaktion mit externen Services sollte strikt vermieden werden.
-Ein ordnungsgemäß verfasster Unittest stellt neben der Regressionssicherheit eines Moduls auch einen Teil dessen Dokumentation sicher. Da ein Unittest das zu testende Modul initialisiert und die notwendigen Schnittstellen bereitstellt, bildet er auch anschaulich die Intention des Moduls ab.
-
-\section{Automatisierung der Softwareerstellung}
-
-Die Bereitstellung einer Software baut auf mehreren Faktoren auf. Es wird ein konkreter Stand der Softwarequellen benötigt, ein ausführendes System und es muss für eine Übersetzung der Softwarequellen zu dem System gesorgt werden.
-Je nach Anforderung der Software und des Ausführungsszenarios reicht dieser Vorgang von einer trivialen Kopie zu einem mehrstufigen, komplexen Vorgang. 
-
-Im nachfolgenden wird beschrieben wie Software in einen wohldefinierten, funktionalen Zustand gebracht und dieser validiert wird. Dazu wird auf Versionsverwaltungssysteme, Konfigurationsmanagement, die automatisierte Erstellung und deren Test eingegangen.
-
-\subsection{Kodeverwaltung und Versionsverwaltungssysteme}
-
-Bereits frühzeitig wurde in der Bereitstellung von Software in Programmversionen unterschieden. Anwender konnte so transparent nachvollziehen, wie fortschrittlich die Anwendung war, die sie erwerben wollten.
-Für die Entwicklung ergab sich daraus vor allem die Herausforderung nachfolgende Fehlerkorrekturen für viele verschiedene Entwicklungszustände bereit zustellen.
-Eine nachvollziehbare und wartungsarme Ablage der einzelnen Versionsstände war daher unabdingbar.
-
-Auch wenn es möglich ist alle Programmversionen in manuell gepflegten Ablagen zu verwalten, gelangt die Entwicklung einer komplexen Software schnell an den Punkt an dem eine Ablage zusätzliche Bedingungen erfüllen muss.
-
-Das dabei herausstechende Merkmal ist die Zustandssicherheit. Es muss gewährleistet sein, dass der Quellcode für eine bestimmte Version in einem konkreten, definierten Zustand ist. Als weiteres Merkmal ist die Transparenz anzuführen. Transparenz ist vor allem dann von Nöten, wenn mehr als ein Entwickler an einer Quellcodesammlung arbeitet. Schnell geht die Übersicht verloren, welche Änderungen wann, von wem und warum eingebracht wurden. Oftmals sind diese Informationen aber hilfreich um Entscheidungen im Entwicklungsprozess zu treffen.
-
-Über die Entstehung von Versionsverwaltungssysteme[quote Soft.Quali] haben sich vor allem zwei Prinzipien herausgebildet: Zentrale und Dezentrale Versionsverwaltungssysteme. Zwar unterscheiden sich die Versionsverwaltungssysteme auch in anderen Merkmalen, zum Beispiel in der Ablage der Quellen und deren Änderungen, diese Merkmale haben aber nahezu keinen Einfluss auf die Verwendung im Softwareentwicklungsprozess.
-
-Auch wenn heutzutage die dezentralen Versionsverwaltungssystem stark zunehmen, so fällt bei näherer Betrachtung auf, dass diese oft primär als zentrale Versionsverwaltungssysteme verwendet werden.
-
-\paragraph{Zentrale Versionsverwaltungssysteme} folgen dem Prinzip, dass es nur einen zentralen Punkt gibt auf dem alle Versionstände gespeichert werden. Dieses ``single point of truth'' Prinzip sorgt für einen einfachen Kontrollfluss, welcher dafür sorgt, dass alle Partizipierer mit einfachen Mitteln auf den gleichen Versionsständen arbeiten. Damit einhergehend ist eine Übersicht aller Änderungen problemlos möglich.
-
-Nachteil dieser Variante ist häufig der Initialaufwand, da eine zentrale Komponenten bereitgestellt werden muss. Zudem sind zentrale Systeme generell störanfälliger und Probleme betreffen immer alle Teilnehmer gleichzeitig.
-Je nach verwendeter Versionierungsstrategie kann es zudem zu einer zentralen Blockade ganzer Bereiche der Softwarequellen kommen, wenn diese für eine exklusive Bearbeitung gesperrt sind.
-
-\paragraph{Dezentrale Versionsverwaltungssysteme} benötigen im Gegensatz keine zentrale Instanz und können problemlos in einem losen Verbund von Einzelsystemen betrieben werden. 
-Im Gegensatz zur zentralen Verwendung, existierend dadurch deutlich mehr Zustände, die ohne entsprechende Maßnahmen nicht zu überblicken sind. Dieser Mehraufwand bringt allerdings eine Flexibilität mit sich, welche viele Möglichkeiten bietet um Softwareänderungen zu koordinieren. Änderungen können in ihrer Reihenfolge transparent manipuliert und der Zeitpunkt der Zusammenführung beliebig gewählt werden. 
-Im Bereich ``Feature Branches'' werden Versionierungsstrategien im Detail erläutert.
-
-Ihrer dezentralen Natur geschuldet, sind sie ausfallsicherer als die zentralen Versionsverwaltungssysteme, benötigen allerdings die entsprechenden Informationen und Befugnisse zur Verbindung, um diesen Vorteil nutzen zu können.
-
-\subsection{Konfigurationsverwaltung}
-
-Konfigurationsverwaltung ist eine wichtige Basis für die automatisierte Erstellung eines Softwareprojektes. Sie definiert wie alle Artefakte in einem Softwareprojekt orchestriert werden. Im Detail wird dabei Erstellung, Identifikation, Validierung und Ablage geregelt. Neben den Projekteigenen Artefakten müssen aber auch deren Umgebung genau definiert sein. \footcite{humble2010}
-
-Ein lockerer Umgang mit der Konfigurationsverwaltung kann gerade zu Anfangs ohne nennenswerte Folgen einhergehen. Spätestens aber während der Reifung und Alterung eines Softwareprojektes sind Folgen deutlich zu spüren. Gerade wenn sich unbemerkt die Version oder Konfiguration der Software eines Drittanbieters ändert, kann dies zu sehr schwer zu identifizierbaren Problemen führen. In anderen Fällen reicht es allerdings auch, wenn sich die Konfiguration zwischen Entwicklungs- und Produktivumgebung leicht unterscheidet. Auch hier können damit zusammenhängende Fehler unnötig viel Zeit in Anspruch nehmen.
-
-Im Idealfall kann eine vollständige Konfigurationsverwaltung:
-\begin{itemize}
-\item eine Umgebung bereitstellen, die genau definiert welches Betriebssystem, in welcher Version, installiert ist und welche Anwendungen, mit welcher Konfiguration, darauf liegen
-\item auf jeder Umgebung jeden dieser Bestandteile einzeln inkrementell verändern und diese Änderungen auch synchronisiert bereit stellen.
-\item alle Änderungen mit Zeitpunkt und Verursacher einfach darstellen
-\item Sicherheitsregeln und Konventionen über alle Systeme sicherstellen
-\item alle diese Funktionalitäten barrierefrei dem Entwicklungsteam zur Verfügung stellen
-\end{itemize}
-
-Alle Forderungen sind sicherlich nicht immer Notwendig, sorgen aber dafür, dass Projekte langfristig, mit geringem Aufwand betreut werden können. Zudem wird deutlich, dass Virtualisierung und Versionsverwaltung[quote cont.deliv] der entsprechenden Komponenten den einhergehenden Aufwand deutlich verringern können.
-
-\subsection{Abhängigkeitsverwaltung}
-
-In der Abhängigkeitsverwaltung werden die Softwareabhängigkeiten der Anwendung beschrieben. In auf  Komponenten basierenden Anwendungen schließt dies die eigenen, interne Abhängigkeiten mit ein. Diese Abhängigkeiten, meist Module genannt, sollen die mit monolithischen Strukturen einhergehenden Nachteile unterbinden. Monolithen leiden häufig unter einer schwachen Softwarearchitektur und entwickeln sich daher entsprechend schlecht weiter. Mögliche Skalierungen des Systems oder ein Austausch von einzelnen Bestandteilen sind mit einem erheblichen Mehraufwand verbunden.
-
-Ist eine Anwendung hingehen auf mehrere Komponenten aufgeteilt, kommen neben den genannten Vorteilen der Skalierbarkeit und Austauschbarkeit, auch Vorteile für das verteilte Arbeiten von Teams. Allerdings führt eine Komponenten basierende Anwendung natürlich auch zu einem organisatorischem Mehraufwand. Dieser Mehraufwand besteht in der Beschreibung der Abhängigkeiten und der Auflösung des damit entstehenden Abhängigkeitsgeflechtes. Übliche Abhängigkeitsverwaltungen verwenden hierzu Versionsnummer aus der Versionsverwaltung, sowie eine Paketbeschreibung in einem eigenen Format. 
-
-Für die automatisierte Erstellung der Softwareanwendung ist es erforderlich, ähnlich wie bereits bei der Versionsverwaltung, ein eindeutiges Abhängigkeitsbild zu beschreiben. Während zum Auflösen der Abhängigkeiten meist mehrdeutige Ausdrücke verwendet werden, die eine Bandbreite an Versionen der Abhängigkeiten erlauben, ist für den Erstellungsvorgang wichtig die konkret verwendeten Versionen zu dokumentieren und mit dem erstellten Produkt auszuliefern. Ähnlich der erwähnten Paketbeschreibung, wird dies mit einer Lock-Datei gesichert.
-
-\subsection{Automatisierte Erstellung und Auslieferung}
-
-Der an sich triviale Schritt, der Erstellung (Build) einer Anwendung, birgt gewisse Tücken. So kann die Ausführung eines komplexen Erstellungsskriptes einen sehr langen Zeitraum in Anspruch nehmen und ein besonders kompliziertes Skript kann die Arbeit damit intransparent gestalten und das Entwicklungsverhalten deutlich benachteiligen. [quote paper] Werden bei einem Erstellungsskript Aspekte der vorangegangen Abschnitte zu Versions-, Konfigurations- und Abhängigkeitsverwaltung nicht berücksichtigt, können zudem inkonsistente und damit nicht wiederholbare Resultate erzeugt werden. Diese können leicht zu schwer oder nicht auffindbaren Fehlern führen.
-
-Ziel bei der Erstellung eines Erstellungsskriptes ist es folglich einen konsistenten und transparenten Ablauf zu befolgen. Dies wird unter anderem durch die korrekte Versionsverwaltung der einzelnen Komponenten, Konfigurationen und Abhängigkeiten erreicht. Mit diesen Informationen können erstellte Produkte, auch ``build artifacts'' oder Artefakte genannt, in einem zentralen Artefakt-Lager abgelegt werden. Dies gewährleistet sowohl einen schnellen Zugriff auf Teilartefakte, als auch einen konsistentes Ergebnis bei der Erstellung der Auslieferung.
-
-Die Auslieferung der Software ist direkt mit der Erstellung verwoben. Bei jeder Auslieferung muss sichergestellt werden, dass Software auf dem entsprechenden Zielsystem auch lauffähig ist und dass sie richtig konfiguriert ist für das Zielsystem. Ein vollständiges Konfigurationsmanagement beschreibt die Systemabhängigkeiten und sorgt folglich für die korrekte Auslieferung der richtigen Artefakte.
-
-Sowohl bei der Erstellung, als auch bei der Auslieferung ist insbesondere auf eine vollständige Beschreibung und die Einhaltung dieser zu achten. Gerade auf Entwicklungssystemen können Abhängigkeiten vorhanden sein, welche zwar für die Funktionalität der Anwendung sorgen, allerdings nicht beschrieben wurden. Bei der Auslieferung auf andere Systeme können diese ``Schattenabhängigkeiten'' dann zu erwartetem Verhalten oder Abstürzen führen. Ein sehr kontrollierter Ausweg aus dem Dilemma von mehrfach genutzten Entwicklungsumgebungen bietet die Virtualisierung der verwendeten Systeme. Wie bereits für Softwareabhängigkeiten der Anwendung beschrieben, können diese Virtualisierungen als Artefakte bereitgestellt werden und unterstützen Konsistenz, Transparenz sowie Skalierbarkeit[quote virtualiserung mit docker].
-
-Bei der Auslieferung der Software können grob zwei Stufen der Automatisierung unterschieden werden. Eine Stufe ist die manuell angestoßene Auslieferung, bei der der Zeitpunkt der Auslieferung davon bestimmt wird, wann das automatisierte oder automatisiert-moderierte Script ausgeführt wird. Eine Andere ist die vollautomatisierte Auslieferung, bei der der Zeitpunkt lediglich von der Durchlaufzeit einer Änderung durch die Qualitätskontrolle bestimmt wird.
-Des weiteren werden unterschiedliche Auslieferungsstrategien (``deployment strategies'') unterschieden, es seien an dieser Stelle nur exemplarisch das ``blue green deployment'' und das ``canary deployment'' genannt. Die Auslieferungsstrategien werden dabei je nach Anforderungen ausgewählt und haben Vorzüge wie Ausfallsicherheit, Bewertung der ausgelieferten Änderung oder Skalierbarkeit der Zielsysteme.
-
-Da die konkrete Auslieferung auf die Bereiche ``Continuous Integration'' und ``Feature Branches'' nur begrenzt Einfluss hat, verweise ich an dieser Stelle auf die entsprechende Fachliteratur.
-
-\subsection{Validierung und Test}
-
-Die Validierung einer Software ist ein unglaublich komplexes Unterfangen. Die vollständige Richtigkeit eines Programmes zu beweisen, scheitert bereits bei kleinen Anwendungen, da die Programmkomplexität schlicht zu schnell steigt. Zudem können nur Teile validiert und getestet werden, welche im Vorfeld bestimmt worden sind. Unklare, mehrdeutige oder fehlende Anforderung machen einen Test unvollständig oder nehmen im die Aussagekraft[quote software quali p243 kap4.6].
-
-Da eine Software nicht vollständig getestet werden kann, muss eine Strategie gewählt werden, welche Tests verwendet werden und mit welchem Ziel. Zudem können Metriken gewählt werden, die eine Aussage über die Testvollständigkeit liefern können. Bei der Entscheidung welche Strategie gewählt wird, fallen verschiedene Kriterien ins Gewicht. Zum einen muss betrachtet werden, welche Anforderungen mit welchem Testverfahren getestet werden können, zum anderen welche Granularität für jeden Test verwendet wird.
-
-Insbesondere in der automatisierten Erstellung sind diese Entscheidungen wichtig, da sie eine Basis liefern für die Aussage, wie schnell die Testsammlung ausgeführt werden kann. Und damit einhergehend, wie schnell kann eine Aussage getroffen werden, ob ein Inkrement der Software valide ist. 
-Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung, jeder Fehler der nicht von der Testsammlung erfasst wurde, muss spätestens nach der Beseitigung des Fehlers auch durch die Testsammlung validiert werden. Diese Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests [quote software quali].
-
-Da Tests und Metriken die einzigen Möglichkeiten sind um automatisch Einschätzungen der Software vorzunehmen, werden diese Bereiche erneut in einem späteren Kapitel aufgegriffen und näher auf deren Wertschöpfung eingegangen.
-
-\section{Feature Branches}
-
-\section{Continuous Integration}
-
-\section{Visualisierung von Graphen}
-
-\chapter{Visualisierung und Methodiken}
-
-\begin{itemize}
-\item Metriken um Branches zu beurteilen
-\item automatisierte Releasekombination
-\item automatisierte Konflikterkennung
-\item Regeln, wie 
-	\begin{itemize}
-		\item nur FastForward-Merges erlauben
-	\end{itemize}	 
-\item Buildautomatisierung
-\item Continuous Delivery
-\item Configuration Management
-\item verschiedene Sichten, u.a. Feature-Sicht mit Goals?
-\item packetverwaltung mit einbeziehen - sind packete outdated?
-\item "wervolle tests" - kopplung mit anforderungen - gherkin?
-\item graphentheorie für besseres dependency management / bessere module entwerfen?
-\item lose gekoppelte software ?
-\end{itemize}
-
-\chapter{Zusammenfassung}
-
+\include{content/4-Zusammenfassung}
 
 \chapter{Literaturverzeichnis}
 
