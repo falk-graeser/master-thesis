@@ -166,6 +166,55 @@ Als dezentrales Versionsverwaltungssystem ist einer der großen Vorteile von Git
 
 \subsection{Verwendung}
 
+Die Installation und Bereitstellung von Git wird auf der Website\footcite{gitscm-install} ausreichend beschrieben und würde den Rahmen sprengen, daher wird dieser Teil vorausgesetzt.
+
+Um ein neues Git-Repository anzulegen sind nur wenige, sehr einfache Schritte notwendig.
+\begin{lstlisting}[language=bash]
+mkdir master-thesis
+cd master-thesis/
+git init
+# Initialized empty Git repository in master-thesis/.git/
+\end{lstlisting}
+
+Das entstandene Repository ist noch leer und bedarf eines ersten Commits, dazu wird eine Dummydatei erstellt und dem Git-Index hinzugefügt.
+
+\begin{lstlisting}[language=bash]
+echo "dummy file" > dummy-file
+git status --untracked-files --short
+# ?? dummy-file
+git add dummy-file
+git status --short
+# A  dummy-file
+\end{lstlisting}
+
+Und den eigentlichen Commit ausführen.
+
+\begin{lstlisting}[language=bash]
+git commit -m "Initial dummy file"
+# [master (root-commit) 99bf014] Initial dummy file
+#  1 file changed, 1 insertion(+)
+#  create mode 100644 dummy-file
+\end{lstlisting}
+
+Sichtbar wird hier, dass Git darauf hinweist, dass es sich hier um den ersten ``root-commot'' handelt und dass es automatisch einen ``Branch'' namens ``master'' erstellt hat.
+Um die eigentliche Versionsverwaltung zu verdeutlichen, wird eine kleine Änderung vorgenommen. Und die Änderung angezeigt und anschließend ebenfalls dem Index hinzugefügt und ein Commit ausgeführt.
+
+\begin{lstlisting}[language=bash]
+echo " some change" >> dummy-file
+git status --short
+# M dummy-file
+git diff --cached
+# diff --git a/dummy-file b/dummy-file
+# index 3c546eb..13dcc82 100644
+# --- a/dummy-file
+# +++ b/dummy-file
+# @@ -1 +1 @@
+# -dummy file
+# +dummy file some change
+git commit -am "small change"
+# [master 36add42] small change
+# 1 file changed, 1 insertion(+), 1 deletion(-)
+\end{lstlisting}
 
 \subsection{interne Arbeitsweise}
 
