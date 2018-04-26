@@ -8,6 +8,8 @@
 \usepackage{amssymb}
 \usepackage{mathptmx} % Times
 \usepackage{courier}
+\usepackage{color}
+\usepackage{listings}
 \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry}
 \usepackage[onehalfspacing]{setspace}
 \usepackage[
@@ -16,6 +18,30 @@ style=alphabetic,
 citestyle=authoryear
 ]{biblatex}
 \addbibresource{literature.bib}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolor}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+    basicstyle=\ttfamily,
+    backgroundcolor=\color{backcolor},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+}
 
 \author{Falk Gräser}
 

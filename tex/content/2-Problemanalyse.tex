@@ -94,6 +94,7 @@ Im Bereich ``Feature Branches'' werden Versionierungsstrategien im Detail erläu
 Ihrer dezentralen Natur geschuldet, sind sie ausfallsicherer als die zentralen Versionsverwaltungssysteme, benötigen allerdings die entsprechenden Informationen und Befugnisse zur Verbindung, um diesen Vorteil nutzen zu können.
 
 \subsection{Konfigurationsverwaltung}
+\label{subsec:konfigurationsverwaltung}
 
 Konfigurationsverwaltung ist eine wichtige Basis für die automatisierte Erstellung eines Softwareprojektes. Sie definiert wie alle Artefakte in einem Softwareprojekt orchestriert werden. Im Detail wird dabei Erstellung, Identifikation, Validierung und Ablage geregelt. Neben den Projekteigenen Artefakten müssen aber auch deren Umgebung genau definiert sein. \footcite{humble2010}
 
@@ -142,7 +143,7 @@ Da eine Software nicht vollständig getestet werden kann, muss eine Strategie ge
 Insbesondere in der automatisierten Erstellung sind diese Entscheidungen wichtig, da sie eine Basis liefern für die Aussage, wie schnell die Testsammlung ausgeführt werden kann. Und damit einhergehend, wie schnell kann eine Aussage getroffen werden, ob ein Inkrement der Software valide ist. 
 Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung, jeder Fehler der nicht von der Testsammlung erfasst wurde, muss spätestens nach der Beseitigung des Fehlers auch durch die Testsammlung validiert werden. Diese Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests [quote software quali].
 
-Da Tests und Metriken die einzigen Möglichkeiten sind um automatisch Einschätzungen der Software vorzunehmen, werden diese Bereiche erneut in einem späteren Kapitel aufgegriffen und näher auf deren Wertschöpfung eingegangen.
+Da Tests und Metriken die einzigen Möglichkeiten sind um automatisch Einschätzungen der Software vorzunehmen, werden diese Bereiche erneut im Kapitel~\ref{ch:visu_meth} aufgegriffen und näher auf deren Wertschöpfung eingegangen.
 
 \section{Continuous Integration}
 
@@ -150,6 +151,23 @@ Continuous Integration wurde sehr treffend beschrieben \footcite{fowler2006}
 \blockquote {Continuous Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible.}
 
 Continuous Integration wurde erstmal von Kent Beck als Teil einer Reihe von Praktiken des Entwicklungsvorgehens ``Extreme Programming''\footcite{kent1999} beschrieben. Die Idee die Integration von Codeständen zu fördern, in dem man die Entwickler anhält ihre Änderungen täglich oder häufiger abzugleichen und durch einen automatisierten Vorgang als lauffähig zu beweisen. Damit konnten Fehler zum Zeitpunkt des Auftretens gefunden werden, insbesondere Fehler, welche erst durch die Integration mit den Änderungen anderer Entwickler auftreten. Damit fordert Continuous Integration zugleich auch eine aussagekräftige Testabdeckung mit automatischen Tests und dass Entwickler einen entdeckten Fehler direkt beheben, da sonst alle anderen Teammitglieder behindert werden.
+
+Natürlich nutzt Continuous Integration auch alle Vorteile, die im Kapitel ``Automatisierung der Softwareerstellung'' beschrieben werden. Modularisierung, Konfigurationsbeschreibung, automatische Erstellung und Wiederverwendbarkeit von Artefakten, sowie eine generelle Strategie, die Software so zu entwickeln, dass sie gut testbar ist. Die vollständige Erfüllung dieser Kriterien fordert und fördert eine gute Entwicklungskultur. Dies ist auch der Grund warum Continuous Integration seit den Beschreibungen von Kent Beck so sehr an Akzeptanz und Bedeutung gewonnen hat.
+
+Während die Vorteile von Continuous Integration sehr deutlich und gewichtig sind, gibt es auch Kosten die mit dieser Technik einhergehen. Die komplette Automatisierung erfordert einen durchaus wahrnehmbaren Aufwand in der initialen Einrichtung und einen häufig unterschätzten Aufwand in der Aufrechterhaltung. Gerade bei weniger wichtigen Projekten oder bei Projekten unter besonders hohem Druck, kann es passieren, dass wichtige Bestandteile von Continuous Integration vernachlässigt werden. Dass heißt die Testabdeckung sinkt deutlich oder etwa Teile des Konfigurationsmanagements werden umgangen und essentielle Abhängigkeiten von Hand gepflegt. Dieses Verhalten widerspricht offensichtlich der langfristigen Wertschöpfung und bricht mit den Prinzipien von Continuous Integration. Leider sind aber menschliche Schwächen auch in Continous Integration noch ein Problem, welches nur durch Training und Motivation zur Selbstdisziplin der Entwickler behoben werden kann. In Kapitel~\ref{ch:visu_meth} wird auch das Thema Entwicklerdisziplin erneut aufgegriffen und auf die Gratwanderung von gesunder Entwicklungskultur und destruktiver ``blaming culture'' eingegangen.
+
+\section{Dezentrale Versionierung mit Git}
+
+Im Kapitel~\ref{subsec:konfigurationsverwaltung} Konfigurationsverwaltung wurde bereits auf das Thema Versionsverwaltung eingegangen. Als das populärste System im Open-Source-Bereiche und eines der großen Systeme im kommerziellen Bereich\footcite{g2crowd2018}, wird nun anhand von Git erläutert, wie die dezentrale Versionsverwaltung grundlegend verwendet wird. Außerdem kommen einige git-spezifische Merkmale hinzu, welche bei der visuellen Aufbereitung wichtig werden.
+
+Git wurde vom Linux-Schöpfer Linus Torwalds im April 2005 initiiert, aus der Not heraus sich vom vorher verwendeten ``BitKeeper''-System zu lösen, da diese nicht mehr mit der eigenen Open-Source-Lizenz in Einklang zubringen war. Git wurde von vornherein als verteiltes, vor Verfälschungen sicheres und effizientes Versionsverwaltungssystem entworfen. Diese Eigenschaften und die Software-Plattform ``GitHub'', machten Git in den letzten 13 Jahren zum de-facto Standard für Versionsverwaltung\footcite{heise-torvald-git2015}.
+
+Als dezentrales Versionsverwaltungssystem ist einer der großen Vorteile von Git, dass die vollständige Historie der Dateien lokal verfügbar ist. Während zentrale Versionsverwaltungssysteme immer einen dedizierten Server benötigen, können dezentrale Varianten über Peer-To-Peer-Schnittstellen kommunizieren. Diese Eigenschaft sorgt neben einer hohen Ausfallsicherheit und Informationsredundanz, auch für eine hohe Flexibilität und die Möglichkeit zahlreiche Arbeitsweisen von Softwareentwicklern zu unterstützen.
+
+\subsection{Verwendung}
+
+
+\subsection{interne Arbeitsweise}
 
 \section{Feature Branches}
 
@@ -159,6 +177,6 @@ Prinzipiell ist diese Technik unabhängig von der verwendeten Versionsverwaltung
 
 Feature Branching wird kontrovers diskutiert[quote martinfowler feature branch, quote Yegor Bugayenko, quote jamesmckay]. Dabei wird angemahnt, dass die Abspaltung in einen Zweig, das Problem der Zusammenführung von Codeänderungen nicht behebt, sondern verschlimmert. So wird der Aufwand, der benötigt wird um zwei Verzweigungen zusammen zuführen, potentiell immer höher, um so mehr Änderungen hinzukommen. Die Aufwandserhöhung kann soweit gehen, dass ein psychologischer Faktor hinzukommt, der die Entscheidung zur Zusammenführung weiter belastet. Diese Zusammenführung wird dann auch als ``big scary merge'' oder ``big bang merge'' bezeichnet.
 
-Kontrovers dazu wird die Blockade vermeidende Natur von Feature Branches hervorgehoben und die Angst vor dem ``big scary merge'' durch Entwicklerdisziplin und Automatisierung gemildert. Entwicklerdisziplin meint hier Feature Branches nur für kleine Änderungen zu verwenden und durch Hilfe von Automatisierung schnelle Rückmeldung über die Codequalität zu erhalten. Des Weiteren werden durch moderne ``pull based''[quote github about pull requests] Verzweigungsstratgien Entwickler dazu angehalten Codeprüfungen durch andere Entwickler einzufordern. Diese Lösungsstrategien werden in Kapitel 3 weiterführend betrachtet.
+Kontrovers dazu wird die Blockade vermeidende Natur von Feature Branches hervorgehoben und die Angst vor dem ``big scary merge'' durch Entwicklerdisziplin und Automatisierung gemildert. Entwicklerdisziplin meint hier Feature Branches nur für kleine Änderungen zu verwenden und durch Hilfe von Automatisierung schnelle Rückmeldung über die Codequalität zu erhalten. Des Weiteren werden durch moderne ``pull based''[quote github about pull requests] Verzweigungsstratgien Entwickler dazu angehalten Codeprüfungen durch andere Entwickler einzufordern. Diese Lösungsstrategien werden in Kapitel~\ref{ch:visu_meth} weiterführend betrachtet.
 
 \section{Visualisierung von Graphen}
