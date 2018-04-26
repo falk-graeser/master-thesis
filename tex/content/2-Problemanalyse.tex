@@ -164,59 +164,44 @@ Git wurde vom Linux-Schöpfer Linus Torwalds im April 2005 initiiert, aus der No
 
 Als dezentrales Versionsverwaltungssystem ist einer der großen Vorteile von Git, dass die vollständige Historie der Dateien lokal verfügbar ist. Während zentrale Versionsverwaltungssysteme immer einen dedizierten Server benötigen, können dezentrale Varianten über Peer-To-Peer-Schnittstellen kommunizieren. Diese Eigenschaft sorgt neben einer hohen Ausfallsicherheit und Informationsredundanz, auch für eine hohe Flexibilität und die Möglichkeit zahlreiche Arbeitsweisen von Softwareentwicklern zu unterstützen.
 
-\subsection{Verwendung}
+\subsection{Definition und Verwendung der Git-Artefakte}
 
-Die Installation und Bereitstellung von Git wird auf der Website\footcite{gitscm-install} ausreichend beschrieben und würde den Rahmen sprengen, daher wird dieser Teil vorausgesetzt.
+Die Verwendung von git gestaltet sich vergleichsweise einfach. In wenigen Schritten kann Git installiert \footcite{git-scm-install} und mit der Verwendung begonnen werden. 
+Git nutzt bestimmte Artefakte um seine Aufgaben zu erfüllen. Darunter Repositories, Commits, Branches und Tags. Zudem werden Mechanismen bereitgestellt um mit diesen Artefakten zu interagieren. Neben zu erwartenden Mechanismen wie Hinzufügen und Löschen, werden auch Speichern- und Ladeaktionen (``push'' und ``pull) angeboten.
 
-Um ein neues Git-Repository anzulegen sind nur wenige, sehr einfache Schritte notwendig.
-\begin{lstlisting}[language=bash]
-mkdir master-thesis
-cd master-thesis/
-git init
-# Initialized empty Git repository in master-thesis/.git/
-\end{lstlisting}
+\begin{figure}[htbp]
+  \includegraphics[
+    width=\textwidth,
+    height=\textheight,
+    keepaspectratio
+  ]{resources/git-workflow.pdf}
+  \caption{Git-Workflow}
+  \label{git-workflow}
+\end{figure}
+Die Grafik~\ref{git-workflow} stellt das Zusammenspiel der Artefakte und den Standard-Git-Worflow\footcite{osteele-git-workflow} dar.
 
-Das entstandene Repository ist noch leer und bedarf eines ersten Commits, dazu wird eine Dummydatei erstellt und dem Git-Index hinzugefügt.
+\paragraph{Repositories} sind die größte Verwaltungseinheit in Git. Diese enthalten alle Git-Objekte, wie Referenzen, Commits, Trees, Blobs, sowie die lokale Konfiguration. Repositories können andere Repositories referenzieren oder referenziert werden, dabei können viele gängige Protokolle verwendet werden (http, ssh, ftp, absolute Pfade)
 
-\begin{lstlisting}[language=bash]
-echo "dummy file" > dummy-file
-git status --untracked-files --short
-# ?? dummy-file
-git add dummy-file
-git status --short
-# A  dummy-file
-\end{lstlisting}
+\paragraph{Commits} sind zeitlich determinierte, persönliche und kommentierte Referenzen auf einen konkreten Arbeitsstand (``Snapshot'') des Repositories. Ein Commit kann immer maximal nur auf einen Eltern-Commit verweisen, kann allerdings von beliebig vielen anderen Commits referenziert werden. Bei Betrachtung aller Commits, bilden dieser daher einen gerichteten Baumgraphen.
 
-Und den eigentlichen Commit ausführen.
+\paragraph{Branches} sind, im Gegensatz zu vielen anderen Versionverwaltungssystemen, in Git lediglich Verweise auf einen bestimmten Commit. Wenn ein Branch aktiv ist, dann wird mit jedem Commit auf diesem Branch, der Verweis auf den neuen Commit aktualisiert.
 
-\begin{lstlisting}[language=bash]
-git commit -m "Initial dummy file"
-# [master (root-commit) 99bf014] Initial dummy file
-#  1 file changed, 1 insertion(+)
-#  create mode 100644 dummy-file
-\end{lstlisting}
+\paragraph{Tags} sind genauso wie Branches einfache Verweise auf einen Commit, allerdings verändert sich die Position eines Tags nach einem Commit nicht.
 
-Sichtbar wird hier, dass Git darauf hinweist, dass es sich hier um den ersten ``root-commot'' handelt und dass es automatisch einen ``Branch'' namens ``master'' erstellt hat.
-Um die eigentliche Versionsverwaltung zu verdeutlichen, wird eine kleine Änderung vorgenommen. Und die Änderung angezeigt und anschließend ebenfalls dem Index hinzugefügt und ein Commit ausgeführt.
+\paragraph{Remotes} sind Verweise in der Konfiguration eines Repositories auf andere Repositories. Dies wird im allgemeinen genutzt um Änderungen von dort zu holen oder dorthin zu bewegen. Es können beliebig viele Remotes für jedes Repository definiert werden. Zudem kann beliebig definiert werden, welche Branches von einem Repository Änderungen erhalten oder dieses aktualisieren.
 
-\begin{lstlisting}[language=bash]
-echo " some change" >> dummy-file
-git status --short
-# M dummy-file
-git diff --cached
-# diff --git a/dummy-file b/dummy-file
-# index 3c546eb..13dcc82 100644
-# --- a/dummy-file
-# +++ b/dummy-file
-# @@ -1 +1 @@
-# -dummy file
-# +dummy file some change
-git commit -am "small change"
-# [master 36add42] small change
-# 1 file changed, 1 insertion(+), 1 deletion(-)
-\end{lstlisting}
+\paragraph{Blobs} sind die komprimierten Inhalte einer Datei.
 
-\subsection{interne Arbeitsweise}
+\paragraph{Trees} sind Referenzen von Blobs, und stellen damit im einfachsten Fall eine Ansicht eines Verzeichnisses und seiner Dateien dar.
+
+\paragraph{Hashes} sind im allgemeinen Abbildung einer großen Abbildung von Zeichen auf eine deutlich geringere Menge. Die Abbildung führt immer zur gleichen Ergebnismenge. In Git werden Hashes als allgemeine Referenzierungsmöglichkeit verwendet. Alle Relationen werden darüber beschrieben und sind daher über alle Repositories gleich. Um die Eindeutigkeit 
+
+\subsection{Interne Arbeitsweise}
+
+Git verwendet intern einen Mix aus Referenzen, Indexierung, Komprimierung und Hashing. Zudem werden keine Differenzmengen, wie etwa in Subversion abgelegt, sondern immer vollständige Dateiinhalte. Diese Kombination bedeutet für viele Softwareprojekte eine deutliche Speicherplatzreduktion, wie zum Beispiel für das Mozilla-Projekt\footcite{kernel-git-svn}. Dadurch dass vollständig Dateiinhalte gesichert werden, ist Git für besonders große, sich häufig ändernde Dateien eher ungünstig.
+
+Um die interne Arbeitsweise von Git zu erläutern, müssen die Zusammenhänge von Commits, Trees, Blobs und Hashes verdeutlicht werden.
+
 
 \section{Feature Branches}
 
