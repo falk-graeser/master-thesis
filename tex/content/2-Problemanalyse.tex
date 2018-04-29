@@ -152,6 +152,8 @@ Continuous Integration wurde sehr treffend beschrieben \footcite{fowler2006}
 
 Continuous Integration wurde erstmal von Kent Beck als Teil einer Reihe von Praktiken des Entwicklungsvorgehens ``Extreme Programming''\footcite{kent1999} beschrieben. Die Idee die Integration von Codeständen zu fördern, in dem man die Entwickler anhält ihre Änderungen täglich oder häufiger abzugleichen und durch einen automatisierten Vorgang als lauffähig zu beweisen. Damit konnten Fehler zum Zeitpunkt des Auftretens gefunden werden, insbesondere Fehler, welche erst durch die Integration mit den Änderungen anderer Entwickler auftreten. Damit fordert Continuous Integration zugleich auch eine aussagekräftige Testabdeckung mit automatischen Tests und dass Entwickler einen entdeckten Fehler direkt beheben, da sonst alle anderen Teammitglieder behindert werden.
 
+Die Arbeitsweise alle Änderungen auf einem Zweig zu vereinen und kontinuierlich zu vereinigen, wird auch Trunk-Based-Development genannt. Während Continuous Integration und Trunk-Based-Development als getrennte Methodiken geführt werden\footcite{trunkbaseddevelopment}, so werden sich doch häufig in Kombination oder synonym verwendet\footcite{fowler-feature-branch}.
+
 Natürlich nutzt Continuous Integration auch alle Vorteile, die im Kapitel ``Automatisierung der Softwareerstellung'' beschrieben werden. Modularisierung, Konfigurationsbeschreibung, automatische Erstellung und Wiederverwendbarkeit von Artefakten, sowie eine generelle Strategie, die Software so zu entwickeln, dass sie gut testbar ist. Die vollständige Erfüllung dieser Kriterien fordert und fördert eine gute Entwicklungskultur. Dies ist auch der Grund warum Continuous Integration seit den Beschreibungen von Kent Beck so sehr an Akzeptanz und Bedeutung gewonnen hat.
 
 Während die Vorteile von Continuous Integration sehr deutlich und gewichtig sind, gibt es auch Kosten die mit dieser Technik einhergehen. Die komplette Automatisierung erfordert einen durchaus wahrnehmbaren Aufwand in der initialen Einrichtung und einen häufig unterschätzten Aufwand in der Aufrechterhaltung. Gerade bei weniger wichtigen Projekten oder bei Projekten unter besonders hohem Druck, kann es passieren, dass wichtige Bestandteile von Continuous Integration vernachlässigt werden. Dass heißt die Testabdeckung sinkt deutlich oder etwa Teile des Konfigurationsmanagements werden umgangen und essentielle Abhängigkeiten von Hand gepflegt. Dieses Verhalten widerspricht offensichtlich der langfristigen Wertschöpfung und bricht mit den Prinzipien von Continuous Integration. Leider sind aber menschliche Schwächen auch in Continous Integration noch ein Problem, welches nur durch Training und Motivation zur Selbstdisziplin der Entwickler behoben werden kann. In Kapitel~\ref{ch:visu_meth} wird auch das Thema Entwicklerdisziplin erneut aufgegriffen und auf die Gratwanderung von gesunder Entwicklungskultur und destruktiver ``blaming culture'' eingegangen.
@@ -167,7 +169,7 @@ Als dezentrales Versionsverwaltungssystem ist einer der großen Vorteile von Git
 \subsection{Definition und Verwendung der Git-Artefakte}
 
 Die Verwendung von git gestaltet sich vergleichsweise einfach. In wenigen Schritten kann Git installiert \footcite{git-scm-install} und mit der Verwendung begonnen werden. 
-Git nutzt bestimmte Artefakte um seine Aufgaben zu erfüllen. Darunter Repositories, Commits, Branches und Tags. Zudem werden Mechanismen bereitgestellt um mit diesen Artefakten zu interagieren. Neben zu erwartenden Mechanismen wie Hinzufügen und Löschen, werden auch Speichern- und Ladeaktionen (``push'' und ``pull) angeboten.
+Git nutzt bestimmte Artefakte um seine Aufgaben zu erfüllen. Darunter Repositories, Commits, Branches und Tags. Zudem werden Mechanismen bereitgestellt um mit diesen Artefakten zu interagieren. Neben zu erwartenden Mechanismen wie Hinzufügen und Löschen, werden auch Speichern- und Ladeaktionen (``push'' und ``pull) angeboten\footcite{git-essentials-2017}.
 
 \begin{figure}[htbp]
   \includegraphics[
@@ -198,10 +200,25 @@ Die Grafik~\ref{git-workflow} stellt das Zusammenspiel der Artefakte und den Sta
 
 \subsection{Interne Arbeitsweise}
 
-Git verwendet intern einen Mix aus Referenzen, Indexierung, Komprimierung und Hashing. Zudem werden keine Differenzmengen, wie etwa in Subversion abgelegt, sondern immer vollständige Dateiinhalte. Diese Kombination bedeutet für viele Softwareprojekte eine deutliche Speicherplatzreduktion, wie zum Beispiel für das Mozilla-Projekt\footcite{kernel-git-svn}. Dadurch dass vollständig Dateiinhalte gesichert werden, ist Git für besonders große, sich häufig ändernde Dateien eher ungünstig.
+Git verwendet intern einen Mix aus Referenzen, Indexierung, Komprimierung und Hashing. Zudem werden keine Differenzmengen, wie etwa in Subversion abgelegt, sondern immer vollständige Dateiinhalte. Diese Kombination bedeutet für viele Softwareprojekte eine deutliche Speicherplatzreduktion, wie zum Beispiel für das Mozilla-Projekt\footcite{kernel-git-svn}. Dadurch dass vollständig Dateiinhalte gesichert werden, ist Git für besonders große, schlecht zu komprimierende, sich häufig ändernde Dateien eher ungünstig. Für solche Dateien ist es sinnvoller 
 
 Um die interne Arbeitsweise von Git zu erläutern, müssen die Zusammenhänge von Commits, Trees, Blobs und Hashes verdeutlicht werden.
 
+Die Git-Objekte werden von Git immer anhand ihres Hashes abgelegt. Dabei wird ein 40-Stelliger SHA1-Hash verwendet. Die notwendigen Stellen zu Referenzierung sind aber häufig deutlich geringer, so können im allgemeinen Gebrauch deutlich verkürzte Zeichenketten verwendet werden. Im allgemeinen etwa 5 Stellen oder bei großen Projekten, wie dem Linux-Kernel, 12 Stellen.
+
+Der Hash von Blobs ist eine Abbildung ihres Inhaltes. Daher werden Dateien mit den gleichen Inhalt auch immer auf den gleichen Blob abgebildet, unabhängig vom Verzeichnis in dem sie sich befinden oder wie oft sie geändert wurden.
+
+Wie auch beim Blob sind Trees nur eine Abbildung ihres Inhaltes. Da Trees aber als eine Art Verzeichnis zu verstehen sind, referenzieren Trees andere Trees und Blobs. Damit würde eine Folge von Commits, die erste eine Datei erzeugt und schließlich wieder entfernt, am Ende wieder auf den gleichen Tree verweisen.
+
+Commits schließlich verweisen auf einen oder mehrere Vorgänger-Commits, einen Tree, einen Autor und einen Commiter. Durch den Verweis auf den Vorgänger entsteht der in Darstellungen übliche Baum von Versionsknoten.
+
+Dieser einfache, gut skalierbare Aufbau ermöglicht eine sehr leichtgewichtige Erstellung von Branches und damit zahlreiche flexible Arbeitsweisen.
+
+\subsection{GitHub-Workflow}
+
+GitHub ist heute die größte Plattformen für Quelloffene Softwareprojekte\footcite{github-marketshare-datanyze}. Durch die rasante Verbreitung von Git, wurde GitHub bei Open-Source-Projekten schnell zur Alternative für Sourceforge\footcite{heise-github-2011}. Damit einhergehend hatte der GitHub-Workflow\footcite{github-workflow-intro} auf die Git-Gemeinschaft hohen Einfluss.
+
+Der GitHub-Workflow ist eine einfache Arbeitsweise, die auf Branches und manuellen Begutachtungen(Reviews) basiert. Änderungen gelangen nur zurück auf den Hauptstrang, wenn sie zuvor einem Review unterzogen worden. Dieser Schritt ist ein entscheidender Unterschied zum Trunk-Based-Workflow der mit Continuous-Integration propagiert wird, da hier der Code-Review erst nach der Integration mit dem Hauptzweig durchgeführt werden kann.
 
 \section{Feature Branches}
 
