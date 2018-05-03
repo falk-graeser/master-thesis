@@ -220,6 +220,12 @@ GitHub ist heute die größte Plattformen für Quelloffene Softwareprojekte\foot
 
 Der GitHub-Workflow ist eine einfache Arbeitsweise, die auf Branches und manuellen Begutachtungen(Reviews) basiert. Änderungen gelangen nur zurück auf den Hauptstrang, wenn sie zuvor einem Review unterzogen worden. Dieser Schritt ist ein entscheidender Unterschied zum Trunk-Based-Workflow der mit Continuous-Integration propagiert wird, da hier der Code-Review erst nach der Integration mit dem Hauptzweig durchgeführt werden kann.
 
+\subsection{Gitflow}
+
+Gitflow\footcite{nvie-git-branch-model} ist ein weiterer bekannter Workflow mit Git. Im Gegensatz zum simplen GitHub-Workflow liegt beim Gitflow der Schwerpunkt auf der Erstellung eines Releases, also einer Menge an Features. 
+
+Gitflow unterscheidet wie viele andere Git-Arbeitsmodelle zwischen langlebigen und kurzlebigen Branches. Die langlebigen Branches sind hierbei ``master'' und ``development''. Der Master darfhierbei ausschließlich Release-Commits enthalten, also Commits, welche mit einem Tag referenziert werden.
+
 \section{Feature Branches}
 
 Feature Branches ist ein Kunstwortkombination aus der Vermischung von Feature, dem englischen Wort für Merkmal und Branch dem englisch Wort für Zweig, abgeleitet von der Verzweigung in einem Versionsverwaltungssystem. Die Idee hinter einem Feature Branch ist, dass für jedes neue Merkmal, beziehungsweise für jede neue Anforderung ein neuer Branch in der Versionsverwaltung erstellt wird. Ziel der Feature Branches ist die Isolierung von Änderungen, um die anderen Zweige nicht zu blockieren und Änderungen erst nach Test und Abnahme zusammen zu führen. Dabei sollen mehrere Änderungen parallel entwickelt werden können, ohne dabei zu einem bestimmten Zeitpunkt alle Änderungen in einen Hauptzweig übernehmen zu müssen.
