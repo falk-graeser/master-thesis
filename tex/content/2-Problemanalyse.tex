@@ -89,7 +89,7 @@ Je nach verwendeter Versionierungsstrategie kann es zudem zu einer zentralen Blo
 
 \paragraph{Dezentrale Versionsverwaltungssysteme} benötigen im Gegensatz keine zentrale Instanz und können problemlos in einem losen Verbund von Einzelsystemen betrieben werden. 
 Im Gegensatz zur zentralen Verwendung, existierend dadurch deutlich mehr Zustände, die ohne entsprechende Maßnahmen nicht zu überblicken sind. Dieser Mehraufwand bringt allerdings eine Flexibilität mit sich, welche viele Möglichkeiten bietet um Softwareänderungen zu koordinieren. Änderungen können in ihrer Reihenfolge transparent manipuliert und der Zeitpunkt der Zusammenführung beliebig gewählt werden. 
-Im Bereich ``Feature Branches'' werden Versionierungsstrategien im Detail erläutert.
+Im Bereich ``Feature-Branches'' werden Versionierungsstrategien im Detail erläutert.
 
 Ihrer dezentralen Natur geschuldet, sind sie ausfallsicherer als die zentralen Versionsverwaltungssysteme, benötigen allerdings die entsprechenden Informationen und Befugnisse zur Verbindung, um diesen Vorteil nutzen zu können.
 
@@ -132,7 +132,7 @@ Sowohl bei der Erstellung, als auch bei der Auslieferung ist insbesondere auf ei
 Bei der Auslieferung der Software können grob zwei Stufen der Automatisierung unterschieden werden. Eine Stufe ist die manuell angestoßene Auslieferung, bei der der Zeitpunkt der Auslieferung davon bestimmt wird, wann das automatisierte oder automatisiert-moderierte Script ausgeführt wird. Eine Andere ist die vollautomatisierte Auslieferung, bei der der Zeitpunkt lediglich von der Durchlaufzeit einer Änderung durch die Qualitätskontrolle bestimmt wird.
 Des weiteren werden unterschiedliche Auslieferungsstrategien (``deployment strategies'') unterschieden, es seien an dieser Stelle nur exemplarisch das ``blue green deployment'' und das ``canary deployment'' genannt. Die Auslieferungsstrategien werden dabei je nach Anforderungen ausgewählt und haben Vorzüge wie Ausfallsicherheit, Bewertung der ausgelieferten Änderung oder Skalierbarkeit der Zielsysteme.
 
-Da die konkrete Auslieferung auf die Bereiche ``Continuous Integration'' und ``Feature Branches'' nur begrenzt Einfluss hat, verweise ich an dieser Stelle auf die entsprechende Fachliteratur.
+Da die konkrete Auslieferung auf die Bereiche ``Continuous Integration'' und ``Feature-Branches'' nur begrenzt Einfluss hat, verweise ich an dieser Stelle auf die entsprechende Fachliteratur.
 
 \subsection{Validierung und Test}
 
@@ -222,18 +222,29 @@ Der GitHub-Workflow ist eine einfache Arbeitsweise, die auf Branches und manuell
 
 \subsection{Gitflow}
 
-Gitflow\footcite{nvie-git-branch-model} ist ein weiterer bekannter Workflow mit Git. Im Gegensatz zum simplen GitHub-Workflow liegt beim Gitflow der Schwerpunkt auf der Erstellung eines Releases, also einer Menge an Features. 
+Gitflow ist ein weiterer bekannter Workflow mit Git\footcite{nvie-git-branch-model}. Im Gegensatz zum simplen GitHub-Workflow liegt beim Gitflow der Schwerpunkt auf der Erstellung eines Releases, also einer Menge an Commits, häufig auch von verschiedenen Autoren.
 
-Gitflow unterscheidet wie viele andere Git-Arbeitsmodelle zwischen langlebigen und kurzlebigen Branches. Die langlebigen Branches sind hierbei ``master'' und ``development''. Der Master darfhierbei ausschließlich Release-Commits enthalten, also Commits, welche mit einem Tag referenziert werden.
+In Anlehnung an viele bekannte Modelle unterscheidet Gitflow zwischen Produktivzweig(master), außerplanmäßiger Anpassung(hotfix), Auslieferungszweig(release), Entwicklungszweig(development) und zahlreichen Feature- und Bug-Zweigen.
 
-\section{Feature Branches}
+Gitflow unterscheidet wie viele andere Git-Arbeitsmodelle zwischen langlebigen und kurzlebigen Branches. Die langlebigen Branches sind hierbei ``master'' und ``development''. Alle anderen Branches sind kurzlebige Branches(``supporting branches''), die immer erst erstellt werden, wenn sie notwendig sind und gelöscht werden, sobald sie ihren Zweck erfüllt haben.
 
-Feature Branches ist ein Kunstwortkombination aus der Vermischung von Feature, dem englischen Wort für Merkmal und Branch dem englisch Wort für Zweig, abgeleitet von der Verzweigung in einem Versionsverwaltungssystem. Die Idee hinter einem Feature Branch ist, dass für jedes neue Merkmal, beziehungsweise für jede neue Anforderung ein neuer Branch in der Versionsverwaltung erstellt wird. Ziel der Feature Branches ist die Isolierung von Änderungen, um die anderen Zweige nicht zu blockieren und Änderungen erst nach Test und Abnahme zusammen zu führen. Dabei sollen mehrere Änderungen parallel entwickelt werden können, ohne dabei zu einem bestimmten Zeitpunkt alle Änderungen in einen Hauptzweig übernehmen zu müssen.
+\begin{figure}[htbp]
+  \includegraphics[
+    width=\textwidth,
+    height=\textheight,
+    keepaspectratio
+  ]{resources/git-flow.pdf}
+  \caption{Gitflow-Workflow}
+  \label{git-flow}
+\end{figure}
+Der konkrete Arbeitsfluss wird in der Abbildung~\ref{git-flow} zusammengefasst. Es wird deutlich dass nur Commits von Release- und Hotfix-Branches auf den Master-Branch gelangen können. Desweiteren ist herauszustellen, dass nach der Erstellung des Release-Branches keine Änderungen mehr vom Development-Branch zugeführt werden. Diese Trennung der Änderungsflüsse führt dazu, dass bereits an neuen Themen gearbeitet werden kann, ohne dass der Release behindert wird. Des Weiteren ist klar geregelt, dass alle Features immer erst im Development-Branch integriert werden müssen.
+
+\section{Feature-Branches}
+
+Die Idee hinter einem Feature Branch ist, dass für jedes neue Merkmal, beziehungsweise für jede neue Anforderung ein neuer Branch in der Versionsverwaltung erstellt wird. Ziel von Feature-Branches ist die Isolierung von Änderungen, um die anderen Zweige nicht zu blockieren und Änderungen erst nach Test und Abnahme zusammen zu führen. Dabei sollen mehrere Änderungen parallel entwickelt werden können, ohne dabei zu einem bestimmten Zeitpunkt alle Änderungen in einen Hauptzweig übernehmen zu müssen.
 
 Prinzipiell ist diese Technik unabhängig von der verwendeten Versionsverwaltung, erhielt aber vor allem durch dezentrale Versionsverwaltungssysteme an Bedeutung. Der Grund dafür liegt in der deutlich einfacheren und weniger aufwändigen Erstellung von Branches und deren Zusammenführung.
 
 Feature Branching wird kontrovers diskutiert[quote martinfowler feature branch, quote Yegor Bugayenko, quote jamesmckay]. Dabei wird angemahnt, dass die Abspaltung in einen Zweig, das Problem der Zusammenführung von Codeänderungen nicht behebt, sondern verschlimmert. So wird der Aufwand, der benötigt wird um zwei Verzweigungen zusammen zuführen, potentiell immer höher, um so mehr Änderungen hinzukommen. Die Aufwandserhöhung kann soweit gehen, dass ein psychologischer Faktor hinzukommt, der die Entscheidung zur Zusammenführung weiter belastet. Diese Zusammenführung wird dann auch als ``big scary merge'' oder ``big bang merge'' bezeichnet.
 
-Kontrovers dazu wird die Blockade vermeidende Natur von Feature Branches hervorgehoben und die Angst vor dem ``big scary merge'' durch Entwicklerdisziplin und Automatisierung gemildert. Entwicklerdisziplin meint hier Feature Branches nur für kleine Änderungen zu verwenden und durch Hilfe von Automatisierung schnelle Rückmeldung über die Codequalität zu erhalten. Des Weiteren werden durch moderne ``pull based''[quote github about pull requests] Verzweigungsstratgien Entwickler dazu angehalten Codeprüfungen durch andere Entwickler einzufordern. Diese Lösungsstrategien werden in Kapitel~\ref{ch:visu_meth} weiterführend betrachtet.
-
-\section{Visualisierung von Graphen}
+Kontrovers dazu wird die hervorgehoben, dass Feature-Branches Blockaden im Arbeitsfluss vermeiden und die Angst vor dem ``big scary merge'' durch Entwicklerdisziplin und Automatisierung gemildert. Entwicklerdisziplin meint hier Feature-Branches nur für kleine Änderungen zu verwenden und durch Hilfe von Automatisierung schnelle Rückmeldung über die Codequalität zu erhalten. Des Weiteren werden durch moderne ``pull based''[quote github about pull requests] Verzweigungsstratgien Entwickler dazu angehalten Codeprüfungen durch andere Entwickler einzufordern. Diese Lösungsstrategien werden in Kapitel~\ref{ch:visu_meth} weiterführend betrachtet.
