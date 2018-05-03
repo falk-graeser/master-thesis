@@ -1,7 +1,49 @@
-\chapter{Visualisierung und Methodiken}
+\chapter{Methodiken und Visualisierung für Continuous Integration und Feature Branches}
 \label{ch:visu_meth}
 
+Im vorangegangenen Kapitel wurde dargelegt was Continuous-Integration und Feature-Branches sind und wie diese Techniken in der Softwareentwicklung angewendet werden. Zudem wurde angerissen, welche Schwierigkeiten mit der Verwendung dieser Techniken einhergehen und dementsprechend eine Lösung erfordern. 
+Die nachfolgenden Abschnitte sollen Lösungsansätze beleuchten und herausarbeiten welche Informationen gewonnen werden können, um die Lösungsfindung zu erleichtern.
 
+\section{Entwicklungs-Workflows}
+
+Kritik an Feature-Branches hängt an der Verwendung der Technik. Integration ist auch möglich ohne Trunk-Based-Development zu betreiben. Um Feature-Branches vollständig zu "ermächtigen" (wtf x'D) sind Techniken wie Virtualisierung, automatisches Bauen, Testabdeckung, Modularisierung, DependencyMgmt, Konfigurationsmgmt notwendig
+
+\subsection{Continuous Delivery und Feature Branches}
+
+Die automatische Erstellung der Software pro Feature Branch ist ein notwendiges Kriterium für die Bewertung der Einzeländerung.
+
+\subsubsection{Konfigurations- und Abhängigkeitsverwaltung}
+- regeln für konfig.mgmt
+- regeln für interne und externe abhängigkeiten
+- updatestrategien
+- konfigurationsstrategien
+\subsubsection{Virtualisierung}
+- Virtualisierung ermöglicht erst die Bewertung jedes Branches einzeln, sowie die Parallelisierung dieses Vorganges
+\subsection{Modularisierung von Software}
+- Modularisierung von Software durch strukturierte Anforderungen, Architektur, ermöglicht einfacheres zusammenführen von Feature-Branches
+\section{Automatisierten Wertschöpfung}
+\subsection{Metriken}
+\subsection{Automatisches Zusammenführen}
+\subsubsection{Fastforward-Merges}
+\subsubsection{Flüchtige Release-Branches}
+- Test ob Release gebaut werden kann (automatischer Merge von allen als Release-Fähig markierten Branches
+- Ermittelung von Konflikten
+- Ermittelung ob Test auch ohne Änderungen lauffähig
+\subsection{Automatisierte Erstellung von graphischen Übersichten}
+\subsubsection{Abhängigkeitsübersicht}
+- Darstellung von verwendeten Abhängigkeiten (intern und extern)
+- Ermittelung der Güte von Abhängigkeiten
+- Ermittelung von grenzwertigen Abhängigkeiten (deprecated, update verfügbar, sehr alt)
+\subsubsection{Branch-Übersicht}
+- Übersichtliche Branch-Darstellung mit Alter, Puls, Güte und Abhängigkeiten (abhäng. zu autom. Release-Erstellung)
+\subsubsection{Konfigurations- und Umgebungsübersicht}
+- Übersicht über alle erreichbaren Systeme und ihren Platz in der Build-Pipline / bzw mit System, und Stand / Güte
+\section{Entwicklerdisziplin - Faktor Mensch}
+- Testabdeckung
+- Einhaltung des Prozesses
+- Güte der Reviews
+- Projektdruck
+- Subjektive Bewertung von Prozess, Tools und Projekt
 
 \begin{itemize}
 \item Metriken um Branches zu beurteilen
@@ -11,9 +53,6 @@
 	\begin{itemize}
 		\item nur FastForward-Merges erlauben
 	\end{itemize}	 
-\item Buildautomatisierung
-\item Continuous Delivery
-\item Configuration Management
 \item verschiedene Sichten, u.a. Feature-Sicht mit Goals?
 \item packetverwaltung mit einbeziehen - sind packete outdated?
 \item "wervolle tests" - kopplung mit anforderungen - gherkin?
