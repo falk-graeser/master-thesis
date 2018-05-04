@@ -1,5 +1,7 @@
 \chapter{Problemanalyse}
 
+TODO: Abschnitt neu schreiben
+
 Die Zusammenführung der Arbeit von mehr als einem Entwickler ist ein komplexer und nicht trivialer Vorgang. \\
 Viele Teile eines Softwareprojektes beeinflussen andere und häufig werden an Schnittstellen in Programmen Änderungen von mehreren Entwicklern vorgenommen. \\
 Es muss sichergestellt werden, dass die Änderungen zusammengeführt werden können und dass das Ergebnis syntaktisch und semantisch korrekt ist, sowie den Anforderungen entspricht.
@@ -17,26 +19,44 @@ Die Gründe für diese Schwierigkeiten sind häufig in kein homogenes Bild zu br
 
 \section{Vorgehensmodelle}
 
-Um komplexe Software in einer strukturierten und definierten Herangehensweise zu erstellen, wurden ausführlich beschriebene und wohl definierte Vorgehensmodelle definiert. Ziel war eine klare Schrittfolge mit eindeutigen Zielstellung, wie man es aus anderen Ingenieursdisziplinen gewohnt war. 
+Um komplexe Software in einer strukturierten und definierten Herangehensweise zu erstellen, wurden ausführlich
+beschriebene und wohl definierte Vorgehensmodelle erarbeitet. Deren Ziel ist es eine klare Schrittfolge mit 
+eindeutigen Zielstellungen vorzugeben. Diese Schritte gliedern den komplizierten und komplexen Entwicklungsprozess 
+in klar abgegrenzte und bewertbare Abschnitte. 
 
-Die daraus entstehenden Modell hielten sich meist an eine klare Folge aus Planungsphase,  Konzeptions-, Implementierungs-, Test- und Abnahmephase. Beispiele sind hier das Wasserfallmodell und das V-Modell. Gerade in bereichen höchster Sicherheit und einer starken Bindung an bürokratische Strukturen wird auch heute noch das V-Modell erfolgreich eingesetzt[quote Referenz Bund?].
+Die bekanntesten Vorgehensmodelle halten sich an eine klare Folge aus Planungs-,\\ Konzeptions-, Implementierungs-, 
+Test- und Abnahmephase. Durch die klare Trennung der Phasen werden diese Modelle auch statische Vorgehensmodelle genannt.
+Beispiele sind hier das Wasserfallmodell[quote Wasserfallmodell] und das V-Modell[quote V-Modell]. Insbesondere in
+Bereichen mit hohen Sicherheitsanforderungen und einer starken Bindung an bürokratische Strukturen wird auch heute noch
+das V-Modell erfolgreich eingesetzt[quote Referenz Bund].
 
-Mit der komplexität einer Software steigt in der Regel auch der Umsetzungsaufwand und die damit verbunden Zeit. Durch die klare Phasenteilung in den klassischen Vorgehensmodellen, kann daher von der Anforderungsaufnahme bis zu Auslieferung einiges an Zeit verstreichen. Nicht selten ändern sich allerdings Anwendungsszenarien und Benutzeranforderungen an das entstehende System. Eine weitere Schwierigkeit ist die Prüfung der Umsetzung von Anforderungen. Sollte die Umsetzung einer Anforderung, zum Beispiel durch ungenaue oder mehrdeutige Angaben, nicht den Maßgaben des Tests entsprechen, vergehen Wochen oder Monate bis diese Diskrepanz aufgedeckt wird.
+Mit der Komplexität einer Softwareanwendung steigt ihr Umsetzungsaufwand. Dieser zusätzliche Aufwand teilt sich in
+statischen Vorgehensmodellen in die einzelnen Phasen auf. Bei besonders umfangreichen Softwareprojekten entsteht daher
+eine signifikante zeitliche Diskrepanz zwischen den Phasen der Anforderungsaufnahme und deren Umsetzung. 
+Zudem ist der Vorgang der Anforderungsaufnahme ohnehin schwierig ist und kann nur schwer auf Vollständigkeit geprüft
+werden. Diese beiden Faktoren erhöhen das Risiko eine fehlerhafte Softwareanwendung zu erstellen. Aus der hohen Dauer der
+einzelnen Phasen ergibt sich zudem eine hohe Reaktionszeit um fehlerhaft umgesetzte Anforderungen zu korrigieren.
 
-Immer wieder kam es daher zu unbefriedigenden oder sogar gescheiterten Softwareprojekten. Gerade bei komplexen Softwaresystem mit einem entsprechenden Umsetzungsaufwand, ist der Schaden dann sehr hoch.
+Ein Projekt zur Umsetzung einer komplexen Softwareanwendung benötigt ein umfangreiches Risikomanagement, um Folgekosten 
+zu verringern.
 
-Um diesen Schaden zu minimieren entwickelte sich eine alternative Herangehensweise, welche vor allem Interaktion, Funktionalität, Kundenorientierung und Veränderungsbereitschaft als wichtig erachtet. Festgehalten im Agilen Manifest[quote manifest] proklamierten viele bekannte und angesehene Softwareexperten ihren Willen Softwareprojekte grundsätzlich anders zu fokussieren.
+Um den Aufwand für das Risikomanagement und die Folgekosten zu minimieren entwickelte sich eine alternative
+Herangehensweise, welche vor allem Interaktion, Funktionalität, Kundenorientierung und Veränderungsbereitschaft als
+wichtig erachtet. Festgehalten im Agilen Manifest[quote manifest] proklamierten viele bekannte und angesehene
+Softwareexperten ihren Willen Softwareprojekte grundsätzlich anders zu fokussieren.
 
-Beeinflusst von der Lean-Bewegung aus der Automobil-Fertigungsindustrie\footcite{kent1999} wollte man die Produktivität deutlich steigern und aus den bürokratisch anmutenden Vorgehensmodellen ausbrechen.
+Beeinflusst von der Lean-Bewegung aus der Automobil-Fertigungsindustrie\footcite{kent1999} wurden die abgegrenzten Phasen 
+in den statischen Vorgehensmodellen in Frage gestellt. Hohe Eigenverantwortung und kurze Kommunikationszyklen sind die 
+Basis des neuen Vorgehens.
 
-Das Agile Manifest stellt hohe Ansprüche an Entwickler und erzwingt ein Umdenken im Umgang mit dem Projektprozess. Während in traditionellen Vorgehensmodellen jede Phase eine längere zeitliche Periode einnimmt, so werden diese Phasen und Zeiträume in agilen Vorgehen deutlich verkürzt, um damit einhergehende Informationsflüsse deutlich zu beschleunigen.
-Diese kurzen Zeiträume und damit einhergehenden vielen Iterationen geben kontinuierlich und schnell Auskunft über den Zustand eines Projektes. Außerdem wird es einfacher zu erkennen, welche Schritte tatsächlich wertvoll sind und welche Schritte dem Projektfortschritt eher abträglich sind. 
+Die Prinzipien des ``Agilen Manifestes'' stellen hohe Ansprüche an Entwickler und erzwingen ein Umdenken im Umgang mit dem Projektprozess. Während in den statischen Vorgehensmodellen jede Phase eine längere zeitliche Periode einnimmt, so werden diese Phasen in agilen Vorgehen deutlich verkürzt und verschwimmen teilweise. Dadurch werden Kommunikationszyklen verkürzt und Informationsflüsse deutlich beschleunigt.
+Durch die schnellere Zyklen sinkt die benötigte Zeit zur Reaktion auf Probleme und Hindernisse. Damit ist es möglich kontinuierlich und zeitnah Verbesserungen für den Entwicklungsprozess und die Softwareanwendung einzubringen. 
 
-Oberstes Ziel hierbei ist die Lieferung von ``wertvoller'' Software, also die Einschätzung der Anforderungen mit den Stakeholdern und priorisierte Lieferung dieser Anforderungen.
+Agile Vorgehensmodelle und Techniken aus der Lean-Bewegungen setzen stark auf eine Arbeitseinteilung anhand von Produktmerkmalen(Features)[quote Scrum, quote Kanban]. Der von der agilen Bewegung angestrebte starke Produktfokus und die kurzen Iterationen vereinfachen die Bewertung des Projektprozesses und der verwendeten Hilfsmittel.
 
-Dieses Vorgehen führt automatisch dazu, dass frühzeitig deutlich wird, ob die richtigen Anforderungen als wichtig erkannt wurden und welche Anforderungen implizit angenommen und daher im verborgenen lagen.
+Der hohe Fokus auf Produktmerkmale und das Prinzip zur frühen und kontinuierlichen Auslieferung von wertvoller Software\footcite{agile-manifest-principles} helfen die Akzeptanz für die Software zu steigern. Außerdem können falsch interpretierte Anforderungen früher erkannt werden. 
 
-Ein weiterer Aspekt ``wertvoller'' Software ist ihre Funktionalität. Diese sicherzustellen in einer kontinuierlichen Auslieferung erfordert ein hohes Maß an Qualitätssicherung. Schon sehr früh im Entwicklungsprozess eines iterativ wachsenden Systems wird deutlich, dass keine menschliche Resource mehr im Stande ist, alle Anforderungen mit jeder Auslieferung zu testen und die Qualität sicherzustellen. Die Automatisierung dieser Tests ist somit unausweichlich.
+Um die Umsetzung der Anforderungen zu prüfen benötigt es eine Qualitätssicherung. Für komplexe Softwareanforderungen ist die Prüfung der Anforderungen mit sehr hohem Aufwand verbunden, wenn sie manuell ausgeführt wird. Um Anforderungen automatisiert zu prüfen, müssen diese abstrakt formuliert werden. Der damit verbundene Aufwand steigt, wenn sich die Anforderungen häufig ändern. Dies sollte in einer Strategie für die Qualitätssicherung beachtet werden. 
 
 \section{Qualitätssicherung und Softwaretest}
 
