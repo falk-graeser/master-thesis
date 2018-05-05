@@ -174,11 +174,11 @@ und Pakete zu organisieren empfiehlt sich eine Abhängigkeitsverwaltung. Diese l
 von Versionsnummern. Dadurch lassen sich Schwierigkeiten unter den Abhängigkeiten leichter erkennen und Versionsupdates 
 entsprechend der Abhängigkeiten vornehmen.
 
-Für die automatisierte Erstellung der Softwareanwendung ist es erforderlich, ähnlich wie bereits bei der
-Versionsverwaltung, ein eindeutiges Abhängigkeitsnetz zu beschreiben. Zum Auflösen der Abhängigkeiten werden meist
-mehrdeutige Ausdrücke verwendet werden, die eine Bandbreite an Versionen der Abhängigkeiten erlauben. Wird die Anwendung
-erstellt und Ausgeliefert, sollte allerdings eindeutig sein, welche Abhängigkeiten verwendet werden. Daher werden in
-vielen Packetverwaltungen diese Informationen in einre Lock-Datei festgehalten. Es wird zudem angeraten diese Datei in
+Für die automatisierte Erstellung der Softwareanwendung ist es erforderlich, ähnlich wie bereits bei der 
+Versionsverwaltung, ein eindeutiges Abhängigkeitsnetz zu beschreiben. Zum Auflösen der Abhängigkeiten werden meist 
+mehrdeutige Ausdrücke verwendet werden, die eine Bandbreite an Versionen der Abhängigkeiten erlauben. Wird die Anwendung 
+erstellt und Ausgeliefert, sollte allerdings eindeutig sein, welche Abhängigkeiten verwendet werden. Daher werden in 
+vielen Packetverwaltungen diese Informationen in einre Lock-Datei festgehalten. Es wird zudem angeraten diese Datei in 
 die Versionkontrolle aufzunehmen.\footcite{composer-why-lock-in-vcs}
 
 \subsection{Automatisierte Erstellung und Auslieferung}
@@ -217,7 +217,7 @@ manuell angestoßene Auslieferung, bei der der Zeitpunkt der Auslieferung davon 
 oder automatisiert-moderierte Script ausgeführt wird. Eine Andere ist die vollautomatisierte Auslieferung, hier wird der 
 Zeitpunkt lediglich von der Durchlaufzeit einer Änderung durch die Qualitätskontrolle bestimmt.
 Des Weiteren werden unterschiedliche Auslieferungsstrategien (``deployment strategies'') unterschieden, es seien an 
-dieser Stelle nur exemplarisch das ``blue green deployment'' und das ``canary deployment''\footcite[261-264][]
+dieser Stelle nur exemplarisch das ``blue green deployment'' und das ``canary deployment''\footcite[261-264 Deploying and Releasing Applications][]
 {humble2010} genannt. Die Auslieferungsstrategien werden dabei je nach Anforderungen ausgewählt und haben Vorzüge wie 
 Ausfallsicherheit, Bewertung der ausgelieferten Änderung oder Skalierbarkeit der Zielsysteme.
 
@@ -226,21 +226,38 @@ werden Continuous-Deployment Strategien nicht weiter betrachtet.
 
 \subsection{Validierung und Test}
 
-Die Validierung einer Software ist ein unglaublich komplexes Unterfangen. Die vollständige Richtigkeit eines Programmes zu beweisen, scheitert bereits bei kleinen Anwendungen, da die Programmkomplexität schlicht zu schnell steigt. Zudem können nur Teile validiert und getestet werden, welche im Vorfeld bestimmt worden sind. Unklare, mehrdeutige oder fehlende Anforderung machen einen Test unvollständig oder nehmen im die Aussagekraft[quote software quali p243 kap4.6].
+Die Validierung einer Software ist ein unglaublich komplexes Unterfangen. Die vollständige Richtigkeit eines Programmes 
+zu beweisen, scheitert bereits bei kleinen Anwendungen, da die Programmkomplexität mit ihrem Umfang stark steigt. Zudem 
+können nur Teile validiert und getestet werden, welche im Vorfeld bestimmt worden sind. Unklare, mehrdeutige oder 
+fehlende Anforderung machen einen Test unvollständig oder nehmen dem Test die Aussagekraft\footcite[S. 243 Kapitel 4.6][]{software-quality2008}.
 
-Da eine Software nicht vollständig getestet werden kann, muss eine Strategie gewählt werden, welche Tests verwendet werden und mit welchem Ziel. Zudem können Metriken gewählt werden, die eine Aussage über die Testvollständigkeit liefern können. Bei der Entscheidung welche Strategie gewählt wird, fallen verschiedene Kriterien ins Gewicht. Zum einen muss betrachtet werden, welche Anforderungen mit welchem Testverfahren getestet werden können, zum anderen welche Granularität für jeden Test verwendet wird.
+TODO: einfügen komplexitätstheorie gedumsel
 
-Insbesondere in der automatisierten Erstellung sind diese Entscheidungen wichtig, da sie eine Basis liefern für die Aussage, wie schnell die Testsammlung ausgeführt werden kann. Und damit einhergehend, wie schnell kann eine Aussage getroffen werden, ob ein Inkrement der Software valide ist. 
-Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung, jeder Fehler der nicht von der Testsammlung erfasst wurde, muss spätestens nach der Beseitigung des Fehlers auch durch die Testsammlung validiert werden. Diese Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests [quote software quali].
+Da eine Software nicht in verhältnismäßiger Zeit getestet werden kann, muss eine Strategie gewählt werden. Es muss 
+bestimmt werden welche Teile der Anwendung getestet werden. Zudem können Metriken gewählt werden, die eine Aussage über 
+die Testvollständigkeit liefern können. Die Testvollständigkeit, auch Testabdeckung genannt, wird gemessen durch die 
+Nachverfolgung, welche Teile beim Test durchlaufen werden. Bei der Entscheidung welche Strategie gewählt wird, fallen 
+verschiedene Kriterien ins Gewicht. Zum einen muss betrachtet werden, welche Anforderungen mit welchem Testverfahren 
+getestet werden können. Zum anderen welche Granularität für jeden Test verwendet wird.
+Je nachdem welche Strategie gewählt wird, hat dies Auswirkungen auf die Ausführungszeit der Tests. Diese Zeit wirkt sich 
+direkt auf die Produktivität des Entwicklungsteams aus. Ohne die Testresultate kann kaum eine Aussage über die 
+Funktionsfähigkeit der Anwendung getroffen werden. Damit ist die Freigabe einer Softwareanwendung oder eines Inkrementes 
+der Anwendung direkt von der Durchlaufgeschwindigkeit der Tests abhängig.
 
-Da Tests und Metriken die einzigen Möglichkeiten sind um automatisch Einschätzungen der Software vorzunehmen, werden diese Bereiche erneut im Kapitel~\ref{ch:visu_meth} aufgegriffen und näher auf deren Wertschöpfung eingegangen.
+Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung, jeder Fehler der nicht von der Testsammlung 
+erfasst wurde, muss spätestens nach der Beseitigung des Fehlers auch durch die Testsammlung validiert werden. Diese 
+Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests\footcite{software-quality2008}.
+
+Da Tests und Metriken die einzigen Möglichkeiten sind um automatisch Einschätzungen der Software vorzunehmen, werden 
+diese Bereiche erneut im Kapitel~\ref{subsec:auto-values-metrics} aufgegriffen und näher auf deren Wertschöpfung 
+eingegangen.
 
 \section{Continuous Integration}
 
 Continuous Integration wurde sehr treffend beschrieben \footcite{fowler2006}
 \blockquote {Continuous Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible.}
 
-Continuous Integration wurde erstmal von Kent Beck als Teil einer Reihe von Praktiken des Entwicklungsvorgehens ``Extreme Programming''\footcite{kent1999} beschrieben. Die Idee die Integration von Codeständen zu fördern, in dem man die Entwickler anhält ihre Änderungen täglich oder häufiger abzugleichen und durch einen automatisierten Vorgang als lauffähig zu beweisen. Damit konnten Fehler zum Zeitpunkt des Auftretens gefunden werden, insbesondere Fehler, welche erst durch die Integration mit den Änderungen anderer Entwickler auftreten. Damit fordert Continuous Integration zugleich auch eine aussagekräftige Testabdeckung mit automatischen Tests und dass Entwickler einen entdeckten Fehler direkt beheben, da sonst alle anderen Teammitglieder behindert werden.
+Continuous Integration wurde erstmal von Kent Beck als Teil einer Reihe von Praktiken des Entwicklungsvorgehens ``Extreme Programming''\footcite{kent1999} beschrieben. Die Idee die Integration der einzelnen Entwickler-Codeständen zu fördern, in dem man die Entwickler anhält ihre Änderungen täglich oder häufiger abzugleichen und durch einen automatisierten Vorgang als lauffähig zu beweisen. Damit konnten Fehler zum Zeitpunkt des Auftretens gefunden werden, insbesondere Fehler, welche erst durch die Integration mit den Änderungen anderer Entwickler auftreten. Damit fordert Continuous Integration zugleich auch eine aussagekräftige Testabdeckung mit automatischen Tests und dass Entwickler einen entdeckten Fehler direkt beheben, da sonst alle anderen Teammitglieder behindert werden.
 
 Die Arbeitsweise alle Änderungen auf einem Zweig zu vereinen und kontinuierlich zu vereinigen, wird auch Trunk-Based-Development genannt. Während Continuous Integration und Trunk-Based-Development als getrennte Methodiken geführt werden\footcite{trunkbaseddevelopment}, so werden sich doch häufig in Kombination oder synonym verwendet\footcite{fowler-feature-branch}.
 
