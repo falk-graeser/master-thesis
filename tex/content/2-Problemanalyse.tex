@@ -297,7 +297,26 @@ Entwicklerdisziplin erneut aufgegriffen und auf die Gratwanderung von gesunder E
 
 \section{Virtualisierung}
 
+Im Kapitel ~\ref{sec:automation-software}~\nameref{sec:automation-software} wurden bereits Stärken von Virtualisierung 
+genannt. Gerade bei der vollautomatisierten Bereitstellung von System können Stärken der Virtualisierung genutzt werden.
 
+Virtualisierung bietet eine Abstraktionsschicht für verschiedene Komponenten. Dies ermöglicht Abhängigkeiten zu Hardware, 
+Software und deren Konfiguration transparent zu gestalten. Der unter Programmierern bekannte Spruche ``It works on my 
+machine'' verdeutlicht das Problem. Häufig benötigen Komponenten einer Softwareanwendung andere Anwendungen um lauffähig 
+zu sein. Abhängigkeiten zum Betriebssystem, zu Software von Drittanbietern oder zu Hardwarekomponenten sind Bestandteil 
+vieler Softwareanwendungen. Im Verlauf der Anwendungsentwicklung ist es daher wichtig diese Abhängigkeiten zu 
+beschreiben. Zudem ist es immer wieder notwendig alle Abhängigkeiten in Form eines Systems zur Verfügung zu stellen.
+
+Die manuelle Bereitstellung diese Systeme ist aufwändig und verzögert damit zusammenhängende Entwicklungsabläufe. Eine 
+automatisierte Erstellung und Bereitstellung der benötigten Systeme ist daher empfehlenswert. Um unerwartetes Verhalten 
+der auf den Systemen ausgeführten Anwendungen zu vermeiden, sollten die Systeme vollständig beschrieben sein. Die 
+automatische Generierung der virtuellen Umgebung und die Ablage in gepackter Form in einem Archiv bietet weitere 
+Vorteile. Der Zugriff auf die Virtualisierung und damit die Bereitstellung der Systeme wird dadurch besonders transparent 
+und wenig aufwändig.
+
+\subsection{Virtualisierung mit Docker}
+
+ 
 
 \section{Dezentrale Versionierung mit Git}
 
