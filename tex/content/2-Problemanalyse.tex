@@ -111,15 +111,12 @@ anderen Merkmalen, zum Beispiel in der Ablage der Quellen und deren Änderungen,
 Einfluss auf die Verwendung im Softwareentwicklungsprozess.
 
 \paragraph{Zentrale Versionsverwaltungssysteme} folgen dem ``single point of truth'' Prinzip. Es existiert nur ein 
-zentraler Punkt auf dem alle Versionstände gespeichert werden. Dies ermöglicht einen einfachen Kontrollfluss und führt
-nur zu geringfügigen Abweichungen unter allen beteiligten Entwicklern. Damit einhergehend ist eine Übersicht aller
-Änderungen problemlos möglich.
+zentraler Punkt auf dem alle Versionstände gespeichert werden. Dies ermöglicht einen einfachen Kontrollfluss und führt nur zu geringfügigen Abweichungen unter allen beteiligten Entwicklern. Damit einhergehend ist eine Übersicht aller Änderungen problemlos möglich.
 
 Nachteil dieser Variante ist häufig der initiale Aufwand, da eine zentrale Komponente bereitgestellt werden muss. Zudem 
 sind zentrale Systeme generell störanfälliger und weniger Ausfallsicher. Der Vorteil des ``single point of truth'' führt 
 auch zum Nachteil des ``single point of failure'', wodurch Probleme alle Teilnehmer gleichzeitig betreffen.
-Je nach verwendeter Versionierungsstrategie kann es zudem zu einer zentralen Sperrung einzelner Bereiche der
-Softwarequellen kommen, wenn diese für eine exklusive Bearbeitung gesperrt werden.
+Je nach verwendeter Versionierungsstrategie kann es zudem zu einer zentralen Sperrung einzelner Bereiche der Softwarequellen kommen, wenn diese für eine exklusive Bearbeitung gesperrt werden.
 
 \paragraph{Dezentrale Versionsverwaltungssysteme} benötigen im Gegensatz keine zentrale Instanz und können problemlos in 
 einem losen Verbund von Einzelsystemen betrieben werden. 
@@ -186,18 +183,46 @@ die Versionkontrolle aufzunehmen.\footcite{composer-why-lock-in-vcs}
 
 \subsection{Automatisierte Erstellung und Auslieferung}
 
-Der an sich triviale Schritt, der Erstellung (Build) einer Anwendung, birgt gewisse Tücken. So kann die Ausführung eines komplexen Erstellungsskriptes einen sehr langen Zeitraum in Anspruch nehmen und ein besonders kompliziertes Skript kann die Arbeit damit intransparent gestalten und das Entwicklungsverhalten deutlich benachteiligen. [quote paper] Werden bei einem Erstellungsskript Aspekte der vorangegangen Abschnitte zu Versions-, Konfigurations- und Abhängigkeitsverwaltung nicht berücksichtigt, können zudem inkonsistente und damit nicht wiederholbare Resultate erzeugt werden. Diese können leicht zu schwer oder nicht auffindbaren Fehlern führen.
+Der an sich triviale Schritt, der Erstellung (Build) einer Anwendung, kann je nach zu Anwendung unerwartet 
+Schwierigkeiten führen. So kann die Ausführung eines komplexen Erstellungsskriptes einen sehr langen Zeitraum in Anspruch 
+nehmen. Und ein besonders kompliziertes Skript kann die Arbeit damit intransparent gestalten und Anpassungen massiv 
+erschweren\footcite{ci-is-not-build-systems}. Werden bei einem Erstellungsskript Aspekte der vorangegangen Abschnitte zu 
+Versions-, Konfigurations- und Abhängigkeitsverwaltung nicht berücksichtigt, können zudem inkonsistente und damit nicht 
+wiederholbare Resultate erzeugt werden. Diese können zu schwer oder nicht auffindbaren Fehlern führen.
 
-Ziel bei der Erstellung eines Erstellungsskriptes ist es folglich einen konsistenten und transparenten Ablauf zu befolgen. Dies wird unter anderem durch die korrekte Versionsverwaltung der einzelnen Komponenten, Konfigurationen und Abhängigkeiten erreicht. Mit diesen Informationen können erstellte Produkte, auch ``build artifacts'' oder Artefakte genannt, in einem zentralen Artefakt-Lager abgelegt werden. Dies gewährleistet sowohl einen schnellen Zugriff auf Teilartefakte, als auch einen konsistentes Ergebnis bei der Erstellung der Auslieferung.
+Ziel bei der Erstellung eines Erstellungsskriptes ist es folglich einen konsistenten und transparenten Ablauf zu 
+befolgen. Dies wird unter anderem durch die korrekte Versionsverwaltung der einzelnen Komponenten, Konfigurationen und 
+Abhängigkeiten erreicht. Mit diesen Informationen können erstellte Produkte, auch ``build artifacts'' oder Artefakte 
+genannt, in einem zentralen Artefakt-Lager abgelegt werden. Dies gewährleistet sowohl einen schnellen Zugriff auf 
+Teilartefakte, als auch einen konsistentes Ergebnis bei der Erstellung der Auslieferung.
 
-Die Auslieferung der Software ist direkt mit der Erstellung verwoben. Bei jeder Auslieferung muss sichergestellt werden, dass Software auf dem entsprechenden Zielsystem auch lauffähig ist und dass sie richtig konfiguriert ist für das Zielsystem. Ein vollständiges Konfigurationsmanagement beschreibt die Systemabhängigkeiten und sorgt folglich für die korrekte Auslieferung der richtigen Artefakte.
+Die Auslieferung der Software ist direkt mit der Erstellung verwoben. Die Verfügbarkeit aller Abhängigkeiten auf dem 
+Zielsystem und die richtige Konfiguration aller Anwendungsbestandteil ist notwendig für die Lauffähigeit der Software. 
+Ein vollständiges Konfigurationsmanagement beschreibt die Systemabhängigkeiten und sorgt folglich für die korrekte 
+Auslieferung der richtigen Artefakte.
 
-Sowohl bei der Erstellung, als auch bei der Auslieferung ist insbesondere auf eine vollständige Beschreibung und die Einhaltung dieser zu achten. Gerade auf Entwicklungssystemen können Abhängigkeiten vorhanden sein, welche zwar für die Funktionalität der Anwendung sorgen, allerdings nicht beschrieben wurden. Bei der Auslieferung auf andere Systeme können diese ``Schattenabhängigkeiten'' dann zu erwartetem Verhalten oder Abstürzen führen. Ein sehr kontrollierter Ausweg aus dem Dilemma von mehrfach genutzten Entwicklungsumgebungen bietet die Virtualisierung der verwendeten Systeme. Wie bereits für Softwareabhängigkeiten der Anwendung beschrieben, können diese Virtualisierungen als Artefakte bereitgestellt werden und unterstützen Konsistenz, Transparenz sowie Skalierbarkeit[quote virtualiserung mit docker].
+Sowohl bei der Erstellung, als auch bei der Auslieferung ist insbesondere auf eine vollständige Beschreibung der 
+notwendigen Schritte zu achten. Gerade auf Entwicklungssystemen können Abhängigkeiten vorhanden sein, welche zwar für die 
+Funktionalität der Anwendung sorgen, allerdings nicht beschrieben wurden. Bei der Auslieferung auf andere Systeme können 
+diese ``Schattenabhängigkeiten'' dann zu unerwartetem Verhalten oder Abstürzen führen. 
+Auch an dieser Stelle bietet sich die Virtualisierung der verwendeten Systeme an. Dadurch kann sichergestellt werden, 
+dass die Anwendung immer unter den gleichen, richtigen Bedingungen ausgeführt wird. Wird die Virtualisierungsumgebung 
+voll automatisch erstellt, ist zudem gesichert, dass alle Abhängigkeiten beschrieben sein müssen.
+Abschließend können diese Umgebungen archiviert und zusammen mit der Programmversion abgelegt werden. Dies unterstützt 
+die Konsistenz, Transparenz sowie Skalierbarkeit[quote virtualiserung mit docker] des Entwicklungsprozesses für die 
+Anwendung.
 
-Bei der Auslieferung der Software können grob zwei Stufen der Automatisierung unterschieden werden. Eine Stufe ist die manuell angestoßene Auslieferung, bei der der Zeitpunkt der Auslieferung davon bestimmt wird, wann das automatisierte oder automatisiert-moderierte Script ausgeführt wird. Eine Andere ist die vollautomatisierte Auslieferung, bei der der Zeitpunkt lediglich von der Durchlaufzeit einer Änderung durch die Qualitätskontrolle bestimmt wird.
-Des weiteren werden unterschiedliche Auslieferungsstrategien (``deployment strategies'') unterschieden, es seien an dieser Stelle nur exemplarisch das ``blue green deployment'' und das ``canary deployment'' genannt. Die Auslieferungsstrategien werden dabei je nach Anforderungen ausgewählt und haben Vorzüge wie Ausfallsicherheit, Bewertung der ausgelieferten Änderung oder Skalierbarkeit der Zielsysteme.
+Bei der Auslieferung der Software können grob zwei Stufen der Automatisierung unterschieden werden. Eine Stufe ist die 
+manuell angestoßene Auslieferung, bei der der Zeitpunkt der Auslieferung davon bestimmt wird, wann das automatisierte 
+oder automatisiert-moderierte Script ausgeführt wird. Eine Andere ist die vollautomatisierte Auslieferung, hier wird der 
+Zeitpunkt lediglich von der Durchlaufzeit einer Änderung durch die Qualitätskontrolle bestimmt.
+Des Weiteren werden unterschiedliche Auslieferungsstrategien (``deployment strategies'') unterschieden, es seien an 
+dieser Stelle nur exemplarisch das ``blue green deployment'' und das ``canary deployment''\footcite[261-264][]
+{humble2010} genannt. Die Auslieferungsstrategien werden dabei je nach Anforderungen ausgewählt und haben Vorzüge wie 
+Ausfallsicherheit, Bewertung der ausgelieferten Änderung oder Skalierbarkeit der Zielsysteme.
 
-Da die konkrete Auslieferung auf die Bereiche ``Continuous Integration'' und ``Feature-Branches'' nur begrenzt Einfluss hat, verweise ich an dieser Stelle auf die entsprechende Fachliteratur.
+Die konkrete Auslieferung hat auf die Bereiche Continuous-Integration und Feature-Branches nur begrenzt Einfluss. Daher 
+werden Continuous-Deployment Strategien nicht weiter betrachtet.
 
 \subsection{Validierung und Test}
 
