@@ -132,20 +132,23 @@ entsteht ein Mehraufwand bei der Koordinierung der Einzelsysteme.
 \subsection{Konfigurationsverwaltung}
 \label{subsec:konfigurationsverwaltung}
 
-Konfigurationsverwaltung ist eine wichtige Basis für die automatisierte Erstellung eines Softwareprojektes. Sie definiert wie alle Artefakte in einem Softwareprojekt orchestriert werden. Im Detail wird dabei Erstellung, Identifikation, Validierung und Ablage geregelt. Neben den Projekteigenen Artefakten müssen aber auch deren Umgebung genau definiert sein. \footcite{humble2010}
+Konfigurationsverwaltung ist eine wichtige Basis für die automatisierte Erstellung eines Softwareprojektes. Sie definiert 
+wie alle Teilstücke, auch Artefakte genannt, in einem Softwareprojekt miteinander interagieren. Im Detail wird dabei 
+Erstellung, Identifikation, Validierung und Ablage geregelt. Die Definition und Konfiguration der Ausführungsumgebung der 
+Artefakte ist ebenso ein Teil des Konfigurationsmanagement. \footcite{humble2010}
 
-Ein lockerer Umgang mit der Konfigurationsverwaltung kann gerade zu Anfangs ohne nennenswerte Folgen einhergehen. Spätestens aber während der Reifung und Alterung eines Softwareprojektes sind Folgen deutlich zu spüren. Gerade wenn sich unbemerkt die Version oder Konfiguration der Software eines Drittanbieters ändert, kann dies zu sehr schwer zu identifizierbaren Problemen führen. In anderen Fällen reicht es allerdings auch, wenn sich die Konfiguration zwischen Entwicklungs- und Produktivumgebung leicht unterscheidet. Auch hier können damit zusammenhängende Fehler unnötig viel Zeit in Anspruch nehmen.
+Ein lockerer Umgang mit der Konfigurationsverwaltung kann gerade zu Beginn eines Projektes ohne nennenswerte Folgen einhergehen. Spätestens aber während der Weiterentwicklung der Softwareanwendung sind Folgen deutlich zu spüren. Hierbei wird auch von der Alterung des Softwaresystem gesprochen.\footcite{software-quality2008}. Gerade wenn sich unbemerkt die Version oder Konfiguration der Software eines Drittanbieters ändert, kann dies schwer zu identifizierende Probleme nach sich ziehen. In anderen Fällen reicht es allerdings auch, wenn sich die Konfiguration zwischen Entwicklungs- und Produktivumgebung leicht unterscheidet. Konfigurations- und Abhängigkeitsfehler können leicht einen sehr hohen Behebungsaufwand verursachen.
 
 Im Idealfall kann eine vollständige Konfigurationsverwaltung:
 \begin{itemize}
-\item eine Umgebung bereitstellen, die genau definiert welches Betriebssystem, in welcher Version, installiert ist und welche Anwendungen, mit welcher Konfiguration, darauf liegen
-\item auf jeder Umgebung jeden dieser Bestandteile einzeln inkrementell verändern und diese Änderungen auch synchronisiert bereit stellen.
+\item eine Umgebung bereitstellen, die genau definiert welches Betriebssystem, in welcher Version, installiert ist und welche Anwendungen installiert und wie konfiguriert sind.
+\item auf jeder Umgebung jeden dieser Bestandteile einzeln inkrementell verändern und diese Änderungen über alle Systeme synchronisieren.
 \item alle Änderungen mit Zeitpunkt und Verursacher einfach darstellen
 \item Sicherheitsregeln und Konventionen über alle Systeme sicherstellen
 \item alle diese Funktionalitäten barrierefrei dem Entwicklungsteam zur Verfügung stellen
 \end{itemize}
 
-Alle Forderungen sind sicherlich nicht immer Notwendig, sorgen aber dafür, dass Projekte langfristig, mit geringem Aufwand betreut werden können. Zudem wird deutlich, dass Virtualisierung und Versionsverwaltung[quote cont.deliv] der entsprechenden Komponenten den einhergehenden Aufwand deutlich verringern können.
+Alle Forderungen sind immer Notwendig, helfen allerdings erheblich bei der Wartung und Betreuung der einzelnen Systeme. Eine Virtualisierung der Systeme und eine Versionsverwaltung der zugehörigen Konfiguration und Scripte ist ebenfalls hilfreich. Ein solches System kann gut Skalieren und ist mit geringen Aufwand zu handhaben.\footcite{humble2010}
 
 \subsection{Abhängigkeitsverwaltung}
 
