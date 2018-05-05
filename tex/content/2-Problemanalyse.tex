@@ -60,43 +60,43 @@ Um die Umsetzung der Anforderungen zu prüfen benötigt es eine Qualitätssicher
 
 \section{Qualitätssicherung und Softwaretest}
 
-Die Qualitätssicherung einer Software muss als oberste Prämisse sicherstellen, dass alle Anforderungen erfüllt sind und dass die Anforderungen auch erfüllt bleiben. Nicht selten führen Neuerungen in einer Software dazu, dass bereits bestehenden Funktionalität beeinträchtigt wird. 
-Aufbauend auf der Annahme, dass alle notwendigen Anforderungen beschrieben sind, müssen diese in unterschiedlichen Ebenen überprüft und sichergestellt werden.
-Diese Ebenen richten sich danach welche Anforderungen und damit verbundenen Merkmale geprüft werden müssen, aber auch danach wie komplex die damit verbundene Prüfung ist.
+Die Erfüllung der Anforderungen an eine Softwareanwendung sollte durch eine Strategie der Qualitätssicherung sichergestellt sein. Da jede Änderung an der Software die Erfüllung der Anforderungen beeinträchtigen könnte, sollten die Anforderungen nach Änderungen erneut geprüft werden. Da manuelle Prüfungen aufwändig und zeitintensiv sind, sollten sie sich auf wenige Anwendungsszenarien beschränken. Diese Anwendungsszenarien sollten nur schwer oder unzuverlässig durch programmierte Prüfungen abgedeckt werden können.
 
-In der Literatur werden meist Unit-, Funktions- und Integrationstests, sowie System- und Abnahmetests (Akzeptanztest) unterschieden.
-Die Unterscheidung liegt hier in der Größe des zu betrachtenden Ausschnitts der Software und damit der zu prüfenden Aussage. Während in einem Abnahmetest eine direkt Verbindung zwischen Anforderung und Testfall hergestellt werden kann, so ist dies in einem einzelnen Unittest meist nicht mehr möglich.
+Programmierte Prüfungen, auch Tests genannt, zu erstellen kann sehr komplex und kompliziert sein. Je nach Softwareanwendung und damit verbundenen Anforderungen, müssen Kompromisse zur Laufzeit, Aussagekraft und Wartbarkeit eines Tests eingegangen werden.
+Den jeweiligen Schwerpunkten eines Tests geschuldet, werden Tests auf verschiedenen Abstraktionsebenen der Software ausgeführt. Üblicherweise wird zwischen Akzeptanz-, Funktions-, Integrations- und Unittests unterschieden.[quote softwarequalität]. 
+
 \paragraph{Akzeptanztest}
-Akzeptanz- oder auch Abnahmetests stellen in erster Linie die Erfüllung der definierten Anforderungen sicher. Akzeptanztests werden häufig in der Form von Anwendungsszenarien (Use-Cases) beschrieben und sollte sicher daher nur auf das Zusammenspiel von Systemen und Akteuren beziehen. Die Verwendung von technische Details der Software, wie Datenbankspezifikationen oder konkrete Systemimplementierungen sollten vermieden werden. Nicht nur erhöht es den Wartungsaufwand dieser Tests, es verschiebt auch den Fokus des Tests weg von den eigentlich zu prüfenden Merkmalen und Aktionen.
-
-Nicht notwendiger Weise, aber häufig dauert die Durchführung der Akzeptanztests recht lange. Daher werden sie meist seltener ausgeführt. Die lange Ausführungszeit macht sie zudem unhandlich, um eine schnelle Validierung eines in Entwicklung befindlichen Softwarestückes zu gewährleisten.
+oder auch Abnahmetests stellen in erster Linie die Erfüllung der definierten Anforderungen sicher. Akzeptanztests werden häufig in der Form von Anwendungsszenarien (Use-Cases) beschrieben. Anwendungsszenarien beschreiben das Zusammenspiel von Systemen, deren Akteuren und Aktionen die zwischen diesen ausgeführt werden. Die Verwendung von technischen Details der Software, wie Datenbankspezifikationen oder konkreten Systemimplementierungen sollten vermieden werden. Nicht nur erhöht es den Wartungsaufwand dieser Tests, es verschiebt auch den Fokus des Tests, weg von den eigentlich zu prüfenden Anforderungen.
 
 \paragraph{Funktions- und Integrationstests}
 
-Funktions- und Integrationstests dienen der Überprüfung von Schnittstellen. Es wird sichergestellt, dass verschiedenen Teile der Software, verschiedene Komponenten, nach den vereinbarten Schnittstellen miteinander kommunizieren.
-Neben der Absicherung von Seiteneffekten zu anderen Komponenten und Fremdmodulen, bieten Integrationstests auch eine gute Beschreibung einer Komponente und derer Schnittstellen.
+dienen der Überprüfung von Schnittstellen. Dabei wird das Verhalten der Schnittstelle auf definierte Ein- und Ausgaben geprüft. Der Fokus der Tests liegt darauf unerwartetes Verhalten beim Zusammenspiel mehrere Komponenten auszuschließen.
 
-\paragraph{Unittests}
+\paragraph{Unit-Tests}
 
-Unittests bilden die unterste Ebene der Softwaretests. Maßgeblich bei Unittests ist die völlige Abkopplung von anderen Teilen, als des zu testenden Teils (Unit) der Software. Jegliche Interaktion mit externen Services sollte strikt vermieden werden.
-Ein ordnungsgemäß verfasster Unittest stellt neben der Regressionssicherheit eines Moduls auch einen Teil dessen Dokumentation sicher. Da ein Unittest das zu testende Modul initialisiert und die notwendigen Schnittstellen bereitstellt, bildet er auch anschaulich die Intention des Moduls ab.
+werden für Objektklassen- und Methodentests verwendet. Das erwartet Verhalten der zu überprüfenden Einheit(Unit) wird mit dem Unit-Test sichergestellt. Zugleich übernimmt er auch eine dokumentarische Funktion. Durch die Initialisierung der Einheit und der Aufruf ihrer Schnittstelle, wird die Intention ihres Autors deutlich.
 
 \section{Automatisierung der Softwareerstellung}
 
-Die Bereitstellung einer Software baut auf mehreren Faktoren auf. Es wird ein konkreter Stand der Softwarequellen benötigt, ein ausführendes System und es muss für eine Übersetzung der Softwarequellen zu dem System gesorgt werden.
-Je nach Anforderung der Software und des Ausführungsszenarios reicht dieser Vorgang von einer trivialen Kopie zu einem mehrstufigen, komplexen Vorgang. 
+Zur Bereitstellung einer Softwareanwendung werden mehrere Schritte benötigt. Es wird ein konkreter Stand der Softwarequellen benötigt, ein ausführendes System und es muss für eine Kompilierung der Softwarequellen zu dem System gesorgt werden.
+Je nach Anforderung und Art der Softwareanwendung entspricht dieser Vorgang einer trivialen Kopie oder einem mehrstufigen, komplexen Vorgang. 
 
-Im nachfolgenden wird beschrieben wie Software in einen wohldefinierten, funktionalen Zustand gebracht und dieser validiert wird. Dazu wird auf Versionsverwaltungssysteme, Konfigurationsmanagement, die automatisierte Erstellung und deren Test eingegangen.
+Im Nachfolgenden wird beschrieben wie Software in einen wohldefinierten, funktionalen Zustand gebracht und dieser validiert wird. Dazu wird auf Versionsverwaltungssysteme, Konfigurationsmanagement, die automatisierte Erstellung und deren Test eingegangen.
 
 \subsection{Kodeverwaltung und Versionsverwaltungssysteme}
 
-Bereits frühzeitig wurde in der Bereitstellung von Software in Programmversionen unterschieden. Anwender konnte so transparent nachvollziehen, wie fortschrittlich die Anwendung war, die sie erwerben wollten.
-Für die Entwicklung ergab sich daraus vor allem die Herausforderung nachfolgende Fehlerkorrekturen für viele verschiedene Entwicklungszustände bereit zustellen.
-Eine nachvollziehbare und wartungsarme Ablage der einzelnen Versionsstände war daher unabdingbar.
+Programmversionen können bei fast jeder käuflich zu erwerbenden Softwareanwendung unterschieden werden. Potentielle Anwender konnten so bereits vor Erwerb transparent nachvollziehen, wie fortschrittlich die Anwendung war.
+Für die Entwicklung ergab sich daraus die Herausforderung Fehlerkorrekturen nach Veröffentlichung der Software, für viele verschiedene Programmversionen bereit zustellen.
+Eine nachvollziehbare und leicht zu verwendende Ablage der einzelnen Programmversionen war daher sehr hilfreich.
 
-Auch wenn es möglich ist alle Programmversionen in manuell gepflegten Ablagen zu verwalten, gelangt die Entwicklung einer komplexen Software schnell an den Punkt an dem eine Ablage zusätzliche Bedingungen erfüllen muss.
+Die einfachste Form der Ablage ist eine manuelle Kopie der Softwareanwendung. Mit der Weiterentwicklung der Anwendung und dem Entstehen weiterer Programmversionen zeigen sich schnell schwächen dieses Systems. Wenn in einer frühen Programmversion ein Fehler gefunden und behoben wird, sollte dieser auch in allen anderen folgenden Versionen behoben werden. Dadurch entsteht mit dieser einfachen Ablage ein erheblicher Mehraufwand. Fortschrittliche Versionsverwaltungssysteme bieten Möglichkeiten diesen Mehraufwand zu reduzieren.
 
-Das dabei herausstechende Merkmal ist die Zustandssicherheit. Es muss gewährleistet sein, dass der Quellcode für eine bestimmte Version in einem konkreten, definierten Zustand ist. Als weiteres Merkmal ist die Transparenz anzuführen. Transparenz ist vor allem dann von Nöten, wenn mehr als ein Entwickler an einer Quellcodesammlung arbeitet. Schnell geht die Übersicht verloren, welche Änderungen wann, von wem und warum eingebracht wurden. Oftmals sind diese Informationen aber hilfreich um Entscheidungen im Entwicklungsprozess zu treffen.
+Ein besonders wichtiges Merkmal eines Versionverwaltungs- oder auch Versionskontrollsystems, ist die Zustandssicherheit. Die Reproduzierbarkeit eines definierten Zustandes der Softwarequellen. Der definierte Zustand der Anwendung ergibt sich aus der Abfolge aller Änderungen, die an der Softwareanwendung vorgenommen wurden, bis zu der jeweiligen Programmversion. 
+
+Als weiteres Merkmal ist die Transparenz aller getätigten Änderungen anzuführen. Wenn mehr als ein Entwickler am Quellcode einer Anwendung arbeitet, ist die Nachvollziehbarkeit aller Änderungen wichtig. 
+
+
+Schnell geht die Übersicht verloren, welche Änderungen wann, von wem und warum eingebracht wurden. Oftmals sind diese Informationen aber hilfreich um Entscheidungen im Entwicklungsprozess zu treffen.
 
 Über die Entstehung von Versionsverwaltungssysteme[quote Soft.Quali] haben sich vor allem zwei Prinzipien herausgebildet: Zentrale und Dezentrale Versionsverwaltungssysteme. Zwar unterscheiden sich die Versionsverwaltungssysteme auch in anderen Merkmalen, zum Beispiel in der Ablage der Quellen und deren Änderungen, diese Merkmale haben aber nahezu keinen Einfluss auf die Verwendung im Softwareentwicklungsprozess.
 
