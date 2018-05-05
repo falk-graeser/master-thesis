@@ -77,6 +77,7 @@ dienen der Überprüfung von Schnittstellen. Dabei wird das Verhalten der Schnit
 werden für Objektklassen- und Methodentests verwendet. Das erwartet Verhalten der zu überprüfenden Einheit(Unit) wird mit dem Unit-Test sichergestellt. Zugleich übernimmt er auch eine dokumentarische Funktion. Durch die Initialisierung der Einheit und der Aufruf ihrer Schnittstelle, wird die Intention ihres Autors deutlich.
 
 \section{Automatisierung der Softwareerstellung}
+\label{sec:automation-software}
 
 Zur Bereitstellung einer Softwareanwendung werden mehrere Schritte benötigt. Es wird ein konkreter Stand der Softwarequellen benötigt, ein ausführendes System und es muss für eine Kompilierung der Softwarequellen zu dem System gesorgt werden.
 Je nach Anforderung und Art der Softwareanwendung entspricht dieser Vorgang einer trivialen Kopie oder einem mehrstufigen, komplexen Vorgang. 
@@ -252,18 +253,47 @@ Da Tests und Metriken die einzigen Möglichkeiten sind um automatisch Einschätz
 diese Bereiche erneut im Kapitel~\ref{subsec:auto-values-metrics} aufgegriffen und näher auf deren Wertschöpfung 
 eingegangen.
 
-\section{Continuous Integration}
+\section{Continuous-Integration}
 
-Continuous Integration wurde sehr treffend beschrieben \footcite{fowler2006}
-\blockquote {Continuous Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible.}
+Continuous-Integration wurde sehr treffend beschrieben \footcite{fowler2006}
 
-Continuous Integration wurde erstmal von Kent Beck als Teil einer Reihe von Praktiken des Entwicklungsvorgehens ``Extreme Programming''\footcite{kent1999} beschrieben. Die Idee die Integration der einzelnen Entwickler-Codeständen zu fördern, in dem man die Entwickler anhält ihre Änderungen täglich oder häufiger abzugleichen und durch einen automatisierten Vorgang als lauffähig zu beweisen. Damit konnten Fehler zum Zeitpunkt des Auftretens gefunden werden, insbesondere Fehler, welche erst durch die Integration mit den Änderungen anderer Entwickler auftreten. Damit fordert Continuous Integration zugleich auch eine aussagekräftige Testabdeckung mit automatischen Tests und dass Entwickler einen entdeckten Fehler direkt beheben, da sonst alle anderen Teammitglieder behindert werden.
+\blockquote {Continuous-Integration is a software development practice where members of a team integrate their work 
+frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is 
+verified by an automated build (including test) to detect integration errors as quickly as possible.}
 
-Die Arbeitsweise alle Änderungen auf einem Zweig zu vereinen und kontinuierlich zu vereinigen, wird auch Trunk-Based-Development genannt. Während Continuous Integration und Trunk-Based-Development als getrennte Methodiken geführt werden\footcite{trunkbaseddevelopment}, so werden sich doch häufig in Kombination oder synonym verwendet\footcite{fowler-feature-branch}.
+Continuous-Integration wurde erstmal von Kent Beck als Teil einer Reihe von Praktiken des Entwicklungsvorgehens ``Extreme 
+Programming''\footcite{kent1999} beschrieben. Dabei sollte die Integration der einzelnen Entwickler-Codeständen gefördert 
+werden. Entwickler sollen ihre Änderungen täglich oder häufiger abgleichen und durch einen automatisierten Vorgang als 
+lauffähig beweisen. Damit konnten Fehler nahe des Zeitpunkt des Auftretens gefunden werden. Fehler die erst mit der 
+Integration von Änderungen anderer Entwickler auftreten, können so gefunden werden. Damit fordert Continuous-Integration  
+eine aussagekräftige Testabdeckung mit automatischen Tests. Des Weiteren können und sollten Entwickler einen entdeckten 
+Fehler direkt beheben, da sonst alle anderen Teammitglieder behindert werden.
 
-Natürlich nutzt Continuous Integration auch alle Vorteile, die im Kapitel ``Automatisierung der Softwareerstellung'' beschrieben werden. Modularisierung, Konfigurationsbeschreibung, automatische Erstellung und Wiederverwendbarkeit von Artefakten, sowie eine generelle Strategie, die Software so zu entwickeln, dass sie gut testbar ist. Die vollständige Erfüllung dieser Kriterien fordert und fördert eine gute Entwicklungskultur. Dies ist auch der Grund warum Continuous Integration seit den Beschreibungen von Kent Beck so sehr an Akzeptanz und Bedeutung gewonnen hat.
+Die Arbeitsweise alle Änderungen auf einem Zweig zu sammeln und kontinuierlich zu integrieren, wird auch Trunk-Based-
+Development genannt. Während Continuous-Integration und Trunk-Based-Development als getrennte Methodiken geführt werden
+\footcite{trunkbaseddevelopment}, treten beide Begriffe häufig in Kombination oder synonym 
+auf\footcite{fowler-feature-branch}.
 
-Während die Vorteile von Continuous Integration sehr deutlich und gewichtig sind, gibt es auch Kosten die mit dieser Technik einhergehen. Die komplette Automatisierung erfordert einen durchaus wahrnehmbaren Aufwand in der initialen Einrichtung und einen häufig unterschätzten Aufwand in der Aufrechterhaltung. Gerade bei weniger wichtigen Projekten oder bei Projekten unter besonders hohem Druck, kann es passieren, dass wichtige Bestandteile von Continuous Integration vernachlässigt werden. Dass heißt die Testabdeckung sinkt deutlich oder etwa Teile des Konfigurationsmanagements werden umgangen und essentielle Abhängigkeiten von Hand gepflegt. Dieses Verhalten widerspricht offensichtlich der langfristigen Wertschöpfung und bricht mit den Prinzipien von Continuous Integration. Leider sind aber menschliche Schwächen auch in Continous Integration noch ein Problem, welches nur durch Training und Motivation zur Selbstdisziplin der Entwickler behoben werden kann. In Kapitel~\ref{ch:visu_meth} wird auch das Thema Entwicklerdisziplin erneut aufgegriffen und auf die Gratwanderung von gesunder Entwicklungskultur und destruktiver ``blaming culture'' eingegangen.
+Natürlich nutzt Continuous-Integration auch alle Vorteile, die im 
+Kapitel~\ref{sec:automation-software}~\nameref{sec:automation-software} beschrieben werden. Modularisierung, 
+Konfigurationsmanagement, automatische Erstellung und Wiederverwendbarkeit von Artefakten, sowie das Achten auf 
+Testbarkeit der Anwendung. Die vollständige Erfüllung dieser Kriterien fordert und fördert eine gute Entwicklungskultur.
+
+TODO: hatte humble das nicht sogar so gesagt? (quote?)
+ 
+Dies ist einer der Gründe warum Continuous-Integration seit den Beschreibungen 
+von Kent Beck so sehr an Akzeptanz und Bedeutung gewonnen hat.
+
+Während die Vorteile von Continuous-Integration deutlich sind, gibt es auch Kosten die mit dieser Technik einhergehen. 
+Die komplette Automatisierung erfordert einen erheblichen Aufwand in der initialen Einrichtung und einen häufig 
+unterschätzten Aufwand in der Aufrechterhaltung. Gerade weniger wichtige Projekten oder Projekte unter besonders hohem 
+Druck neigen dazu wichtige Bestandteile von Continuous-Integration zu vernachlässigen. Mögliche Symptome sind das sinken 
+der Testabdeckung. Oder Teile des Konfigurationsmanagements werden umgangen und essentielle Abhängigkeiten von Hand 
+gepflegt. Dieses Verhalten widerspricht offensichtlich der langfristigen Wertschöpfung und bricht mit den Prinzipien von 
+Continuous-Integration. Menschliche Schwächen sind auch in Continuous-Integration noch ein Problem. Mit regelmäßigem 
+Training, Erfahrung und Selbstdisziplin kann dem entgegen gewirkt werden. In Kapitel~\ref{sec:human-fail} wird das Thema 
+Entwicklerdisziplin erneut aufgegriffen und auf die Gratwanderung von gesunder Entwicklungskultur und destruktiver 
+``blaming culture'' eingegangen.
 
 \section{Virtualisierung}
 
