@@ -111,12 +111,15 @@ anderen Merkmalen, zum Beispiel in der Ablage der Quellen und deren Änderungen,
 Einfluss auf die Verwendung im Softwareentwicklungsprozess.
 
 \paragraph{Zentrale Versionsverwaltungssysteme} folgen dem ``single point of truth'' Prinzip. Es existiert nur ein 
-zentraler Punkt auf dem alle Versionstände gespeichert werden. Dies ermöglicht einen einfachen Kontrollfluss und führt nur zu geringfügigen Abweichungen unter allen beteiligten Entwicklern. Damit einhergehend ist eine Übersicht aller Änderungen problemlos möglich.
+zentraler Punkt auf dem alle Versionstände gespeichert werden. Dies ermöglicht einen einfachen Kontrollfluss und führt
+nur zu geringfügigen Abweichungen unter allen beteiligten Entwicklern. Damit einhergehend ist eine Übersicht aller
+Änderungen problemlos möglich.
 
 Nachteil dieser Variante ist häufig der initiale Aufwand, da eine zentrale Komponente bereitgestellt werden muss. Zudem 
 sind zentrale Systeme generell störanfälliger und weniger Ausfallsicher. Der Vorteil des ``single point of truth'' führt 
 auch zum Nachteil des ``single point of failure'', wodurch Probleme alle Teilnehmer gleichzeitig betreffen.
-Je nach verwendeter Versionierungsstrategie kann es zudem zu einer zentralen Sperrung einzelner Bereiche der Softwarequellen kommen, wenn diese für eine exklusive Bearbeitung gesperrt werden.
+Je nach verwendeter Versionierungsstrategie kann es zudem zu einer zentralen Sperrung einzelner Bereiche der
+Softwarequellen kommen, wenn diese für eine exklusive Bearbeitung gesperrt werden.
 
 \paragraph{Dezentrale Versionsverwaltungssysteme} benötigen im Gegensatz keine zentrale Instanz und können problemlos in 
 einem losen Verbund von Einzelsystemen betrieben werden. 
@@ -137,7 +140,13 @@ wie alle Teilstücke, auch Artefakte genannt, in einem Softwareprojekt miteinand
 Erstellung, Identifikation, Validierung und Ablage geregelt. Die Definition und Konfiguration der Ausführungsumgebung der 
 Artefakte ist ebenso ein Teil des Konfigurationsmanagement. \footcite{humble2010}
 
-Ein lockerer Umgang mit der Konfigurationsverwaltung kann gerade zu Beginn eines Projektes ohne nennenswerte Folgen einhergehen. Spätestens aber während der Weiterentwicklung der Softwareanwendung sind Folgen deutlich zu spüren. Hierbei wird auch von der Alterung des Softwaresystem gesprochen.\footcite{software-quality2008}. Gerade wenn sich unbemerkt die Version oder Konfiguration der Software eines Drittanbieters ändert, kann dies schwer zu identifizierende Probleme nach sich ziehen. In anderen Fällen reicht es allerdings auch, wenn sich die Konfiguration zwischen Entwicklungs- und Produktivumgebung leicht unterscheidet. Konfigurations- und Abhängigkeitsfehler können leicht einen sehr hohen Behebungsaufwand verursachen.
+Ein lockerer Umgang mit der Konfigurationsverwaltung kann gerade zu Beginn eines Projektes ohne nennenswerte Folgen 
+einhergehen. Spätestens aber während der Weiterentwicklung der Softwareanwendung sind Folgen deutlich zu spüren. Hierbei 
+wird auch von der Alterung des Softwaresystem gesprochen.\footcite{software-quality2008}. Gerade wenn sich unbemerkt die 
+Version oder Konfiguration der Software eines Drittanbieters ändert, kann dies schwer zu identifizierende Probleme nach 
+sich ziehen. In anderen Fällen reicht es allerdings auch, wenn sich die Konfiguration zwischen Entwicklungs- und 
+Produktivumgebung leicht unterscheidet. Konfigurations- und Abhängigkeitsfehler können leicht einen sehr hohen 
+Behebungsaufwand verursachen.
 
 Im Idealfall kann eine vollständige Konfigurationsverwaltung:
 \begin{itemize}
@@ -148,15 +157,32 @@ Im Idealfall kann eine vollständige Konfigurationsverwaltung:
 \item alle diese Funktionalitäten barrierefrei dem Entwicklungsteam zur Verfügung stellen
 \end{itemize}
 
-Alle Forderungen sind immer Notwendig, helfen allerdings erheblich bei der Wartung und Betreuung der einzelnen Systeme. Eine Virtualisierung der Systeme und eine Versionsverwaltung der zugehörigen Konfiguration und Scripte ist ebenfalls hilfreich. Ein solches System kann gut Skalieren und ist mit geringen Aufwand zu handhaben.\footcite{humble2010}
+Alle Forderungen sind immer Notwendig, helfen allerdings erheblich bei der Wartung und Betreuung der einzelnen Systeme. 
+Eine Virtualisierung der Systeme und eine Versionsverwaltung der zugehörigen Konfiguration und Scripte ist ebenfalls 
+hilfreich. Ein solches System kann gut Skalieren und ist mit geringen Aufwand zu handhaben.\footcite{humble2010}
 
 \subsection{Abhängigkeitsverwaltung}
 
-In der Abhängigkeitsverwaltung werden die Softwareabhängigkeiten der Anwendung beschrieben. In auf  Komponenten basierenden Anwendungen schließt dies die eigenen, interne Abhängigkeiten mit ein. Diese Abhängigkeiten, meist Module genannt, sollen die mit monolithischen Strukturen einhergehenden Nachteile unterbinden. Monolithen leiden häufig unter einer schwachen Softwarearchitektur und entwickeln sich daher entsprechend schlecht weiter. Mögliche Skalierungen des Systems oder ein Austausch von einzelnen Bestandteilen sind mit einem erheblichen Mehraufwand verbunden.
+In der Abhängigkeitsverwaltung werden die Softwareabhängigkeiten der Anwendung beschrieben. In auf  Komponenten 
+basierenden Anwendungen schließt dies die eigenen, interne Abhängigkeiten mit ein. Diese Abhängigkeiten, meist Module 
+genannt, sollen die mit monolithischen Strukturen einhergehenden Nachteile unterbinden. Monolithen weisen häufig eine 
+schwache Softwarearchitektur auf und entwickeln sich daher entsprechend schlecht weiter. Mögliche Skalierungen des 
+Systems oder ein Austausch von einzelnen Bestandteilen sind mit einem erheblichen Mehraufwand verbunden.
 
-Ist eine Anwendung hingehen auf mehrere Komponenten aufgeteilt, kommen neben den genannten Vorteilen der Skalierbarkeit und Austauschbarkeit, auch Vorteile für das verteilte Arbeiten von Teams. Allerdings führt eine Komponenten basierende Anwendung natürlich auch zu einem organisatorischem Mehraufwand. Dieser Mehraufwand besteht in der Beschreibung der Abhängigkeiten und der Auflösung des damit entstehenden Abhängigkeitsgeflechtes. Übliche Abhängigkeitsverwaltungen verwenden hierzu Versionsnummer aus der Versionsverwaltung, sowie eine Paketbeschreibung in einem eigenen Format. 
+Die Aufteilung einer Anwendung auf mehrere Komponenten erhöht hingegen die Skalierbarkeit und Austauschbarkeit. Zudem 
+ergeben sich Vorteile für das verteilte Arbeiten von Teams. 
+Eine zu starke Aufteilung der Anwendungsstruktur oder eine Teilung an der falsche Stelle, kann hingegen zu gegenteiligen 
+Effekten führen. Ein deutlicher Mehraufwand und eine schlechte Skalierbarkeit sind die Folge. Um die verschiedenen Module 
+und Pakete zu organisieren empfiehlt sich eine Abhängigkeitsverwaltung. Diese lassen Abhängigkeitsbeschreibungen anhand 
+von Versionsnummern. Dadurch lassen sich Schwierigkeiten unter den Abhängigkeiten leichter erkennen und Versionsupdates 
+entsprechend der Abhängigkeiten vornehmen.
 
-Für die automatisierte Erstellung der Softwareanwendung ist es erforderlich, ähnlich wie bereits bei der Versionsverwaltung, ein eindeutiges Abhängigkeitsbild zu beschreiben. Während zum Auflösen der Abhängigkeiten meist mehrdeutige Ausdrücke verwendet werden, die eine Bandbreite an Versionen der Abhängigkeiten erlauben, ist für den Erstellungsvorgang wichtig die konkret verwendeten Versionen zu dokumentieren und mit dem erstellten Produkt auszuliefern. Ähnlich der erwähnten Paketbeschreibung, wird dies mit einer Lock-Datei gesichert.
+Für die automatisierte Erstellung der Softwareanwendung ist es erforderlich, ähnlich wie bereits bei der
+Versionsverwaltung, ein eindeutiges Abhängigkeitsnetz zu beschreiben. Zum Auflösen der Abhängigkeiten werden meist
+mehrdeutige Ausdrücke verwendet werden, die eine Bandbreite an Versionen der Abhängigkeiten erlauben. Wird die Anwendung
+erstellt und Ausgeliefert, sollte allerdings eindeutig sein, welche Abhängigkeiten verwendet werden. Daher werden in
+vielen Packetverwaltungen diese Informationen in einre Lock-Datei festgehalten. Es wird zudem angeraten diese Datei in
+die Versionkontrolle aufzunehmen.\footcite{composer-why-lock-in-vcs}
 
 \subsection{Automatisierte Erstellung und Auslieferung}
 
