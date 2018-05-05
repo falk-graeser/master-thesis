@@ -85,33 +85,49 @@ Im Nachfolgenden wird beschrieben wie Software in einen wohldefinierten, funktio
 
 \subsection{Kodeverwaltung und Versionsverwaltungssysteme}
 
-Programmversionen können bei fast jeder käuflich zu erwerbenden Softwareanwendung unterschieden werden. Potentielle Anwender konnten so bereits vor Erwerb transparent nachvollziehen, wie fortschrittlich die Anwendung war.
-Für die Entwicklung ergab sich daraus die Herausforderung Fehlerkorrekturen nach Veröffentlichung der Software, für viele verschiedene Programmversionen bereit zustellen.
+Programmversionen können bei fast jeder käuflich zu erwerbenden Softwareanwendung unterschieden werden. Potentielle 
+Anwender konnten so bereits vor Erwerb transparent nachvollziehen, wie fortschrittlich die Anwendung war.
+Für die Entwicklung ergab sich daraus die Herausforderung Fehlerkorrekturen nach Veröffentlichung der Software, für viele 
+verschiedene Programmversionen bereit zustellen.
 Eine nachvollziehbare und leicht zu verwendende Ablage der einzelnen Programmversionen war daher sehr hilfreich.
 
-Die einfachste Form der Ablage ist eine manuelle Kopie der Softwareanwendung. Mit der Weiterentwicklung der Anwendung und dem Entstehen weiterer Programmversionen zeigen sich schnell schwächen dieses Systems. Wenn in einer frühen Programmversion ein Fehler gefunden und behoben wird, sollte dieser auch in allen anderen folgenden Versionen behoben werden. Dadurch entsteht mit dieser einfachen Ablage ein erheblicher Mehraufwand. Fortschrittliche Versionsverwaltungssysteme bieten Möglichkeiten diesen Mehraufwand zu reduzieren.
+Die einfachste Form der Ablage ist eine manuelle Kopie der Softwareanwendung. Mit der Weiterentwicklung der Anwendung und 
+dem Entstehen weiterer Programmversionen zeigen sich schnell schwächen dieses Systems. Wenn in einer frühen 
+Programmversion ein Fehler gefunden und behoben wird, sollte dieser auch in allen anderen folgenden Versionen behoben 
+werden. Dadurch entsteht mit dieser einfachen Ablage ein erheblicher Mehraufwand. Fortschrittliche 
+Versionsverwaltungssysteme bieten Möglichkeiten diesen Mehraufwand zu reduzieren.
 
-Ein besonders wichtiges Merkmal eines Versionverwaltungs- oder auch Versionskontrollsystems, ist die Zustandssicherheit. Die Reproduzierbarkeit eines definierten Zustandes der Softwarequellen. Der definierte Zustand der Anwendung ergibt sich aus der Abfolge aller Änderungen, die an der Softwareanwendung vorgenommen wurden, bis zu der jeweiligen Programmversion. 
+Ein besonders wichtiges Merkmal eines Versionverwaltungs- oder auch Versionskontrollsystems, ist die Zustandssicherheit. 
+Die Reproduzierbarkeit eines definierten Zustandes der Softwarequellen. Der definierte Zustand der Anwendung ergibt sich 
+aus der Abfolge aller Änderungen, die an der Softwareanwendung vorgenommen wurden, bis zu der jeweiligen Programmversion. 
 
-Als weiteres Merkmal ist die Transparenz aller getätigten Änderungen anzuführen. Wenn mehr als ein Entwickler am Quellcode einer Anwendung arbeitet, ist die Nachvollziehbarkeit aller Änderungen wichtig. 
+Als weiteres Merkmal ist die Transparenz aller getätigten Änderungen anzuführen. Die Nachvollziehbarkeit der Änderungen 
+ist hilft oft bei der Koordinierung der Entwicklung mit mehreren Programmieren. Außerdem ist es sehr hilfreich zu wissen, 
+welcher andere Projektteilnehmer bei Problemen mit einem Code-Abschnitt gefragt werden kann. 
 
+Über die Entstehung von Versionsverwaltungssysteme[quote Soft.Quali] haben sich vor allem zwei Prinzipien herausgebildet: 
+zentrale und dezentrale Versionsverwaltungssysteme. Zwar unterscheiden sich die Versionsverwaltungssysteme auch in 
+anderen Merkmalen, zum Beispiel in der Ablage der Quellen und deren Änderungen, diese Merkmale haben aber nahezu keinen 
+Einfluss auf die Verwendung im Softwareentwicklungsprozess.
 
-Schnell geht die Übersicht verloren, welche Änderungen wann, von wem und warum eingebracht wurden. Oftmals sind diese Informationen aber hilfreich um Entscheidungen im Entwicklungsprozess zu treffen.
+\paragraph{Zentrale Versionsverwaltungssysteme} folgen dem ``single point of truth'' Prinzip. Es existiert nur ein 
+zentraler Punkt auf dem alle Versionstände gespeichert werden. Dies ermöglicht einen einfachen Kontrollfluss und führt nur zu geringfügigen Abweichungen unter allen beteiligten Entwicklern. Damit einhergehend ist eine Übersicht aller Änderungen problemlos möglich.
 
-Über die Entstehung von Versionsverwaltungssysteme[quote Soft.Quali] haben sich vor allem zwei Prinzipien herausgebildet: Zentrale und Dezentrale Versionsverwaltungssysteme. Zwar unterscheiden sich die Versionsverwaltungssysteme auch in anderen Merkmalen, zum Beispiel in der Ablage der Quellen und deren Änderungen, diese Merkmale haben aber nahezu keinen Einfluss auf die Verwendung im Softwareentwicklungsprozess.
+Nachteil dieser Variante ist häufig der initiale Aufwand, da eine zentrale Komponente bereitgestellt werden muss. Zudem 
+sind zentrale Systeme generell störanfälliger und weniger Ausfallsicher. Der Vorteil des ``single point of truth'' führt 
+auch zum Nachteil des ``single point of failure'', wodurch Probleme alle Teilnehmer gleichzeitig betreffen.
+Je nach verwendeter Versionierungsstrategie kann es zudem zu einer zentralen Sperrung einzelner Bereiche der Softwarequellen kommen, wenn diese für eine exklusive Bearbeitung gesperrt werden.
 
-Auch wenn heutzutage die dezentralen Versionsverwaltungssystem stark zunehmen, so fällt bei näherer Betrachtung auf, dass diese oft primär als zentrale Versionsverwaltungssysteme verwendet werden.
-
-\paragraph{Zentrale Versionsverwaltungssysteme} folgen dem Prinzip, dass es nur einen zentralen Punkt gibt auf dem alle Versionstände gespeichert werden. Dieses ``single point of truth'' Prinzip sorgt für einen einfachen Kontrollfluss, welcher dafür sorgt, dass alle Partizipierer mit einfachen Mitteln auf den gleichen Versionsständen arbeiten. Damit einhergehend ist eine Übersicht aller Änderungen problemlos möglich.
-
-Nachteil dieser Variante ist häufig der Initialaufwand, da eine zentrale Komponenten bereitgestellt werden muss. Zudem sind zentrale Systeme generell störanfälliger und Probleme betreffen immer alle Teilnehmer gleichzeitig.
-Je nach verwendeter Versionierungsstrategie kann es zudem zu einer zentralen Blockade ganzer Bereiche der Softwarequellen kommen, wenn diese für eine exklusive Bearbeitung gesperrt sind.
-
-\paragraph{Dezentrale Versionsverwaltungssysteme} benötigen im Gegensatz keine zentrale Instanz und können problemlos in einem losen Verbund von Einzelsystemen betrieben werden. 
-Im Gegensatz zur zentralen Verwendung, existierend dadurch deutlich mehr Zustände, die ohne entsprechende Maßnahmen nicht zu überblicken sind. Dieser Mehraufwand bringt allerdings eine Flexibilität mit sich, welche viele Möglichkeiten bietet um Softwareänderungen zu koordinieren. Änderungen können in ihrer Reihenfolge transparent manipuliert und der Zeitpunkt der Zusammenführung beliebig gewählt werden. 
-Im Bereich ``Feature-Branches'' werden Versionierungsstrategien im Detail erläutert.
-
-Ihrer dezentralen Natur geschuldet, sind sie ausfallsicherer als die zentralen Versionsverwaltungssysteme, benötigen allerdings die entsprechenden Informationen und Befugnisse zur Verbindung, um diesen Vorteil nutzen zu können.
+\paragraph{Dezentrale Versionsverwaltungssysteme} benötigen im Gegensatz keine zentrale Instanz und können problemlos in 
+einem losen Verbund von Einzelsystemen betrieben werden. 
+Durch die optionale Verwendung einer zentralen Instanz, ergibt sich eine hohe Flexibilität für den Entwickler. Änderungen 
+können vom Entwickler nach belieben verschoben und kombiniert werden.
+Häufig werden jedoch Restriktionen hingenommen, die ein kontrolliertes gemeinsamen Arbeiten ermöglichen. Beim gemeinsame 
+Arbeiten ist besonders auf die Veränderung bereits geteilter Inhalte zu achten.
+ 
+Dezentrale Systeme verwalten jeweils eigenständig eine Kopie der geteilten Inhalte. Dadurch ergibt sich eine hohe 
+Redundanz, welche sich positiv auf die Ausfallsicherheit und Verfügbarkeit der Inhalte auswirkt. Im Gegensatz dazu 
+entsteht ein Mehraufwand bei der Koordinierung der Einzelsysteme.
 
 \subsection{Konfigurationsverwaltung}
 \label{subsec:konfigurationsverwaltung}
