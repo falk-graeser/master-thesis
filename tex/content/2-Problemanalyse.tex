@@ -316,20 +316,36 @@ und wenig aufwändig.
 
 \subsection{Virtualisierung mit Docker}
 
- 
+TODO: write
 
 \section{Dezentrale Versionierung mit Git}
 
-Im Kapitel~\ref{subsec:konfigurationsverwaltung} Konfigurationsverwaltung wurde bereits auf das Thema Versionsverwaltung eingegangen. Als das populärste System im Open-Source-Bereiche und eines der großen Systeme im kommerziellen Bereich\footcite{g2crowd2018}, wird nun anhand von Git erläutert, wie die dezentrale Versionsverwaltung grundlegend verwendet wird. Außerdem kommen einige git-spezifische Merkmale hinzu, welche bei der visuellen Aufbereitung wichtig werden.
+Im Kapitel~\ref{subsec:konfigurationsverwaltung} Konfigurationsverwaltung wurde bereits auf das Thema Versionsverwaltung 
+eingegangen. Als das populärste System im Open-Source-Bereiche\footcite{openhub-pie-chart} und eines der großen Systeme 
+im kommerziellen Bereich\footcite{g2crowd2018}, wird nun anhand von Git erläutert, wie die dezentrale Versionsverwaltung 
+grundlegend verwendet wird. Außerdem kommen einige git-spezifische Merkmale hinzu, welche bei der visuellen Aufbereitung 
+wichtig werden.
 
-Git wurde vom Linux-Schöpfer Linus Torwalds im April 2005 initiiert, aus der Not heraus sich vom vorher verwendeten ``BitKeeper''-System zu lösen, da diese nicht mehr mit der eigenen Open-Source-Lizenz in Einklang zubringen war. Git wurde von vornherein als verteiltes, vor Verfälschungen sicheres und effizientes Versionsverwaltungssystem entworfen. Diese Eigenschaften und die Software-Plattform ``GitHub'', machten Git in den letzten 13 Jahren zum de-facto Standard für Versionsverwaltung\footcite{heise-torvald-git2015}.
+Git wurde vom Linux-Schöpfer Linus Torwalds im April 2005 initiiert, aus der Not heraus sich vom vorher verwendeten 
+``BitKeeper''-System zu lösen, da diese nicht mehr mit der eigenen Open-Source-Lizenz in Einklang zubringen war. Git 
+wurde von vornherein als verteiltes, vor Verfälschungen sicheres und effizientes Versionsverwaltungssystem entworfen. 
+Diese Eigenschaften und die Software-Plattform ``GitHub'', machten Git in den letzten 13 Jahren zum de-facto Standard für 
+Versionsverwaltung\footcite{heise-torvald-git2015}.
 
-Als dezentrales Versionsverwaltungssystem ist einer der großen Vorteile von Git, dass die vollständige Historie der Dateien lokal verfügbar ist. Während zentrale Versionsverwaltungssysteme immer einen dedizierten Server benötigen, können dezentrale Varianten über Peer-To-Peer-Schnittstellen kommunizieren. Diese Eigenschaft sorgt neben einer hohen Ausfallsicherheit und Informationsredundanz, auch für eine hohe Flexibilität und die Möglichkeit zahlreiche Arbeitsweisen von Softwareentwicklern zu unterstützen.
+Als dezentrales Versionsverwaltungssystem ist einer der großen Vorteile von Git, dass die vollständige Historie der 
+Dateien lokal verfügbar ist. Während zentrale Versionsverwaltungssysteme immer einen dedizierten Server benötigen, können 
+dezentrale Varianten über Peer-To-Peer-Schnittstellen kommunizieren. Diese Eigenschaft sorgt neben einer hohen 
+Ausfallsicherheit und Informationsredundanz, auch für eine hohe Flexibilität und die Möglichkeit zahlreiche Arbeitsweisen 
+von Softwareentwicklern zu unterstützen.
 
 \subsection{Definition und Verwendung der Git-Artefakte}
 
-Die Verwendung von git gestaltet sich vergleichsweise einfach. In wenigen Schritten kann Git installiert \footcite{git-scm-install} und mit der Verwendung begonnen werden. 
-Git nutzt bestimmte Artefakte um seine Aufgaben zu erfüllen. Darunter Repositories, Commits, Branches und Tags. Zudem werden Mechanismen bereitgestellt um mit diesen Artefakten zu interagieren. Neben zu erwartenden Mechanismen wie Hinzufügen und Löschen, werden auch Speichern- und Ladeaktionen (``push'' und ``pull) angeboten\footcite{git-essentials-2017}.
+Die Verwendung von git gestaltet sich vergleichsweise einfach. In wenigen Schritten kann Git installiert \footcite{git-
+scm-install} und mit der Verwendung begonnen werden. 
+Git nutzt bestimmte Artefakte um seine Aufgaben zu erfüllen. Darunter Repositories, Commits, Branches und Tags. Zudem 
+werden Mechanismen bereitgestellt um mit diesen Artefakten zu interagieren. Neben zu erwartenden Mechanismen wie 
+Hinzufügen und Löschen, werden auch Speichern- und Ladeaktionen (``push'' und ``pull) angeboten\footcite{git-
+essentials-2017}.
 
 \begin{figure}[htbp]
   \includegraphics[
@@ -340,53 +356,100 @@ Git nutzt bestimmte Artefakte um seine Aufgaben zu erfüllen. Darunter Repositor
   \caption{Git-Workflow}
   \label{git-workflow}
 \end{figure}
-Die Grafik~\ref{git-workflow} stellt das Zusammenspiel der Artefakte und den Standard-Git-Worflow\footcite{osteele-git-workflow} dar.
+Die Grafik~\ref{git-workflow} stellt das Zusammenspiel der Artefakte und den Standard-Git-Worflow\footcite{osteele-git-
+workflow} dar.
 
-\paragraph{Repositories} sind die größte Verwaltungseinheit in Git. Diese enthalten alle Git-Objekte, wie Referenzen, Commits, Trees, Blobs, sowie die lokale Konfiguration. Repositories können andere Repositories referenzieren oder referenziert werden, dabei können viele gängige Protokolle verwendet werden (http, ssh, ftp, absolute Pfade)
+\paragraph{Repositories} sind die größte Verwaltungseinheit in Git. Diese enthalten alle Git-Objekte, wie Referenzen, 
+Commits, Trees, Blobs, sowie die lokale Konfiguration. Repositories können andere Repositories referenzieren oder 
+referenziert werden, dabei können viele gängige Protokolle verwendet werden (http, ssh, ftp, absolute Pfade)
 
-\paragraph{Commits} sind zeitlich determinierte, persönliche und kommentierte Referenzen auf einen konkreten Arbeitsstand (``Snapshot'') des Repositories. Ein Commit kann immer maximal nur auf einen Eltern-Commit verweisen, kann allerdings von beliebig vielen anderen Commits referenziert werden. Bei Betrachtung aller Commits, bilden dieser daher einen gerichteten Baumgraphen.
+\paragraph{Commits} sind zeitlich determinierte, persönliche und kommentierte Referenzen auf einen konkreten Arbeitsstand 
+(``Snapshot'') des Repositories. Ein Commit kann auf mehrere Eltern-Commits verweisen und kann von beliebig vielen 
+anderen Commits referenziert werden. Bei Betrachtung aller Commits, bilden dieser daher einen gerichteten Graphen. 
+Mehrere Eltern-Commits entstehen bei der Zusammenführung von Branches.
 
-\paragraph{Branches} sind, im Gegensatz zu vielen anderen Versionverwaltungssystemen, in Git lediglich Verweise auf einen bestimmten Commit. Wenn ein Branch aktiv ist, dann wird mit jedem Commit auf diesem Branch, der Verweis auf den neuen Commit aktualisiert.
+\paragraph{Branches} sind, im Gegensatz zu vielen anderen Versionverwaltungssystemen, in Git lediglich Verweise auf einen 
+bestimmten Commit. Wenn ein Branch aktiv ist, dann wird mit jedem Commit auf diesem Branch, der Verweis auf den neuen 
+Commit aktualisiert.
 
-\paragraph{Tags} sind genauso wie Branches einfache Verweise auf einen Commit, allerdings verändert sich die Position eines Tags nach einem Commit nicht.
+\paragraph{Tags} sind genauso wie Branches einfache Verweise auf einen Commit, allerdings verändert sich die Position 
+eines Tags nach einem Commit nicht.
 
-\paragraph{Remotes} sind Verweise in der Konfiguration eines Repositories auf andere Repositories. Dies wird im allgemeinen genutzt um Änderungen von dort zu holen oder dorthin zu bewegen. Es können beliebig viele Remotes für jedes Repository definiert werden. Zudem kann beliebig definiert werden, welche Branches von einem Repository Änderungen erhalten oder dieses aktualisieren.
+\paragraph{Remotes} sind Verweise in der Konfiguration eines Repositories auf andere Repositories. Dies wird im 
+allgemeinen genutzt um Änderungen von dort zu holen oder dorthin zu bewegen. Es können beliebig viele Remotes für jedes 
+Repository definiert werden. Zudem kann beliebig definiert werden, welche Branches von einem Repository Änderungen 
+erhalten oder dieses aktualisieren.
 
 \paragraph{Blobs} sind die komprimierten Inhalte einer Datei.
 
-\paragraph{Trees} sind Referenzen von Blobs, und stellen damit im einfachsten Fall eine Ansicht eines Verzeichnisses und seiner Dateien dar.
+\paragraph{Trees} sind Referenzen von Blobs, und stellen damit im einfachsten Fall eine Ansicht eines Verzeichnisses und 
+seiner Dateien dar.
 
-\paragraph{Hashes} sind im allgemeinen Abbildung einer großen Abbildung von Zeichen auf eine deutlich geringere Menge. Die Abbildung führt immer zur gleichen Ergebnismenge. In Git werden Hashes als allgemeine Referenzierungsmöglichkeit verwendet. Alle Relationen werden darüber beschrieben und sind daher über alle Repositories gleich. Um die Eindeutigkeit 
+\paragraph{Hashes} sind im allgemeinen Abbildung einer großen Abbildung von Zeichen auf eine deutlich geringere Menge. 
+Die Abbildung führt immer zur gleichen Ergebnismenge. In Git werden Hashes als allgemeine Referenzierungsmöglichkeit 
+verwendet. Alle Relationen werden darüber beschrieben und sind daher über alle Repositories gleich. Git verwendet für die 
+Bildung der Hashes den SHA1-Alogrithmus. Die Forderung statt des SHA1- den SHA256-Algorithmus zu verwenden, wurde 
+abgelehnt. Linus Torvalds schätzt die Sicherheitsbedenken als nicht zutreffend ein\footcite{git-sha-torvalds}. Diese 
+Aussage wurde auch von GitHub bestätigt\footcite{git-sha-github}.
 
 \subsection{Interne Arbeitsweise}
 
-Git verwendet intern einen Mix aus Referenzen, Indexierung, Komprimierung und Hashing. Zudem werden keine Differenzmengen, wie etwa in Subversion abgelegt, sondern immer vollständige Dateiinhalte. Diese Kombination bedeutet für viele Softwareprojekte eine deutliche Speicherplatzreduktion, wie zum Beispiel für das Mozilla-Projekt\footcite{kernel-git-svn}. Dadurch dass vollständig Dateiinhalte gesichert werden, ist Git für besonders große, schlecht zu komprimierende, sich häufig ändernde Dateien eher ungünstig. Für solche Dateien ist es sinnvoller 
+Git verwendet intern einen Mix aus Referenzen, Indexierung, Komprimierung und Hashing. Zudem werden keine 
+Differenzmengen, wie etwa in Subversion abgelegt, sondern immer vollständige Dateiinhalte. Für manche Projekte, wie das 
+Mozilla-Projekt\footcite{kernel-git-svn} kann dies einen Speicherplatzreduktion erreichen. Im Allgemeinen kann dies aber 
+nicht bestätigt werden\footcite{svn-vs-git}. Durch die vollständige Speicherung der Inhalte in jedem vernetzten Git-
+Repository, ist der Speicherbedarf insgesamt höher. Insbesondere für große Dateien, mit nur geringfügigen Änderungen 
+ergeben sich deutliche Unterschiede zu Versionssystemen mit Differenzmengen. Für schlecht komprimierbare Dateien oder 
+Dateien mit schlechten Differenzmengen, wie etwa Binärdateien, sollte allerdings grundsätzlich eher einer Artefakt-
+Repository in Betracht gezogen werden.
 
-Um die interne Arbeitsweise von Git zu erläutern, müssen die Zusammenhänge von Commits, Trees, Blobs und Hashes verdeutlicht werden.
+Um die interne Arbeitsweise von Git zu erläutern, müssen die Zusammenhänge von Commits, Trees, Blobs und Hashes 
+verdeutlicht werden.
 
-Die Git-Objekte werden von Git immer anhand ihres Hashes abgelegt. Dabei wird ein 40-Stelliger SHA1-Hash verwendet. Die notwendigen Stellen zu Referenzierung sind aber häufig deutlich geringer, so können im allgemeinen Gebrauch deutlich verkürzte Zeichenketten verwendet werden. Im allgemeinen etwa 5 Stellen oder bei großen Projekten, wie dem Linux-Kernel, 12 Stellen.
+Die Git-Objekte werden von Git immer anhand ihres Hashes abgelegt. Dabei wird ein 40-Stelliger SHA1-Hash verwendet. Die 
+notwendigen Stellen zu Referenzierung sind aber häufig deutlich geringer, so können im allgemeinen Gebrauch deutlich 
+verkürzte Zeichenketten verwendet werden. Im allgemeinen etwa 5 Stellen oder bei großen Projekten, wie dem Linux-Kernel, 
+12 Stellen.
 
-Der Hash von Blobs ist eine Abbildung ihres Inhaltes. Daher werden Dateien mit den gleichen Inhalt auch immer auf den gleichen Blob abgebildet, unabhängig vom Verzeichnis in dem sie sich befinden oder wie oft sie geändert wurden.
+Der Hash von Blobs ist eine Abbildung ihres Inhaltes. Daher werden Dateien mit den gleichen Inhalt auch immer auf den 
+gleichen Blob abgebildet, unabhängig vom Verzeichnis in dem sie sich befinden oder wie oft sie geändert wurden. Da ein 
+Blog nur die Abbildung des Inhaltes der Datei ist, führen Merkmale wie Zeitstempel oder Dateirechte zu keiner Änderung 
+des Hashes.
 
-Wie auch beim Blob sind Trees nur eine Abbildung ihres Inhaltes. Da Trees aber als eine Art Verzeichnis zu verstehen sind, referenzieren Trees andere Trees und Blobs. Damit würde eine Folge von Commits, die erste eine Datei erzeugt und schließlich wieder entfernt, am Ende wieder auf den gleichen Tree verweisen.
+Wie auch beim Blob sind Trees nur eine Abbildung ihres Inhaltes. Da Trees aber als eine Art Verzeichnis zu verstehen 
+sind, referenzieren Trees andere Trees und Blobs. Damit würde eine Folge von Commits, die zuerst eine Datei erzeugt und 
+schließlich wieder entfernt, am Ende wieder auf den gleichen Tree verweisen.
 
-Commits schließlich verweisen auf einen oder mehrere Vorgänger-Commits, einen Tree, einen Autor und einen Commiter. Durch den Verweis auf den Vorgänger entsteht der in Darstellungen übliche Baum von Versionsknoten.
+Commits schließlich verweisen auf einen oder mehrere Vorgänger-Commits, einen Tree, einen Autor und einen Commiter. Im 
 
-Dieser einfache, gut skalierbare Aufbau ermöglicht eine sehr leichtgewichtige Erstellung von Branches und damit zahlreiche flexible Arbeitsweisen.
+Dieser einfache, gut skalierbare Aufbau ermöglicht eine sehr leichtgewichtige Erstellung von Branches und damit 
+zahlreiche flexible Arbeitsweisen.
 
 \subsection{GitHub-Workflow}
 
-GitHub ist heute die größte Plattformen für Quelloffene Softwareprojekte\footcite{github-marketshare-datanyze}. Durch die rasante Verbreitung von Git, wurde GitHub bei Open-Source-Projekten schnell zur Alternative für Sourceforge\footcite{heise-github-2011}. Damit einhergehend hatte der GitHub-Workflow\footcite{github-workflow-intro} auf die Git-Gemeinschaft hohen Einfluss.
+GitHub ist heute die größte Plattformen für quelloffene Softwareprojekte\footcite{github-marketshare-datanyze}. Durch die 
+rasante Verbreitung von Git, wurde GitHub bei Open-Source-Projekten schnell zur Alternative für Sourceforge
+\footcite{heise-github-2011}. Damit einhergehend hatte der GitHub-Workflow\footcite{github-workflow-intro} auf die Git-
+Gemeinschaft hohen Einfluss.
 
-Der GitHub-Workflow ist eine einfache Arbeitsweise, die auf Branches und manuellen Begutachtungen(Reviews) basiert. Änderungen gelangen nur zurück auf den Hauptstrang, wenn sie zuvor einem Review unterzogen worden. Dieser Schritt ist ein entscheidender Unterschied zum Trunk-Based-Workflow der mit Continuous-Integration propagiert wird, da hier der Code-Review erst nach der Integration mit dem Hauptzweig durchgeführt werden kann.
+Der GitHub-Workflow ist eine einfache Arbeitsweise, die auf Branches und manuellen Begutachtungen(Reviews) basiert. 
+Änderungen gelangen nur zurück auf den Hauptstrang, wenn sie zuvor einem Review unterzogen worden. Dieser Schritt ist ein 
+entscheidender Unterschied zum Trunk-Based-Workflow der mit Continuous-Integration propagiert wird, da hier der Code-
+Review erst nach der Integration mit dem Hauptzweig durchgeführt werden kann.
 
 \subsection{Gitflow}
 
-Gitflow ist ein weiterer bekannter Workflow mit Git\footcite{nvie-git-branch-model}. Im Gegensatz zum simplen GitHub-Workflow liegt beim Gitflow der Schwerpunkt auf der Erstellung eines Releases, also einer Menge an Commits, häufig auch von verschiedenen Autoren.
+Gitflow ist ein weiterer bekannter Workflow mit Git\footcite{nvie-git-branch-model}. Im Gegensatz zum simplen GitHub-
+Workflow liegt beim Gitflow der Schwerpunkt auf der Erstellung eines Releases, also einer Menge an Commits, häufig auch 
+von verschiedenen Autoren.
 
-In Anlehnung an viele bekannte Modelle unterscheidet Gitflow zwischen Produktivzweig(master), außerplanmäßiger Anpassung(hotfix), Auslieferungszweig(release), Entwicklungszweig(development) und zahlreichen Feature- und Bug-Zweigen.
+In Anlehnung an viele bekannte Modelle unterscheidet Gitflow zwischen Produktivzweig(master), außerplanmäßiger 
+Anpassung(hotfix), Auslieferungszweig(release), Entwicklungszweig(development) und zahlreichen Feature- und Bug-Zweigen.
 
-Gitflow unterscheidet wie viele andere Git-Arbeitsmodelle zwischen langlebigen und kurzlebigen Branches. Die langlebigen Branches sind hierbei ``master'' und ``development''. Alle anderen Branches sind kurzlebige Branches(``supporting branches''), die immer erst erstellt werden, wenn sie notwendig sind und gelöscht werden, sobald sie ihren Zweck erfüllt haben.
+Gitflow unterscheidet wie viele andere Git-Arbeitsmodelle zwischen langlebigen und kurzlebigen Branches. Die langlebigen 
+Branches sind hierbei ``master'' und ``development''. Alle anderen Branches sind kurzlebige Branches(``supporting 
+branches''), die immer erst erstellt werden, wenn sie notwendig sind und gelöscht werden, sobald sie ihren Zweck erfüllt 
+haben.
 
 \begin{figure}[htbp]
   \includegraphics[
@@ -397,14 +460,34 @@ Gitflow unterscheidet wie viele andere Git-Arbeitsmodelle zwischen langlebigen u
   \caption{Gitflow-Workflow}
   \label{git-flow}
 \end{figure}
-Der konkrete Arbeitsfluss wird in der Abbildung~\ref{git-flow} zusammengefasst. Es wird deutlich dass nur Commits von Release- und Hotfix-Branches auf den Master-Branch gelangen können. Desweiteren ist herauszustellen, dass nach der Erstellung des Release-Branches keine Änderungen mehr vom Development-Branch zugeführt werden. Diese Trennung der Änderungsflüsse führt dazu, dass bereits an neuen Themen gearbeitet werden kann, ohne dass der Release behindert wird. Des Weiteren ist klar geregelt, dass alle Features immer erst im Development-Branch integriert werden müssen.
+Der konkrete Arbeitsfluss wird in der Abbildung~\ref{git-flow} zusammengefasst. Es wird deutlich dass nur Commits von 
+Release- und Hotfix-Branches auf den Master-Branch gelangen können. Desweiteren ist herauszustellen, dass nach der 
+Erstellung des Release-Branches keine Änderungen mehr vom Development-Branch zugeführt werden. Diese Trennung der 
+Änderungsflüsse führt dazu, dass bereits an neuen Themen gearbeitet werden kann, ohne dass der Release behindert wird. 
+Des Weiteren ist klar geregelt, dass alle Features immer erst im Development-Branch integriert werden müssen.
 
 \section{Feature-Branches}
 
-Die Idee hinter einem Feature Branch ist, dass für jedes neue Merkmal, beziehungsweise für jede neue Anforderung ein neuer Branch in der Versionsverwaltung erstellt wird. Ziel von Feature-Branches ist die Isolierung von Änderungen, um die anderen Zweige nicht zu blockieren und Änderungen erst nach Test und Abnahme zusammen zu führen. Dabei sollen mehrere Änderungen parallel entwickelt werden können, ohne dabei zu einem bestimmten Zeitpunkt alle Änderungen in einen Hauptzweig übernehmen zu müssen.
+Die Idee hinter einem Feature Branch ist, dass für jedes neue Merkmal, beziehungsweise für jede neue Anforderung ein 
+neuer Branch in der Versionsverwaltung erstellt wird. Ziel von Feature-Branches ist die Isolierung von Änderungen, um die 
+anderen Zweige nicht zu blockieren und Änderungen erst nach Test und Abnahme zusammen zu führen. Dabei sollen mehrere 
+Änderungen parallel entwickelt werden können, ohne dabei zu einem bestimmten Zeitpunkt alle Änderungen in einen 
+Hauptzweig übernehmen zu müssen.
 
-Prinzipiell ist diese Technik unabhängig von der verwendeten Versionsverwaltung, erhielt aber vor allem durch dezentrale Versionsverwaltungssysteme an Bedeutung. Der Grund dafür liegt in der deutlich einfacheren und weniger aufwändigen Erstellung von Branches und deren Zusammenführung.
+Prinzipiell ist diese Technik unabhängig von der verwendeten Versionsverwaltung, erhielt aber vor allem durch dezentrale 
+Versionsverwaltungssysteme an Bedeutung. Der Grund dafür liegt in der deutlich einfacheren und weniger aufwändigen 
+Erstellung von Branches und deren Zusammenführung.
 
-Feature Branching wird kontrovers diskutiert[quote martinfowler feature branch, quote Yegor Bugayenko, quote jamesmckay]. Dabei wird angemahnt, dass die Abspaltung in einen Zweig, das Problem der Zusammenführung von Codeänderungen nicht behebt, sondern verschlimmert. So wird der Aufwand, der benötigt wird um zwei Verzweigungen zusammen zuführen, potentiell immer höher, um so mehr Änderungen hinzukommen. Die Aufwandserhöhung kann soweit gehen, dass ein psychologischer Faktor hinzukommt, der die Entscheidung zur Zusammenführung weiter belastet. Diese Zusammenführung wird dann auch als ``big scary merge'' oder ``big bang merge'' bezeichnet.
+Feature Branching wird kontrovers diskutiert[quote martinfowler feature branch, quote Yegor Bugayenko, quote jamesmckay]. 
+Dabei wird angemahnt, dass die Abspaltung in einen Zweig, das Problem der Zusammenführung von Codeänderungen nicht 
+behebt, sondern verschlimmert. So wird der Aufwand, der benötigt wird um zwei Verzweigungen zusammen zuführen, potentiell 
+immer höher, um so mehr Änderungen hinzukommen. Die Aufwandserhöhung kann soweit gehen, dass ein psychologischer Faktor 
+hinzukommt, der die Entscheidung zur Zusammenführung weiter belastet. Diese Zusammenführung wird dann auch als ``big 
+scary merge'' oder ``big bang merge'' bezeichnet.
 
-Kontrovers dazu wird die hervorgehoben, dass Feature-Branches Blockaden im Arbeitsfluss vermeiden und die Angst vor dem ``big scary merge'' durch Entwicklerdisziplin und Automatisierung gemildert. Entwicklerdisziplin meint hier Feature-Branches nur für kleine Änderungen zu verwenden und durch Hilfe von Automatisierung schnelle Rückmeldung über die Codequalität zu erhalten. Des Weiteren werden durch moderne ``pull based''[quote github about pull requests] Verzweigungsstratgien Entwickler dazu angehalten Codeprüfungen durch andere Entwickler einzufordern. Diese Lösungsstrategien werden in Kapitel~\ref{ch:visu_meth} weiterführend betrachtet.
+Kontrovers dazu wird die hervorgehoben, dass Feature-Branches Blockaden im Arbeitsfluss vermeiden und die Angst vor dem 
+``big scary merge'' durch Entwicklerdisziplin und Automatisierung gemildert. Die Entwicklerdisziplin verlangt Feature-
+Branches nur für kleine Änderungen zu verwenden und durch Hilfe von Automatisierung schnelle Rückmeldung über die 
+Codequalität zu erhalten. Des Weiteren werden durch moderne ``pull based''[quote github about pull requests] 
+Verzweigungsstratgien Entwickler dazu angehalten Codeprüfungen durch andere Entwickler einzufordern. Diese 
+Lösungsstrategien werden in Kapitel~\ref{ch:visu_meth} weiterführend betrachtet.
