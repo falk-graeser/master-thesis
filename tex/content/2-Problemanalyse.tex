@@ -43,7 +43,7 @@ zu verringern.
 Um den Aufwand für das Risikomanagement und die Folgekosten zu minimieren entwickelte sich eine alternative
 Herangehensweise, welche vor allem Interaktion, Funktionalität, Kundenorientierung und Veränderungsbereitschaft als
 wichtig erachtet. Festgehalten im Agilen Manifest[quote manifest] proklamierten viele bekannte und angesehene
-Softwareexperten ihren Willen Softwareprojekte grundsätzlich anders zu fokussieren.
+Softwareexperten ihren Willen, Softwareprojekte grundsätzlich anders zu fokussieren.
 
 Beeinflusst von der Lean-Bewegung aus der Automobil-Fertigungsindustrie\footcite{kent1999} wurden die abgegrenzten Phasen 
 in den statischen Vorgehensmodellen in Frage gestellt. Hohe Eigenverantwortung und kurze Kommunikationszyklen sind die 
@@ -66,7 +66,7 @@ Programmierte Prüfungen, auch Tests genannt, zu erstellen kann sehr komplex und
 Den jeweiligen Schwerpunkten eines Tests geschuldet, werden Tests auf verschiedenen Abstraktionsebenen der Software ausgeführt. Üblicherweise wird zwischen Akzeptanz-, Funktions-, Integrations- und Unittests unterschieden.[quote softwarequalität]. 
 
 \paragraph{Akzeptanztest}
-oder auch Abnahmetests stellen in erster Linie die Erfüllung der definierten Anforderungen sicher. Akzeptanztests werden häufig in der Form von Anwendungsszenarien (Use-Cases) beschrieben. Anwendungsszenarien beschreiben das Zusammenspiel von Systemen, deren Akteuren und Aktionen die zwischen diesen ausgeführt werden. Die Verwendung von technischen Details der Software, wie Datenbankspezifikationen oder konkreten Systemimplementierungen sollten vermieden werden. Nicht nur erhöht es den Wartungsaufwand dieser Tests, es verschiebt auch den Fokus des Tests, weg von den eigentlich zu prüfenden Anforderungen.
+oder auch Abnahmetests stellen in erster Linie die Erfüllung der definierten Anforderungen sicher. Akzeptanztests werden häufig in der Form von Anwendungsszenarien (Use-Cases) beschrieben. Anwendungsszenarien beschreiben das Zusammenspiel von Systemen, deren Akteuren und Aktionen die zwischen diesen ausgeführt werden. Die Verwendung von technischen Details der Software, wie Datenbankspezifikationen oder konkreten Systemimplementierungen, sollten vermieden werden. Nicht nur erhöht es den Wartungsaufwand dieser Tests, es verschiebt auch den Fokus des Tests, weg von den eigentlich zu prüfenden Anforderungen.
 
 \paragraph{Funktions- und Integrationstests}
 
@@ -82,9 +82,9 @@ werden für Objektklassen- und Methodentests verwendet. Das erwartet Verhalten d
 Zur Bereitstellung einer Softwareanwendung werden mehrere Schritte benötigt. Es wird ein konkreter Stand der Softwarequellen benötigt, ein ausführendes System und es muss für eine Kompilierung der Softwarequellen zu dem System gesorgt werden.
 Je nach Anforderung und Art der Softwareanwendung entspricht dieser Vorgang einer trivialen Kopie oder einem mehrstufigen, komplexen Vorgang. 
 
-Im Nachfolgenden wird beschrieben wie Software in einen wohldefinierten, funktionalen Zustand gebracht und dieser validiert wird. Dazu wird auf Versionsverwaltungssysteme, Konfigurationsmanagement, die automatisierte Erstellung und deren Test eingegangen.
+Im Nachfolgenden wird beschrieben wie Software in einen wohldefinierten, funktionalen Zustand gebracht und dieser validiert wird. Dazu wird auf Versionsverwaltungssysteme, Konfigurationsmanagement, die automatisierte Erstellung der Softwareanwendung und deren Test eingegangen.
 
-\subsection{Kodeverwaltung und Versionsverwaltungssysteme}
+\subsection{Codeverwaltung und Versionsverwaltungssysteme}
 
 Programmversionen können bei fast jeder käuflich zu erwerbenden Softwareanwendung unterschieden werden. Potentielle 
 Anwender konnten so bereits vor Erwerb transparent nachvollziehen, wie fortschrittlich die Anwendung war.
@@ -98,7 +98,7 @@ Programmversion ein Fehler gefunden und behoben wird, sollte dieser auch in alle
 werden. Dadurch entsteht mit dieser einfachen Ablage ein erheblicher Mehraufwand. Fortschrittliche 
 Versionsverwaltungssysteme bieten Möglichkeiten diesen Mehraufwand zu reduzieren.
 
-Ein besonders wichtiges Merkmal eines Versionverwaltungs- oder auch Versionskontrollsystems, ist die Zustandssicherheit. 
+Zustandssicherheit ist ein besonders wichtiges Merkmal für Versionverwaltungs- oder auch Versionskontrollsysteme.
 Die Reproduzierbarkeit eines definierten Zustandes der Softwarequellen. Der definierte Zustand der Anwendung ergibt sich 
 aus der Abfolge aller Änderungen, die an der Softwareanwendung vorgenommen wurden, bis zu der jeweiligen Programmversion. 
 
@@ -148,21 +148,21 @@ Behebungsaufwand verursachen.
 
 Im Idealfall kann eine vollständige Konfigurationsverwaltung:
 \begin{itemize}
-\item eine Umgebung bereitstellen, die genau definiert welches Betriebssystem, in welcher Version, installiert ist und welche Anwendungen installiert und wie konfiguriert sind.
+\item ein durch Betriebssystem und installierte Anwendungen definiertes System bereitstellen, wobei Versionen und Konfiguration alle Elemente Teil der Definition sind.
 \item auf jeder Umgebung jeden dieser Bestandteile einzeln inkrementell verändern und diese Änderungen über alle Systeme synchronisieren.
 \item alle Änderungen mit Zeitpunkt und Verursacher einfach darstellen
 \item Sicherheitsregeln und Konventionen über alle Systeme sicherstellen
 \item alle diese Funktionalitäten barrierefrei dem Entwicklungsteam zur Verfügung stellen
 \end{itemize}
 
-Alle Forderungen sind immer Notwendig, helfen allerdings erheblich bei der Wartung und Betreuung der einzelnen Systeme. 
+Alle Forderungen sind nicht immer notwendig, helfen allerdings erheblich bei der Wartung und Betreuung der einzelnen Systeme. 
 Eine Virtualisierung der Systeme und eine Versionsverwaltung der zugehörigen Konfiguration und Scripte ist ebenfalls 
 hilfreich. Ein solches System kann gut Skalieren und ist mit geringen Aufwand zu handhaben.\footcite{humble2010}
 
 \subsection{Abhängigkeitsverwaltung}
 
 In der Abhängigkeitsverwaltung werden die Softwareabhängigkeiten der Anwendung beschrieben. In auf  Komponenten 
-basierenden Anwendungen schließt dies die eigenen, interne Abhängigkeiten mit ein. Diese Abhängigkeiten, meist Module 
+basierenden Anwendungen schließt dies die eigenen, internen Abhängigkeiten mit ein. Diese Abhängigkeiten, meist Module 
 genannt, sollen die mit monolithischen Strukturen einhergehenden Nachteile unterbinden. Monolithen weisen häufig eine 
 schwache Softwarearchitektur auf und entwickeln sich daher entsprechend schlecht weiter. Mögliche Skalierungen des 
 Systems oder ein Austausch von einzelnen Bestandteilen sind mit einem erheblichen Mehraufwand verbunden.
@@ -440,7 +440,7 @@ Review erst nach der Integration mit dem Hauptzweig durchgeführt werden kann.
 \subsection{Gitflow}
 
 Gitflow ist ein weiterer bekannter Workflow mit Git\footcite{nvie-git-branch-model}. Im Gegensatz zum simplen GitHub-
-Workflow liegt beim Gitflow der Schwerpunkt auf der Erstellung eines Releases, also einer Menge an Commits, häufig auch 
+Workflow liegt beim Gitflow der Schwerpunkt auf der Erstellung eines Releases, also einer Menge an Commits, häufig auch
 von verschiedenen Autoren.
 
 In Anlehnung an viele bekannte Modelle unterscheidet Gitflow zwischen Produktivzweig(master), außerplanmäßiger 
