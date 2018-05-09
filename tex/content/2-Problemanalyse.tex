@@ -184,14 +184,14 @@ die Versionkontrolle aufzunehmen.\footcite{composer-why-lock-in-vcs}
 
 \subsection{Automatisierte Erstellung und Auslieferung}
 
-Der an sich triviale Schritt, der Erstellung (Build) einer Anwendung, kann je nach zu Anwendung unerwartet 
-Schwierigkeiten führen. So kann die Ausführung eines komplexen Erstellungsskriptes einen sehr langen Zeitraum in Anspruch 
-nehmen. Und ein besonders kompliziertes Skript kann die Arbeit damit intransparent gestalten und Anpassungen massiv 
-erschweren\footcite{ci-is-not-build-systems}. Werden bei einem Erstellungsskript Aspekte der vorangegangen Abschnitte zu 
-Versions-, Konfigurations- und Abhängigkeitsverwaltung nicht berücksichtigt, können zudem inkonsistente und damit nicht 
+Viele Softwareanwendungen müssen kompiliert werden um von einem System ausgeführt werden zu können. Die Kompilierung von kleine Programmen ist eine schnelle und wenig aufwändige Aufgabe. Durch das Wachstum einer Softwareanwendung und das hinzukommen weiterer Abhängigkeiten und Konfiguration wird die Ausführung deutlich zeitintensiver und es werden mehr Einzelschritte benötigt. Der vollständige Ablauf wird dann im Allgemeine Build genannt. Die beim Build ausgeführten Ablaufbeschreibungen Build-Skripte. 
+
+Build-Scripte die mit der Anwendung zusammen wachsen und an Komplexität gewinnen, stellen ein Risiko dar. Die Skripte sollten als Teil der Anwendung verstanden werden und gleichwertigen Qualitätskriterien unterzogen werden. Nur wenig gewartet Build-Skripte weisen meist eine hohe Komplexität auf. Im Fortgeschrittenen Fall kann dies zur  ``integration angst'' führen. Eine geringe Commit-Frequenz und eine sehr defensive Programmierung sind die Folge und behindern das Voranschreiten der Softwareanwendung deutlich\footcite{ci-is-not-build-systems}.
+
+Werden bei einem Erstellungsskript Aspekte der vorangegangen Abschnitte zu Versions-, Konfigurations- und Abhängigkeitsverwaltung nicht berücksichtigt, können zudem inkonsistente und damit nicht 
 wiederholbare Resultate erzeugt werden. Diese können zu schwer oder nicht auffindbaren Fehlern führen.
 
-Ziel bei der Erstellung eines Erstellungsskriptes ist es folglich einen konsistenten und transparenten Ablauf zu 
+Ziel bei der Erstellung eines Build-Skriptes ist es einen konsistenten und transparenten Ablauf zu 
 befolgen. Dies wird unter anderem durch die korrekte Versionsverwaltung der einzelnen Komponenten, Konfigurationen und 
 Abhängigkeiten erreicht. Mit diesen Informationen können erstellte Produkte, auch ``build artifacts'' oder Artefakte 
 genannt, in einem zentralen Artefakt-Lager abgelegt werden. Dies gewährleistet sowohl einen schnellen Zugriff auf 
@@ -227,7 +227,7 @@ werden Continuous-Deployment Strategien nicht weiter betrachtet.
 
 \subsection{Validierung und Test}
 
-Die Validierung einer Software ist ein unglaublich komplexes Unterfangen. Die vollständige Richtigkeit eines Programmes 
+Die Validierung einer Software ist ein sehr komplexes Unterfangen. Die vollständige Richtigkeit eines Programmes 
 zu beweisen, scheitert bereits bei kleinen Anwendungen, da die Programmkomplexität mit ihrem Umfang stark steigt. Zudem 
 können nur Teile validiert und getestet werden, welche im Vorfeld bestimmt worden sind. Unklare, mehrdeutige oder 
 fehlende Anforderung machen einen Test unvollständig oder nehmen dem Test die Aussagekraft\footcite[S. 243 Kapitel 4.6][]{software-quality2008}.
@@ -237,15 +237,13 @@ TODO: einfügen komplexitätstheorie gedumsel
 Da eine Software nicht in verhältnismäßiger Zeit getestet werden kann, muss eine Strategie gewählt werden. Es muss 
 bestimmt werden welche Teile der Anwendung getestet werden. Zudem können Metriken gewählt werden, die eine Aussage über 
 die Testvollständigkeit liefern können. Die Testvollständigkeit, auch Testabdeckung genannt, wird gemessen durch die 
-Nachverfolgung, welche Teile beim Test durchlaufen werden. Bei der Entscheidung welche Strategie gewählt wird, fallen 
-verschiedene Kriterien ins Gewicht. Zum einen muss betrachtet werden, welche Anforderungen mit welchem Testverfahren 
-getestet werden können. Zum anderen welche Granularität für jeden Test verwendet wird.
+Nachverfolgung, welche Teile der Softwareanwendung beim Test durchlaufen werden. Bei der Entscheidung welche Strategie gewählt wird, fallen verschiedene Kriterien ins Gewicht. Zum einen muss betrachtet werden, welche Anforderungen mit welchem Testverfahren getestet werden können. Zum anderen welche Granularität für jeden Test verwendet wird.
 Je nachdem welche Strategie gewählt wird, hat dies Auswirkungen auf die Ausführungszeit der Tests. Diese Zeit wirkt sich 
 direkt auf die Produktivität des Entwicklungsteams aus. Ohne die Testresultate kann kaum eine Aussage über die 
 Funktionsfähigkeit der Anwendung getroffen werden. Damit ist die Freigabe einer Softwareanwendung oder eines Inkrementes 
 der Anwendung direkt von der Durchlaufgeschwindigkeit der Tests abhängig.
 
-Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung, jeder Fehler der nicht von der Testsammlung 
+Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung. Jeder Fehler, der nicht von der Testsammlung 
 erfasst wurde, muss spätestens nach der Beseitigung des Fehlers auch durch die Testsammlung validiert werden. Diese 
 Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests\footcite{software-quality2008}.
 
@@ -261,13 +259,7 @@ Continuous-Integration wurde sehr treffend beschrieben \footcite{fowler2006}
 frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is 
 verified by an automated build (including test) to detect integration errors as quickly as possible.}
 
-Continuous-Integration wurde erstmal von Kent Beck als Teil einer Reihe von Praktiken des Entwicklungsvorgehens ``Extreme 
-Programming''\footcite{kent1999} beschrieben. Dabei sollte die Integration der einzelnen Entwickler-Codeständen gefördert 
-werden. Entwickler sollen ihre Änderungen täglich oder häufiger abgleichen und durch einen automatisierten Vorgang als 
-lauffähig beweisen. Damit konnten Fehler nahe des Zeitpunkt des Auftretens gefunden werden. Fehler die erst mit der 
-Integration von Änderungen anderer Entwickler auftreten, können so gefunden werden. Damit fordert Continuous-Integration  
-eine aussagekräftige Testabdeckung mit automatischen Tests. Des Weiteren können und sollten Entwickler einen entdeckten 
-Fehler direkt beheben, da sonst alle anderen Teammitglieder behindert werden.
+Continuous-Integration wurde erstmals von Kent Beck als Teil einer Reihe von Praktiken des Entwicklungsvorgehens ``Extreme Programming''\footcite{kent1999} beschrieben. Dabei sollte die Integration der einzelnen Entwickler-Codeständen gefördert werden. Entwickler sollen ihre Änderungen täglich oder häufiger abgleichen und durch einen automatisierten Vorgang als lauffähig beweisen. Damit konnten Fehler nahe des Zeitpunkt des Auftretens gefunden werden. Fehler die erst mit der Integration von Änderungen anderer Entwickler auftreten, können so gefunden werden. Damit fordert Continuous-Integration eine aussagekräftige Testabdeckung mit automatischen Tests. Des Weiteren können und sollten Entwickler einen entdeckten Fehler direkt beheben, da sonst alle anderen Teammitglieder behindert werden.
 
 Die Arbeitsweise alle Änderungen auf einem Zweig zu sammeln und kontinuierlich zu integrieren, wird auch Trunk-Based-
 Development genannt. Während Continuous-Integration und Trunk-Based-Development als getrennte Methodiken geführt werden
@@ -340,12 +332,10 @@ von Softwareentwicklern zu unterstützen.
 
 \subsection{Definition und Verwendung der Git-Artefakte}
 
-Die Verwendung von git gestaltet sich vergleichsweise einfach. In wenigen Schritten kann Git installiert \footcite{git-
-scm-install} und mit der Verwendung begonnen werden. 
+Die Verwendung von git gestaltet sich vergleichsweise einfach. In wenigen Schritten kann Git installiert \footcite{git-scm-install} und mit der Verwendung begonnen werden. 
 Git nutzt bestimmte Artefakte um seine Aufgaben zu erfüllen. Darunter Repositories, Commits, Branches und Tags. Zudem 
 werden Mechanismen bereitgestellt um mit diesen Artefakten zu interagieren. Neben zu erwartenden Mechanismen wie 
-Hinzufügen und Löschen, werden auch Speichern- und Ladeaktionen (``push'' und ``pull) angeboten\footcite{git-
-essentials-2017}.
+Hinzufügen und Löschen, werden auch Speichern- und Ladeaktionen (``push'' und ``pull) angeboten\footcite{git-essentials-2017}.
 
 \begin{figure}[htbp]
   \includegraphics[
@@ -356,8 +346,7 @@ essentials-2017}.
   \caption{Git-Workflow}
   \label{git-workflow}
 \end{figure}
-Die Grafik~\ref{git-workflow} stellt das Zusammenspiel der Artefakte und den Standard-Git-Worflow\footcite{osteele-git-
-workflow} dar.
+Die Grafik~\ref{git-workflow} stellt das Zusammenspiel der Artefakte und den Standard-Git-Worflow\footcite{osteele-git-workflow} dar.
 
 \paragraph{Repositories} sind die größte Verwaltungseinheit in Git. Diese enthalten alle Git-Objekte, wie Referenzen, 
 Commits, Trees, Blobs, sowie die lokale Konfiguration. Repositories können andere Repositories referenzieren oder 
@@ -478,8 +467,8 @@ Prinzipiell ist diese Technik unabhängig von der verwendeten Versionsverwaltung
 Versionsverwaltungssysteme an Bedeutung. Der Grund dafür liegt in der deutlich einfacheren und weniger aufwändigen 
 Erstellung von Branches und deren Zusammenführung.
 
-Feature Branching wird kontrovers diskutiert[quote martinfowler feature branch, quote Yegor Bugayenko, quote jamesmckay]. 
-Dabei wird angemahnt, dass die Abspaltung in einen Zweig, das Problem der Zusammenführung von Codeänderungen nicht 
+Feature Branching wird kontrovers diskutiert\footcite{fowler-feature-branch}\footcite{ci-is-dead}\footcite{fb-revisited}. 
+Dabei wird angemahnt, dass die Abspaltung in einen Branch, das Problem der Zusammenführung von Codeänderungen nicht 
 behebt, sondern verschlimmert. So wird der Aufwand, der benötigt wird um zwei Verzweigungen zusammen zuführen, potentiell 
 immer höher, um so mehr Änderungen hinzukommen. Die Aufwandserhöhung kann soweit gehen, dass ein psychologischer Faktor 
 hinzukommt, der die Entscheidung zur Zusammenführung weiter belastet. Diese Zusammenführung wird dann auch als ``big 
@@ -488,6 +477,6 @@ scary merge'' oder ``big bang merge'' bezeichnet.
 Kontrovers dazu wird die hervorgehoben, dass Feature-Branches Blockaden im Arbeitsfluss vermeiden und die Angst vor dem 
 ``big scary merge'' durch Entwicklerdisziplin und Automatisierung gemildert. Die Entwicklerdisziplin verlangt Feature-
 Branches nur für kleine Änderungen zu verwenden und durch Hilfe von Automatisierung schnelle Rückmeldung über die 
-Codequalität zu erhalten. Des Weiteren werden durch moderne ``pull based''[quote github about pull requests] 
+Codequalität zu erhalten. Des Weiteren werden durch moderne ``pull based''\footcite{github-about-pull}
 Verzweigungsstratgien Entwickler dazu angehalten Codeprüfungen durch andere Entwickler einzufordern. Diese 
 Lösungsstrategien werden in Kapitel~\ref{ch:visu_meth} weiterführend betrachtet.
