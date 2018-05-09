@@ -19,19 +19,34 @@ Die automatische Erstellung der Software pro Feature Branch ist ein notwendiges 
 - regeln für interne und externe abhängigkeiten
 - updatestrategien
 - konfigurationsstrategien
-\subsubsection{Virtualisierung}
-- Virtualisierung ermöglicht erst die Bewertung jedes Branches einzeln, sowie die Parallelisierung dieses Vorganges
+\subsubsection{Automatisierte Systembereitstellung}
+- da jeder branch bewertet werden muss, müssen die tests für jeden branch ausgeführt werden
+- dauert u.U. sehr lang und sollte parallelisiert werden
+- container oder virtualisierung genutzt 
+- container sind schneller
 \subsection{Modularisierung von Software}
 - Modularisierung von Software durch strukturierte Anforderungen, Architektur, ermöglicht einfacheres zusammenführen von Feature-Branches
-\section{Automatisierten Wertschöpfung}
+- service orientiert
+\section{Automatisierte Bewertung von Änderungen}
+- bewertung von änderungen statisch und dynamisch
+- statisch metriken
+- dynamisch tests
+- erstellung von übersichten zur bewertung des standes
 \subsection{Metriken}
 \label{subsec:auto-values-metrics}
 \subsection{Automatisches Zusammenführen}
+- automatisches zusammenführen ist nur möglich wenn konflikte beseitig wurden
+- nach einem konfliktfreien merge ist funktion nicht sichergestellt (tests, metriken)
 \subsubsection{Fastforward-Merges}
+- fast forward merges sind konfliktfreie änderungen
+- wenn branches ff sind können sie automatisch in ein release überführt werden
 \subsubsection{Flüchtige Release-Branches}
 - Test ob Release gebaut werden kann (automatischer Merge von allen als Release-Fähig markierten Branches
 - Ermittelung von Konflikten
 - Ermittelung ob Test auch ohne Änderungen lauffähig
+- metriken liefern aussage wie gut der release ist
+\subsubsection{Testgetriebene Entwicklung}
+- lieft metriken von beginn an, lieferten einen verwertbaren projektfortschritt
 \subsection{Automatisierte Erstellung von graphischen Übersichten}
 \subsubsection{Abhängigkeitsübersicht}
 - Darstellung von verwendeten Abhängigkeiten (intern und extern)

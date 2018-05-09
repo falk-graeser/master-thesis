@@ -63,18 +63,38 @@ Um die Umsetzung der Anforderungen zu prüfen benötigt es eine Qualitätssicher
 Die Erfüllung der Anforderungen an eine Softwareanwendung sollte durch eine Strategie der Qualitätssicherung sichergestellt sein. Da jede Änderung an der Software die Erfüllung der Anforderungen beeinträchtigen könnte, sollten die Anforderungen nach Änderungen erneut geprüft werden. Da manuelle Prüfungen aufwändig und zeitintensiv sind, sollten sie sich auf wenige Anwendungsszenarien beschränken. Diese Anwendungsszenarien sollten nur schwer oder unzuverlässig durch programmierte Prüfungen abgedeckt werden können.
 
 Programmierte Prüfungen, auch Tests genannt, zu erstellen kann sehr komplex und kompliziert sein. Je nach Softwareanwendung und damit verbundenen Anforderungen, müssen Kompromisse zur Laufzeit, Aussagekraft und Wartbarkeit eines Tests eingegangen werden.
-Den jeweiligen Schwerpunkten eines Tests geschuldet, werden Tests auf verschiedenen Abstraktionsebenen der Software ausgeführt. Üblicherweise wird zwischen Akzeptanz-, Funktions-, Integrations- und Unittests unterschieden.[quote softwarequalität]. 
+Den jeweiligen Schwerpunkten eines Tests geschuldet, werden Tests auf verschiedenen Abstraktionsebenen der Software ausgeführt. Es wird zunächst zwischen funktionalen und nicht-funktionalen Testkriterien unterteilt.
+Bei den funktionalen Test wird weiter zwischen Akzeptanz-, Integrations- und Unittests unterschieden\footcite[S.159][]{software-quality2008}. 
 
 \paragraph{Akzeptanztest}
 oder auch Abnahmetests stellen in erster Linie die Erfüllung der definierten Anforderungen sicher. Akzeptanztests werden häufig in der Form von Anwendungsszenarien (Use-Cases) beschrieben. Anwendungsszenarien beschreiben das Zusammenspiel von Systemen, deren Akteuren und Aktionen die zwischen diesen ausgeführt werden. Die Verwendung von technischen Details der Software, wie Datenbankspezifikationen oder konkreten Systemimplementierungen, sollten vermieden werden. Nicht nur erhöht es den Wartungsaufwand dieser Tests, es verschiebt auch den Fokus des Tests, weg von den eigentlich zu prüfenden Anforderungen.
 
-\paragraph{Funktions- und Integrationstests}
+\paragraph{Integrationstests}
 
 dienen der Überprüfung von Schnittstellen. Dabei wird das Verhalten der Schnittstelle auf definierte Ein- und Ausgaben geprüft. Der Fokus der Tests liegt darauf unerwartetes Verhalten beim Zusammenspiel mehrere Komponenten auszuschließen.
 
 \paragraph{Unit-Tests}
 
 werden für Objektklassen- und Methodentests verwendet. Das erwartet Verhalten der zu überprüfenden Einheit(Unit) wird mit dem Unit-Test sichergestellt. Zugleich übernimmt er auch eine dokumentarische Funktion. Durch die Initialisierung der Einheit und der Aufruf ihrer Schnittstelle, wird die Intention ihres Autors deutlich.
+
+Die nicht-funktionalen Testkriterien betreffen Merkmale welche nicht einem einzelnen Anwendungsfall zugeordnet werden können. Es werden Leistungsaspekten und unterbewussten Kriterien geprüft. Solche Merkmale sind zum Beispiel Reaktionszeit der Anwendung, wie viele Aktionen pro Zeiteinheit die Anwendung bewältigen kann und wie gut die Anwendung nutzbar ist (Usability). Nicht-funktionale Tests sollten zudem weiter nach der Möglichkeit der Bewertung ihrer Ergebnisse unterteilt werden. Gut zu bewerten sind Leistungs- und Sicherheitstests. Weniger gut zu bewerten sind Explorativ- und Usability-Tests.
+
+\paragraph{Leistungstests} oder auch Performance-Tests werden genutzt um die Leistungsfähigkeit einer Anwendung zu erproben. Kriterien wie Anfragen pro Zeiteinheit, maximale Anzahl paralleler Anfragen und Reaktionszeit, sowie Anfragedauer werden getestet.
+\paragraph{Sicherheitstests} werden genutzt um Schwachstellen einer Anwendung zu finden. Es werden Listen von bekannten Sicherheitsproblemen\footcite{owasp-vulnerability} genutzt und in der Anwendung geprüft.
+\paragraph{Explorativ-Tests} werden manuell durchgeführt und versuchen Fehler zu finden, die auf anderen Wegen nicht oder kaum zu entdecken sind.
+\paragraph{Usability-Tests} werden ebenfalls manuell durchgeführt und sind aufgrund ihrer subjektiven Natur schwer zu bewerten. Es ist daher üblich auf eine Untergruppe dieser Tests zu prüfen, wie zum Beispiel die Barrierefreiheit einer Anwendung.
+
+Die Abbildung~\ref{agile-testing-quadrants} fasst die verschiedenen Tests anhand der Art der Durchführung und anhand ihrer Stackeholder-Ausrichtung in vier Quadranten zusammen\footcite[The Agile testing matrix][]{cd-docker-jenkins}.
+
+\begin{figure}[htbp]
+  \includegraphics[
+    width=\textwidth,
+    height=\textheight,
+    keepaspectratio
+  ]{resources/Agile-Testing-Quadrants.pdf}
+  \caption{Agile Testing Quadrants}
+  \label{agile-testing-quadrants}
+\end{figure}
 
 \section{Automatisierung der Softwareerstellung}
 \label{sec:automation-software}
@@ -243,9 +263,9 @@ direkt auf die Produktivität des Entwicklungsteams aus. Ohne die Testresultate 
 Funktionsfähigkeit der Anwendung getroffen werden. Damit ist die Freigabe einer Softwareanwendung oder eines Inkrementes 
 der Anwendung direkt von der Durchlaufgeschwindigkeit der Tests abhängig.
 
-Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung. Jeder Fehler, der nicht von der Testsammlung 
+Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung(Test-Suite). Jeder Fehler, der nicht von der Testsammlung 
 erfasst wurde, muss spätestens nach der Beseitigung des Fehlers auch durch die Testsammlung validiert werden. Diese 
-Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests\footcite{software-quality2008}.
+Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests\footcite{software-quality2008}. Ein direkter Nachteil einer großen Test-Suite ist der Aufwand für ihre Pflege. Testabdeckung, Wartbarkeit der Tests und Aussagekraft der Tests sollte daher in der Teststrategie gegeneinander abgewogen werden.
 
 Da Tests und Metriken die einzigen Möglichkeiten sind um automatisch Einschätzungen der Software vorzunehmen, werden 
 diese Bereiche erneut im Kapitel~\ref{subsec:auto-values-metrics} aufgegriffen und näher auf deren Wertschöpfung 
@@ -306,9 +326,20 @@ automatische Generierung der virtuellen Umgebung und die Ablage in gepackter For
 Vorteile. Der Zugriff auf die Virtualisierung und damit die Bereitstellung der Systeme wird dadurch besonders transparent 
 und wenig aufwändig.
 
-\subsection{Virtualisierung mit Docker}
+Durch die Virtualisierung kann ein System reproduzierbar und schnell in einem vorher definierten Zustand bereit gestellt werden. Dies verkürzt Arbeitsabläufe für den Test einer Anwendung. Zum einen können schnell Änderungen an der Anwendung getestet werden, zum anderen kann die Anwendung in zahlreichen Konfigurations- und Abhängigkeitskombinationen getestet werden.
 
-TODO: write
+\subsection{Virtualisierung mit Virtual-Machines}
+
+Virtualisierung mit Virutal-Machines abstrahiert eine vollständige Systemumgebung. Diese ermöglicht unter anderem ein Betriebssystem innerhalb eines anderen Betriebssystems zu betreiben. Da eine vollständige Systemumgebung mit Hardwarekomponenten emuliert wird, lassen sich Anwendungen auf verschiedenen Virtual-Machines komplett unabhängig voneinander betreiben. 
+Durch die Vollständigkeit der Virtualisierung ist der Systemressourcenverbrauch signifikant höher als beim Betrieb einer Anwendung in einem nicht virtualisierten System. Virtuelle Maschinen skalieren somit gut in Erstellung und Verwaltung. Im Gegensatz dazu skaliert der Systemressourcenverbrauch deutlich schlechter. Durch den geringeren Verwaltungsaufwand können dennoch große Cluster kosteneffizient betrieben werden, wie viele Cloud-Services zeigen\footcite{a-cloud-guru-cost}.
+
+\subsection{Containerverwaltung mit Docker}
+
+Docker ist keine Virtualisierung im eigentlichen Sinne. Ein Docker-Container ist eine standardisierte Umgebung in der ein Anwendung laufen kann. Ein Docker-Server verwaltet die Docker-Container und regelt deren Sicherheit- und Leistungsbedürfnisse. Docker läuft somit als Anwendung auf einem System und ist an dessen Spezifikationen für Betriebssysteme und Hardwarekomponenten gebunden\footcite[Why are containers important][]{learn-docker}.
+
+Anwendungen werden in Form von Docker-Images abgespeichert und können dann in unbegrenzt vielen Docker-Container ausgeführt werden. Änderungen im Inhalt des Docker-Containers sind auf diesen beschränkt und haben keinen Einfluss auf das Docker-Image aus dem er erstellt wurde.
+
+Mit Docker und virtuellen Maschinen wurden zwei Möglichkeiten geschaffen Software weiter zu vereinheitlichen. Standardisierung ist eine wesentliche Basis für Modularisierung und Automatisierung.
 
 \section{Dezentrale Versionierung mit Git}
 
