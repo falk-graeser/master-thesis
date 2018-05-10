@@ -1,38 +1,37 @@
 \chapter{Methodiken und Visualisierung für Continuous Integration und Feature Branches}
 \label{ch:visu_meth}
 
-Im vorangegangenen Kapitel wird dargelegt was Continuous-Integration und Feature-Branches sind und wie diese Techniken in der Softwareentwicklung angewendet werden. Zudem wird angerissen, welche Schwierigkeiten mit der Verwendung dieser Techniken einhergehen und dementsprechend eine Lösung erfordern. 
-Die nachfolgenden Abschnitte sollen Lösungsansätze beleuchten und hilfreich Informationsquellen aufzeigen.
+Im vorangegangenen Kapitel wird dargelegt was Continuous-Integration und Feature-Branches sind und wie diese Techniken in der Softwareentwicklung angewendet werden. Zudem wird darf eingegangen, welche Schwierigkeiten mit der Verwendung dieser Techniken einhergehen und dementsprechend eine Lösung erfordern. 
+Die nachfolgenden Abschnitte sollen Lösungsansätze beleuchten und hilfreich Informationsquellen aufzeigen. Es wird auf Schwierigkeiten von bekannten Techniken und Methodiken eingegangen und erläutert wie häufige Fallstricke vermieden werden können.
 
-\section{Entwicklungs-Workflows}
+\section{Continuous-Integration und Feature Branches}
 
-Entwicklungs-Workflows sind ein stark von subjektiven Einflüssen geprägtes Themenfeld. Faktoren wie die verwendete Programmiersprache, verwendete Hilfsmittel und die vorherrschende Entwicklungskultur beeinflussen sich gegenseitig.
+Continuous-Integration und Feature-Branches sind beides Techniken um die Kollaboration zwischen Entwicklern zu fördern. Continuous-Integration fordert die Integration in den existierend Codestand für jede Änderung. Durch die Verwendung des Trunk-Based-Developments, ist das gesamte Team von dieser Integration direkt betroffen. Ist die Integration fehlerhaft wird somit für die Dauer der Behebung das gesamte Team angehalten bei der Behebung zu helfen. Der Feature-Branch-Ansatz hingegen lässt Änderung ohne Integration parallel existieren. Folgt man der Gitflow-Verwendung von Feature-Branches aus Kapitel~\ref{subsec:gitflow} wird auch hier eine Integration vor einem Release gefordert. Feature-Branches bieten somit einen Integrationsvorgang ohne das Team zu blockieren. Allerdings wird der Zeitpunkt der Integration verzögert. In dieser Zeitspanne können weitere Änderungen zum Integrations-Branch hinzukommen. Jeder dieser Änderungen muss wiederum in den Feature-Branch integriert werden. Damit steigt der Aufwand sukzessive über die Lebensdauer des Feature-Branches. Im ungünstigsten Fall eskaliert dieser Vorgang in einem ``big scary merge'' oder ``big bang merge'' wie in Kapitel~\ref{sec:feature-branches} beschrieben. Dieses Risiko sollte gemindert werden durch eine regelmäßige Integration mit dem Integrations-Branch. Zudem sollten die beiden Gedanken beachtet werden:\\
 
-Kritik an Feature-Branches hängt an der Verwendung der Technik. Integration ist auch möglich ohne Trunk-Based-Development zu betreiben. Um Feature-Branches vollständig zu "ermächtigen" (wtf x'D) sind Techniken wie Virtualisierung, automatisches Bauen, Testabdeckung, Modularisierung, DependencyMgmt, Konfigurationsmgmt notwendig
+\blockquote {Continuous is more often then you think} 
+ 
+\blockquote {When it is painful, the way to reduce the the pain is to do it more frequently, not less}\footcite[S.24][]{humble2010} \\
 
-\subsection{Continuous-Delivery und Feature Branches}
+Sie beschreiben den Konflikt, welcher durch schlechte Anwendung von Continuous-Integration entsteht. 
 
-Die automatische Erstellung der Software pro Feature Branch ist ein notwendiges Kriterium für die Bewertung der Einzeländerung.
+Zielstellung der Vereinigung von Continuous-Integration und Feature-Branches ist folglich eine kontinuierliche Integration ohne Blockaden für andere Entwickler. Es muss definiert werden wie Entwicklungssysteme und -Werkzeuge ineinander greifen und es sollten Regeln und Strukturen definiert werden, um einen Ablauf mit nur wenig Reibungspunkten zu gewährleisten.
 
-\subsubsection{Konfigurations- und Abhängigkeitsverwaltung}
-- regeln für konfig.mgmt
-- regeln für interne und externe abhängigkeiten
-- updatestrategien
-- konfigurationsstrategien
-\subsubsection{Automatisierte Systembereitstellung}
-- da jeder branch bewertet werden muss, müssen die tests für jeden branch ausgeführt werden
-- dauert u.U. sehr lang und sollte parallelisiert werden
-- container oder virtualisierung genutzt 
-- container sind schneller
-\subsection{Modularisierung von Software}
-- Modularisierung von Software durch strukturierte Anforderungen, Architektur, ermöglicht einfacheres zusammenführen von Feature-Branches
-- service orientiert
-\section{Automatisierte Bewertung von Änderungen}
+\subsection{Automatisierter Test von Feature-Branches}
+
+Als erste Schritt zur Verschmelzung von Continuous-Integration und Feature-Branches ist es notwendig jede Änderung automatisch zu Testen. Dazu muss jede Änderung auf einem Feature-Branch in einem zentralen Repository bereitgestellt werden. Der Stand des Feature-Branches muss dann wie in Kapitel~\ref{sec:automation-software} \nameref{sec:automation-software} beschrieben, erstellt und getestet werden.
+
+Prinzipiell besteht die Möglichkeit einen Test der Änderungen manuell auf dem Entwicklersystem auszuführen. Dieses Vorgehen erfordert allerdings eine hohe Anzahl an Werkzeugen und blockiert den Entwickler für diesen Zeitraum.
+
+Die Bereitstellung in einem zentralen Repository ermöglicht es statische, syntaktische Analysen zu erstellen. Die Ausführung der vollständige Test-Suite erlaubt semantische Analysen. Die zentrale Aufbereitung der Ergebnisse der Analysen ermöglicht es allen Projektteilnehmern eine Werteinschätzung des Feature-Branches vorzunehmen.
+
+\subsection{Automatisierte Bewertung von Änderungen}
+
+Für 
 - bewertung von änderungen statisch und dynamisch
 - statisch metriken
 - dynamisch tests
 - erstellung von übersichten zur bewertung des standes
-\subsection{Metriken}
+\subsubsection{Metriken}
 \label{subsec:auto-values-metrics}
 \subsection{Automatisches Zusammenführen}
 - automatisches zusammenführen ist nur möglich wenn konflikte beseitig wurden
@@ -45,8 +44,6 @@ Die automatische Erstellung der Software pro Feature Branch ist ein notwendiges 
 - Ermittelung von Konflikten
 - Ermittelung ob Test auch ohne Änderungen lauffähig
 - metriken liefern aussage wie gut der release ist
-\subsubsection{Testgetriebene Entwicklung}
-- lieft metriken von beginn an, lieferten einen verwertbaren projektfortschritt
 \subsection{Automatisierte Erstellung von graphischen Übersichten}
 \subsubsection{Abhängigkeitsübersicht}
 - Darstellung von verwendeten Abhängigkeiten (intern und extern)
@@ -54,43 +51,41 @@ Die automatische Erstellung der Software pro Feature Branch ist ein notwendiges 
 - Ermittelung von grenzwertigen Abhängigkeiten (deprecated, update verfügbar, sehr alt)
 \subsubsection{Branch-Übersicht}
 - Übersichtliche Branch-Darstellung mit Alter, Puls, Güte und Abhängigkeiten (abhäng. zu autom. Release-Erstellung)
+- löschung alter branches (verwerfen alter unnötiger änderungen)
 \subsubsection{Konfigurations- und Umgebungsübersicht}
 - Übersicht über alle erreichbaren Systeme und ihren Platz in der Build-Pipline / bzw mit System, und Stand / Güte
+
+\subsection{Konfigurations- und Abhängigkeitsverwaltung}
+- regeln für konfig.mgmt
+- regeln für interne und externe abhängigkeiten
+- updatestrategien
+- konfigurationsstrategien
+\subsection{Automatisierte Systembereitstellung}
+- da jeder branch bewertet werden muss, müssen die tests für jeden branch ausgeführt werden
+- dauert u.U. sehr lang und sollte parallelisiert werden
+- container oder virtualisierung genutzt 
+- container sind schneller
+\section{Modularisierung von Software}
+- Modularisierung von Software durch strukturierte Anforderungen, Architektur, ermöglicht einfacheres zusammenführen von Feature-Branches
+- service orientiert
+- lose kopplung
+\section{Fortgeschrittene Nutzung von Versionsverwaltung}
+Wie auch mit jeder anderen Versionsverwaltung, so ist es auch beim Arbeiten mit Git essentiell seine Arbeit zu strukturieren. Wird Git lediglich als bequeme Variante für eine regelmäßige Sicherung des Arbeitsstandes genutzt, dann entsteht sehr schnell eine schwer zu lesende, an Bedeutung mangelnde Versionshistorie. Wichtig ist es die getätigte Arbeit in semantisch zusammenhängenden, möglichst kleine und prägnanten Commits zu gliedern.
+Zusammen mit nachvollziehbaren und klaren Commit-Nachrichten, entsteht so eine gut leserliche und die Dokumentation unterstützende Versionshistorie.\footcite[Making only one change per commit][]{git-essentials-2017}\footcite[Writing commit messages before starting to code][]{git-essentials-2017}
+
+Including the whole change in one commit
+
+Describing the change, not what have you done
+\section{Testgetriebene Entwicklung}
+- lieft metriken von beginn an, lieferten einen verwertbaren projektfortschritt
+
+
 \section{Entwicklerdisziplin - Faktor Mensch}
 \label{sec:human-fail}
+\blockquote {discipline, the most lacking virtue in creative people (like programmers)}
 - Testabdeckung
 - Einhaltung des Prozesses
 - Güte der Reviews, Reviews überhaupt
 - Projektdruck
 - Subjektive Bewertung von Prozess, Tools und Projekt
 
-\begin{itemize}
-\item Metriken um Branches zu beurteilen
-\item automatisierte Releasekombination
-\item automatisierte Konflikterkennung
-\item Regeln, wie 
-	\begin{itemize}
-		\item nur FastForward-Merges erlauben
-	\end{itemize}	 
-\item verschiedene Sichten, u.a. Feature-Sicht mit Goals?
-\item packetverwaltung mit einbeziehen - sind packete outdated?
-\item "wervolle tests" - kopplung mit anforderungen - gherkin?
-\item graphentheorie für besseres dependency management / bessere module entwerfen?
-\item lose gekoppelte software ?
-\end{itemize}
-
-\blockquote {discipline, the most lacking virtue in creative people (like programmers)}
-\footcite[Making only one change per commit][]{git-essentials-2017}
-\footcite[Writing commit messages before starting to code][]{git-essentials-2017}
-
-Including the whole change in one commit
-
-Describing the change, not what have you done
-
-
-
-\section{Disziplin und Strukturierung}
-\subsection{Arbeitsweise mit Git}
-
-Wie auch mit jeder anderen Versionsverwaltung, so ist es auch beim Arbeiten mit Git essentiell seine Arbeit zu strukturieren. Wird Git lediglich als bequeme Variante für eine regelmäßige Sicherung des Arbeitsstandes genutzt, dann entsteht sehr schnell eine schwer zu lesende, an Bedeutung mangelnde Versionshistorie. Wichtig ist es die getätigte Arbeit in semantisch zusammenhängenden, möglichst kleine und prägnanten Commits zu gliedern.
-Zusammen mit nachvollziehbaren und klaren Commit-Nachrichten, entsteht so eine gut leserliche und die Dokumentation unterstützende Versionshistorie.\footcite[Making only one change per commit][]{git-essentials-2017}
