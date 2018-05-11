@@ -251,25 +251,49 @@ Die Validierung einer Software ist ein sehr komplexes Unterfangen. Die vollstän
 zu beweisen, scheitert bereits bei kleinen Anwendungen, da die Programmkomplexität mit ihrem Umfang stark steigt. Zudem 
 können nur Teile validiert und getestet werden, welche im Vorfeld bestimmt worden sind. Unklare, mehrdeutige oder 
 fehlende Anforderung machen einen Test unvollständig oder nehmen dem Test die Aussagekraft\footcite[S. 243 Kapitel 4.6][]{software-quality2008}.
-
+\\\\
 TODO: einfügen komplexitätstheorie gedumsel
-
+\\\\
 Da eine Software nicht in verhältnismäßiger Zeit getestet werden kann, muss eine Strategie gewählt werden. Es muss 
-bestimmt werden welche Teile der Anwendung getestet werden. Zudem können Metriken gewählt werden, die eine Aussage über 
-die Testvollständigkeit liefern können. Die Testvollständigkeit, auch Testabdeckung genannt, wird gemessen durch die 
-Nachverfolgung, welche Teile der Softwareanwendung beim Test durchlaufen werden. Bei der Entscheidung welche Strategie gewählt wird, fallen verschiedene Kriterien ins Gewicht. Zum einen muss betrachtet werden, welche Anforderungen mit welchem Testverfahren getestet werden können. Zum anderen welche Granularität für jeden Test verwendet wird.
+bestimmt werden welche Teile der Anwendung getestet werden. Die Vollständigkeit der Tests, auch Testabdeckung genannt, wird gemessen durch die Nachverfolgung, welche Teile der Softwareanwendung beim Test durchlaufen werden. Bei der Entscheidung welche Strategie gewählt wird, fallen verschiedene Kriterien ins Gewicht. Zum einen muss betrachtet werden, welche Anforderungen mit welchem Testverfahren getestet werden können. Zum anderen welche Granularität für jeden Test verwendet wird.
 Je nachdem welche Strategie gewählt wird, hat dies Auswirkungen auf die Ausführungszeit der Tests. Diese Zeit wirkt sich 
 direkt auf die Produktivität des Entwicklungsteams aus. Ohne die Testresultate kann kaum eine Aussage über die 
 Funktionsfähigkeit der Anwendung getroffen werden. Damit ist die Freigabe einer Softwareanwendung oder eines Inkrementes 
 der Anwendung direkt von der Durchlaufgeschwindigkeit der Tests abhängig.
 
-Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung(Test-Suite). Jeder Fehler, der nicht von der Testsammlung 
-erfasst wurde, muss spätestens nach der Beseitigung des Fehlers auch durch die Testsammlung validiert werden. Diese 
-Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests\footcite{software-quality2008}. Ein direkter Nachteil einer großen Test-Suite ist der Aufwand für ihre Pflege. Testabdeckung, Wartbarkeit der Tests und Aussagekraft der Tests sollte daher in der Teststrategie gegeneinander abgewogen werden.
+Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung(Test-Suite). Jeder Fehler, der nicht von der Testsammlung erfasst wurde, muss spätestens nach der Beseitigung des Fehlers auch durch die Testsammlung validiert werden. Diese Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests\footcite{software-quality2008}. Ein direkter Nachteil einer großen Test-Suite ist der Aufwand für ihre Pflege. Testabdeckung, Wartbarkeit der Tests und Aussagekraft der Tests sollte daher in der Teststrategie gegeneinander abgewogen werden.
 
-Da Tests und Metriken die einzigen Möglichkeiten sind um automatisch Einschätzungen der Software vorzunehmen, werden 
-diese Bereiche erneut im Kapitel~\ref{subsec:auto-values-metrics} aufgegriffen und näher auf deren Wertschöpfung 
-eingegangen.
+\subsubsection{Software-Metriken}
+
+Software-Metriken können systematisch und quantitativ Aspekte des Software-Codes erfassen. Als Teilaspekt der Code-Analyse können Software-Metriken dazu verwendet werden Kenngrößen des Software-Systems zu quantifizieren und damit Bewertung und Vergleich mit anderen Code-Ständen ermöglichen\footcite[S.247][]{software-quality2008}
+
+Eine nützliche Software-Metrik sollte mehrere Gütekriterien erfüllen. Die Metrik sollte objektiv sein, was bei einer maschinelle Erhebung und Verarbeitung weitestgehend gegeben ist. Die Ergebnisse einer Metrik sollten wiederholbar und damit robust sein. Zudem sollten die Ergebnisse vergleichbar sein, um verschieden Software-Stände gegeneinander bewerten zu können. Eine Metrik sollte mit dem untersucht Merkmal korrelieren. Die Korrelation ist dann besonders hoch, wenn  der mit der Metrik erhobene Wert sich stark ändert und das betrachtet Merkmal ebenfalls. Abschließend sollte die Erhebung der Metrik in Relation zu der Güte ihrer Aussage stehen. Metriken mit einem hohen Erhebungsaufwand, aber ohne Relevanz für den Entscheidungsprozess, sind nicht wertvoll.\footcite[S.248 ff][]{software-quality2008}
+
+Da Tests und Software-Metriken die einzigen Möglichkeiten sind um automatisiert Einschätzungen der Software vorzunehmen, werden diese Bereiche erneut im Kapitel~\ref{subsec:auto-values-metrics} aufgegriffen und näher auf deren Anwendung eingegangen.
+
+Im folgenden werden kurz bekanntere Metriken vorgestellt.\footcite[S.249 ff][]{software-quality2008}
+
+\paragraph{LOC und NCSS} sind Kenngrößen für den Umfang des Sofware-Codes. ``Lines of Code'' (LOC) geben die Anzahl von Code-Zeilen an. ``Non Commented Source Statements'' (NCSS) ist die gleiche Kenngröße, allerdings abzüglich der Kommentarzeilen. Beide Metriken haben nur ein sehr schwache Aussage über den Umfang des Software-Codes.
+
+\paragraph{Halstead-Metrik} ist eine Kenngröße für die Programmkomplexität. Die Ermittlung erfolgt durch die Analyse der lexikalischen Struktur vom Software-Code. Dabei wird der Code in Operatoren und Operanden eingeteilt und deren Auftrittscharakteristik analysiert. Kritik an dieser Metrik entsteht durch die offene Definition von Operanden und Operationen. Als Folge sind verschiedene Programmiersprachen nur bedingt Vergleichbar durch diese Metrik. Des Weiteren wird in Frage gestellt, ob alle Kerngrößen der Metrik überhaupt mit der lexikalischen Analyse ermittelt werden können.
+
+\paragraph{McCabe-Metrik} ist eine weitere Kennzahl für die Programmkomplexität. Zentrale Größe der Metrik ist die ``zyklomatische Komplexität'' als Maß der Anzahl von Kanten und Knoten eines Kontrollflussgraphen der Software-Anwendung. Somit korreliert die zyklomatische Komplexität mit den möglichen Anwendungsdurchläufen und -zuständen.
+
+\paragraph{Komponenten-Metriken} sind eine Sammlung von Umfangs- und Komplexitätsmetriken für objektorientierten Software-Code. Eine Aussage über den Umfang von Klassen wird unter anderem durch die Anzahl von Attributen und Methoden getätigt. Die Komplexität wird durch die Tiefe und Häufigkeit von objektorientierten Techniken gemessen. Diese Techniken sind unter anderem Vererbung, Überladung und Überschreien. Daher lässt sich mit letzteren Metriken auch eine Aussage über die Code-Kopplung vornehmen.
+
+\paragraph{Struktur-Metriken} mit der wichtigsten Untergruppe der Kopplungsmetriken beschreiben ebenfalls die Programmkomplexität. Besonders wichtig sind die Kenngrößen Fan-In und Fan-Out. Fan-Out ist die Anzahl an Verwendungen eine Klasse in anderen Klassen. Fan-In die Anzahl der verwendeten Klassen in einer Klasse. 
+
+\subsubsection{Software-Verifikation}
+
+Verfahren der Software-Verifikation sind die Deduktion, Modellprüfung und der abstrakten Interpretation\footcite[S. 333 ff][]{software-quality2008}. 
+
+\paragraph{Deduktion} ist stark aus der klassischen mathematischen Beweisführung entlehnt. Dabei werden Vor- und Nachbedingung durch Umformungen sukzessive ineinander überführt. Dieses Verfahren ist ein großteils manueller Vorgang.
+
+\paragraph{Modellprüfung} überführt ein Programm in eine Kripke-Struktur, ähnlich einem endlichen Automaten und beweist oder widerlegt diese Struktur mithilfe von Traversierungsalgorithmen. Die algorithmische Komplexität dieses Verfahrens sorgt für eine weitestgehend ausschließliche Anwendung für sicherheitskritische Software-Systeme.
+
+\paragraph{Abstrakte Interpretation} ist eine semi-formale Verifikationstechnik. Sie kombiniert statische Programmanalyse und Generalisierung von Datenbereichen, um verschieden dynamische Eigenschaften eines Programmes zu verifizieren.
+
+Für die vollautomatische Betrachtung von Software-Änderungen eignet sich daher nur die abstrakte Interpretation.
 
 \section{Continuous-Integration}
 
