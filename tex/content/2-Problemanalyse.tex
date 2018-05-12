@@ -42,7 +42,7 @@ zu verringern.
 
 Um den Aufwand für das Risikomanagement und die Folgekosten zu minimieren entwickelte sich eine alternative
 Herangehensweise, welche vor allem Interaktion, Funktionalität, Kundenorientierung und Veränderungsbereitschaft als
-wichtig erachtet. Festgehalten im Agilen Manifest[quote manifest] proklamierten viele bekannte und angesehene
+wichtig erachtet. Festgehalten im Agilen Manifest\footcite{agile-manifest} proklamierten viele bekannte und angesehene
 Softwareexperten ihren Willen, Softwareprojekte grundsätzlich anders zu fokussieren.
 
 Beeinflusst von der Lean-Bewegung aus der Automobil-Fertigungsindustrie\footcite{kent1999} wurden die abgegrenzten Phasen 
@@ -264,12 +264,12 @@ der Anwendung direkt von der Durchlaufgeschwindigkeit der Tests abhängig.
 Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung(Test-Suite). Jeder Fehler, der nicht von der Testsammlung erfasst wurde, muss spätestens nach der Beseitigung des Fehlers auch durch die Testsammlung validiert werden. Diese Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests\footcite{software-quality2008}. Ein direkter Nachteil einer großen Test-Suite ist der Aufwand für ihre Pflege. Testabdeckung, Wartbarkeit der Tests und Aussagekraft der Tests sollte daher in der Teststrategie gegeneinander abgewogen werden.
 
 \subsubsection{Software-Metriken}
-
+\label{subsubsec:base-metrics}
 Software-Metriken können systematisch und quantitativ Aspekte des Software-Codes erfassen. Als Teilaspekt der Code-Analyse können Software-Metriken dazu verwendet werden Kenngrößen des Software-Systems zu quantifizieren und damit Bewertung und Vergleich mit anderen Code-Ständen ermöglichen\footcite[S.247][]{software-quality2008}
 
 Eine nützliche Software-Metrik sollte mehrere Gütekriterien erfüllen. Die Metrik sollte objektiv sein, was bei einer maschinelle Erhebung und Verarbeitung weitestgehend gegeben ist. Die Ergebnisse einer Metrik sollten wiederholbar und damit robust sein. Zudem sollten die Ergebnisse vergleichbar sein, um verschieden Software-Stände gegeneinander bewerten zu können. Eine Metrik sollte mit dem untersucht Merkmal korrelieren. Die Korrelation ist dann besonders hoch, wenn  der mit der Metrik erhobene Wert sich stark ändert und das betrachtet Merkmal ebenfalls. Abschließend sollte die Erhebung der Metrik in Relation zu der Güte ihrer Aussage stehen. Metriken mit einem hohen Erhebungsaufwand, aber ohne Relevanz für den Entscheidungsprozess, sind nicht wertvoll.\footcite[S.248 ff][]{software-quality2008}
 
-Da Tests und Software-Metriken die einzigen Möglichkeiten sind um automatisiert Einschätzungen der Software vorzunehmen, werden diese Bereiche erneut im Kapitel~\ref{subsec:auto-values-metrics} aufgegriffen und näher auf deren Anwendung eingegangen.
+Da Tests und Software-Metriken die einzigen Möglichkeiten sind um automatisiert Einschätzungen der Software vorzunehmen, werden diese Bereiche erneut im Kapitel~\ref{subsec:main-metrics} aufgegriffen und näher auf deren Anwendung eingegangen.
 
 Im folgenden werden kurz bekanntere Metriken vorgestellt.\footcite[S.249 ff][]{software-quality2008}
 
@@ -284,7 +284,7 @@ Im folgenden werden kurz bekanntere Metriken vorgestellt.\footcite[S.249 ff][]{s
 \paragraph{Struktur-Metriken} mit der wichtigsten Untergruppe der Kopplungsmetriken beschreiben ebenfalls die Programmkomplexität. Besonders wichtig sind die Kenngrößen Fan-In und Fan-Out. Fan-Out ist die Anzahl an Verwendungen eine Klasse in anderen Klassen. Fan-In die Anzahl der verwendeten Klassen in einer Klasse. 
 
 \subsubsection{Software-Verifikation}
-
+\label{subsubsec:base-verification}
 Verfahren der Software-Verifikation sind die Deduktion, Modellprüfung und der abstrakten Interpretation\footcite[S. 333 ff][]{software-quality2008}. 
 
 \paragraph{Deduktion} ist stark aus der klassischen mathematischen Beweisführung entlehnt. Dabei werden Vor- und Nachbedingung durch Umformungen sukzessive ineinander überführt. Dieses Verfahren ist ein großteils manueller Vorgang.
@@ -293,7 +293,17 @@ Verfahren der Software-Verifikation sind die Deduktion, Modellprüfung und der a
 
 \paragraph{Abstrakte Interpretation} ist eine semi-formale Verifikationstechnik. Sie kombiniert statische Programmanalyse und Generalisierung von Datenbereichen, um verschieden dynamische Eigenschaften eines Programmes zu verifizieren.
 
-Für die vollautomatische Betrachtung von Software-Änderungen eignet sich daher nur die abstrakte Interpretation.
+Für die vollautomatische Betrachtung von Software-Änderungen eignet sich daher nur die abstrakte Interpretation und die bereits beschriebenen Software-Tests. Die Abbildung~\ref{software-quali-verification} stellt noch einmal übersichtlich das Verhältnis von Ausdrucksstärker und Skalierbarkeit der Verifikationstechniken dar\footcite[S. 337][]{software-quality2008}.
+
+\begin{figure}[htbp]
+  \includegraphics[
+    width=\textwidth,
+    height=\textheight,
+    keepaspectratio
+  ]{resources/software-quali-verification.pdf}
+  \caption{Verhältnis von Ausdrucksstärker und Skalierbarkeit der Verifikationstechniken}
+  \label{software-quali-verification}
+\end{figure}
 
 \section{Continuous-Integration}
 
