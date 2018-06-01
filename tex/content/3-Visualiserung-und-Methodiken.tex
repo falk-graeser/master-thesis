@@ -8,7 +8,7 @@ Die nachfolgenden Abschnitte sollen Lösungsansätze beleuchten und hilfreich In
 
 Continuous-Integration und Feature-Branches sind beides Techniken, um die Kollaboration zwischen Entwicklern zu fördern. Continuous-Integration fordert die Integration in den existierend Codestand für jede Änderung. Durch die Verwendung des Trunk-Based-Developments, ist das gesamte Team von dieser Integration direkt betroffen. Ist die Integration fehlerhaft, wird somit für die Dauer der Behebung das gesamte Team angehalten bei der Behebung zu helfen. Der Feature-Branch-Ansatz hingegen lässt Änderung ohne Integration parallel existieren. Folgt man der Gitflow-Verwendung von Feature-Branches aus Kapitel~\ref{subsec:gitflow}, wird auch hier eine Integration vor einem Release gefordert. Feature-Branches bieten somit einen Integrationsvorgang ohne das Team zu blockieren. Allerdings wird der Zeitpunkt der Integration verzögert. In dieser Zeitspanne können weitere Änderungen zum Integrations-Branch hinzukommen. Jeder dieser Änderungen muss wiederum in den Feature-Branch integriert werden. Damit steigt der Aufwand sukzessive über die Lebensdauer des Feature-Branches. Im ungünstigsten Fall eskaliert dieser Vorgang in einem ``big scary merge'' oder ``big bang merge'' wie in Kapitel~\ref{sec:feature-branches} beschrieben. Dieses Risiko sollte gemindert werden durch eine regelmäßige Integration mit dem Integrations-Branch. 
 
-\\ todo: beide blockzitate besser einbauen
+todo: beide blockzitate besser einbauen\\
 
 Zudem sollten die beiden Gedanken beachtet werden:\\
 
@@ -58,13 +58,16 @@ Fastforward-Merges sind gut zu automatisieren, da sie komplett von Git durchgef�
 
 \subsubsection{Flüchtige Release-Branches}
 
+Release-Branches sind Branches mit der Funktion alle Änderungen für eine Veröffentlichung zu einem fixen Zeitpunkt zu sammeln. Dazu werden iterativ alle Feature-Branches auf dem Release-Branch zusammen geführt. Üblicherweise wird der Feature-Branch gelöscht, nach der Zusammenführung in den Release-Branch. Der Release-Branch wird somit iterativ aufgebaut und getestet. Abschließend werden die Änderungen auf den Master-Branch überführt und mit einem Tag markiert.
 
-- Test ob Release gebaut werden kann (automatischer Merge von allen als Release-Fähig markierten Branches
-- Ermittelung von Konflikten
-- Ermittelung ob Test auch ohne Änderungen lauffähig
-- metriken liefern aussage wie gut der release ist
+Dieses Vorgehen kann zu Problemen führen, wenn Änderungen eines Feature-Branches wieder aus dem Release-Branch entfernt werden müssen. Zudem treten mögliche Merge-Fehler und -Problem erst beim Zusammenführen mit dem Release-Branch auf.
+
+Abhilfe könnte ein ``flüchtiger''-Release-Branch schaffen. Dazu müssten alle Feature-Branches markiert werden, die einen gemeinsamen Release-Branch bilden sollen. Die Feature-Branches können automatisch zusammengeführt geführt werden. Im Gegensatz zu einem regulären Release-Branch wird zusammengeführte Branch nicht veröffentlicht. Der flüchtige Release-Branch wird für die Ausführung von Tests und die Sammlung von Metriken verwendet. Mit einer guten Test-Suite und Metriken geben diese Daten eine Aussage über den Fortschritt des Releases. Die Anzahl von Änderungen und welche Änderungen einen Konflikt verursachen, können ermittelt werden. Die erkannten Konflikten können nun frühzeitig behoben werden. Dadurch können Branches auch in Kombination beurteilt werden. Im Gegensatz zu einem öffentlichen Release-Branch können die Änderungen weiter bearbeitet werden, ohne sich Gegenseitig zu blockieren. Zudem können einzelne Features mit wenig Aufwand aus dem Release entfernt werden. Diese Option wird geschwächt durch viele kombinierende Merges um Konflikte für den Release zu entfernen.
+
+Wie effektiv diese Technik angewendet werden kann, hängt stark vom Grad der Kopplung der Software ab. Bei einem hohen Kopplungsgrad können Releases nur schwer getrennt werden. In jedem Fall gleicht diese Technik Schwächen von Feature-Branches aus. Branches werden häufig beurteilt und Probleme werden frühzeitig kommuniziert. Abhängig von der Form der Kommunikation der Daten, kann auf diese Weise ein guter Release-Fortschritt über alle Branches ermittelt werden. 
+
 \subsection{Automatisierte Erstellung von graphischen Übersichten}
-\subsubsection{Abhängigkeitsübersicht}
+\subsubsection{Abhängigkeitsübersicht} 
 - Darstellung von verwendeten Abhängigkeiten (intern und extern)
 - Ermittelung der Güte von Abhängigkeiten
 - Ermittelung von grenzwertigen Abhängigkeiten (deprecated, update verfügbar, sehr alt)
