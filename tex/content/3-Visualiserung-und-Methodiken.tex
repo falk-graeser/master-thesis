@@ -67,10 +67,25 @@ Abhilfe könnte ein ``flüchtiger''-Release-Branch schaffen. Dazu müssten alle 
 Wie effektiv diese Technik angewendet werden kann, hängt stark vom Grad der Kopplung der Software ab. Bei einem hohen Kopplungsgrad können Releases nur schwer getrennt werden. In jedem Fall gleicht diese Technik Schwächen von Feature-Branches aus. Branches werden häufig beurteilt und Probleme werden frühzeitig kommuniziert. Abhängig von der Form der Kommunikation der Daten, kann auf diese Weise ein guter Release-Fortschritt über alle Branches ermittelt werden. 
 
 \subsection{Automatisierte Erstellung von graphischen Übersichten}
-\subsubsection{Abhängigkeitsübersicht} 
-- Darstellung von verwendeten Abhängigkeiten (intern und extern)
-- Ermittelung der Güte von Abhängigkeiten
-- Ermittelung von grenzwertigen Abhängigkeiten (deprecated, update verfügbar, sehr alt)
+
+Angesichts der Komplexität mit der Entwickler häufig konfrontiert sind, ist es essentiell die richtigen Informationen zusammenzutragen. Je nach Situation können dabei andere Ansichten und Übersichten wichtig sein. In stark gewachsenen Softwareprojekten können mit den richtigen Visualisierungen Engpässe und interne Abgrenzungen gefunden werden. Es können Wachstum und Fortschritt eines Projektes visualisiert werden. Viele Ansichten sind zudem hilfreiche um Informationen zwischen technisch versierten Parteien und technisch weniger versierten Parteien zu transportieren.
+
+Wesentlich bei diesen Ansichten ist der Aufwand für ihre Erstellung. Ansichten die einen hohen manuellen Aufwand mit sich bringen, sind bald veraltet und werden damit nicht mehr genutzt. Somit ist es entscheidend diese Ansichten und Übersichten automatisch zu erstellen. Über Metriken aus dem automatisierten Softwareerstellungsprozess können die notwendigen Messwerte ermittelt werden. Da graphische Übersichten in der Regel besser vom Menschen verarbeitet werden, ist es somit einfacher und schneller einen Eindruck vom Projektfortschritt und der -Qualität zu erlangen.
+
+TODO: referenz für grafik vs zahlen
+
+In Feature-Branches können somit Entscheidungen für Merge-Vorgänge und Reviews deutlich erleichtert und beschleunigt werden.
+
+\subsubsection{Übersicht der Softwareabhängigkeiten} 
+
+Eine Abhängigkeitsverwaltung für die verwendeten Software-Bibliotheken und -Bestandteile beschreibt eindeutig, welche Komponenten und Versionen verwendet werden. Die Abhängigkeitsverwaltung löst dabei alle Anforderungen zu einem eindeutigen, möglichst aktuellen Set an Komponenten auf.
+
+Nicht selten ist diese Vorgang mit mehreren manuellen Eingriffen verbunden. Das optimale Set von Komponenten kann nicht immer von der Versionsverwaltung automatisch gefunden werden. Teilweise werden zu grobe oder zu enge Grenzen für die Komponenten angegeben. Abhängig von den verwendeten Komponenten und wie gut definiert ihre Abhängigkeiten sind, kann der manuelle Teil einen sehr hohen Aufwand verursachen.
+
+Die Visualisierung der Abhängigkeiten und der Verbindungen unter den Abhängigkeiten verdeutlicht das Zusammenspiel. Stark vernetzte Abhängigkeiten können so identifiziert werden. Zusammen mit den \nameref{par:structure-metrics} aus Kapitel \ref{par:structure-metrics} können so deutliche Informationen über den Zustand der Software gewonnen werden. Weitere Informationen zu veralteten und auslaufenden Abhängigkeiten (outdated, deprecated) können hinzugefügt werden.
+
+Summiert und über einen längeren Zeitraum betrachtet bieten diese Informationen die Möglichkeit die Entwicklung der Anwendung zu beurteilen. Es können Strategien zur schrittweisen Verbesserung (refactoring) der Software ermittelt werden. Weiter können neue Änderungen beurteilt werden. Der Grad ihrer Vernetzung, der Aktualität der verwendeten Abhängigkeiten und wie gut sie sich in das Gesamtbild der Anwendung integrieren, können bewertet werden.
+
 \subsubsection{Branch-Übersicht}
 - Übersichtliche Branch-Darstellung mit Alter, Puls, Güte und Abhängigkeiten (abhäng. zu autom. Release-Erstellung)
 - löschung alter branches (verwerfen alter unnötiger änderungen)
