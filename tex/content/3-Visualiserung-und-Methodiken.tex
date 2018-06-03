@@ -86,9 +86,30 @@ Die Visualisierung der Abhängigkeiten und der Verbindungen unter den Abhängigk
 
 Summiert und über einen längeren Zeitraum betrachtet bieten diese Informationen die Möglichkeit die Entwicklung der Anwendung zu beurteilen. Es können Strategien zur schrittweisen Verbesserung (refactoring) der Software ermittelt werden. Weiter können neue Änderungen beurteilt werden. Der Grad ihrer Vernetzung, der Aktualität der verwendeten Abhängigkeiten und wie gut sie sich in das Gesamtbild der Anwendung integrieren, können bewertet werden.
 
-\subsubsection{Branch-Übersicht}
-- Übersichtliche Branch-Darstellung mit Alter, Puls, Güte und Abhängigkeiten (abhäng. zu autom. Release-Erstellung)
-- löschung alter branches (verwerfen alter unnötiger änderungen)
+\subsubsection{Übersicht zu Branches}
+
+Szenarien in denen viele Branches zum Einsatz kommen, müssen den dadurch entstehenden zusätzlichen Aufwand berücksichtigen. Werden die zahlreichen Zustände des Software-Codes nicht entsprechend behandelt, kann ein erhebliche Mehraufwand durch Aktualisierung und Merging der Branches entstehen. Somit ist es notwendig Branches schnell zu beurteilen und einsortieren zu können.
+
+Eine solche Übersicht müsste wichtigen Kriterien eines Branches gesammelt und übersichtlich bereit stellen. Solche Kriterien sind unter anderem:
+\begin{itemize}
+\item Alter des Branches
+\item beteiligte Autoren
+\item wie häufig in vergangener Zeit neue Änderungen auf den Branch eingebracht wurden (Puls)
+\item Kennzahlen des Branches zu Qualität und Fortschritt
+\end{itemize}
+
+Durch diese Übersicht können schnell Entscheidungen getroffen werden, welche Branches in den Fokus gerückt werden müssen. Alte oder bereits in den Codestand überführte Branches können gelöscht werden. Branches mit schlechten Kennzahlen können zu einem Refactoring eingeplant werden. Branches mit vielen Änderungen geben Rückschluss auf den aktuellen Fokus der Entwickler. 
+
+\subsubsection{Übersicht zu Releases}
+
+Angelehnt an die Branch-Übersicht und die angesprochenen ``flüchtigen'' Release-Branches, können auch Release-Ansichten bereit gestellt werden. Neben den bereits in der Branch-Übersicht erwähnten Kriterien, können weitere Kriterien visualisiert werden. Kriterien für das Zusammenspiel der für das Release geplanten Branches wären zum Beispiel:
+\begin{itemize}
+\item Konflikte zwischen Branches
+\item Abschätzung zum Fortschritt des Releases
+\item Branches mit geringem Fortschritt
+\item Blockierende Branches
+\end{itemize}
+
 \subsubsection{Konfigurations- und Umgebungsübersicht}
 - Übersicht über alle erreichbaren Systeme und ihren Platz in der Build-Pipline / bzw mit System, und Stand / Güte
 
