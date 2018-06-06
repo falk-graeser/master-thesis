@@ -180,6 +180,7 @@ Eine Virtualisierung der Systeme und eine Versionsverwaltung der zugehörigen Ko
 hilfreich. Ein solches System kann gut Skalieren und ist mit geringen Aufwand zu handhaben.\footcite{humble2010}
 
 \subsection{Abhängigkeitsverwaltung}
+\label{subsec:dependency-management}
 
 In der Abhängigkeitsverwaltung werden die Softwareabhängigkeiten der Anwendung beschrieben. In auf  Komponenten 
 basierenden Anwendungen schließt dies die eigenen, internen Abhängigkeiten mit ein. Diese Abhängigkeiten, meist Module 
@@ -199,7 +200,7 @@ Für die automatisierte Erstellung der Softwareanwendung ist es erforderlich, ä
 Versionsverwaltung, ein eindeutiges Abhängigkeitsnetz zu beschreiben. Zum Auflösen der Abhängigkeiten werden meist 
 mehrdeutige Ausdrücke verwendet werden, die eine Bandbreite an Versionen der Abhängigkeiten erlauben. Wird die Anwendung 
 erstellt und Ausgeliefert, sollte allerdings eindeutig sein, welche Abhängigkeiten verwendet werden. Daher werden in 
-vielen Packetverwaltungen diese Informationen in einre Lock-Datei festgehalten. Es wird zudem angeraten diese Datei in 
+vielen Packetverwaltungen diese Informationen in einer Lock-Datei festgehalten. Es wird zudem angeraten diese Datei in 
 die Versionkontrolle aufzunehmen.\footcite{composer-why-lock-in-vcs}
 
 \subsection{Automatisierte Erstellung und Auslieferung}

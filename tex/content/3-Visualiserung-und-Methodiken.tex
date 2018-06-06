@@ -114,27 +114,36 @@ Die Visualisierung von Konflikten und Blockaden kann die Beurteilung eines Relea
 
 TODO prüfen auf notwendige hinweise zu TDD
 
-\subsubsection{Konfigurations- und Umgebungsübersicht}
+\subsubsection{Konfigurations- und Systemübersicht}
 
-Das Konfigurationsmanagement aus der automatisierten Softwareerstellung kann auch für eine System- und Konfigurationsübersicht verwendet werden. Es lassen sich alle bekannten Umgebungsvarianten abbilden. Zusammen mit einer Liste von Systemen, die aktuell verwendet werden, lässt sich somit darstellen, welche Systeme, in welcher Konfiguration und welchem Softwarestand aktuell verfügbar sind. Sind die Systeme zusätzlich in einer Build-Pipeline verbunden, kann dies ebenfalls dargestellt werden.
+Das Konfigurationsmanagement aus der automatisierten Softwareerstellung kann auch für eine System- und Konfigurationsübersicht verwendet werden. Zusammen mit Daten aus einer Systemüberwachung oder Virtualisierungs-Verwaltung lassen sich umfangreiche Rückschlüsse ziehen. 
 
-- explorativ tests auf bestehenden systemen
-- system pool management
-- übersicht von virtualiserten / container systemen
-- build pipe-line übersicht
-- steuerung von verteilten systemen
-- übersicht von system landschaften 
+Eine automatisierte Übersicht hat sowohl für vollautomatische Virtualisierungen Vorteile, als auch für teil-automatisierte oder manuell geführte Systemlandschaften.
 
-- übersicht von datenbank-ständen?
-- ermutigung von vereinheitlichung von systemkonfigurationen (einfache system übersicht / kategoriesierung)
+In einer vollautomatisierten Virtualisierung werden Systeme automatisch bereitgestellt, verwaltet und wieder entfernt. Eine aussagekräftige Übersicht erleichtert sowohl die Fehlersuche, als auch das Erstellen von Auswertungen zu den Systemen. Viele Virtualisierungs-Verwaltungen sollten bereits zahlreiche Auswertungsmöglichkeiten bereitstellen. Aufgrund der allgemeingültigen Natur der Verwaltungen, werden diese aber nur bedingt auf spezifische Merkmale der Anwendungen eingehen können. Die semantischen Zusatzinformationen aus der Konfigurationsverwaltung gleichen diesen Nachteil aus.
 
-- Übersicht über alle erreichbaren Systeme und ihren Platz in der Build-Pipline / bzw mit System, und Stand / Güte
+Auch im Fall einer manuellen oder teil-automatisierten Virtualisierung oder Systemverwaltung bringt eine Systemübersicht Vorteile. Während in der vollautomatisierten Variante eine Systemübersicht meist automatisch mit erstellt wird, müssen im manuellen Fall die Übersichten extra erstellt werden. Wechselnde Belegungen der einzelnen Systeme sind häufig gegeben. Wird eine Umgebung benötigt für ein Testszenario, ist es häufig schwer festzustellen, welche Systeme verfügbar sind. In Kombination mit der Konfigurationsverwaltung können Systeme nicht nur anhand ihrer Verfügbarkeit beurteilt werden, sondern auch bezüglich ihrer Systemkompatibilität. Somit kann die Systemübersicht als Grundlage zur Verwaltung des Systempools verwendet werden.
+
+Unabhängig von der verwendeten Systemverwaltung kann die Systemübersicht auch als Dashboard verwendet werden. Wird die Systemübersicht um Absprünge zum Build-Server und zur Systemverwaltung ergänzt, erreicht man einen übersichtlichen und zentralen Einstiegspunkt in den Systemlandschaft.
+
+Eine Konfigurations- und Systemübersicht ist somit eine hilfreiche, kombinierte Ansicht. Zahlreiche Anwendungen sind denkbar, hängen allerdings stark von den verfügbaren Schnittstellen ab. Im Rahmen eines automatisierten Softwareerstellungsprozesses können bereits viele notwendige Informationen gesammelt werden. Daher sollte es immer möglich sein eine aussagekräftige Übersicht zu generieren.
 
 \subsection{Konfigurations- und Abhängigkeitsverwaltung}
-- regeln für konfig.mgmt
-- regeln für interne und externe abhängigkeiten
-- updatestrategien
-- konfigurationsstrategien
+
+Übersichten sind eine sinnvolle Ergänzung in einer Projekt- und Systemübersicht. In der automatisierten Softwareerstellung liegt der Fokus allerdings in der automatischen Bewertung der Software und ihrer Komponenten. Wird wie in Kapitel~\ref{subsec:dependency-management}~\nameref{subsec:dependency-management} eine Abhängigkeitsverwaltung verwendet, können weitere Maßnahmen zur Qualitätskontrolle ergriffen werden. Es sollte zudem zwischen internen und externen Abhängigkeiten unterschieden werden, da für die unterschiedlichen Typen, unterschiedliche Maßnahmen ergriffen werden können.
+
+Interne Abhängigkeiten sind meist das Resultat aus einer Modularisierung der Anwendung. Abgrenzungskriterien können hierfür logische, strukturelle oder ästhetische Gründe sein. Logische Gründe basieren auf dem Domainmodell der Anwendung und beschreiben unterschiedliche Ausprägungen und Ebenen der Anwendung. Strukturelle Gründe können Umfang eines Moduls, Wiederverwendbarkeit eines Moduls zwischen Modulen und Anwendungen oder eine klare Trennung der Verwendung von Bestandteilen des Moduls sein. Ästhetische Gründe begründen sich auf vereinbarten Coding-Guidelines, populären Softwareentwicklungsstrategien oder schlicht dem subjektiven Entwicklerempfinden. Interne Abhängigkeiten tendieren oft dazu weniger lose gekoppelt zu sein und implizite, nicht definierte Abhängigkeiten aufzuweisen.
+
+Vorteilhaft an internen Abhängigkeiten ist der hohe Einfluss, der auf sie genommen werden kann. Gut verfügbare Quellen und Zugriff die zugehörige Infrastruktur sollten gegeben sein. Dadurch können interne Anwendung isoliert getestet und mit Metriken geprüft werden. Dadurch können Kopplungsgrad und Abhängigkeiten gut inspiziert und optimiert werden. Weiter ergibt sich durch den direkten Zugriff auf die Quellen, auch die Möglichkeit eigenständig Regeln für die Erstellung von Versionen der Abhängigkeiten festzulegen. Komponenten die häufig zusammen verwendet werden, sollten im Falle einer Major-Version diesen Sprung der Version gemeinsam vollziehen. Häufig ist diese Strategie auch noch für Minor-Versionen sinnvoll. Dadurch lässt sich bereit anhand der Komponentendarstellung ein gemeinsames Bild zeichnen. Stark veraltet Versionen sind bei internen Abhängigkeiten nur bedingt ein Problem, da kritische Versionen oder Fehler in der Regel gut kommuniziert werden.
+
+Externe Abhängigkeiten sind häufig standardisierte Bibliotheken für Zugriffe, Verfahrensweisen oder komplette Frameworks. Externe Abhängigkeiten sind in der Regel lose gekoppelt und durch ihre breite Verwendung gut getestet und dokumentiert. Dabei sind indirekte Test durch die Verwendung der Bibliothek und Dokumentation durch Diskussion in Foren, Blogs und Frage-Portalen als Teil dessen zu sehen. 
+
+Externe Abhängigkeiten bergen immer auch ein Risiko. Dieses Risiko ergibt sich zum Teil durch die schwer einschätzende Qualität. Robustheit und Fehleranfälligkeit sind bedingt definierbar. Ebenso sind sicherheitskritische Problem und Leistungsschwächen nur bedingt abschätzbar. Ein anderer Teil des Risikos ist die Öffnung der eigenen Software für potentiell gefährliche Softwarebestandteile. Häufig sind Abhängigkeiten zu komplex um sie vollständig zu untersuchen oder die Abhängigkeiten liegen nur in gepackter, nicht lesbarer Form vor. Die Abwehr solcher Softwarebestandteile ist nur bedingt möglich. Der wirksamste Schutz gegen dieses Risiko ist die Verwendung von quelloffener Software mit einer aktiven Entwickler-Community. Aber auch in diesem Szenario ist Schadsoftware möglich.
+
+Die Aktualisierung von externen Abhängigkeiten sollte im Allgemeinen nur in kontrolliertem Maße erfolgen. Sicherheitskritische Updates sollten steht priorisiert werden. Aktualisierungen anderer Art sind allerdings kritisch zu sehen, da sie häufig mit Anpassung in den internen Strukturen zur Folge haben. Es muss somit abgewogen werden ob die notwendigen Anpassungen durch entsprechende Vorteile der Aktualisierung gedeckt werden.
+
+Unabhängig des Abhängigkeitstyps sollte immer verhindert werden, dass die Abhängigkeiten unkontrolliert aktualisiert werden. Insbesondere wenn Major-Updates von Abhängigkeiten ohne Prüfung und Test genutzt werden, können leicht Schnittstellen brechen oder unerwartete Verhaltensmuster in der Anwendung auftreten.
+
 \subsection{Automatisierte Systembereitstellung}
 - da jeder branch bewertet werden muss, müssen die tests für jeden branch ausgeführt werden
 - dauert u.U. sehr lang und sollte parallelisiert werden
