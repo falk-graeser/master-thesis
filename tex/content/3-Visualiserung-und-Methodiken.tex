@@ -115,6 +115,7 @@ Die Visualisierung von Konflikten und Blockaden kann die Beurteilung eines Relea
 TODO prüfen auf notwendige hinweise zu TDD
 
 \subsubsection{Konfigurations- und Systemübersicht}
+\label{subsubsec:configuration-system-overview}
 
 Das Konfigurationsmanagement aus der automatisierten Softwareerstellung kann auch für eine System- und Konfigurationsübersicht verwendet werden. Zusammen mit Daten aus einer Systemüberwachung oder Virtualisierungs-Verwaltung lassen sich umfangreiche Rückschlüsse ziehen. 
 
@@ -145,14 +146,35 @@ Die Aktualisierung von externen Abhängigkeiten sollte im Allgemeinen nur in kon
 Unabhängig des Abhängigkeitstyps sollte immer verhindert werden, dass die Abhängigkeiten unkontrolliert aktualisiert werden. Insbesondere wenn Major-Updates von Abhängigkeiten ohne Prüfung und Test genutzt werden, können leicht Schnittstellen brechen oder unerwartete Verhaltensmuster in der Anwendung auftreten.
 
 \subsection{Automatisierte Systembereitstellung}
-- da jeder branch bewertet werden muss, müssen die tests für jeden branch ausgeführt werden
-- dauert u.U. sehr lang und sollte parallelisiert werden
-- container oder virtualisierung genutzt 
-- container sind schneller
+
+Um Feature-Branches technisch zu unterstützen, müssen Tests und Metriken für jeden Feature-Branch ausgeführt werden. Damit dies automatisiert möglich ist, müssen die zugehörigen Testsysteme automatisch zur Verfügung gestellt werden. Somit ist eine automatisierte Systembereitstellung notwendig.
+
+Die automatische Bereitstellung ist prinzipiell sowohl mit Virtualisierung als auch mit einem Containersystem möglich. Auch eine entsprechende verwaltet Gruppe an Hardwaresystemen ist möglich, ist allerdings in den meisten Situation deutlich unwirtschaftlicher sein, als die virtuellen Lösungen.
+
+Die Entscheidung für eine Virtualisierungs- oder Containerlösung sollte von Fall zu Fall entscheiden werden. Die schlankere und damit Resourcen schonendere Lösung ist die Verwendung von Containern. Mit ihnen können problemlos einzelne Testsysteme oder komplexere Service und Systemverbunde erstellt und verwaltet werden. Die Verwendung von Container ist nicht mehr möglich, wenn unterschiedliche Betriebs- oder Hardwaresysteme benötigt werden.
+
+Unabhängig von der verwendeten Lösungen müssen die Systeme in einen definierten Zustand geführt werden. Dieser Vorgang kann einen größeren Zeitraum in Anspruch nehmen und benötigt entsprechend Resourcen. Um diesen Zeitraum zu verringern sollten anhand des Konfigurationsmanagements Systeme vorbereitet und in gepackter Form abgelegt werden. Bei den meisten Lösungen wird diese Form ``Image'' genannt. Wie bereits für ``Artefakt-Repositories'' angesprochen, sollten diese Images nachvollziehbar benannt und abgelegt werden. Es sollte möglich sein eine Verbindung zur jeweiligen System-Konfiguration herzustellen. Bestenfalls ist die System-Konfiguration in einer Versionsverwaltung abgelegt und die entsprechende Version kann ebenfalls zur Referenzierung des System-Images verwendet werden. Im Rahmen des automatisieren Bereitstellungsprozesses wäre es auch sinnvoll die verwendet Systemkonfiguration in der Entsprechenden System-Übersicht aus Kapitel~\ref{subsubsec:configuration-system-overview} zu aktualisieren.
+
 \section{Modularisierung von Software}
-- Modularisierung von Software durch strukturierte Anforderungen, Architektur, ermöglicht einfacheres zusammenführen von Feature-Branches
-- service orientiert
-- lose kopplung
+
+Viele Probleme bei Continuous-Integration und Feature-Branches entstehen bei komplizierten Merge-Verfahren. Viele komplizierte Merge-Schritte begründen sich häufig durch einen zu hohen Kopplungsgrad der Software. Wenn Komponenten stark gekoppelt sind, ist es oft notwendig mit mehreren Entwicklern in gleichen Code-Abschnitten zu interagieren. Wird eine Software von Beginn an lose gekoppelt entwickelt, ergeben sich oft deutlich weniger Abhängigkeiten und komplizierte Merge-Schritte werden vermieden.
+
+Die lose Kopplung einer Software kann, durch das Einhalten der Prinzipien zur Modularisierung\footcite{2012-barth-modularisation}, erreicht werden. 
+
+\paragraph{Information Hiding} ist ein von Parnas\footcite{1972-parnas} geprägter Begriff. Als Basis für die Modularisierung und Dekomposition von Software wird drei Schritten gefolgt:
+\begin{itemize}
+\item Ermittle alle Entwurfsentscheidungen, welche sich potentiell ändern werden.
+\item Erstelle pro Entwurfsentscheidung ein Modul, die Entwurfsentscheidung wird ``Geheimnis des Moduls'' genannt.
+\item Die Schnittstelle zum Modul sollte robust genug sein, um bei einer Änderung des Geheimnisses nicht verändert zu werden.
+\end{itemize}
+Durch die Einhaltung der Prinzipien, werden mögliche Änderungen auf ein Modul beschränkt und damit die Auswirkungen begrenzt.
+\paragraph{Separation of Concerns} ist ein Basisprinzip moderner Softwareentwicklung. Während Information-Hiding auf einer niedrigen Modulebene ansetzt, versucht die ``Aufteilung nach Anliegen'' höher anzusetzen. Die Teile eines Moduls sollen nach möglich Anliegen  mit möglich wenig Überlappungen eingeteilt werden. 
+\paragraph{Low Coupling Cohesion} beschreibt das Verbindungs- und Kommunikationsverhalten der Module. Es wird eine hohe Kohäsion innerhalb eines Moduls angestrebt und eine geringe zu anderen Modulen.
+
+Werden die Prinzipien befolgt, ergeben sich Vorteile für die Wartbarkeit, Wiederverwendbarkeit und Robustheit der Anwendung. Die Konzentrierten Verbindungen sorgen zudem für eine geringere Schnittmenge von Änderungen durch Entwickler.
+
+Eine modernere Form der Modularisierung sind die ``serviceorientierten Architekturen''. Diese beschreiben Anwendungsszenarien in verschiedenen Granularität. Die Kapselung in Services ermöglichen die Komposition und Orchestrierung von komplexen Vorgängen. Der serviceorientierte Ansatz nutzt die Prinzipien der Modularisierung und bietet die Vorteile unter neuem Namen an.
+
 \section{Fortgeschrittene Nutzung von Versionsverwaltung}
 Wie auch mit jeder anderen Versionsverwaltung, so ist es auch beim Arbeiten mit Git essentiell seine Arbeit zu strukturieren. Wird Git lediglich als bequeme Variante für eine regelmäßige Sicherung des Arbeitsstandes genutzt, dann entsteht sehr schnell eine schwer zu lesende, an Bedeutung mangelnde Versionshistorie. Wichtig ist es die getätigte Arbeit in semantisch zusammenhängenden, möglichst kleine und prägnanten Commits zu gliedern.
 Zusammen mit nachvollziehbaren und klaren Commit-Nachrichten, entsteht so eine gut leserliche und die Dokumentation unterstützende Versionshistorie.\footcite[Making only one change per commit][]{git-essentials-2017}\footcite[Writing commit messages before starting to code][]{git-essentials-2017}
