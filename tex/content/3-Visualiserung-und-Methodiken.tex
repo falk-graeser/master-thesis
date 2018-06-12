@@ -1,32 +1,32 @@
 \chapter{Methodiken und Visualisierung für Continuous Integration und Feature Branches}
 \label{ch:visu_meth}
 
-Im vorangegangenen Kapitel wird dargelegt was Continuous-Integration und Feature-Branches sind und wie diese Techniken in der Softwareentwicklung angewendet werden. Zudem wird darf eingegangen, welche Schwierigkeiten mit der Verwendung dieser Techniken einhergehen und dementsprechend eine Lösung erfordern. 
-Die nachfolgenden Abschnitte sollen Lösungsansätze beleuchten und hilfreich Informationsquellen aufzeigen. Es wird auf Schwierigkeiten von bekannten Techniken und Methodiken eingegangen und erläutert wie häufige Fallstricke vermieden werden können.
+Im vorangegangenen Kapitel wurde dargelegt, was Continuous-Integration und Feature-Branches sind und wie diese Techniken in der Softwareentwicklung angewendet werden. Zudem wird darauf eingegangen, welche Schwierigkeiten mit der Verwendung dieser Techniken einhergehen und dementsprechend eine Lösung erfordern. 
+Die nachfolgenden Abschnitte sollen mögliche Methodiken und Visualisierungen beleuchten und dadurch Lösungsansätze anbieten. Es wird auf Schwierigkeiten von bekannten Techniken und Methodiken eingegangen und erläutert, wie häufige Fallstricke vermieden werden können.
 
 \section{Continuous-Integration und Feature Branches}
 
-Continuous-Integration und Feature-Branches sind beides Techniken, um die Kollaboration zwischen Entwicklern zu fördern. Continuous-Integration fordert die Integration in den existierend Codestand für jede Änderung. Durch die Verwendung des Trunk-Based-Developments, ist das gesamte Team von dieser Integration direkt betroffen. Ist die Integration fehlerhaft, wird somit für die Dauer der Behebung das gesamte Team angehalten bei der Behebung zu helfen. Der Feature-Branch-Ansatz hingegen lässt Änderung ohne Integration parallel existieren. Folgt man der Gitflow-Verwendung von Feature-Branches aus Kapitel~\ref{subsec:gitflow}, wird auch hier eine Integration vor einem Release gefordert. Feature-Branches bieten somit einen Integrationsvorgang ohne das Team zu blockieren. Allerdings wird der Zeitpunkt der Integration verzögert. In dieser Zeitspanne können weitere Änderungen zum Integrations-Branch hinzukommen. Jeder dieser Änderungen muss wiederum in den Feature-Branch integriert werden. Damit steigt der Aufwand sukzessive über die Lebensdauer des Feature-Branches. Im ungünstigsten Fall eskaliert dieser Vorgang in einem ``big scary merge'' oder ``big bang merge'' wie in Kapitel~\ref{sec:feature-branches} beschrieben. Dieses Risiko sollte gemindert werden durch eine regelmäßige Integration mit dem Integrations-Branch. 
+Continuous-Integration und Feature-Branches sind beides Techniken, um die Kollaboration zwischen Entwicklern zu fördern. Continuous-Integration fordert die Integration in den existierenden Codestand für jede Änderung. Durch die Verwendung des Trunk-Based-Developments, ist das gesamte Team von dieser Integration direkt betroffen. Ist die Integration fehlerhaft, wird somit für die Dauer der Behebung das gesamte Team angehalten bei der Behebung zu helfen. Der Feature-Branch-Ansatz hingegen, lässt Änderungen ohne Integration parallel existieren. Folgt man der Gitflow-Verwendung von Feature-Branches aus Kapitel~\ref{subsec:gitflow}, wird auch hier eine Integration gefordert. Allerdings erst deutlich verzögert, etwa zu  einem Release. Feature-Branches bieten somit einen Integrationsvorgang, ohne das Team zu blockieren. Allerdings wird der Zeitpunkt der Integration verzögert. In dieser Zeitspanne können weitere Änderungen zum Integrations-Branch hinzukommen. Jeder dieser Änderungen muss wiederum in den Feature-Branch integriert werden. Damit steigt der Aufwand sukzessive über die Lebensdauer des Feature-Branches. Im ungünstigsten Fall eskaliert dieser Vorgang in einem ``big scary merge'' oder ``big bang merge'' wie in Kapitel~\ref{sec:feature-branches} beschrieben. Dieses Risiko sollte gemindert werden durch eine regelmäßige Integration mit dem Integrations-Branch. 
 
 todo: beide blockzitate besser einbauen\\
 
 Zudem sollten die beiden Gedanken beachtet werden:\\
 
-\blockquote {Continuous is more often then you think} 
+\blockquote {Continuous is more often then you think.} 
  
-\blockquote {When it is painful, the way to reduce the the pain is to do it more frequently, not less}\footcite[S.24][]{humble2010} \\
+\blockquote {When it is painful, the way to reduce the pain is to do it more frequently, not less}\footcite[S.24][]{humble2010} \\
 
 Sie beschreiben den Konflikt, welcher durch schlechte Anwendung von Continuous-Integration entsteht. 
 
-Zielstellung der Vereinigung von Continuous-Integration und Feature-Branches ist folglich eine kontinuierliche Integration ohne Blockaden für andere Entwickler. Es muss definiert werden, wie Entwicklungssysteme und -Werkzeuge ineinander greifen und es sollten Regeln und Strukturen definiert werden, um einen Ablauf mit nur wenig Reibungspunkten zu gewährleisten.
+Zielstellung der Vereinigung von Continuous-Integration und Feature-Branches ist folglich eine kontinuierliche Integration ohne Blockaden für andere Entwickler. Es muss definiert werden, wie Entwicklungssysteme und -werkzeuge ineinander greifen und es sollten Regeln und Strukturen definiert werden, um einen Ablauf mit nur wenig Reibungspunkten zu gewährleisten.
 
 \subsection{Automatisierter Test von Feature-Branches}
 
-Als erste Schritt zur Verschmelzung von Continuous-Integration und Feature-Branches ist es notwendig jede Änderung automatisch zu Testen. Dazu muss jede Änderung auf einem Feature-Branch in einem zentralen Repository bereitgestellt werden. Der Stand des Feature-Branches muss dann wie in Kapitel~\ref{sec:automation-software} \nameref{sec:automation-software} beschrieben, erstellt und getestet werden.
+Als erste Schritt zur Verschmelzung von Continuous-Integration und Feature-Branches ist es notwendig, jede Änderung automatisch zu testen. Dazu muss jede Änderung auf einem Feature-Branch in einem zentralen Repository bereitgestellt werden. Der Stand des Feature-Branches muss dann wie in Kapitel~\ref{sec:automation-software} \nameref{sec:automation-software} beschrieben, erstellt und getestet werden.
 
-Prinzipiell besteht die Möglichkeit einen Test der Änderungen manuell auf dem Entwicklersystem auszuführen. Dieses Vorgehen erfordert allerdings eine hohe Anzahl an Werkzeugen und blockiert den Entwickler für diesen Zeitraum.
+Prinzipiell besteht die Möglichkeit, einen Test der Änderungen manuell auf dem Entwicklersystem auszuführen. Dieses Vorgehen erfordert allerdings eine hohe Anzahl an Werkzeugen und blockiert den Entwickler für diesen Zeitraum.
 
-Die Bereitstellung in einem zentralen Repository ermöglicht es statische und syntaktische Analysen zu erstellen. Die Ausführung der vollständige Test-Suite erlaubt semantische Analysen. Die zentrale Aufbereitung der Ergebnisse der Analysen ermöglicht es allen Projektteilnehmern eine Einschätzung des Feature-Branches vorzunehmen.
+Die Bereitstellung in einem zentralen Repository ermöglicht es, statische und syntaktische Analysen zu erstellen. Die Ausführung der vollständigen Test-Suite erlaubt semantische Analysen. Die zentrale Aufbereitung der Ergebnisse der Analysen ermöglicht es allen Projektteilnehmern, eine Einschätzung des Feature-Branches vorzunehmen.
 
 \subsection{Bewertung von Änderungen - Software-Metriken}
 \label{subsec:main-metrics}
