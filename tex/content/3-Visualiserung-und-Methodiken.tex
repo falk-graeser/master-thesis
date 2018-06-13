@@ -129,13 +129,17 @@ Unabhängig von der verwendeten Systemverwaltung kann die Systemübersicht auch 
 
 Eine Konfigurations- und Systemübersicht ist somit eine hilfreiche, kombinierte Ansicht. Zahlreiche Anwendungen sind denkbar, hängen allerdings stark von den verfügbaren Schnittstellen ab. Im Rahmen eines automatisierten Softwareerstellungsprozesses können bereits viele notwendige Informationen gesammelt werden. Daher sollte es immer möglich sein eine aussagekräftige Übersicht zu generieren.
 
-\subsection{Konfigurations- und Abhängigkeitsverwaltung}
+\subsection{Übersichten für die Konfigurations- und Abhängigkeitsverwaltung}
 
 Übersichten sind eine sinnvolle Ergänzung in einer Projekt- und Systemübersicht. In der automatisierten Softwareerstellung liegt der Fokus allerdings in der automatischen Bewertung der Software und ihrer Komponenten. Wird wie in Kapitel~\ref{subsec:dependency-management}~\nameref{subsec:dependency-management} eine Abhängigkeitsverwaltung verwendet, können weitere Maßnahmen zur Qualitätskontrolle ergriffen werden. Es sollte zudem zwischen internen und externen Abhängigkeiten unterschieden werden, da für die unterschiedlichen Typen, unterschiedliche Maßnahmen ergriffen werden können.
 
+\subsubsection{Interne Abhängigkeiten}
+
 Interne Abhängigkeiten sind meist das Resultat aus einer Modularisierung der Anwendung. Abgrenzungskriterien können hierfür logische, strukturelle oder ästhetische Gründe sein. Logische Gründe basieren auf dem Domainmodell der Anwendung und beschreiben unterschiedliche Ausprägungen und Ebenen der Anwendung. Strukturelle Gründe können Umfang eines Moduls, Wiederverwendbarkeit eines Moduls zwischen Modulen und Anwendungen oder eine klare Trennung der Verwendung von Bestandteilen des Moduls sein. Ästhetische Gründe begründen sich auf vereinbarten Coding-Guidelines, populären Softwareentwicklungsstrategien oder schlicht dem subjektiven Entwicklerempfinden. Interne Abhängigkeiten tendieren oft dazu weniger lose gekoppelt zu sein und implizite, nicht definierte Abhängigkeiten aufzuweisen.
 
-Vorteilhaft an internen Abhängigkeiten ist der hohe Einfluss, der auf sie genommen werden kann. Gut verfügbare Quellen und Zugriff die zugehörige Infrastruktur sollten gegeben sein. Dadurch können interne Anwendung isoliert getestet und mit Metriken geprüft werden. Dadurch können Kopplungsgrad und Abhängigkeiten gut inspiziert und optimiert werden. Weiter ergibt sich durch den direkten Zugriff auf die Quellen, auch die Möglichkeit eigenständig Regeln für die Erstellung von Versionen der Abhängigkeiten festzulegen. Komponenten die häufig zusammen verwendet werden, sollten im Falle einer Major-Version diesen Sprung der Version gemeinsam vollziehen. Häufig ist diese Strategie auch noch für Minor-Versionen sinnvoll. Dadurch lässt sich bereit anhand der Komponentendarstellung ein gemeinsames Bild zeichnen. Stark veraltet Versionen sind bei internen Abhängigkeiten nur bedingt ein Problem, da kritische Versionen oder Fehler in der Regel gut kommuniziert werden.
+Vorteilhaft an internen Abhängigkeiten ist der hohe Einfluss, der auf sie genommen werden kann. Gut verfügbare Quellen und Zugriff die zugehörige Infrastruktur, sollten gegeben sein. Dadurch können interne Anwendung isoliert getestet und mit Metriken geprüft werden. Dadurch können Kopplungsgrad und Abhängigkeiten gut inspiziert und optimiert werden. Weiter ergibt sich durch den direkten Zugriff auf die Quellen, auch die Möglichkeit eigenständig Regeln für die Erstellung von Versionen der Abhängigkeiten festzulegen. Komponenten die häufig zusammen verwendet werden, sollten im Falle einer Major-Version diesen Sprung der Version gemeinsam vollziehen. Häufig ist diese Strategie auch noch für Minor-Versionen sinnvoll. Dadurch lässt sich bereit anhand der Komponentendarstellung ein gemeinsames Bild zeichnen. Stark veraltet Versionen sind bei internen Abhängigkeiten nur bedingt ein Problem, da kritische Versionen oder Fehler in der Regel gut kommuniziert werden.
+
+\subsubsection{Externe Abhängigkeiten}
 
 Externe Abhängigkeiten sind häufig standardisierte Bibliotheken für Zugriffe, Verfahrensweisen oder komplette Frameworks. Externe Abhängigkeiten sind in der Regel lose gekoppelt und durch ihre breite Verwendung gut getestet und dokumentiert. Dabei sind indirekte Test durch die Verwendung der Bibliothek und Dokumentation durch Diskussion in Foren, Blogs und Frage-Portalen als Teil dessen zu sehen. 
 
@@ -144,6 +148,34 @@ Externe Abhängigkeiten bergen immer auch ein Risiko. Dieses Risiko ergibt sich 
 Die Aktualisierung von externen Abhängigkeiten sollte im Allgemeinen nur in kontrolliertem Maße erfolgen. Sicherheitskritische Updates sollten steht priorisiert werden. Aktualisierungen anderer Art sind allerdings kritisch zu sehen, da sie häufig mit Anpassung in den internen Strukturen zur Folge haben. Es muss somit abgewogen werden ob die notwendigen Anpassungen durch entsprechende Vorteile der Aktualisierung gedeckt werden.
 
 Unabhängig des Abhängigkeitstyps sollte immer verhindert werden, dass die Abhängigkeiten unkontrolliert aktualisiert werden. Insbesondere wenn Major-Updates von Abhängigkeiten ohne Prüfung und Test genutzt werden, können leicht Schnittstellen brechen oder unerwartete Verhaltensmuster in der Anwendung auftreten.
+
+\subsubsection{Darstellung der Abhängigkeiten}
+
+In einer stark modularisierten Softwareanwendung existieren in der Regel sehr viele Abhängigkeiten. Starke Wiederverwendung von Modulen erhöht die Anzahl von Querreferenzen. Viele Module verwenden daher oft gleiche Module und Bilden daher zahlreiche Verbindungen. Eine einfache Darstellung dieser Verbindungen ist kaum möglich.
+
+\paragraph{Gerichteter Graph}
+
+\paragraph{Kreisdiagramm}
+
+\begin{figure}[htbp]
+  \includegraphics[
+    width=\textwidth,
+    height=\textheight,
+    keepaspectratio
+  ]{resources/circle-plot-dependencies.pdf}
+  \caption{Kreisdiagramme für Abhängigkeiten}
+  \label{dependency-circle-plot}
+\end{figure}
+
+In Abbildung~\ref{dependency-circle-plot} werden zwei Kreisdiagramme verwendet um die Abhängigkeitszu- und abflüsse zu verdeutlichen. Das linke Diagramm stellt die Abhängigkeiten einer mittel großen Individualsoftware für ein Content-Management-System dar. Das rechte Diagramm visualisiert die Abhängigkeiten der Open-Source-Wiki-Anwendung ``Wikia''\footcite{wikia-github}. Die Wahl des Kreisdiagramms ergibt sich durch seine Eignung gruppierte Ab- und Zuströme zu visualisieren\footcite{visualizing-graph-data}. 
+
+Als Basis für die beiden Diagramme wurden die im Versionsverwaltungssystem gesichert Dateien der Packetverwaltung verwendet. Das Beschreibende Format ist eine DSL von Composer und wird primär für PHP-Projekte verwendet. Die Ansicht wurde mit Hilfe eines JavaScript-Werkzeuges ``Dependency Wheel'' erstellt.
+
+Die grauen Abhängigkeitsteile stellen direkte Abhängigkeiten des Projektes dar, während die farbigen Stränge die Verbindungen der Abhängigkeiten visualisieren.
+
+In der Darstellung der Individualsoftware, sind die roten Stränge interne Abhängigkeiten. Für Wikia sind Abhängigkeiten der eigenen Entwicklung Lila.
+
+Beide Diagramme vermitteln einen guten Eindruck zur Fülle der Abhängigkeiten und eine Überblick darüber, wie viele Fremdabhängigkeiten im Projekt verwendet werden. Darüber hinaus sind allerdings nur schwer Informationen aus den sichtbaren Daten zu gewinnen. Zentrale Abhängigkeiten und Knoten lassen sich kaum ausmachen.
 
 \subsection{Automatisierte Systembereitstellung}
 
@@ -176,12 +208,16 @@ Werden die Prinzipien befolgt, ergeben sich Vorteile für die Wartbarkeit, Wiede
 Eine modernere Form der Modularisierung sind die ``serviceorientierten Architekturen''. Diese beschreiben Anwendungsszenarien in verschiedenen Granularität. Die Kapselung in Services ermöglichen die Komposition und Orchestrierung von komplexen Vorgängen. Der serviceorientierte Ansatz nutzt die Prinzipien der Modularisierung und bietet die Vorteile unter neuem Namen an.
 
 \section{Fortgeschrittene Nutzung von Versionsverwaltung}
+
+
+
 Wie auch mit jeder anderen Versionsverwaltung, so ist es auch beim Arbeiten mit Git essentiell seine Arbeit zu strukturieren. Wird Git lediglich als bequeme Variante für eine regelmäßige Sicherung des Arbeitsstandes genutzt, dann entsteht sehr schnell eine schwer zu lesende, an Bedeutung mangelnde Versionshistorie. Wichtig ist es die getätigte Arbeit in semantisch zusammenhängenden, möglichst kleine und prägnanten Commits zu gliedern.
 Zusammen mit nachvollziehbaren und klaren Commit-Nachrichten, entsteht so eine gut leserliche und die Dokumentation unterstützende Versionshistorie.\footcite[Making only one change per commit][]{git-essentials-2017}\footcite[Writing commit messages before starting to code][]{git-essentials-2017}
 
 Including the whole change in one commit
 
 Describing the change, not what have you done
+
 \section{Testgetriebene Entwicklung}
 - lieft metriken von beginn an, lieferten einen verwertbaren projektfortschritt
 
