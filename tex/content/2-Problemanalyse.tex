@@ -26,9 +26,19 @@ in klar abgegrenzte und bewertbare Abschnitte.
 
 Die bekanntesten Vorgehensmodelle halten sich an eine klare Folge aus Planungs-,\\ Konzeptions-, Implementierungs-, 
 Test- und Abnahmephase. Durch die klare Trennung der Phasen werden diese Modelle auch statische Vorgehensmodelle genannt.
-Beispiele sind hier das Wasserfallmodell[quote Wasserfallmodell] und das V-Modell[quote V-Modell]. Insbesondere in
-Bereichen mit hohen Sicherheitsanforderungen und einer starken Bindung an bürokratische Strukturen wird auch heute noch
-das V-Modell erfolgreich eingesetzt[quote Referenz Bund].
+Beispiele sind hier das Wasserfallmodell\footcite[vgl.][Vol. 11]{royce-1987} und das V-Modell. Insbesondere in
+Bereichen mit hohen Sicherheitsanforderungen und einer starken Bindung an bürokratische Strukturen, wird auch heute noch
+das V-Modell XT erfolgreich eingesetzt\footcite[vgl.][]{v-model-xt-bund}.
+
+\begin{figure}[htbp]
+  \includegraphics[
+    width=\textwidth,
+    height=\textheight,
+    keepaspectratio
+  ]{resources/vorgehens-modelle-zeitachse.pdf}
+  \caption{Vorgehensmodell zeitlich sortiert}
+  \label{process-models-time-line}
+\end{figure}
 
 Mit der Komplexität einer Softwareanwendung steigt ihr Umsetzungsaufwand. Dieser zusätzliche Aufwand teilt sich in statischen Vorgehensmodellen in die einzelnen Phasen auf. Bei besonders umfangreichen Softwareprojekten entsteht daher eine signifikante zeitliche Diskrepanz zwischen den Phasen der Anforderungsaufnahme und deren Umsetzung. Des Weiteren ist der Vorgang der Anforderungsaufnahme schwierig und kann nur schwer auf Vollständigkeit geprüft werden. Diese beiden Faktoren erhöhen das Risiko eine fehlerhafte Softwareanwendung zu erstellen. Aus der hohen Dauer der einzelnen Phasen ergibt sich zudem eine hohe Reaktionszeit um fehlerhaft umgesetzte Anforderungen zu korrigieren.
 
@@ -58,6 +68,9 @@ Um die Umsetzung der Anforderungen zu prüfen, wird eine Qualitätssicherung ben
 Die Erfüllung der Anforderungen an eine Softwareanwendung sollte durch eine Strategie der Qualitätssicherung sichergestellt sein. Da jede Änderung an der Software die Erfüllung der Anforderungen beeinträchtigen könnte, sollten die Anforderungen nach Änderungen erneut geprüft werden. Da manuelle Prüfungen aufwändig und zeitintensiv sind, sollten sie sich auf wenige Anwendungsszenarien beschränken. Diese Anwendungsszenarien sollten nur schwer oder unzuverlässig durch programmierte Prüfungen abgedeckt werden können.
 
 Programmierte Prüfungen, auch Tests genannt, zu erstellen kann sehr komplex und kompliziert sein. Je nach Softwareanwendung und damit verbundenen Anforderungen, müssen Kompromisse zur Laufzeit, Aussagekraft und Wartbarkeit eines Tests eingegangen werden.
+
+\subsection{Funktionale Tests}
+
 Den jeweiligen Schwerpunkten eines Tests geschuldet, werden Tests auf verschiedenen Abstraktionsebenen der Software ausgeführt. Es wird zunächst zwischen funktionalen und nicht-funktionalen Testkriterien unterteilt.
 Bei den funktionalen Tests wird weiter zwischen Akzeptanz-, Integrations- und Unittests unterschieden\footcite[S.159][]{software-quality2008}. 
 
@@ -72,24 +85,40 @@ dienen der Überprüfung von Schnittstellen. Dabei wird das Verhalten der Schnit
 
 werden für Objektklassen- und Methodentests verwendet. Das erwartet Verhalten der zu überprüfenden Einheit(Unit) wird mit dem Unit-Test sichergestellt. Zugleich übernimmt er auch eine dokumentarische Funktion. Durch die Initialisierung der Einheit und der Aufruf ihrer Schnittstelle, wird die Intention ihres Autors deutlich.
 
+\subsection{Nicht-Funktionale Tests}
+
 Die nicht-funktionalen Testkriterien betreffen Merkmale, welche nicht einem einzelnen Anwendungsfall zugeordnet werden können. Es werden Leistungsaspekte und unterbewusste Kriterien geprüft. Solche Merkmale sind zum Beispiel Reaktionszeit der Anwendung, wie viele Aktionen pro Zeiteinheit die Anwendung bewältigen kann und wie gut die Anwendung nutzbar ist (Usability). Nicht-funktionale Tests sollten zudem weiter nach der Möglichkeit der Bewertung ihrer Ergebnisse unterteilt werden. Gut zu bewerten sind Leistungs- und Sicherheitstests. Weniger gut zu bewerten sind Explorativ- und Usability-Tests.
 
 \paragraph{Leistungstests} oder auch Performance-Tests werden genutzt, um die Leistungsfähigkeit einer Anwendung zu erproben. Kriterien wie Anfragen pro Zeiteinheit, maximale Anzahl paralleler Anfragen und Reaktionszeit, sowie Anfragedauer werden getestet.
+
 \paragraph{Sicherheitstests} werden genutzt um Schwachstellen einer Anwendung zu finden. Es werden Listen von bekannten Sicherheitsproblemen\footcite[vgl.][]{owasp-vulnerability} genutzt und in der Anwendung geprüft.
+
 \paragraph{Explorativ-Tests} werden manuell durchgeführt und versuchen Fehler zu finden, die auf anderen Wegen nicht oder kaum zu entdecken sind.
+
 \paragraph{Usability-Tests} werden genutzt um die Benutzbarkeit der Anwendung zu ermitteln. Während Akzeptanztests ermitteln ob Funktionalitäten verfügbar sind, untersuchen Usability-Tests ob die Funktionalitäten benutzbar sind. Usability-Tests werden meist manuell durchgeführt und sind aufgrund ihrer subjektiven Natur schwer zu bewerten. Es ist daher üblich, auf eine Untergruppe dieser Tests zu prüfen, wie zum Beispiel die Barrierefreiheit einer Anwendung.
 
-Die Abbildung~\ref{agile-testing-quadrants} fasst die verschiedenen Tests anhand der Art der Durchführung und anhand ihrer Stackeholder-Ausrichtung in vier Quadranten zusammen\footcite[The Agile testing matrix][]{cd-docker-jenkins}.
+\subsection{Testperspektiven}
+
+Die Abbildung~\ref{agile-testing-quadrants} fasst die verschiedenen Tests anhand der Art der Durchführung und anhand ihrer Perspektive auf die Tests, in vier Quadranten zusammen\footcite[vgl.][Kapitel: The Agile testing matrix]{cd-docker-jenkins}.
 
 \begin{figure}[htbp]
   \includegraphics[
     width=\textwidth,
     height=\textheight,
     keepaspectratio
-  ]{resources/Agile-Testing-Quadrants.pdf}
-  \caption{Agile Testing Quadrants}
+  ]{resources/agile-testing-matrix.pdf}
+  \caption{Agile Testing Matrix}
   \label{agile-testing-quadrants}
 \end{figure}
+
+\paragraph{Business-Facing} gliedert Tests, welche aus Anwendersicht wichtig sind und den kommerziellen Erfolg der Anwendung sicherstellen. Diese decken zum einen Akzeptanztests ab und stellen die Hauptfunktionalitäten sicher, zum anderen Usability-Tests um die Nutzerfreundlichkeit und Bedienbarkeit zu prüfen.
+
+\paragraph{Support Team} gliedert Tests, welche Regressions-Sicherheit sicherstellen. Da die Anlaufstelle für Fehler im Allgemeinen der Support ist, wurde hier diese Bezeichnung gewählt.
+
+\paragraph{Critique Product} gliedert Tests, welche kritische Bereiche abdecken. Dies umfasst zum einen Randerscheinungen und Grenzfälle, welche nur explorativ entdeckt werden können und zum Anderen Leistungs- und Sicherheitstests.
+
+\paragraph{Technology Facing} gliedert Tests, welche häufig keinem direkt Anwendungsfall zugeordnet werden können. 
+Gegenüberliegende Ansichten stellen auch gegenläufige Interessen dar. Daher ist ein Gleichgewicht der Ansichten über den Quadranten erstrebenswert.
 
 \section{Automatisierung der Softwareerstellung}
 \label{sec:automation-software}
@@ -198,16 +227,20 @@ die Versionkontrolle aufzunehmen.\footcite[vgl.][]{composer-why-lock-in-vcs} Das
 
 Viele Softwareanwendungen müssen kompiliert werden, um von einem System ausgeführt werden zu können. Die Kompilierung von kleine Programmen ist eine schnelle und wenig aufwändige Aufgabe. Durch das Wachstum einer Softwareanwendung und das Hinzukommen weiterer Abhängigkeiten und Konfigurationen wird die Ausführung deutlich zeitintensiver und es werden mehr Einzelschritte benötigt. Der vollständige Ablauf wird dann im Allgemeine Build genannt. Die beim Build ausgeführten Ablaufbeschreibungen werden meist als Build-Skripte bezeichnet. 
 
-Build-Scripte, die gemeinsam mit der Anwendung wachsen und an Komplexität gewinnen, stellen ein Risiko dar. Die Skripte sollten als Teil der Anwendung verstanden werden und gleichwertigen Qualitätskriterien unterzogen werden. Nur wenig gewartet Build-Skripte weisen meist eine hohe Komplexität auf. Im fortgeschrittenen Fall kann dies zur  ``integration angst'' führen. Eine geringe Commit-Frequenz und eine sehr defensive Programmierung sind die Folge und behindern das Voranschreiten der Softwareanwendung deutlich\footcite[vgl.][]{ci-is-not-build-systems}.
-
-Werden bei einem Erstellungsskript Aspekte der vorangegangen Abschnitte zu Versions-, Konfigurations- und Abhängigkeitsverwaltung nicht berücksichtigt, können zudem inkonsistente und damit nicht 
-wiederholbare Resultate erzeugt werden. Diese können zu schwer oder nicht auffindbaren Fehlern führen.
-
 Ziel bei der Erstellung eines Build-Skriptes ist es, einen konsistenten und transparenten Ablauf zu 
 befolgen. Dies wird unter anderem durch die korrekte Versionsverwaltung der einzelnen Komponenten, Konfigurationen und 
 Abhängigkeiten erreicht. Mit diesen Informationen können erstellte Produkte, auch ``build artifacts'' oder Artefakte 
 genannt, in einem zentralen Artefakt-Lager abgelegt werden. Dies gewährleistet sowohl einen schnellen Zugriff auf 
 Teilartefakte, als auch einen konsistentes Ergebnis bei der Erstellung der Auslieferung.
+
+\subsubsection{Risiken von Build-Scripten}
+
+Build-Scripte, die gemeinsam mit der Anwendung wachsen und an Komplexität gewinnen, stellen ein Risiko dar. Die Skripte sollten als Teil der Anwendung verstanden werden und gleichwertigen Qualitätskriterien unterzogen werden. Nur wenig gewartet Build-Skripte weisen meist eine hohe Komplexität auf. Im fortgeschrittenen Fall kann dies zur  ``integration angst'' führen. Eine geringe Commit-Frequenz und eine sehr defensive Programmierung sind die Folge und behindern das Voranschreiten der Softwareanwendung deutlich\footcite[vgl.][]{ci-is-not-build-systems}.
+
+Werden bei einem Build-Script Aspekte der vorangegangen Abschnitte zu Versions-, Konfigurations- und Abhängigkeitsverwaltung nicht berücksichtigt, können zudem inkonsistente und damit nicht 
+wiederholbare Resultate erzeugt werden. Diese können zu schwer oder nicht auffindbaren Fehlern führen.
+
+\subsubsection{Automatisierte Auslieferung}
 
 Die Auslieferung der Software ist direkt mit der Erstellung verwoben. Die Verfügbarkeit aller Abhängigkeiten auf dem 
 Zielsystem und die richtige Konfiguration aller Anwendungsbestandteile ist notwendig für die Lauffähigkeit der Software. 
@@ -224,6 +257,8 @@ voll automatisch erstellt, ist zudem gesichert, dass alle Abhängigkeiten beschr
 Abschließend können diese Umgebungen archiviert und zusammen mit der Programmversion abgelegt werden. Dies unterstützt 
 die Konsistenz, Transparenz sowie Skalierbarkeit[quote virtualiserung mit docker] des Entwicklungsprozesses für die 
 Anwendung.
+
+\subsubsection{Varianten der Softwareauslieferung}
 
 Bei der Auslieferung der Software können grob zwei Stufen der Automatisierung unterschieden werden. Eine Stufe ist die 
 manuell angestoßene Auslieferung, bei der der Zeitpunkt der Auslieferung davon bestimmt wird, wann das automatisierte 
@@ -277,15 +312,7 @@ Im Folgenden werden kurz bekanntere Metriken vorgestellt.\footcite[S.249 ff][]{s
 
 \subsubsection{Software-Verifikation}
 \label{subsubsec:base-verification}
-Verfahren der Software-Verifikation sind die Deduktion, Modellprüfung und der abstrakten Interpretation\footcite[S. 333 ff][]{software-quality2008}. 
-
-\paragraph{Deduktion} ist stark aus der klassischen mathematischen Beweisführung entlehnt. Dabei werden Vor- und Nachbedingung durch Umformungen sukzessive ineinander überführt. Dieses Verfahren ist ein großteils manueller Vorgang.
-
-\paragraph{Modellprüfung} überführt ein Programm in eine Kripke-Struktur, ähnlich einem endlichen Automaten und beweist oder widerlegt diese Struktur mithilfe von Traversierungsalgorithmen. Die algorithmische Komplexität dieses Verfahrens sorgt für eine weitestgehend ausschließliche Anwendung für sicherheitskritische Software-Systeme.
-
-\paragraph{Abstrakte Interpretation} ist eine semi-formale Verifikationstechnik. Sie kombiniert statische Programmanalyse und Generalisierung von Datenbereichen, um verschieden dynamische Eigenschaften eines Programmes zu verifizieren.
-
-Für die vollautomatische Betrachtung von Software-Änderungen eignet sich daher nur die abstrakte Interpretation und die bereits beschriebenen Software-Tests. Die Abbildung~\ref{software-quali-verification} stellt noch einmal übersichtlich das Verhältnis von Ausdrucksstärker und Skalierbarkeit der Verifikationstechniken dar\footcite[S. 337][]{software-quality2008}.
+Verfahren der Software-Verifikation sind die Deduktion, Modellprüfung und der abstrakten Interpretation\footcite[S. 333 ff][]{software-quality2008}. Welches Verfahren angewendet wird, ist abhängig von einer Kombination aus Aussagekraft und dem Aufwand, der dafür aufgewendet werden kann. Ein aufwändiges, manuelles Verfahren skaliert vergleichsweise schlecht, wie in Abbildung~\ref{software-quali-verification} dargestellt\footcite[S. 337][]{software-quality2008}.
 
 \begin{figure}[htbp]
   \includegraphics[
@@ -297,6 +324,16 @@ Für die vollautomatische Betrachtung von Software-Änderungen eignet sich daher
   \label{software-quali-verification}
 \end{figure}
 
+\paragraph{Deduktion} ist stark aus der klassischen mathematischen Beweisführung entlehnt. Dabei werden Vor- und Nachbedingung durch Umformungen sukzessive ineinander überführt. Dieses Verfahren ist ein großteils manueller Vorgang.
+
+\paragraph{Modellprüfung} überführt ein Programm in eine Kripke-Struktur, ähnlich einem endlichen Automaten und beweist oder widerlegt diese Struktur mithilfe von Traversierungsalgorithmen. Die algorithmische Komplexität dieses Verfahrens sorgt für eine weitestgehend ausschließliche Anwendung für sicherheitskritische Software-Systeme.
+
+\paragraph{Abstrakte Interpretation} ist eine semi-formale Verifikationstechnik. Sie kombiniert statische Programmanalyse und Generalisierung von Datenbereichen, um verschieden dynamische Eigenschaften eines Programmes zu verifizieren.
+
+\vspace{1em}
+
+Für die vollautomatische Betrachtung von Software-Änderungen sind daher die abstrakte Interpretation und die bereits beschriebenen Software-Tests besser geeignet. 
+
 \section{Continuous-Integration}
 
 Continuous-Integration wurde sehr treffend beschrieben \footcite[vgl.][]{fowler2006}
@@ -307,20 +344,20 @@ verified by an automated build (including test) to detect integration errors as 
 
 Continuous-Integration wurde erstmals von Kent Beck als Teil einer Reihe von Praktiken des Entwicklungsvorgehens ``Extreme Programming''\footcite[vgl.][]{kent1999} beschrieben. Dabei sollte die Integration der einzelnen Entwickler-Codeständen gefördert werden. Entwickler sollen ihre Änderungen täglich oder häufiger abgleichen und durch einen automatisierten Vorgang als lauffähig beweisen. Damit konnten Fehler nahe des Zeitpunkt des Auftretens gefunden werden. Fehler, die erst mit der Integration von Änderungen anderer Entwickler auftreten, können so gefunden werden. Damit fordert Continuous-Integration eine aussagekräftige Testabdeckung mit automatischen Tests. Des Weiteren können und sollten Entwickler einen entdeckten Fehler direkt beheben, da sonst alle anderen Teammitglieder behindert werden.
 
-Die Arbeitsweise, alle Änderungen auf einem Zweig zu sammeln und kontinuierlich zu integrieren, wird auch Trunk-Based-
-Development genannt. Während Continuous-Integration und Trunk-Based-Development als getrennte Methodiken geführt werden
-\footcite[vgl.][]{trunkbaseddevelopment}, treten beide Begriffe häufig in Kombination oder synonym 
-auf\footcite[vgl.][]{fowler-feature-branch}.
+\subsection{Vorgehensweise mit Continuous-Integration}
 
-Natürlich nutzt Continuous-Integration auch alle Vorteile, die im 
-Kapitel~\ref{sec:automation-software}~\nameref{sec:automation-software} beschrieben werden. Modularisierung, 
-Konfigurationsmanagement, automatische Erstellung und Wiederverwendbarkeit von Artefakten, sowie das Achten auf 
-Testbarkeit der Anwendung. Die vollständige Erfüllung dieser Kriterien fordert und fördert eine gute Entwicklungskultur.
+Als erstes wird einen Basis zur Integration der gemeinsamen Arbeit genutzt. Ein Versionsverwaltungssystem bildet diese Grundlage. Dadurch werden nachvollziehbar, zeitlich sortiert und wiederherstellbar alle Änderungen gesammelt. Alle Änderungen sollen, auf einem gemeinsamen Stand, regelmäßig zusammengeführt werden. Die Arbeitsweise, alle Änderungen auf einem Zweig zu sammeln und kontinuierlich zu integrieren, wird auch Trunk-Based-
+Development genannt. Abgeleitet von der Bezeichnung des häufig genutzt Versionsverwaltungssystems Subversion. Der Hauptzweig in Subversion wird im Allgemeinen als ``Trunk'' bezeichnet. Während Continuous-Integration und Trunk-Based-Development als getrennte Methodiken geführt werden\footcite[vgl.][]{trunkbaseddevelopment}, treten beide Begriffe häufig in Kombination oder synonym auf\footcite[vgl.][]{fowler-feature-branch}.
 
-TODO: hatte humble das nicht sogar so gesagt? (quote?)
- 
-Dies ist einer der Gründe warum Continuous-Integration seit den Beschreibungen 
-von Kent Beck so sehr an Akzeptanz und Bedeutung gewonnen hat.
+Neben einem Integrationssystem ist auch eine einheitliche Form der Erstellung der Software notwendig. Ein einheitliches Verständnis der Codebasis, verlangt auch ein einheitliches Verständnis der Erstellung Software. Die Software sollte daher, wie in Kapitel~\ref{sec:automation-software}~\nameref{sec:automation-software} beschrieben, erstellt werden.
+
+
+\subsection{Vorteile von Continuous-Integration}
+
+Wird der Codestand aller Entwickler häufig integriert und nach jeder Änderung durch einen automatisierten Build verifiziert, erhalten alle Beteiligten regelmäßig Resonanz zum gemeinsamen Codestand.
+Die häufige Integration von Quellcode fördert zudem die Verwendung von modernen Entwicklungspraktiken. Modularisierung, Konfigurationsmanagement, automatische Erstellung und Wiederverwendbarkeit von Artefakten, sowie das Achten auf Testbarkeit der Anwendung sind wichtig. Die vollständige Erfüllung dieser Kriterien fordert und fördert eine gute Entwicklungskultur.
+
+\subsection{Nachteile von Continuous-Integration}
 
 Während die Vorteile von Continuous-Integration deutlich sind, gibt es auch Kosten die mit dieser Technik einhergehen. 
 Die komplette Automatisierung erfordert einen erheblichen Aufwand in der initialen Einrichtung und einen häufig 
@@ -457,6 +494,16 @@ Der Hash von Blobs ist eine Abbildung ihres Inhaltes. Daher werden Dateien mit d
 gleichen Blob abgebildet, unabhängig vom Verzeichnis in dem sie sich befinden oder wie oft sie geändert wurden. Da ein 
 Blog nur die Abbildung des Inhaltes der Datei ist, führen Merkmale wie Zeitstempel oder Dateirechte zu keiner Änderung 
 des Hashes.
+
+\begin{figure}[htbp]
+  \includegraphics[
+    width=\textwidth,
+    height=\textheight,
+    keepaspectratio
+  ]{resources/git-internal-work.pdf}
+  \caption{Verweise der Artefakte von Git}
+  \label{git-internal-work}
+\end{figure}
 
 Wie auch beim Blob sind Trees nur eine Abbildung ihres Inhaltes. Da Trees aber als eine Art Verzeichnis zu verstehen 
 sind, referenzieren Trees andere Trees und Blobs. Damit würde eine Folge von Commits, die zuerst eine Datei erzeugt und 
