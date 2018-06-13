@@ -169,13 +169,15 @@ In einer stark modularisierten Softwareanwendung existieren in der Regel sehr vi
 
 In Abbildung~\ref{dependency-circle-plot} werden zwei Kreisdiagramme verwendet um die Abhängigkeitszu- und abflüsse zu verdeutlichen. Das linke Diagramm stellt die Abhängigkeiten einer mittel großen Individualsoftware für ein Content-Management-System dar. Das rechte Diagramm visualisiert die Abhängigkeiten der Open-Source-Wiki-Anwendung ``Wikia''\footcite{wikia-github}. Die Wahl des Kreisdiagramms ergibt sich durch seine Eignung gruppierte Ab- und Zuströme zu visualisieren\footcite{visualizing-graph-data}. 
 
-Als Basis für die beiden Diagramme wurden die im Versionsverwaltungssystem gesichert Dateien der Packetverwaltung verwendet. Das Beschreibende Format ist eine DSL von Composer und wird primär für PHP-Projekte verwendet. Die Ansicht wurde mit Hilfe eines JavaScript-Werkzeuges ``Dependency Wheel'' erstellt.
+Als Basis für die beiden Diagramme wurden die im Versionsverwaltungssystem gesichert Dateien der Packetverwaltung verwendet. Das Beschreibende Format ist eine DSL von Composer und wird primär für PHP-Projekte verwendet. Die Ansicht wurde mit Hilfe eines JavaScript-Werkzeuges ``Dependency Wheel''\footcite{composer-dependency-wheel} erstellt.
 
 Die grauen Abhängigkeitsteile stellen direkte Abhängigkeiten des Projektes dar, während die farbigen Stränge die Verbindungen der Abhängigkeiten visualisieren.
 
 In der Darstellung der Individualsoftware, sind die roten Stränge interne Abhängigkeiten. Für Wikia sind Abhängigkeiten der eigenen Entwicklung Lila.
 
 Beide Diagramme vermitteln einen guten Eindruck zur Fülle der Abhängigkeiten und eine Überblick darüber, wie viele Fremdabhängigkeiten im Projekt verwendet werden. Darüber hinaus sind allerdings nur schwer Informationen aus den sichtbaren Daten zu gewinnen. Zentrale Abhängigkeiten und Knoten lassen sich kaum ausmachen.
+
+\paragraph{Baumdiagramm}
 
 \subsection{Automatisierte Systembereitstellung}
 
