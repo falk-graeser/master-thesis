@@ -110,9 +110,7 @@ Angelehnt an die Branch-Übersicht und die angesprochenen ``flüchtigen'' Releas
 \item Blockierende Branches
 \end{itemize}
 
-Die Visualisierung von Konflikten und Blockaden kann die Beurteilung eines Release deutlich erleichtern. Die erleichterte Kommunikation von Konflikten hilft bei deren Fokussierung innerhalb eines Releases. Eine konkrete Aussage über den Fortschritt ist nicht ohne Weiteres möglich. Eine Variante wäre Testabdeckung und den Grad der erfolgreichen Tests zu verwenden. Dazu ist es notwendig die entsprechenden Tests bereits vor der Implementierung der Funktionalität zu erstellen. Die Release-Übersicht profitiert somit besonders von Verfahren wie Test-Driven-Development.
-
-TODO prüfen auf notwendige hinweise zu TDD
+Die Visualisierung von Konflikten und Blockaden kann die Beurteilung eines Release deutlich erleichtern. Die erleichterte Kommunikation von Konflikten hilft bei deren Fokussierung innerhalb eines Releases. Eine konkrete Aussage über den Fortschritt ist nicht ohne Weiteres möglich. Eine Variante wäre Testabdeckung und den Grad der erfolgreichen Tests zu verwenden. Dazu ist es notwendig die entsprechenden Tests bereits vor der Implementierung der Funktionalität zu erstellen. Die Release-Übersicht profitiert somit besonders von Verfahren wie Test-Driven-Development (TDD). Über TDD wird in Kapitel~\ref{test-driven-development} näher eingegangen.
 
 \subsubsection{Konfigurations- und Systemübersicht}
 \label{subsubsec:configuration-system-overview}
@@ -151,9 +149,29 @@ Unabhängig des Abhängigkeitstyps sollte immer verhindert werden, dass die Abh�
 
 \subsubsection{Darstellung der Abhängigkeiten}
 
-In einer stark modularisierten Softwareanwendung existieren in der Regel sehr viele Abhängigkeiten. Starke Wiederverwendung von Modulen erhöht die Anzahl von Querreferenzen. Viele Module verwenden daher oft gleiche Module und Bilden daher zahlreiche Verbindungen. Eine einfache Darstellung dieser Verbindungen ist kaum möglich.
+In einer stark modularisierten Softwareanwendung existieren in der Regel sehr viele Abhängigkeiten. Starke Wiederverwendung von Modulen erhöht die Anzahl von Querreferenzen. Viele Module verwenden daher oft gleiche Module und Bilden daher zahlreiche Verbindungen. Eine einfache Darstellung dieser Verbindungen ist kaum möglich. 
+
+Für die nachfolgenden Vergleiche werden zwei PHP-Projekte verwendet. In beiden Projekten wird als Paketverwaltung Composer\footcite{composer-web} genutzt. Composer beschreibt Abhängikeiten mittels einer eigenen DSL\footcite{composer-json}, welche auf Yaml\footcite{yaml-homepage} basierenden . Das erste Projekt ist eine Open-Source-Wiki-Anwendung ``Wikia''\footcite{wikia-github}. Sie zählt zu den größten Open-Source-PHP-Projekten\footcite{largest-php-apps-2018}. Das zweite Projekt ist eine mittel große Individualsoftware für ein Content-Management-System. 
+
+Beide Projekte haben eine ähnliche Fülle an Abhängigkeiten und werden in einem ähnlichen Fachgebiet genutzt. Die unterschiedliche Entwicklungskultur, kann aber unter Umständen Einfluss auf das Softwareergebnis haben.
 
 \paragraph{Gerichteter Graph}
+
+\begin{figure}[htbp]
+  \includegraphics[
+    width=\textwidth,
+    height=\textheight,
+    keepaspectratio
+  ]{resources/dependency-graph.pdf}
+  \caption{Gerichteter Graph für Abhängigkeiten}
+  \label{dependency-graph}
+\end{figure}
+
+In Abbildung~\ref{dependency-graph} wurden die Abhängigkeiten der beiden Projekte in gerichtet Graphen transformiert. Dafür wurde eine PHP-Bibliothek ``clue/graph-composer'' verwendet. 
+
+Auffällig bei beiden Projekten sind zentrale Knoten, also Abhängigkeiten die von vielen anderen Abhängigkeiten genutzt werden oder diese nutzen. Des weiteren könnten Gruppen von Abhängigkeiten ausgemacht werden. Solche Gruppen können ein eigenes, größtenteils abgrenzbares Abhängigkeitsnetz spannen. Damit dies möglich ist, müssten die Abhängigkeiten entsprechend gewichtet angeordnet sein. Im Falle des Graph-Composer-Werkzeuges erscheint dies nur mangelhaft zu gelingen. 
+
+Abschließend sind in der Individualsoftware noch eine Reihe an unerwarteten Blattknoten erkennbar. Diese deuten auf schlecht gepflegte Abhängigkeiten hin. Unzureichende gepflegte Abhängigkeiten entstehen in der Regel, wenn die betroffenen Module nur im Gesamtkontext geprüft werden. Dadurch sind für diese Module, implizit Abhängigkeiten verfügbar, die sonst nicht nicht bereitgestellt werden könnten.
 
 \paragraph{Kreisdiagramm}
 
@@ -167,17 +185,15 @@ In einer stark modularisierten Softwareanwendung existieren in der Regel sehr vi
   \label{dependency-circle-plot}
 \end{figure}
 
-In Abbildung~\ref{dependency-circle-plot} werden zwei Kreisdiagramme verwendet um die Abhängigkeitszu- und abflüsse zu verdeutlichen. Das linke Diagramm stellt die Abhängigkeiten einer mittel großen Individualsoftware für ein Content-Management-System dar. Das rechte Diagramm visualisiert die Abhängigkeiten der Open-Source-Wiki-Anwendung ``Wikia''\footcite{wikia-github}. Die Wahl des Kreisdiagramms ergibt sich durch seine Eignung gruppierte Ab- und Zuströme zu visualisieren\footcite{visualizing-graph-data}. 
+In Abbildung~\ref{dependency-circle-plot} werden zwei Kreisdiagramme verwendet um die Abhängigkeitszu- und abflüsse zu verdeutlichen. Das linke Diagramm stellt die Abhängigkeiten einer mittel großen Individualsoftware für ein Content-Management-System dar. Das rechte Diagramm visualisiert die Abhängigkeiten der . Die Wahl des Kreisdiagramms ergibt sich durch seine Eignung gruppierte Ab- und Zuströme zu visualisieren\footcite{visualizing-graph-data}. 
 
-Als Basis für die beiden Diagramme wurden die im Versionsverwaltungssystem gesichert Dateien der Packetverwaltung verwendet. Das Beschreibende Format ist eine DSL von Composer und wird primär für PHP-Projekte verwendet. Die Ansicht wurde mit Hilfe eines JavaScript-Werkzeuges ``Dependency Wheel''\footcite{composer-dependency-wheel} erstellt.
+Als Basis für die beiden Diagramme wurden die im Versionsverwaltungssystem gesichert Dateien der Packetverwaltung verwendet. Das beschreibende Format ist eine DSL von Composer\footcite{composer-json} und wird primär für PHP-Projekte verwendet. Die Ansicht wurde mit Hilfe eines JavaScript-Werkzeuges ``Dependency Wheel''\footcite{composer-dependency-wheel} erstellt.
 
 Die grauen Abhängigkeitsteile stellen direkte Abhängigkeiten des Projektes dar, während die farbigen Stränge die Verbindungen der Abhängigkeiten visualisieren.
 
 In der Darstellung der Individualsoftware, sind die roten Stränge interne Abhängigkeiten. Für Wikia sind Abhängigkeiten der eigenen Entwicklung Lila.
 
 Beide Diagramme vermitteln einen guten Eindruck zur Fülle der Abhängigkeiten und eine Überblick darüber, wie viele Fremdabhängigkeiten im Projekt verwendet werden. Darüber hinaus sind allerdings nur schwer Informationen aus den sichtbaren Daten zu gewinnen. Zentrale Abhängigkeiten und Knoten lassen sich kaum ausmachen.
-
-\paragraph{Baumdiagramm}
 
 \subsection{Automatisierte Systembereitstellung}
 
@@ -189,7 +205,11 @@ Die Entscheidung für eine Virtualisierungs- oder Containerlösung sollte von Fa
 
 Unabhängig von der verwendeten Lösungen müssen die Systeme in einen definierten Zustand geführt werden. Dieser Vorgang kann einen größeren Zeitraum in Anspruch nehmen und benötigt entsprechend Resourcen. Um diesen Zeitraum zu verringern sollten anhand des Konfigurationsmanagements Systeme vorbereitet und in gepackter Form abgelegt werden. Bei den meisten Lösungen wird diese Form ``Image'' genannt. Wie bereits für ``Artefakt-Repositories'' angesprochen, sollten diese Images nachvollziehbar benannt und abgelegt werden. Es sollte möglich sein eine Verbindung zur jeweiligen System-Konfiguration herzustellen. Bestenfalls ist die System-Konfiguration in einer Versionsverwaltung abgelegt und die entsprechende Version kann ebenfalls zur Referenzierung des System-Images verwendet werden. Im Rahmen des automatisieren Bereitstellungsprozesses wäre es auch sinnvoll die verwendet Systemkonfiguration in der Entsprechenden System-Übersicht aus Kapitel~\ref{subsubsec:configuration-system-overview} zu aktualisieren.
 
-\section{Modularisierung von Software}
+\section{Best Practices in der Softwareentwicklung}
+
+viele best practices helfen tatsächlich :O
+
+\subsection{Modularisierung von Software}
 
 Viele Probleme bei Continuous-Integration und Feature-Branches entstehen bei komplizierten Merge-Verfahren. Viele komplizierte Merge-Schritte begründen sich häufig durch einen zu hohen Kopplungsgrad der Software. Wenn Komponenten stark gekoppelt sind, ist es oft notwendig mit mehreren Entwicklern in gleichen Code-Abschnitten zu interagieren. Wird eine Software von Beginn an lose gekoppelt entwickelt, ergeben sich oft deutlich weniger Abhängigkeiten und komplizierte Merge-Schritte werden vermieden.
 
@@ -209,7 +229,7 @@ Werden die Prinzipien befolgt, ergeben sich Vorteile für die Wartbarkeit, Wiede
 
 Eine modernere Form der Modularisierung sind die ``serviceorientierten Architekturen''. Diese beschreiben Anwendungsszenarien in verschiedenen Granularität. Die Kapselung in Services ermöglichen die Komposition und Orchestrierung von komplexen Vorgängen. Der serviceorientierte Ansatz nutzt die Prinzipien der Modularisierung und bietet die Vorteile unter neuem Namen an.
 
-\section{Fortgeschrittene Nutzung von Versionsverwaltung}
+\subsection{Fortgeschrittene Nutzung von Versionsverwaltung}
 
 
 
@@ -220,7 +240,8 @@ Including the whole change in one commit
 
 Describing the change, not what have you done
 
-\section{Testgetriebene Entwicklung}
+\subsection{Testgetriebene Entwicklung}
+\label{test-driven-development}
 - lieft metriken von beginn an, lieferten einen verwertbaren projektfortschritt
 
 

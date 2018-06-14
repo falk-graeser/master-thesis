@@ -1,21 +1,18 @@
 \chapter{Problemanalyse}
 
-TODO: Abschnitt neu schreiben
+Continuous-Integration und Feature-Branches sind beides Methodiken um die Kollaboration von Entwicklern zu koordinieren. Beide sind aus der fortschreitenden Entwicklung in der Informatik hervorgegangen. Haben neue Techniken und Methoden aufgegriffen und sind zu Teilen repräsentativ für die Zeit in der sie entstanden sind. Während Continuous-Integration nach Stabilität und Kontinuität strebt, entstand die Feature-Branch-Methodik in einer Zeit, in der Flexibilität immer wichtiger wird.
 
-Die Zusammenführung der Arbeit von mehr als einem Entwickler ist ein komplexer und komplizierter Vorgang. \\
-Viele Teile eines Softwareprojektes beeinflussen andere und häufig werden an Schnittstellen in Programmen Änderungen von mehreren Entwicklern vorgenommen. \\
-Es muss sichergestellt werden, dass die Änderungen zusammengeführt werden können und dass das Ergebnis syntaktisch und semantisch korrekt ist sowie den Anforderungen entspricht.
+Die Kollaboration von Entwicklern ist ein grundsätzliches Problem. Zum einen erfordert es Interaktion und Kommunikation. Zum anderen ermöglicht es andere Sichtweisen und Problemlösungen. Ein einzelner Entwickler bleibt zumeist in dem von ihm selbst gesteckten Rahmen.
 
-Während die syntaktische und semantische Validierung klassische Themen der theoretischen Informatik sind, erfordert die Erhebung und Aufbereitung von Anforderungen eine ganz eigene Betrachtung durch ein konkretes Anforderungsmanagement.
+In professioneller und kommerzieller Softwareentwicklung sollte stets das Ergebnis im Fokus stehen. Ergebnisorientierte Softwareentwicklung beginnt bei der Anforderungsaufnahme. Die Anforderungsaufnahme ist meist aufgrund der vielen Daten und daraus resultierenden Interpretationen eine Herausforderung für sich. Die Anforderungen wiederum müssen die Basis für die weitere Softwareentwicklung darstellen und über den vollen Prozess der Erstellung von Software, als notwendiges Erfolgskriterium herangezogen werden.
 
-Gerade wenn die Software einen gewissen Umfang übersteigt, ist daher ein solides Anforderungsmanagement essenziell. Zudem müssen Mechanismen geschaffen werden, um sicherzustellen, dass diese Anforderungen über die komplette Laufzeit der Software erfüllt bleiben. 
+Die letzten 30 Jahre der Softwareentwicklung mussten sich mit dieser Herausforderung auseinander setzen. Nicht immer ist dies erfolgreich gewesen und zahlreiche Projekte sind daran gescheitert. Über die Zeit haben klassische Bereiche der Informatik, in praxistauglicher Form, Einzug in die kommerzielle Softwareentwicklung gehalten. Software-Validierung und Komplexitätsanalysen, sowie formale Sprachen werden genutzt, um Software gewinnbringend zu entwickeln. Software in moderner Entwicklung, wird semantisch und syntaktisch analysiert um Schwierigkeiten, Probleme und Fehler zu finden. Komplexitätsanalysen helfen, schlecht skalierbare Softwarebestandteile zu identifizieren und formale Sprachen werden unter anderem genutzt, um domainspezifische Bereiche, getrennte von Entwicklungsdetails, zu formulieren.
 
-Leider sieht die Realität in der Softwareentwicklung nicht selten anders aus. Fehlende, nicht dokumentierte oder veraltet Anforderungen sind keine Seltenheit.\\
-Ebenso sind lange Zeitintervalle, in denen sich Teile der Software in keinem lauffähigen oder einem fehlerbehaftetem Zustand befinden, häufig anzutreffen.
+Trotz der fortschrittlichen Entwicklungsmöglichkeiten, scheitern viele Softwareentwicklungen noch daran diese anzuwenden.
 
-Fehlende Anforderungen und fehlerhafte Umsetzungen werden häufig erst zum Zeitpunkt des Testes - oder schlimmer - zum Zeitpunkt der Auslieferung sichtbar.
+Der Konflikt von Continuous-Integration und Feature-Branches verdeutlicht Teile des Problems. Über den Verlauf der nachfolgenden Kapitel wird schrittweise beleuchtet, welche Bestandteile beide Methodiken ausmacht. Worin der Konflikt besteht, den beiden Methodiken mit sich bringen und welche Lösungsansätze dafür gefunden worden.
 
-Die Gründe für diese Schwierigkeiten sind häufig in kein homogenes Bild zu bringen. Vielmehr tragen verschiedene Faktoren dazu bei, die erst in der Kombination zu erheblichen Problemen führen können.
+Als Einstieg werden die Vorgehensmodelle der letzten 30 Jahre beleuchtet und auf die sich verändernde Entwicklungskultur eingegangen.
 
 \section{Vorgehensmodelle}
 
@@ -324,7 +321,7 @@ Verfahren der Software-Verifikation sind die Deduktion, Modellprüfung und der a
   \label{software-quali-verification}
 \end{figure}
 
-\paragraph{Deduktion} ist stark aus der klassischen mathematischen Beweisführung entlehnt. Dabei werden Vor- und Nachbedingung durch Umformungen sukzessive ineinander überführt. Dieses Verfahren ist ein großteils manueller Vorgang.
+\paragraph{Deduktion} ist stark aus der klassischen mathematischen Beweisführung entlehnt. Dabei werden Vor- und Nachbedingung durch Umformungen sukzessive ineinander überführt. Für vollständige Softwareanwendungen ist dieses Verfahren ist ein großteils manueller Vorgang. Allerdings gehört die automatisierte Deduktion, als elementarer Bestandteil zu vielen Entwicklungsumgebungen\footcite[vgl.][S. 2]{automated-deduction}. Unter anderem sind dadurch Kontrollflussanalysen möglich. Unerreichbare oder nicht vollständige Ausdrücke, können so aufgezeigt werden.
 
 \paragraph{Modellprüfung} überführt ein Programm in eine Kripke-Struktur, ähnlich einem endlichen Automaten und beweist oder widerlegt diese Struktur mithilfe von Traversierungsalgorithmen. Die algorithmische Komplexität dieses Verfahrens sorgt für eine weitestgehend ausschließliche Anwendung für sicherheitskritische Software-Systeme.
 
@@ -338,9 +335,7 @@ Für die vollautomatische Betrachtung von Software-Änderungen sind daher die ab
 
 Continuous-Integration wurde sehr treffend beschrieben \footcite[vgl.][]{fowler2006}
 
-\blockquote {Continuous-Integration is a software development practice where members of a team integrate their work 
-frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is 
-verified by an automated build (including test) to detect integration errors as quickly as possible.}
+\blockquote {Continuous-Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible.}
 
 Continuous-Integration wurde erstmals von Kent Beck als Teil einer Reihe von Praktiken des Entwicklungsvorgehens ``Extreme Programming''\footcite[vgl.][]{kent1999} beschrieben. Dabei sollte die Integration der einzelnen Entwickler-Codeständen gefördert werden. Entwickler sollen ihre Änderungen täglich oder häufiger abgleichen und durch einen automatisierten Vorgang als lauffähig beweisen. Damit konnten Fehler nahe des Zeitpunkt des Auftretens gefunden werden. Fehler, die erst mit der Integration von Änderungen anderer Entwickler auftreten, können so gefunden werden. Damit fordert Continuous-Integration eine aussagekräftige Testabdeckung mit automatischen Tests. Des Weiteren können und sollten Entwickler einen entdeckten Fehler direkt beheben, da sonst alle anderen Teammitglieder behindert werden.
 
