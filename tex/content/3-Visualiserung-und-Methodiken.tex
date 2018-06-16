@@ -66,7 +66,7 @@ Abhilfe könnte ein ``flüchtiger''-Release-Branch schaffen. Dazu müssten alle 
 
 Wie effektiv diese Technik angewendet werden kann, hängt stark vom Grad der Kopplung der Software ab. Bei einem hohen Kopplungsgrad können Releases nur schwer getrennt werden. In jedem Fall gleicht diese Technik Schwächen von Feature-Branches aus. Branches werden häufig beurteilt und Probleme werden frühzeitig kommuniziert. Abhängig von der Form der Kommunikation der Daten, kann auf diese Weise ein guter Release-Fortschritt über alle Branches ermittelt werden. 
 
-\subsection{Automatisierte Erstellung von graphischen Übersichten}
+\section{Automatisierte Erstellung von graphischen Übersichten}
 
 Angesichts der Komplexität mit der Entwickler häufig konfrontiert sind, ist es essentiell die richtigen Informationen zusammenzutragen. Je nach Situation können dabei andere Ansichten und Übersichten wichtig sein. In stark gewachsenen Softwareprojekten können mit den richtigen Visualisierungen Engpässe und interne Abgrenzungen gefunden werden. Es können Wachstum und Fortschritt eines Projektes visualisiert werden. Viele Ansichten sind zudem hilfreiche um Informationen zwischen technisch versierten Parteien und technisch weniger versierten Parteien zu transportieren.
 
@@ -76,7 +76,7 @@ TODO: referenz für grafik vs zahlen
 
 In Feature-Branches können somit Entscheidungen für Merge-Vorgänge und Reviews deutlich erleichtert und beschleunigt werden.
 
-\subsubsection{Übersicht der Softwareabhängigkeiten} 
+\subsection{Übersicht der Softwareabhängigkeiten} 
 
 Eine Abhängigkeitsverwaltung für die verwendeten Software-Bibliotheken und -Bestandteile beschreibt eindeutig, welche Komponenten und Versionen verwendet werden. Die Abhängigkeitsverwaltung löst dabei alle Anforderungen zu einem eindeutigen, möglichst aktuellen Set an Komponenten auf.
 
@@ -86,7 +86,7 @@ Die Visualisierung der Abhängigkeiten und der Verbindungen unter den Abhängigk
 
 Summiert und über einen längeren Zeitraum betrachtet bieten diese Informationen die Möglichkeit die Entwicklung der Anwendung zu beurteilen. Es können Strategien zur schrittweisen Verbesserung (refactoring) der Software ermittelt werden. Weiter können neue Änderungen beurteilt werden. Der Grad ihrer Vernetzung, der Aktualität der verwendeten Abhängigkeiten und wie gut sie sich in das Gesamtbild der Anwendung integrieren, können bewertet werden.
 
-\subsubsection{Übersicht zu Branches}
+\subsection{Übersicht zu Branches}
 
 Szenarien in denen viele Branches zum Einsatz kommen, müssen den dadurch entstehenden zusätzlichen Aufwand berücksichtigen. Werden die zahlreichen Zustände des Software-Codes nicht entsprechend behandelt, kann ein erhebliche Mehraufwand durch Aktualisierung und Merging der Branches entstehen. Somit ist es notwendig Branches schnell zu beurteilen und einsortieren zu können.
 
@@ -100,7 +100,7 @@ Eine solche Übersicht müsste wichtigen Kriterien eines Branches gesammelt und 
 
 Durch diese Übersicht können schnell Entscheidungen getroffen werden, welche Branches in den Fokus gerückt werden müssen. Alte oder bereits in den Codestand überführte Branches können gelöscht werden. Branches mit schlechten Kennzahlen können zu einem Refactoring eingeplant werden. Branches mit vielen Änderungen geben Rückschluss auf den aktuellen Fokus der Entwickler. 
 
-\subsubsection{Übersicht zu Releases}
+\subsection{Übersicht zu Releases}
 
 Angelehnt an die Branch-Übersicht und die angesprochenen ``flüchtigen'' Release-Branches, können auch Release-Ansichten bereit gestellt werden. Neben den bereits in der Branch-Übersicht erwähnten Kriterien, können weitere Kriterien visualisiert werden. Kriterien für das Zusammenspiel der für das Release geplanten Branches wären zum Beispiel:
 \begin{itemize}
@@ -112,7 +112,7 @@ Angelehnt an die Branch-Übersicht und die angesprochenen ``flüchtigen'' Releas
 
 Die Visualisierung von Konflikten und Blockaden kann die Beurteilung eines Release deutlich erleichtern. Die erleichterte Kommunikation von Konflikten hilft bei deren Fokussierung innerhalb eines Releases. Eine konkrete Aussage über den Fortschritt ist nicht ohne Weiteres möglich. Eine Variante wäre Testabdeckung und den Grad der erfolgreichen Tests zu verwenden. Dazu ist es notwendig die entsprechenden Tests bereits vor der Implementierung der Funktionalität zu erstellen. Die Release-Übersicht profitiert somit besonders von Verfahren wie Test-Driven-Development (TDD). Über TDD wird in Kapitel~\ref{test-driven-development} näher eingegangen.
 
-\subsubsection{Konfigurations- und Systemübersicht}
+\subsection{Konfigurations- und Systemübersicht}
 \label{subsubsec:configuration-system-overview}
 
 Das Konfigurationsmanagement aus der automatisierten Softwareerstellung kann auch für eine System- und Konfigurationsübersicht verwendet werden. Zusammen mit Daten aus einer Systemüberwachung oder Virtualisierungs-Verwaltung lassen sich umfangreiche Rückschlüsse ziehen. 
@@ -244,6 +244,13 @@ Describing the change, not what have you done
 \label{test-driven-development}
 - lieft metriken von beginn an, lieferten einen verwertbaren projektfortschritt
 
+
+\subsection{Verwendung von Monorepo-Verzeichnissen}
+
+https://hackernoon.com/one-vs-many-why-we-moved-from-multiple-git-repos-to-a-monorepo-and-how-we-set-it-up-f4abb0cfe469
+https://trunkbaseddevelopment.com/monorepos/
+https://developer.atlassian.com/blog/2015/10/monorepos-in-git/
+https://medium.com/@maoberlehner/monorepos-in-the-wild-33c6eb246cb9
 
 \section{Entwicklerdisziplin - Faktor Mensch}
 \label{sec:human-fail}
