@@ -413,11 +413,7 @@ wurde von vornherein als verteiltes, vor Verfälschungen sicheres und effiziente
 Diese Eigenschaften und die Software-Plattform ``GitHub'', machten Git in den letzten 13 Jahren zum de-facto Standard für 
 Versionsverwaltung\footcite[vgl.][]{heise-torvald-git2015}.
 
-Als dezentrales Versionsverwaltungssystem ist einer der großen Vorteile von Git, dass die vollständige Historie der 
-Dateien lokal verfügbar ist. Während zentrale Versionsverwaltungssysteme immer einen dedizierten Server benötigen, können 
-dezentrale Varianten über Peer-To-Peer-Schnittstellen kommunizieren. Diese Eigenschaft sorgt neben einer hohen 
-Ausfallsicherheit und Datenredundanz, auch für eine hohe Flexibilität und die Möglichkeit, zahlreiche Arbeitsweisen 
-von Softwareentwicklern zu unterstützen.
+Als dezentrales Versionsverwaltungssystem ist einer der großen Vorteile von Git, dass die vollständige Historie der Dateien lokal verfügbar ist. Während zentrale Versionsverwaltungssysteme immer einen dedizierten Server benötigen, können dezentrale Varianten über Peer-To-Peer-Schnittstellen kommunizieren. Diese Eigenschaft sorgt neben einer hohen Ausfallsicherheit und Datenredundanz, auch für eine hohe Flexibilität und die Möglichkeit, zahlreiche Arbeitsweisen von Softwareentwicklern zu unterstützen.
 
 \subsection{Definition und Verwendung der Git-Artefakte}
 
@@ -475,7 +471,9 @@ Aussage wurde auch von GitHub bestätigt\footcite[vgl.][]{git-sha-github}.
 Git verwendet intern einen Mix aus Referenzen, Indexierung, Komprimierung und Hashing. Zudem werden keine 
 Differenzmengen, wie etwa in Subversion abgelegt, sondern immer vollständige Dateiinhalte. Für manche Projekte, wie das 
 Mozilla-Projekt\footcite[vgl.][]{kernel-git-svn} kann dies eine Speicherplatzreduktion erreichen. Im Allgemeinen kann dies aber nicht bestätigt werden\footcite[vgl.][]{svn-vs-git}. Durch die vollständige Speicherung der Inhalte in jedem vernetzten Git-Repository, ist der Speicherbedarf insgesamt höher. Insbesondere für große Dateien, mit nur geringfügigen Änderungen ergeben sich deutliche Unterschiede zu Versionssystemen mit Differenzmengen. Für schlecht komprimierbare Dateien oder Dateien mit schlechten Differenzmengen, wie etwa Binärdateien, sollte allerdings grundsätzlich ein Artefakt-
-Repository in Betracht gezogen werden.
+Repository in Betracht gezogen werden. 
+
+Seit wenigen Jahre wird ``Git Large File Storage'' (Git LFS)\footcite{git-lfs} angeboten. Dadurch werden ausgewählte Dateien nur als Referenz in Git gesichert. Dies schwächt den früheren Nachteil deutlich ab.
 
 Um die interne Arbeitsweise von Git zu erläutern, müssen die Zusammenhänge von Commits, Trees, Blobs und Hashes 
 verdeutlicht werden.
