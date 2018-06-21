@@ -148,6 +148,7 @@ Die Aktualisierung von externen Abhängigkeiten sollte im Allgemeinen nur in kon
 Unabhängig des Abhängigkeitstyps sollte immer verhindert werden, dass die Abhängigkeiten unkontrolliert aktualisiert werden. Insbesondere wenn Major-Updates von Abhängigkeiten ohne Prüfung und Test genutzt werden, können leicht Schnittstellen brechen oder unerwartete Verhaltensmuster in der Anwendung auftreten.
 
 \subsubsection{Darstellung der Abhängigkeiten}
+\label{subsubsec:illustrate-dependencies}
 
 In einer stark modularisierten Softwareanwendung existieren in der Regel sehr viele Abhängigkeiten. Starke Wiederverwendung von Modulen erhöht die Anzahl von Querreferenzen. Viele Module verwenden daher oft gleiche Module und Bilden daher zahlreiche Verbindungen. Eine einfache Darstellung dieser Verbindungen ist kaum möglich. 
 
@@ -207,7 +208,9 @@ Unabhängig von der verwendeten Lösungen müssen die Systeme in einen definiert
 
 \section{Best Practices in der Softwareentwicklung}
 
-viele best practices helfen tatsächlich :O
+Feature-Branches beheben Hindernisse, die beim Zusammenführen von Änderungen auftreten nicht. Sie helfen lediglich diese Hindernisse in gezielter und geordneter Weise anzugehen. Daher sind Entwickler auch mit Features-Branches darauf angewiesen Entwicklungsmuster anzuwenden und sich mit der Softwarearchitektur der Anwendung auseinanderzusetzen.
+
+Viele dieser Entwicklungsmuster und -verfahren werden unter dem Begriff ``Best Practices'' geführt. Sie unterstützen Entwickler in Entwurfsentscheidungen und geben Rahmen für Standards in der Softwareentwicklung. Viele der Best-Practices zielen zudem auf Verbesserungen für Wartbarkeit, Robustheit und allgemeine geringere Umsetzungsaufwände.
 
 \subsection{Modularisierung von Software}
 
@@ -245,12 +248,19 @@ Describing the change, not what have you done
 - lieft metriken von beginn an, lieferten einen verwertbaren projektfortschritt
 
 
-\subsection{Verwendung von Monorepo-Verzeichnissen}
+\subsection{Verwendung von Monorepo-Repositories}
 
-https://hackernoon.com/one-vs-many-why-we-moved-from-multiple-git-repos-to-a-monorepo-and-how-we-set-it-up-f4abb0cfe469
-https://trunkbaseddevelopment.com/monorepos/
-https://developer.atlassian.com/blog/2015/10/monorepos-in-git/
-https://medium.com/@maoberlehner/monorepos-in-the-wild-33c6eb246cb9
+Im Abschnitt~\ref{subsubsec:illustrate-dependencies}~``\nameref{subsubsec:illustrate-dependencies}'', konnten gut Abhängigkeitsgruppierungen erkannt werden. Gerade bei Abhängigkeitskonstrukten innerhalb einer Organisation, werden häufig Änderungen parallel in mehreren Abhängigkeiten vorgenommen. Gerade wenn sich diese Abhängigkeiten gegenseitig bedingen, kann es zu einem erhöhten Aufwand kommen. Damit ein gemeinsamer Stand erreicht wird, müssen häufig mehrere Teile des Projektes aktualisiert werden. Gerade wenn ein experimentelles Feature auf mehreren zusammenhängenden Feature-Branches getestet werden muss, entsteht ein deutlich erhöhter Aufwand.
+
+Eine Variante diese Aufwände zu reduzieren und Tests, sowie Auslieferung von Software für ein Paket von Abhängigkeiten zu optimieren, sind Monorepos. Monorepos verwenden, im Kontrast zu regulären Praktiken, ein Repository für mehrere Abhängigkeiten\footcite{trunkbaseddevelopment-monorepo}. Dieses Vorgehen hat den direkten Vorteil, dass Abhängigkeiten nicht miteinander verlinkt werden müssen. Abhängigkeiten sind durch das gemeinsam geteilte Repository automatisch verbunden. Zudem können gemeinsam verwendete Werkzeug einfach gleichgeschaltet und die gemeinsame Verwendung begünstigt werden.
+
+Die Verwendung eines Monorepos vereinfacht zwar die Abhängigkeitsverwaltung, birgt allerdings Schwierigkeiten für größere Repositories. Während in Repositories getrennte Abhängigkeiten, auch die Commits logisch und physisch getrennt sind, fällt diese Barriere in Monorepos. Es müssen daher zusätzliche Mechanismen für die Übersicht geschaffen werden.
+
+Ein weiterer Punkt ist die Performance. Abhängig vom gewählten Versionsverwaltungssystem, können gerade mit Git hier Probleme auftreten. Da Git immer die vollständige Historie bereit hält, sind Performance-Probleme spürbar\footcite{atlassian-monorepo-git}. In zentralen Systemen wie SVN können für Monorepos gezielte Teilebereiche des Repos verwendet werden. 
+In jedem Versionsverwaltungssystem ist hingegen die erhöhte Commit-Frequenz spürbar. Merges treten deutlich häufiger auf, zusätzliche manuelle Eingriffe sind teilweise notwendig.
+
+Trotz der Schwierigkeiten nutzen große Unternehmen wie Google, Facebook und Twitter sehr große Monorepos. Für alle drei Unternehmen ist die Verwendung von Monorepos allerdings mit großem Aufwand verbunden. Google entwickelte eine eigene Versionsverwaltung, Facebook investiert in Mercurial und Twitter verwendet eine speziell angepasste Git-Variante\footcite{monorepos-wild}.
+Bei entsprechender Größe des Projektes, ist allerdings auch für kleinere Unternehmen die Verwendung von Monorepos nützlich\footcite{hackernoon-positive-monorepo}.
 
 \section{Entwicklerdisziplin - Faktor Mensch}
 \label{sec:human-fail}
@@ -261,3 +271,38 @@ https://medium.com/@maoberlehner/monorepos-in-the-wild-33c6eb246cb9
 - Projektdruck
 - Subjektive Bewertung von Prozess, Tools und Projekt
 
+\section{Prototyp zur Feature-Branch-Visualisierung}
+
+Mit wachsender Beliebtheit von Feature-Branches, erweiterten auch die Anbieter für Continuous-Integration-Lösungen ihr Angebot. Viele Anbieter stellen umfangreiche Angebote für Continuous-Deployment bereit. Oftmals sind auch zusätzliche Optionen für Feature-Branches enthalten. Wie im Git-Workflow vorgestellt, werden diese Feature-Branches durch einen manuellen Merge-Befehl auf einem Release-Branch akkumuliert. Auf diese Weise werden kontinuierlich, wenn auch verzögert, die einzelnen Feature-Branches mit einander zusammengeführt. Das späte Feedback zum Zeitpunkt der Zusammenführung, kann zu Problemen und zur Verzögerungen beim Release führen. Eine direkte Alternative ist es, die jeweiligen Feature-Branches direkt zum Zeitpunkt ihrer Fertigstellung zusammenzuführen. Für jeden weiteren Feature-Branch, der zusammengeführt werden muss, ergeben sich allerdings die gleichen Problem, wie bereits zuvor.
+Eine mögliche Lösung wäre es Release bereits im Vorfeld zu definieren und die dazugehörigen Branches zu verfolgen. Somit können Konflikten in Codeständen und potentielle Fehlerquellen eher erkennen. Sind alle Feature-Branches konfliktfrei, können diese automatisch zu einem Release gebündelt werden. Jeder einzelne Branch kann durch Tests und Metriken unterstützt werden. Zudem können auf diese Weise Features zurückgehalten werden, die fertig gestellt wurden, aber aus politischen Gründen noch nicht Teil des Releases sein dürfen.
+
+Es ist nicht unwahrscheinlich, dass dieses Szenario, durch das regelmäßige beheben von Merge-Konflikten, rein theoretisch bleibt. Die Behebung von Merge-Konflikten bedeutet, dass einer der beiden vom Konflikt betroffenen Branches, Teile des Codes des anderen Branches mit aufnehmen muss. Daher können dieses beiden Branches nicht ohne ein Feature-Toggle unabhängig von einander veröffentlicht werden.
+
+Der Prototyp soll somit die folgenden Punkte unterstützen:
+\begin{itemize}
+\item Gruppierung von Feature-Branches zu Releases
+\item Darstellung der Untermenge an Branches, welche bereits zu einem Release kombiniert werden können
+\item Darstellung der Testergebnisse, Testabdeckung und Code-Qualitätsmetriken
+\item Bereitstellung einer API um Testergebnisse und Metriken mit einem Continuous-Integration-System zu synchronisieren
+\end{itemize}
+
+\subsection{Grundlagen der Umsetzung}
+
+Da der Prototyp als Unterstützung für bestehende Werkzeuge agieren soll, bietet sich ein modernes Web-Framework an. Durch die berufliche Prägung des Autors der Masterarbeit, liegt der Fokus zudem auf PHP. Die Wahl für ein modernes und flexibles Framework fällt daher auf Symfony, welches sich durch Flexibilität und Modularität auszeichnet. Zudem existiert für Symfony eine sehr aktive Community, welche Zahlreiche Werkzeug und Hilfsbibliotheken bereit stellt. Durch Symfony ergibt sich als bevorzugte Abhängigkeitsverwaltung Composer. 
+
+\subsection{Domainmodell}
+
+Das betrachtet Problem betrifft sowohl Git-Artefakte, als auch Projekt- und Release-Details. Weiter müssen Metriken und Testergebnisse protokolliert werden. Da die Erstellung von Metriken und Tests eine größere Zeitspanne benötigen können, müssen die Ergebnisse in jedem Fall persistiert werden. Ist zudem gefordert, dass der Zugriff auf Git nur im Command-Line-Level erfolgen darf und nicht über die Webschnittstelle, ist auch hier die Notwendigkeit der Persistierung gegeben.
+
+\begin{figure}[htbp]
+  \includegraphics[
+    width=\textwidth,
+    height=\textheight,
+    keepaspectratio
+  ]{resources/ReleaseWardenClassChart.pdf}
+  \caption{Klassendiagramm für Domainmodell}
+  \label{class-chart-release-warden}
+\end{figure}
+
+
+In Abbildung~\ref{class-chart-release-warden} wird das Domainmodell in einem UML-Klassendiagramm dargestellt. Das Domainmodell beschreibt ein betrachtetes Projekt(Project) mit seinen Abhängigkeiten(Dependency) und 
