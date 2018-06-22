@@ -245,8 +245,11 @@ Describing the change, not what have you done
 
 \subsection{Testgetriebene Entwicklung}
 \label{test-driven-development}
-- lieft metriken von beginn an, lieferten einen verwertbaren projektfortschritt
 
+Testgetriebene Entwicklung, oder auch Test-Driven-Development(TDD) wurde bereits von Kent Beck 1999 als ``test-first''-Ansatz propagiert. Seitdem hat dieses Vorgehen viele Anhänger gewonnen. Es fordert ein Umdenken beim Entwickler. Zuerst muss das Ergebnis einer Änderung oder einer Neuerung bekannt sein und erst danach kann der umsetzende Code entwickelt werden\footcite[vgl.][Kap. Understanding TDD]{tdd-java}. Die Umkehrung des Zeitpunktes, wann die Tests verfasst werden, fördert die Qualität der Entwicklung. Es werden die Anzahl der auftretenden Fehler reduziert, entkoppelte Strukturen gefördert und die Anzahl der nachträglich auftretenden Fehler deutlich gemindert\footcite[vgl.][]{tdd-ci-effectivness}.
+Insbesondere im Continuous-Integration-Bereich ist TDD als Continuous-Testing sinnvoll, da nur kontinuierlich getesteter Code auch kontinuierlich zuverlässig integriert werden kann.
+
+Die Art und Weise der Anwendung von TDD kann stark variieren. Daher wird eine stark iterative Variante des Schreibens von Tests angestrebt. Das ``Red Green Refactoring'' fordert immer nur minimale Anpassungen vorzunehmen, bis der Test vollständig ist. Nach jeder Anpassung, die den Test fehlschlagen lässt, muss die getestete Implementierung so angepasst werden, dass der Test erfolgreich verläuft. Ist der Test vollständig muss abschließend die Implementierung einem Refactoring unterzogen werden. Basierend auf der begrenzten gedanklichen Kapazität eines Entwicklers, soll so immer nur ein Gesichtspunkt der Entwicklung betrachtet werden. Zuerst soll das korrekte Verhalten der Software sichergestellt werden. Danach ist die korrekte Struktur der Software herzustellen. Die Dualität der Betrachtung und der minimal inkrementelle Ansatz sollen ein hoch qualitatives Resultat ergeben.
 
 \subsection{Verwendung von Monorepo-Repositories}
 
@@ -274,9 +277,8 @@ Bei entsprechender Größe des Projektes, ist allerdings auch für kleinere Unte
 \section{Prototyp zur Feature-Branch-Visualisierung}
 
 Mit wachsender Beliebtheit von Feature-Branches, erweiterten auch die Anbieter für Continuous-Integration-Lösungen ihr Angebot. Viele Anbieter stellen umfangreiche Angebote für Continuous-Deployment bereit. Oftmals sind auch zusätzliche Optionen für Feature-Branches enthalten. Wie im Git-Workflow vorgestellt, werden diese Feature-Branches durch einen manuellen Merge-Befehl auf einem Release-Branch akkumuliert. Auf diese Weise werden kontinuierlich, wenn auch verzögert, die einzelnen Feature-Branches mit einander zusammengeführt. Das späte Feedback zum Zeitpunkt der Zusammenführung, kann zu Problemen und zur Verzögerungen beim Release führen. Eine direkte Alternative ist es, die jeweiligen Feature-Branches direkt zum Zeitpunkt ihrer Fertigstellung zusammenzuführen. Für jeden weiteren Feature-Branch, der zusammengeführt werden muss, ergeben sich allerdings die gleichen Problem, wie bereits zuvor.
-Eine mögliche Lösung wäre es Release bereits im Vorfeld zu definieren und die dazugehörigen Branches zu verfolgen. Somit können Konflikten in Codeständen und potentielle Fehlerquellen eher erkennen. Sind alle Feature-Branches konfliktfrei, können diese automatisch zu einem Release gebündelt werden. Jeder einzelne Branch kann durch Tests und Metriken unterstützt werden. Zudem können auf diese Weise Features zurückgehalten werden, die fertig gestellt wurden, aber aus politischen Gründen noch nicht Teil des Releases sein dürfen.
-
-Es ist nicht unwahrscheinlich, dass dieses Szenario, durch das regelmäßige beheben von Merge-Konflikten, rein theoretisch bleibt. Die Behebung von Merge-Konflikten bedeutet, dass einer der beiden vom Konflikt betroffenen Branches, Teile des Codes des anderen Branches mit aufnehmen muss. Daher können dieses beiden Branches nicht ohne ein Feature-Toggle unabhängig von einander veröffentlicht werden.
+Eine mögliche Lösung wäre es Release bereits im Vorfeld zu definieren und die dazugehörigen Branches zu verfolgen. Somit können Konflikten in Codeständen und potentielle Fehlerquellen eher erkennen. Sind alle Feature-Branches konfliktfrei, können diese automatisch zu einem Release gebündelt werden. Jeder einzelne Branch kann durch Tests und Metriken unterstützt werden. Zudem können auf diese Weise Features zurückgehalten werden, die fertig gestellt wurden, aber aus politischen Gründen noch nicht Teil des Releases sein dürfen. 
+Die Behebung von Merge-Konflikten bedeutet, dass einer der beiden vom Konflikt betroffenen Branches, Teile des Codes des anderen Branches, mit aufnehmen muss. Daher ist es möglich, dass auch mit der Verwendung von Feature-Branches, das gezielte zurückhalten von Features, schwierig bleibt. Daher können dieses beiden Branches nicht ohne ein Feature-Toggle unabhängig von einander veröffentlicht werden.
 
 Der Prototyp soll somit die folgenden Punkte unterstützen:
 \begin{itemize}
@@ -285,6 +287,23 @@ Der Prototyp soll somit die folgenden Punkte unterstützen:
 \item Darstellung der Testergebnisse, Testabdeckung und Code-Qualitätsmetriken
 \item Bereitstellung einer API um Testergebnisse und Metriken mit einem Continuous-Integration-System zu synchronisieren
 \end{itemize}
+
+\subsection{Anforderungen}
+
+Ziel des Prototyps ist es Release-Informationen zu einem Projekt anzuzeigen. Daher müssen Projekte angelegt und bearbeitet werden. Zudem müssen die zugehörigen Repository-Informationen ausgelesen werden. Weiter sollten Abhängigkeiten des Projektes ausgelesen und ausgewertet werden. 
+
+Um einzuordnen, welche Änderungen zu einem Release gehören, müssen diese Änderungen definiert werden. Im Fall von Feature-Branches müssen die Feature-Branches deklariert werden, welche Teil des Releases werden. Damit ein Release aussagekräftig deklariert wird, sollten zudem Feature-Branches innerhalb der Abhängigkeiten deklariert werden.
+
+Ist das Release definiert, sollen eine Reihe an Fragen einfach zu beantworten sein. 
+\begin{itemize}
+\item Können alle Feature-Branches zusammengeführt werden?
+\item Welche Branches würde einen Konflikt mit welchem anderen Branch auslösen?
+\item Wie sieht die derzeit minimal release-fähige Untermenge an Feature-Branches aus?
+\item Welche Branches wurden erfolgreich getestet?
+\item Wie verhalten sich die Metriken der Feature-Branches untereinander und zum Haupt-Branch?
+\end{itemize}
+
+Des Weiteren sollte die Anwendung an einen bestehenden Continuous-Prozess möglich sein. Es sollte daher eine REST-API bereit gestellt werden. Die API soll primär die Daten für Metriken und Testergebnisse entgegennehmen.
 
 \subsection{Grundlagen der Umsetzung}
 
