@@ -234,10 +234,10 @@ Eine modernere Form der Modularisierung sind die ``serviceorientierten Architekt
 
 \subsection{Fortgeschrittene Nutzung von Versionsverwaltung}
 
+Wie auch mit jeder anderen Versionsverwaltung, so ist es auch beim Arbeiten mit Git essentiell, seine Arbeit zu strukturieren. Wird Git lediglich als bequeme Variante für eine regelmäßige Sicherung des Arbeitsstandes genutzt, dann entsteht sehr schnell eine schwer zu lesende, an Bedeutung mangelnde Versionshistorie. Wichtig ist es die getätigte Arbeit in semantisch zusammenhängenden, möglichst kleine und prägnanten Commits zu gliedern. Ein Commit sollte immer nur eine Änderung zusammenfassen. Dadurch ist es möglich feingranulare Commit-Nachrichten zu verfassen.
+Zusammen mit nachvollziehbaren und klaren Commit-Nachrichten, entsteht so eine gut leserliche und die Dokumentation unterstützende Versionshistorie.\footcite[vgl.][Kap. Making only one change per commit]{git-essentials-2017}
 
-
-Wie auch mit jeder anderen Versionsverwaltung, so ist es auch beim Arbeiten mit Git essentiell seine Arbeit zu strukturieren. Wird Git lediglich als bequeme Variante für eine regelmäßige Sicherung des Arbeitsstandes genutzt, dann entsteht sehr schnell eine schwer zu lesende, an Bedeutung mangelnde Versionshistorie. Wichtig ist es die getätigte Arbeit in semantisch zusammenhängenden, möglichst kleine und prägnanten Commits zu gliedern.
-Zusammen mit nachvollziehbaren und klaren Commit-Nachrichten, entsteht so eine gut leserliche und die Dokumentation unterstützende Versionshistorie.\footcite[Making only one change per commit][]{git-essentials-2017}\footcite[Writing commit messages before starting to code][]{git-essentials-2017}
+\footcite[Writing commit messages before starting to code][]{git-essentials-2017}
 
 Including the whole change in one commit
 
@@ -264,15 +264,6 @@ In jedem Versionsverwaltungssystem ist hingegen die erhöhte Commit-Frequenz sp�
 
 Trotz der Schwierigkeiten nutzen große Unternehmen wie Google, Facebook und Twitter sehr große Monorepos. Für alle drei Unternehmen ist die Verwendung von Monorepos allerdings mit großem Aufwand verbunden. Google entwickelte eine eigene Versionsverwaltung, Facebook investiert in Mercurial und Twitter verwendet eine speziell angepasste Git-Variante\footcite{monorepos-wild}.
 Bei entsprechender Größe des Projektes, ist allerdings auch für kleinere Unternehmen die Verwendung von Monorepos nützlich\footcite{hackernoon-positive-monorepo}.
-
-\section{Entwicklerdisziplin - Faktor Mensch}
-\label{sec:human-fail}
-\blockquote {discipline, the most lacking virtue in creative people (like programmers)}
-- Testabdeckung
-- Einhaltung des Prozesses
-- Güte der Reviews, Reviews überhaupt
-- Projektdruck
-- Subjektive Bewertung von Prozess, Tools und Projekt
 
 \section{Prototyp zur Feature-Branch-Visualisierung}
 
@@ -305,6 +296,13 @@ Ist das Release definiert, sollen eine Reihe an Fragen einfach zu beantworten se
 
 Des Weiteren sollte die Anwendung an einen bestehenden Continuous-Prozess möglich sein. Es sollte daher eine REST-API bereit gestellt werden. Die API soll primär die Daten für Metriken und Testergebnisse entgegennehmen.
 
+\subsection{Nutzungsszenarien (Use-Cases)}
+
+Aus den Anforderungen ergeben sich einige Nutzungsszenarien. Es soll keine vollständige Projektspezifikation für den Prototypen erstellt werden, daher werden die Nutzungsszenarien nur angerissen. Die Notation der Nutzerszenarien orientiert sich an der Given-When-Then Notation
+
+\paragraph{Projekt erstellen} 
+Als Nutzer des Systems
+
 \subsection{Grundlagen der Umsetzung}
 
 Da der Prototyp als Unterstützung für bestehende Werkzeuge agieren soll, bietet sich ein modernes Web-Framework an. Durch die berufliche Prägung des Autors der Masterarbeit, liegt der Fokus zudem auf PHP. Die Wahl für ein modernes und flexibles Framework fällt daher auf Symfony, welches sich durch Flexibilität und Modularität auszeichnet. Zudem existiert für Symfony eine sehr aktive Community, welche Zahlreiche Werkzeug und Hilfsbibliotheken bereit stellt. Durch Symfony ergibt sich als bevorzugte Abhängigkeitsverwaltung Composer. 
@@ -323,5 +321,28 @@ Das betrachtet Problem betrifft sowohl Git-Artefakte, als auch Projekt- und Rele
   \label{class-chart-release-warden}
 \end{figure}
 
+In Abbildung~\ref{class-chart-release-warden} wird das Domainmodell in einem UML-Klassendiagramm dargestellt. Das Domainmodell beschreibt ein betrachtetes Projekt(Project) mit seinen Abhängigkeiten(Dependency) und den Releases für das Projekt. 
+Um die Abhängigkeiten abzubilden und die verfügbaren Feature-Branches für ein Release zu selektieren, werden somit auch die Repositories und ihre Branches und Tags benötigt.
 
-In Abbildung~\ref{class-chart-release-warden} wird das Domainmodell in einem UML-Klassendiagramm dargestellt. Das Domainmodell beschreibt ein betrachtetes Projekt(Project) mit seinen Abhängigkeiten(Dependency) und 
+
+
+TODO: Abläufe beschreiben
+ScreenShots / Scribbles
+Beschreibung von PHPMetrics
+
+
+\section{Motivation, Disziplin und Verantwortung - Faktor Mensch}
+\label{sec:human-fail}
+Die vorangegangene Kapitel beschäftigen sich größtenteils mit Methodiken und Werkzeugen. Die Motivation dieser Methodiken und Werkzeuge begrenzt sich auf Wartbarkeit, Robustheit und Skalierbarkeit. Dabei wird die Motivation für die Entwicklung, genauer für den Entwickler, weitestgehend ausgelassen.
+
+motivation to change, discipline to change and take responsibility for results of the change
+
+https://www.codingame.com/blog/agile-failed-peek-future-programming/
+http://www.wisdomination.com/screw-motivation-what-you-need-is-discipline/
+
+\blockquote {discipline, the most lacking virtue in creative people (like programmers)}
+- Testabdeckung
+- Einhaltung des Prozesses
+- Güte der Reviews, Reviews überhaupt
+- Projektdruck
+- Subjektive Bewertung von Prozess, Tools und Projekt
