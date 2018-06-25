@@ -298,18 +298,33 @@ Des Weiteren sollte die Anwendung an einen bestehenden Continuous-Prozess mögli
 
 \subsection{Nutzungsszenarien (Use-Cases)}
 
-Aus den Anforderungen ergeben sich einige Nutzungsszenarien. Es soll keine vollständige Projektspezifikation für den Prototypen erstellt werden, daher werden die Nutzungsszenarien nur angerissen. Die Notation der Nutzerszenarien orientiert sich an der Given-When-Then Notation
+Aus den Anforderungen ergeben sich einige Nutzungsszenarien. Es soll keine vollständige Projektspezifikation für den Prototypen erstellt werden, daher werden die Nutzungsszenarien nur angerissen. 
 
-\paragraph{Projekt erstellen} 
-Als Nutzer des Systems
+\paragraph{Projekt registrieren}
+Um die Projekte zu analysieren, müssen sie angelegt werden. Im optimal Fall geschieht dies durch die Angabe eines Repositories. Aus diesem Repository können, anhand der Beschreibungsdatei der verwendeten Packetverwaltung, die weiteren Informationen gewonnen werden.
+
+\paragraph{Branches auflisten}
+Um die Feature-Branches für ein Release zu selektieren, müssen alle verfügbaren Branches des Projektes dargestellt werden. 
+
+\paragraph{Release erstellen}
+Die Release-Erstellung erfolgt durch die Wahl eines Namens und der Selektion der gewünschten Branches. Der Release wird dem Projekt zugeordnet und kann über das Projekt angezeigt werden.
+
+\paragraph{Branch-Details darstellen}
+Um einen Branch zu bewerten, müssen Tests und Metriken für den Branch ausgeführt werden. Die Ausführung und die Sammlung der Daten werden außerhalb des Tools durchgeführt, daher werden diese Daten über eine API zugeführt.
+
+\paragraph{Branch-Konflikte anzeigen}
+Zur weiteren Bewertung der Branches müssen Merge-Konflikte zwischen den Branches ermittelt werden. Branche die einen Konflikt aufweisen, sollten in der Release-Übersicht markiert und gruppiert werden.
+
+\paragraph{Release erstellen}
+Um Wunsch wird ein Release-Branch erstellt und alle Branches, die keinen Konflikt aufweisen, werden zusammengeführt.
 
 \subsection{Grundlagen der Umsetzung}
 
-Da der Prototyp als Unterstützung für bestehende Werkzeuge agieren soll, bietet sich ein modernes Web-Framework an. Durch die berufliche Prägung des Autors der Masterarbeit, liegt der Fokus zudem auf PHP. Die Wahl für ein modernes und flexibles Framework fällt daher auf Symfony, welches sich durch Flexibilität und Modularität auszeichnet. Zudem existiert für Symfony eine sehr aktive Community, welche Zahlreiche Werkzeug und Hilfsbibliotheken bereit stellt. Durch Symfony ergibt sich als bevorzugte Abhängigkeitsverwaltung Composer. 
+Da der Prototyp als Unterstützung für bestehende Werkzeuge agieren soll, bietet sich ein modernes Web-Framework an. Durch die berufliche Prägung des Autors der Masterarbeit, liegt der Fokus zudem auf PHP. Die Wahl für ein modernes und flexibles Framework fällt daher auf Symfony, welches sich durch Flexibilität und Modularität auszeichnet. Zudem existiert für Symfony eine sehr aktive Community, welche Zahlreiche Werkzeug und Hilfsbibliotheken bereit stellt. Durch Symfony ergibt sich als bevorzugte Abhängigkeitsverwaltung Composer.  
 
 \subsection{Domainmodell}
 
-Das betrachtet Problem betrifft sowohl Git-Artefakte, als auch Projekt- und Release-Details. Weiter müssen Metriken und Testergebnisse protokolliert werden. Da die Erstellung von Metriken und Tests eine größere Zeitspanne benötigen können, müssen die Ergebnisse in jedem Fall persistiert werden. Ist zudem gefordert, dass der Zugriff auf Git nur im Command-Line-Level erfolgen darf und nicht über die Webschnittstelle, ist auch hier die Notwendigkeit der Persistierung gegeben.
+Das betrachtet Problem betrifft sowohl Repository-Artefakte, als auch Projekt- und Release-Details. Weiter müssen Metriken und Testergebnisse protokolliert werden. Da die Erstellung von Metriken und Tests eine größere Zeitspanne benötigen können, müssen die Ergebnisse in jedem Fall persistiert werden. Ist zudem gefordert, dass der Zugriff auf das Versionsverwaltungssystem nur im Command-Line-Level erfolgen darf und nicht über die Webschnittstelle, ist auch hier die Notwendigkeit der Persistierung gegeben.
 
 \begin{figure}[htbp]
   \includegraphics[
@@ -324,25 +339,26 @@ Das betrachtet Problem betrifft sowohl Git-Artefakte, als auch Projekt- und Rele
 In Abbildung~\ref{class-chart-release-warden} wird das Domainmodell in einem UML-Klassendiagramm dargestellt. Das Domainmodell beschreibt ein betrachtetes Projekt(Project) mit seinen Abhängigkeiten(Dependency) und den Releases für das Projekt. 
 Um die Abhängigkeiten abzubilden und die verfügbaren Feature-Branches für ein Release zu selektieren, werden somit auch die Repositories und ihre Branches und Tags benötigt.
 
+\subsection{Umsetzung der Nutzerszenarien}
 
+\paragraph{Projekt registrieren}
 
-TODO: Abläufe beschreiben
-ScreenShots / Scribbles
+\paragraph{Branches auflisten}
+
+\paragraph{Release erstellen}
+
+\paragraph{Branch-Details anzeigen}
+
+\paragraph{Branch-Konflikte anzeigen}
+
+\paragraph{Release erstellen}
+
 Beschreibung von PHPMetrics
 
 
 \section{Motivation, Disziplin und Verantwortung - Faktor Mensch}
 \label{sec:human-fail}
-Die vorangegangene Kapitel beschäftigen sich größtenteils mit Methodiken und Werkzeugen. Die Motivation dieser Methodiken und Werkzeuge begrenzt sich auf Wartbarkeit, Robustheit und Skalierbarkeit. Dabei wird die Motivation für die Entwicklung, genauer für den Entwickler, weitestgehend ausgelassen.
+Die vorangegangene Kapitel beschäftigen sich größtenteils mit Methodiken und Hilfsmitteln. Die Motivation dieser Methodiken und Hilfsmittel begrenzt sich unter anderem auf Wartbarkeit, Robustheit und Skalierbarkeit von Software. Dabei wird die Motivation für die Entwicklung, genauer für den Entwickler, weitestgehend ausgelassen.
 
-motivation to change, discipline to change and take responsibility for results of the change
+Gerade in Anbetracht der Zeit, die viele der Methodiken bereits bekannt sind, ist es hilfreich einen weiteren Aspekt hinzuziehen. Dieser Aspekt soll den psychischen Teil der Einführung einer neuen Methodik beleuchten.
 
-https://www.codingame.com/blog/agile-failed-peek-future-programming/
-http://www.wisdomination.com/screw-motivation-what-you-need-is-discipline/
-
-\blockquote {discipline, the most lacking virtue in creative people (like programmers)}
-- Testabdeckung
-- Einhaltung des Prozesses
-- Güte der Reviews, Reviews überhaupt
-- Projektdruck
-- Subjektive Bewertung von Prozess, Tools und Projekt
