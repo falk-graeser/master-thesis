@@ -1,4 +1,4 @@
-\chapter{Methodiken und Visualisierung für Continuous Integration und Feature Branches}
+\chapter[Methodiken und Visualisierung]{Methodiken und Visualisierung für Continuous Integration und Feature Branches}
 \label{ch:visu_meth}
 
 Im vorangegangenen Kapitel wurde dargelegt, was Continuous-Integration und Feature-Branches sind und wie diese Techniken in der Softwareentwicklung angewendet werden. Zudem wird darauf eingegangen, welche Schwierigkeiten mit der Verwendung dieser Techniken einhergehen und dementsprechend eine Lösung erfordern. 
@@ -6,18 +6,17 @@ Die nachfolgenden Abschnitte sollen mögliche Methodiken und Visualisierungen be
 
 \section{Continuous-Integration und Feature Branches}
 
-Continuous-Integration und Feature-Branches sind beides Techniken, um die Kollaboration zwischen Entwicklern zu fördern. Continuous-Integration fordert die Integration in den existierenden Codestand für jede Änderung. Durch die Verwendung des Trunk-Based-Developments, ist das gesamte Team von dieser Integration direkt betroffen. Ist die Integration fehlerhaft, wird somit für die Dauer der Behebung das gesamte Team angehalten bei der Behebung zu helfen. Der Feature-Branch-Ansatz hingegen, lässt Änderungen ohne Integration parallel existieren. Folgt man der Gitflow-Verwendung von Feature-Branches aus Kapitel~\ref{subsec:gitflow}, wird auch hier eine Integration gefordert. Allerdings erst deutlich verzögert, etwa zu  einem Release. Feature-Branches bieten somit einen Integrationsvorgang, ohne das Team zu blockieren. Allerdings wird der Zeitpunkt der Integration verzögert. In dieser Zeitspanne können weitere Änderungen zum Integrations-Branch hinzukommen. Jeder dieser Änderungen muss wiederum in den Feature-Branch integriert werden. Damit steigt der Aufwand sukzessive über die Lebensdauer des Feature-Branches. Im ungünstigsten Fall eskaliert dieser Vorgang in einem ``big scary merge'' oder ``big bang merge'' wie in Kapitel~\ref{sec:feature-branches} beschrieben. Dieses Risiko sollte gemindert werden durch eine regelmäßige Integration mit dem Integrations-Branch. 
+Continuous-Integration und Feature-Branches sind beides Techniken, um die Kollaboration zwischen Entwicklern zu fördern. Continuous-Integration fordert die Integration in den existierenden Codestand für jede Änderung. Durch die Verwendung des Trunk-Based-Developments, ist das gesamte Team von dieser Integration direkt betroffen. Ist die Integration fehlerhaft, wird somit für die Dauer der Behebung, das gesamte Team angehalten, bei der Behebung zu helfen. Der Feature-Branch-Ansatz hingegen, lässt Änderungen ohne Integration parallel existieren. Folgt man der Gitflow-Verwendung von Feature-Branches aus Kapitel~\ref{subsec:gitflow}, wird auch hier eine Integration gefordert. Allerdings erst deutlich verzögert, etwa zu einem Release. Feature-Branches bieten somit einen Integrationsvorgang, ohne das Team zu blockieren. Allerdings wird der Zeitpunkt der Integration verzögert. In dieser Zeitspanne können weitere Änderungen zum Integrations-Branch hinzukommen. Jeder dieser Änderungen muss wiederum in den Feature-Branch integriert werden. Damit steigt der Aufwand sukzessive, über die Lebensdauer des Feature-Branches. Im ungünstigsten Fall eskaliert dieser Vorgang in einem ``big scary merge'' oder ``big bang merge'', wie in Kapitel~\ref{sec:feature-branches} beschrieben. Dieses Risiko sollte gemindert werden, durch eine regelmäßige und kontinuierliche Integration mit dem Integrations-Branch.\\
 
-todo: beide blockzitate besser einbauen\\
+\blockquote {Continuously is more often than you think.}\footcite[vgl.][Kap. Continuous Integration]{humble2010}\\
 
-Zudem sollten die beiden Gedanken beachtet werden:\\
+Besonders aufwändige Arbeiten sollten stets in kleinere Arbeitspakete gegliedert werden. Dies ermöglicht teilweise eine fokussierte Abarbeitung und Parallelisierung der Arbeiten. Bestimmte Arbeitsschritte werden aufwändiger, umso länger sie nicht bearbeitet werden. Bei solchen Tätigkeiten ist eine zeitnahe Bearbeitung zu priorisieren.
+Anwendet auf die Integration von Feature-Branches, sollten diese regelmäßig den Basis-Branch integrieren. Die erhöhte Frequenz vereinfacht die einzelnen Integrationsschritte.\\
 
-\blockquote {Continuous is more often then you think.} 
+\blockquote {When it is painful, the way to reduce the pain is to do it more frequently, not less}\footcite[vgl.][S.24]{humble2010}\\
+
+Viele einzelne Integrationsschritte helfen die einzelnen Änderungen und ihre Motivation leichter zu erkennen. Dadurch sind komplizierte Merges leichter durchzuführen und es entstehen weniger Folgefehler.
  
-\blockquote {When it is painful, the way to reduce the pain is to do it more frequently, not less}\footcite[S.24][]{humble2010} \\
-
-Sie beschreiben den Konflikt, welcher durch schlechte Anwendung von Continuous-Integration entsteht. 
-
 Zielstellung der Vereinigung von Continuous-Integration und Feature-Branches ist folglich eine kontinuierliche Integration ohne Blockaden für andere Entwickler. Es muss definiert werden, wie Entwicklungssysteme und -werkzeuge ineinander greifen und es sollten Regeln und Strukturen definiert werden, um einen Ablauf mit nur wenig Reibungspunkten zu gewährleisten.
 
 \subsection{Automatisierter Test von Feature-Branches}
@@ -39,13 +38,13 @@ must be able to control software development practice. If we don’t measure
 it, however, we will never have that control.}\footcite{demarco1986}
 \\
 
-Um Änderungen an einer Software-Anwendung zu bewerten und automatisiert Entscheidungen zu treffen, müssen die Änderungen quantifiziert und mit Vergleichswerten in Beziehung gesetzt werden. Für die Quantifizierung können Software-Metriken aus  Kapitel~\ref{subsubsec:base-metrics} verwendet werden. Da Aussagen über Programmkomplexität und Umfang kein hinreichende Bewertung ermöglichen, müssen zudem Verfahren zur Verifikation herangezogen werden. Die üblichste Variante hierfür ist eine umfangreiche Test-Suite und je nach Anwendung auch Verfahren wie die in Kapitel~\ref{subsubsec:base-verification} beschriebene Modellprüfung und die abstrakte Interpretation.
-\\
-TODO: prüfen ob aussage zur Modellprüfung und abstrakten Interpretation verfeinert werden kann
-\\
+Um Änderungen an einer Software-Anwendung zu bewerten und automatisiert Entscheidungen zu treffen, müssen die Änderungen quantifiziert und mit Vergleichswerten in Beziehung gesetzt werden. Für die Quantifizierung können Software-Metriken aus  Kapitel~\ref{subsubsec:base-metrics} verwendet werden. Da Aussagen über Programmkomplexität und Umfang kein hinreichende Bewertung ermöglichen, müssen zudem Verfahren zur Verifikation herangezogen werden. Die übliche Variante hierfür, ist eine umfangreiche Test-Suite und je nach Anwendung auch Verfahren, wie die in Kapitel~\ref{subsubsec:base-verification} beschriebene Modellprüfung und die abstrakte Interpretation.
+
 In der Praxis werden automatisiert oft nur Tests verwendet. Der geringer Aufwand für ihre Erstellung und eine gute Skalierbarkeit sorgen für einen flexiblen Einsatz. 
 
-Eine Auswahl für Vergleichswerte zu treffen, ist nicht ohne weiteres möglich. Abhängig von der Beschaffenheit des Software-Projektes und der Software-Anwendung sollten andere Vergleichspunkte gewählt werden, um die Vergleichswerte zu ermitteln. In jedem Fall sollte nicht nur ein Vergleichspunkt herangezogen werden. Sowohl die Betrachtung kurzfristiger Wertänderungen, als auch die Betrachtung langfristiger Wertänderungen ist wichtig, um eine Aussage über die Qualitätsänderung treffen zu können.
+Einzelne Ergebnisse durch Metriken können nicht für die Bewertung eines automatischen Software-Builds verwendet werden. Die Abbildung auf eine einheitliche Skala oder der Vergleich mit Fixpunkten erlaubt eine Bewertung der Ergebnisse. Die Auswahl der Fixpunkte ist stark abhängig von der verwendeten Metrik. Komplexitäts-, Umfangs- und Strukturmetriken liefern Werte, die nur schwer automatisiert zu bewerten sind. Hier bietet sich die Betrachtung der kurz- und langfristigen Änderung an. Sprunghafte Änderungen sollten dabei von besonderer Signifikanz sein. Prüfungen auf den Grad der Erfüllung eines Aspektes sind gut zu automatisieren. Die Testabdeckung einer Softwareanwendung kann auf 80\% festgelegt werden und darf an keiner Stelle unterschritten werden. Eine solche Prüfung sollte einen direkten Einfluss, auf das Ergebnis des automatisierten Software-Builds, ausüben. Der Grad der Erfüllung eines Aspekts kann auch genutzt werden um einen Prozess zu unterstützen. Soll die Testabdeckung in einem Softwareprojekt stetig erhöht werden, kann der Prozentsatz automatisch angepasst werden. Als Start würde der aktuelle Grad der Erfüllung verwendet werden. Bei jeder Überschreitung des Wertes, wird dieser auf den aktuellen Wert angepasst. Auf diese Weise wird eine Verringerung  der Testabdeckung verhindert und die Erstellung von Testfällen für neuen Code gefordert. Ob der Schwellwert zusätzlich in Intervallen erhöht wird, hängt stark vom Entwicklungsteam ab. Stagniert die Testabdeckung über einen längeren Zeitraum sind externe Erhöhungen sinnvoll.
+
+Die Verwendung von Metriken und Testfällen erlauben keine grundsätzliche Aussage über die Qualität der Software. Richtig angewendet und gewartet, erlauben sie allerdings eine zuverlässige Absicherung des automatischen Software-Builds.
 
 \subsection{Automatisches Zusammenführen}
 
@@ -68,13 +67,13 @@ Wie effektiv diese Technik angewendet werden kann, hängt stark vom Grad der Kop
 
 \section{Automatisierte Erstellung von graphischen Übersichten}
 
-Angesichts der Komplexität mit der Entwickler häufig konfrontiert sind, ist es essentiell die richtigen Informationen zusammenzutragen. Je nach Situation können dabei andere Ansichten und Übersichten wichtig sein. In stark gewachsenen Softwareprojekten können mit den richtigen Visualisierungen Engpässe und interne Abgrenzungen gefunden werden. Es können Wachstum und Fortschritt eines Projektes visualisiert werden. Viele Ansichten sind zudem hilfreiche um Informationen zwischen technisch versierten Parteien und technisch weniger versierten Parteien zu transportieren.
+Angesichts der Komplexität mit der Entwickler häufig konfrontiert sind, ist es essentiell die richtigen Informationen zusammenzutragen. Je nach Situation können dabei andere Ansichten und Übersichten wichtig sein. In stark gewachsenen Softwareprojekten können mit den richtigen Visualisierungen Engpässe und interne Abgrenzungen gefunden werden. Es können Wachstum und Fortschritt eines Projektes visualisiert werden. Viele Ansichten sind zudem hilfreich um Informationen zwischen technisch versierten Parteien und technisch weniger versierten Parteien zu transportieren.
 
-Wesentlich bei diesen Ansichten ist der Aufwand für ihre Erstellung. Ansichten die einen hohen manuellen Aufwand mit sich bringen, sind bald veraltet und werden damit nicht mehr genutzt. Somit ist es entscheidend diese Ansichten und Übersichten automatisch zu erstellen. Über Metriken aus dem automatisierten Softwareerstellungsprozess können die notwendigen Messwerte ermittelt werden. Da graphische Übersichten in der Regel besser vom Menschen verarbeitet werden, ist es somit einfacher und schneller einen Eindruck vom Projektfortschritt und der -Qualität zu erlangen.
+Wesentlich bei diesen Ansichten ist der Aufwand für ihre Erstellung. Ansichten die einen hohen manuellen Aufwand erfordern, veralten schnell und werden nicht mehr genutzt. Im schlimmsten Fall liefern veraltet Ansichten falsche Informationen. Somit ist es entscheidend diese Ansichten und Übersichten automatisch zu erstellen. Über Metriken aus dem automatisierten Softwareerstellungsprozess, können die notwendigen Messwerte ermittelt werden. 
 
-TODO: referenz für grafik vs zahlen
+Da in graphische Übersichten Trends und Schwerpunkte erkannt werden sollen, bieten graphische Übersichten einen Vorteil gegenüber rein textbasierten Darstellungen. Ein einfacher und schneller Eindruck vom Projektfortschritt und der -Qualität kann damit erlangt werden.
 
-In Feature-Branches können somit Entscheidungen für Merge-Vorgänge und Reviews deutlich erleichtert und beschleunigt werden.
+Bewertungen von Feature-Branches und Releases können damit unterstützt werden.
 
 \subsection{Übersicht der Softwareabhängigkeiten} 
 
