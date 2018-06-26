@@ -195,6 +195,22 @@ In der Darstellung der Individualsoftware, sind die roten Stränge interne Abhä
 
 Beide Diagramme vermitteln einen guten Eindruck zur Fülle der Abhängigkeiten und eine Überblick darüber, wie viele Fremdabhängigkeiten im Projekt verwendet werden. Darüber hinaus sind allerdings nur schwer Informationen aus den sichtbaren Daten zu gewinnen. Zentrale Abhängigkeiten und Knoten lassen sich kaum ausmachen.
 
+\paragraph{Blasendiagramm}
+
+\begin{figure}[htbp]
+  \includegraphics[
+    width=\textwidth,
+    height=\textheight,
+    keepaspectratio
+  ]{resources/bubble-complexity-chart.pdf}
+  \caption{Blasendiagramm für Cyclomatische-Komplexität}
+  \label{bubble-complexity}
+\end{figure}
+
+Blasendiagramme eigenen sich besonders für die relative Darstellung von Werten. Oftmals werden die Blasen zusätzlich an den Achsen eines Graphen dargestellt. Im dargestellten Beispiel wurden die Blasen sortiert aufgereiht. Jede Blase steht im Beispiel für eine Klasse und die Größe der Blase ist der Wert ihrer Cyclomatischen-Komplexität. Die Farbe der Klasse stellt einen Index für ihre Wartbarkeit zusammen. Die Darstellung ist eine Zusammenfassung der PHPMetrics-Bibliothek. 
+Die Darstellung vermittelt relativ einfach die Menge und Stärke von Komplexität und potentiellen Wartungsschwierigkeiten.
+
+
 \subsection{Automatisierte Systembereitstellung}
 
 Um Feature-Branches technisch zu unterstützen, müssen Tests und Metriken für jeden Feature-Branch ausgeführt werden. Damit dies automatisiert möglich ist, müssen die zugehörigen Testsysteme automatisch zur Verfügung gestellt werden. Somit ist eine automatisierte Systembereitstellung notwendig.
