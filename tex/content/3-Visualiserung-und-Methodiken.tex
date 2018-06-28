@@ -75,16 +75,6 @@ Da in graphische Übersichten Trends und Schwerpunkte erkannt werden sollen, bie
 
 Bewertungen von Feature-Branches und Releases können damit unterstützt werden.
 
-\subsection{Übersicht der Softwareabhängigkeiten} 
-
-Eine Abhängigkeitsverwaltung für die verwendeten Software-Bibliotheken und -Bestandteile beschreibt eindeutig, welche Komponenten und Versionen verwendet werden. Die Abhängigkeitsverwaltung löst dabei alle Anforderungen zu einem eindeutigen, möglichst aktuellen Set an Komponenten auf.
-
-Nicht selten ist diese Vorgang mit mehreren manuellen Eingriffen verbunden. Das optimale Set von Komponenten kann nicht immer von der Versionsverwaltung automatisch gefunden werden. Teilweise werden zu grobe oder zu enge Grenzen für die Komponenten angegeben. Abhängig von den verwendeten Komponenten und wie gut definiert ihre Abhängigkeiten sind, kann der manuelle Teil einen sehr hohen Aufwand verursachen.
-
-Die Visualisierung der Abhängigkeiten und der Verbindungen unter den Abhängigkeiten verdeutlicht das Zusammenspiel. Stark vernetzte Abhängigkeiten können so identifiziert werden. Zusammen mit den \nameref{par:structure-metrics} aus Kapitel \ref{par:structure-metrics} können so deutliche Informationen über den Zustand der Software gewonnen werden. Weitere Informationen zu veralteten und auslaufenden Abhängigkeiten (outdated, deprecated) können hinzugefügt werden.
-
-Summiert und über einen längeren Zeitraum betrachtet bieten diese Informationen die Möglichkeit die Entwicklung der Anwendung zu beurteilen. Es können Strategien zur schrittweisen Verbesserung (refactoring) der Software ermittelt werden. Weiter können neue Änderungen beurteilt werden. Der Grad ihrer Vernetzung, der Aktualität der verwendeten Abhängigkeiten und wie gut sie sich in das Gesamtbild der Anwendung integrieren, können bewertet werden.
-
 \subsection{Übersicht zu Branches}
 
 Szenarien in denen viele Branches zum Einsatz kommen, müssen den dadurch entstehenden zusätzlichen Aufwand berücksichtigen. Werden die zahlreichen Zustände des Software-Codes nicht entsprechend behandelt, kann ein erhebliche Mehraufwand durch Aktualisierung und Merging der Branches entstehen. Somit ist es notwendig Branches schnell zu beurteilen und einsortieren zu können.
@@ -101,6 +91,16 @@ Durch diese Übersicht können schnell Entscheidungen getroffen werden, welche B
 
 \subsection{Übersicht zu Releases}
 
+\begin{figure}[htbp]
+  \includegraphics[
+    width=\textwidth,
+    height=\textheight,
+    keepaspectratio
+  ]{resources/release-branch_overview.pdf}
+  \caption{Prototyp - Releaseübersicht}
+  \label{prototype-release-overview}
+\end{figure}
+
 Angelehnt an die Branch-Übersicht und die angesprochenen ``flüchtigen'' Release-Branches, können auch Release-Ansichten bereit gestellt werden. Neben den bereits in der Branch-Übersicht erwähnten Kriterien, können weitere Kriterien visualisiert werden. Kriterien für das Zusammenspiel der für das Release geplanten Branches wären zum Beispiel:
 \begin{itemize}
 \item Konflikte zwischen Branches
@@ -109,7 +109,12 @@ Angelehnt an die Branch-Übersicht und die angesprochenen ``flüchtigen'' Releas
 \item Blockierende Branches
 \end{itemize}
 
-Die Visualisierung von Konflikten und Blockaden kann die Beurteilung eines Release deutlich erleichtern. Die erleichterte Kommunikation von Konflikten hilft bei deren Fokussierung innerhalb eines Releases. Eine konkrete Aussage über den Fortschritt ist nicht ohne Weiteres möglich. Eine Variante wäre Testabdeckung und den Grad der erfolgreichen Tests zu verwenden. Dazu ist es notwendig die entsprechenden Tests bereits vor der Implementierung der Funktionalität zu erstellen. Die Release-Übersicht profitiert somit besonders von Verfahren wie Test-Driven-Development (TDD). Über TDD wird in Kapitel~\ref{test-driven-development} näher eingegangen.
+Die Visualisierung von Konflikten und Blockaden kann die Beurteilung eines Release deutlich erleichtern. Die erleichterte Kommunikation von Konflikten hilft bei deren Fokussierung innerhalb eines Releases. Eine konkrete Aussage über den Fortschritt eines Releases ist nicht ohne Weiteres möglich. Es können allerdings Abschätzungen auf Basis des geschätzten Umfangs von Features vorgenommen werden. Zusammen mit Daten zu verbrauchter Arbeitszeit, getätigten Commits, Teststand und -abdeckung kann dieses Bild verbessert werden.
+
+In Projekten verwendete Ticketverwaltungssysteme können eine ähnliche Ansicht bereit stellen. Diese beurteilen ebenfalls anhand von geplantem und gebuchtem Aufwand den Stand eines Releases.
+
+Die zusätzlichen Informationen, aus dem Versionsverwaltungssystem, Tests und Metriken erweitern diese Ansicht. Ob diese Informationen einen Mehrwert darstellen, muss allerdings empirisch bewiesen werden.
+Eine hohe Testdichte und Testqualität sollte die erhaltenen Informationen verbessern. Die Release-Übersicht profitiert somit besonders von Verfahren wie Test-Driven-Development (TDD). Über TDD wird in Kapitel~\ref{test-driven-development} näher eingegangen.
 
 \subsection{Konfigurations- und Systemübersicht}
 \label{subsubsec:configuration-system-overview}
@@ -128,7 +133,18 @@ Eine Konfigurations- und Systemübersicht ist somit eine hilfreiche, kombinierte
 
 \subsection{Übersichten für die Konfigurations- und Abhängigkeitsverwaltung}
 
-Übersichten sind eine sinnvolle Ergänzung in einer Projekt- und Systemübersicht. In der automatisierten Softwareerstellung liegt der Fokus allerdings in der automatischen Bewertung der Software und ihrer Komponenten. Wird wie in Kapitel~\ref{subsec:dependency-management}~\nameref{subsec:dependency-management} eine Abhängigkeitsverwaltung verwendet, können weitere Maßnahmen zur Qualitätskontrolle ergriffen werden. Es sollte zudem zwischen internen und externen Abhängigkeiten unterschieden werden, da für die unterschiedlichen Typen, unterschiedliche Maßnahmen ergriffen werden können.
+Eine Abhängigkeitsverwaltung für die verwendeten Software-Bibliotheken beschreibt eindeutig, welche Komponenten und Versionen verwendet werden. Die Abhängigkeitsverwaltung löst dabei alle Anforderungen zu einem eindeutigen, möglichst aktuellen Set an Komponenten auf. 
+
+Die Komposition der Abhängigkeiten ist ein komplizierter und komplexer Vorgang. Jede Abhängigkeit bringt neue Abhängigkeiten in die Verarbeitung ein. Viele der Abhängigkeitsverwaltungen nutzen reguläre Ausdrücke, um die benötigten Versionen der Abhängigkeiten zu beschreiben.
+
+Das entstehende Abhängigkeitsgeflecht möglichst simpel zu halten, ist offensichtlich aus Gründen der Wartbarkeit sinnvoll. Muss eine Abhängigkeit aktualisiert werden, sollte schnell deutlich werden, welche anderen Abhängigkeiten betroffen sind.
+Aber auch aus Gründen der Robustheit sind transparente Abhängigkeiten wichtig. Wenn Abhängigkeiten weitere Abhängigkeiten in das System einbringen, entstehen schnell größere Kaskaden. Ändern sich zentrale Komponenten in diesen Abhängigkeitskaskaden, kann dies dazu führen, dass große Teile des Abhängigkeitsgeflecht, sich mit anpassen müssen.
+
+Um diesen Szenarien vorzubeugen und sie abzuschwächen, ist eine automatisierte Aufarbeitung der Abhängigkeiten sinnvoll. Übersichten die Knotenpunkte und Cluster schnell aufzeigen, sowie Metriken Abhängigkeiten formal erfassen.
+
+Übersichten sind eine sinnvolle Ergänzung in einer Projekt- und Systemübersicht. In der automatisierten Softwareerstellung liegt der Fokus allerdings in der automatischen Bewertung der Software und ihrer Komponenten. Wird wie in Kapitel~\ref{subsec:dependency-management}~\nameref{subsec:dependency-management} eine Abhängigkeitsverwaltung verwendet, können weitere Maßnahmen zur Qualitätskontrolle ergriffen werden. Es sollte zudem zwischen internen und externen Abhängigkeiten unterschieden werden, da für die unterschiedlichen Typen, unterschiedliche Maßnahmen ergriffen werden können. Das Kapitel~\ref{par:structure-metrics}~\nameref{par:structure-metrics} beschreibt die Basis für diese Metriken. Zusätzlich sollten Abhängigkeiten auch nach ihrem Alter und ihrer abgeschätzten Qualität beurteilt werden.
+
+Summiert und über einen längeren Zeitraum betrachtet bieten diese Informationen die Möglichkeit die Entwicklung der Anwendung besser zu beurteilen. Es können Strategien zur schrittweisen Verbesserung (refactoring) der Software ermittelt werden. Weiter können neue Änderungen beurteilt werden. Der Grad ihrer Vernetzung, der Aktualität der verwendeten Abhängigkeiten und wie gut sie sich in das Gesamtbild der Anwendung integrieren.
 
 \subsubsection{Interne Abhängigkeiten}
 
