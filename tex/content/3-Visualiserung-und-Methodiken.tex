@@ -138,7 +138,7 @@ Eine Abhängigkeitsverwaltung für die verwendeten Software-Bibliotheken beschre
 Die Komposition der Abhängigkeiten ist ein komplizierter und komplexer Vorgang. Jede Abhängigkeit bringt neue Abhängigkeiten in die Verarbeitung ein. Viele der Abhängigkeitsverwaltungen nutzen reguläre Ausdrücke, um die benötigten Versionen der Abhängigkeiten zu beschreiben.
 
 Das entstehende Abhängigkeitsgeflecht möglichst simpel zu halten, ist offensichtlich aus Gründen der Wartbarkeit sinnvoll. Muss eine Abhängigkeit aktualisiert werden, sollte schnell deutlich werden, welche anderen Abhängigkeiten betroffen sind.
-Aber auch aus Gründen der Robustheit sind transparente Abhängigkeiten wichtig. Wenn Abhängigkeiten weitere Abhängigkeiten in das System einbringen, entstehen schnell größere Kaskaden. Ändern sich zentrale Komponenten in diesen Abhängigkeitskaskaden, kann dies dazu führen, dass große Teile des Abhängigkeitsgeflecht, sich mit anpassen müssen.
+Aber auch aus Gründen der Robustheit sind transparente Abhängigkeiten wichtig. Wenn Abhängigkeiten weitere Abhängigkeiten in das System einbringen, entstehen schnell größere Kaskaden. Zentrale, stark gekoppelte Komponenten in Abhängigkeitskaskaden sind problematisch. In schwierigen Fällen, müssen alle Abhängigkeiten der Komponente ebenfalls aktualisiert werden.
 
 Um diesen Szenarien vorzubeugen und sie abzuschwächen, ist eine automatisierte Aufarbeitung der Abhängigkeiten sinnvoll. Übersichten die Knotenpunkte und Cluster schnell aufzeigen, sowie Metriken Abhängigkeiten formal erfassen.
 
@@ -213,33 +213,46 @@ Beide Diagramme vermitteln einen guten Eindruck zur Fülle der Abhängigkeiten u
 
 \subsection{Übersichten für Software-Metriken}
 
-einleitende worte
-
-\paragraph{Liniendiagramm}
-
-zeitlicher verlauf
-
-\paragraph{Balkendiagramm}
-
-Sortierte vergleichenden Metriken
-
-\paragraph{Kreisdiagramm}
-
-Zusammensetzung der Software
-
-\paragraph{Blasendiagramm}
+Metriken liefern diskrete Werte. Diese eigenen sich besonders für die maschinelle und automatisierte Verarbeitung. Sollen Entwickler anhand von Werten aus Metriken Entscheidungen treffen, stoßen diese schnell an kapazitive Grenzen. Visuelle Aufbereitungen dieser Werte helfen bei der Einordnung der Zahlen. Vergleiche zwischen Kenngrößen, Trends über Zeiträume und Gruppen von Werten lassen sich besser erfassen. Übersichtliche und gut aufbereitete Darstellungen helfen bei der Priorisierung und Bewertungen verschiedene Konstellationen. Abstrakte Sachverhalten wie Komplexität und Wartbarkeit können so erfasst werden.
 
 \begin{figure}[htbp]
-  \includegraphics[
-    width=\textwidth,
-    height=\textheight,
-    keepaspectratio
-  ]{resources/bubble-complexity-chart.pdf}
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+    {resources/900x300.pdf}
+  \caption{TODO Graphik zu Liniendiagrammen (verbundene Punkte vs Trend zwischen Punkten}
+  \label{line-chart}
+\end{figure}
+\paragraph{Liniendiagramme} eignen sich besonders, um Trends und zeitliche Verläufe darzustellen. Zentrale und wichtige Größen, wie Testabdeckung, Komplexität, Kopplungsgrad können dadurch zeitlich betrachtet werden. 
+
+Liniendiagramme eignen sich daher eher für langfristige Betrachtungen. Risikoabschätzung, Qualitätsentwicklung und Planung von Refactoring sind denkbare Einsatzgebiete.
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+    {resources/900x300.pdf}
+  \caption{TODO Graphik zu Balkendiagrammen, horizontal, vertikal}
+  \label{bar-chart}
+\end{figure}
+\paragraph{Balkendiagramme} eignen sich für vergleichende Ansichten. Kenngrößen die ohne Vergleich schwer zu bewerten sind, können so in Kontext gesetzt werden. Werden die Balken sortiert, können zudem Wertgruppen eingeteilt werden. Durch die Drehung des Balkendiagramms um 90 Grad, wird zudem der Fokus stärker auf die Sortierung gelenkt.
+
+Balkendiagramme bilden Werte in einer gut vergleichbaren Form an. Dadurch eigenen sie sich besonders für Priorisierung und Gruppierung von Merkmalen.
+Die Identifizierung der Gruppe der komplexesten Klassen. Oder die Gruppe der Klassen mit den meisten Abhängigkeiten können so schnell festgestellt werden. Mit Hilfslinien, parallel zu den Achsen, lassen sich gut Grenz- und Schwellwerte darstellen.
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+    {resources/900x300.pdf}
+  \caption{TODO Graphik zu Kreisdiagrammen, Ringdiagramme}
+  \label{circle-chart}
+\end{figure}
+\paragraph{Kreis- und Ringdiagramme} eignen sich gut um Zusammensetzungen darzustellen. Werden mehrere Zusammensetzungen als Ringdiagramme verschachtelt, lassen diese sich in Grenzen auch vergleichen. Kreisdiagrammen können verhältnismäßig schlecht kleinere Anteile darstellen. Unter anderem Beschriftungen können bei kleinen Teilen nur schwer dargestellt werden.
+
+Besonders Verhältnisse zwischen Größen können mit Kreisdiagrammen gut dargestellt werden. Ähnlich zum Balkendiagramm, können sie sortiert und gruppiert Mehrheitsverhältnisse darstellen. Insbesondere Verhältnisse, die die Vertikale oder Horizontale Linie überschreiten, können gut argumentiert werden. So ist zum Beispiel die 50\% Marke in einem Kreisdiagramm eine gute Orientierungshilfe. Im Vergleich zum Balkendiagramm lassen sich diskrete Werte schwerer visualisieren.
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+    {resources/bubble-complexity-chart.pdf}
   \caption{Blasendiagramm für Cyclomatische-Komplexität}
   \label{bubble-complexity}
 \end{figure}
-
-Blasendiagramme eigenen sich besonders für die relative Darstellung von Werten. Oftmals werden die Blasen zusätzlich an den Achsen eines Graphen dargestellt. Im dargestellten Beispiel wurden die Blasen sortiert aufgereiht. Jede Blase steht im Beispiel für eine Klasse und die Größe der Blase für den Wert ihrer Cyclomatischen-Komplexität. Die Farbe der Klasse stellt einen Index für ihre Wartbarkeit zusammen. Die Darstellung ist eine Zusammenfassung der PHPMetrics-Bibliothek. 
+\paragraph{Blasendiagramme} eigenen sich besonders für die relative Darstellung von Werten. Oftmals werden die Blasen zusätzlich an den Achsen eines Graphen dargestellt. Im dargestellten Beispiel wurden die Blasen sortiert aufgereiht. Jede Blase steht im Beispiel für eine Klasse und die Größe der Blase für den Wert ihrer Cyclomatischen-Komplexität. Die Farbe der Klasse stellt einen Index für ihre Wartbarkeit zusammen. Die Darstellung ist eine Zusammenfassung der PHPMetrics-Bibliothek. 
 Die Darstellung vermittelt relativ einfach die Menge und Stärke von Komplexität und potentiellen Wartungsschwierigkeiten.
 
 
@@ -247,15 +260,15 @@ Die Darstellung vermittelt relativ einfach die Menge und Stärke von Komplexitä
 
 Um Feature-Branches technisch zu unterstützen, müssen Tests und Metriken für jeden Feature-Branch ausgeführt werden. Damit dies automatisiert möglich ist, müssen die zugehörigen Testsysteme automatisch zur Verfügung gestellt werden. Somit ist eine automatisierte Systembereitstellung notwendig.
 
-Die automatische Bereitstellung ist prinzipiell sowohl mit Virtualisierung als auch mit einem Containersystem möglich. Auch eine entsprechende verwaltet Gruppe an Hardwaresystemen ist möglich, ist allerdings in den meisten Situation deutlich unwirtschaftlicher sein, als die virtuellen Lösungen.
+Die automatische Bereitstellung ist prinzipiell, sowohl mit Virtualisierung, als auch mit einem Containersystem möglich. Auch eine entsprechende verwaltet Gruppe an Hardwaresystemen ist möglich, sollte allerdings in den meisten Situation deutlich unwirtschaftlicher sein, als die virtuellen Lösungen.
 
-Die Entscheidung für eine Virtualisierungs- oder Containerlösung sollte von Fall zu Fall entscheiden werden. Die schlankere und damit Resourcen schonendere Lösung ist die Verwendung von Containern. Mit ihnen können problemlos einzelne Testsysteme oder komplexere Service und Systemverbunde erstellt und verwaltet werden. Die Verwendung von Container ist nicht mehr möglich, wenn unterschiedliche Betriebs- oder Hardwaresysteme benötigt werden.
+Die Entscheidung für eine Virtualisierungs- oder Containerlösung sollte von Fall zu Fall entscheiden werden. Die schlankere und damit Resourcen schonendere Lösung, ist die Verwendung von Containern. Mit ihnen können problemlos einzelne Testsysteme oder komplexere Service und Systemverbände erstellt und verwaltet werden. Die Verwendung eines einzelnen Container-Systems ist nicht mehr möglich, wenn unterschiedliche Betriebs- oder Hardwaresysteme benötigt werden. In diesem Fall müssen mehrere Container-Systeme konfiguriert werden.
 
-Unabhängig von der verwendeten Lösungen müssen die Systeme in einen definierten Zustand geführt werden. Dieser Vorgang kann einen größeren Zeitraum in Anspruch nehmen und benötigt entsprechend Resourcen. Um diesen Zeitraum zu verringern sollten anhand des Konfigurationsmanagements Systeme vorbereitet und in gepackter Form abgelegt werden. Bei den meisten Lösungen wird diese Form ``Image'' genannt. Wie bereits für ``Artefakt-Repositories'' angesprochen, sollten diese Images nachvollziehbar benannt und abgelegt werden. Es sollte möglich sein eine Verbindung zur jeweiligen System-Konfiguration herzustellen. Bestenfalls ist die System-Konfiguration in einer Versionsverwaltung abgelegt und die entsprechende Version kann ebenfalls zur Referenzierung des System-Images verwendet werden. Im Rahmen des automatisieren Bereitstellungsprozesses wäre es auch sinnvoll die verwendet Systemkonfiguration in der Entsprechenden System-Übersicht aus Kapitel~\ref{subsubsec:configuration-system-overview} zu aktualisieren.
+Unabhängig von der verwendeten Lösung, müssen die Systeme in einen definierten Zustand geführt werden. Dieser Vorgang kann einen größeren Zeitraum in Anspruch nehmen und benötigt entsprechende manuelle Resourcen. Um diesen Zeitraum zu verringern, sollten anhand des Konfigurationsmanagements exemplarische Systeme vorbereitet und in gepackter Form abgelegt werden. Bei den meisten Lösungen wird diese Form ``Image'' genannt. Wie bereits bei ``Artefakt-Repositories'' angesprochen, sollten diese Images nachvollziehbar benannt und abgelegt werden. Es sollte möglich sein eine Verbindung zur jeweiligen System-Konfiguration herzustellen. Bestenfalls ist die System-Konfiguration in einer Versionsverwaltung abgelegt und die entsprechende Version kann ebenfalls zur Referenzierung des System-Images verwendet werden. Im Rahmen des automatisieren Bereitstellungsprozesses, wäre es auch sinnvoll die verwendet Systemkonfiguration in der Entsprechenden System-Übersicht aus Kapitel~\ref{subsubsec:configuration-system-overview} zu aktualisieren.
 
 \section{Best Practices in der Softwareentwicklung}
 
-Feature-Branches beheben Hindernisse, die beim Zusammenführen von Änderungen auftreten nicht. Sie helfen lediglich diese Hindernisse in gezielter und geordneter Weise anzugehen. Daher sind Entwickler auch mit Features-Branches darauf angewiesen Entwicklungsmuster anzuwenden und sich mit der Softwarearchitektur der Anwendung auseinanderzusetzen.
+Feature-Branches verhindern keine Hindernisse, die beim Zusammenführen von Änderungen auftreten. Sie helfen lediglich, das Auftreten der Probleme, durch die Hindernisse, zu einem gewählten Zeitpunkt zu verschieben. Daher sind Entwickler, auch mit Features-Branches, darauf angewiesen Entwicklungsmuster anzuwenden und sich mit der Softwarearchitektur der Anwendung auseinanderzusetzen.
 
 Viele dieser Entwicklungsmuster und -verfahren werden unter dem Begriff ``Best Practices'' geführt. Sie unterstützen Entwickler in Entwurfsentscheidungen und geben Rahmen für Standards in der Softwareentwicklung. Viele der Best-Practices zielen zudem auf Verbesserungen für Wartbarkeit, Robustheit und allgemeine geringere Umsetzungsaufwände.
 
