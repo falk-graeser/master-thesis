@@ -51,7 +51,7 @@ Beeinflusst von der Lean-Bewegung aus der Automobil-Fertigungsindustrie\footcite
 in den statischen Vorgehensmodellen in Frage gestellt. Hohe Eigenverantwortung und kurze Kommunikationszyklen sind die 
 Basis des neuen Vorgehens.
 
-Die Prinzipien des ``Agilen Manifestes'' stellen hohe Ansprüche an Entwickler und erzwingen ein Umdenken im Umgang mit dem Projektprozess. Während in den statischen Vorgehensmodellen jede Phase eine längere zeitliche Periode einnimmt, so werden diese Phasen in agilen Vorgehen deutlich verkürzt und verschwimmen teilweise. Dadurch werden Kommunikationszyklen verkürzt und Informationsflüsse deutlich beschleunigt.
+Die Prinzipien des \glqq Agilen Manifestes\grqq{} stellen hohe Ansprüche an Entwickler und erzwingen ein Umdenken im Umgang mit dem Projektprozess. Während in den statischen Vorgehensmodellen jede Phase eine längere zeitliche Periode einnimmt, so werden diese Phasen in agilen Vorgehen deutlich verkürzt und verschwimmen teilweise. Dadurch werden Kommunikationszyklen verkürzt und Informationsflüsse deutlich beschleunigt.
 Durch die schnellere Zyklen sinkt die benötigte Zeit zur Reaktion auf Probleme und Hindernisse. Damit ist es möglich, kontinuierlich und zeitnah Verbesserungen für den Entwicklungsprozess und die Softwareanwendung einzubringen. 
 
 Agile Vorgehensmodelle und Techniken aus der Lean-Bewegungen setzen stark auf eine Arbeitseinteilung anhand von Produktmerkmalen(Features)[quote Scrum, quote Kanban]. Der von der agilen Bewegung angestrebte starke Produktfokus und die kurzen Iterationen vereinfachen die Bewertung des Projektprozesses und der verwendeten Hilfsmittel.
@@ -149,13 +149,13 @@ zentrale und dezentrale Versionsverwaltungssysteme. Zwar unterscheiden sich die 
 anderen Merkmalen, zum Beispiel in der Ablage der Quellen und deren Änderungen, diese Merkmale haben aber nahezu keinen 
 Einfluss auf die Verwendung im Softwareentwicklungsprozess.
 
-\paragraph{Zentrale Versionsverwaltungssysteme} folgen dem ``single point of truth'' Prinzip. Es existiert nur ein 
+\paragraph{Zentrale Versionsverwaltungssysteme} folgen dem \glqq single point of truth\grqq{} Prinzip. Es existiert nur ein
 zentraler Punkt auf dem alle Versionstände gespeichert werden. Dies ermöglicht einen einfachen Kontrollfluss und führt nur zu geringfügigen Abweichungen unter allen beteiligten Entwicklern. Damit einhergehend ist eine Übersicht aller Änderungen problemlos möglich. 
 Da alle Daten zentral zur Verfügung stehen, werden deutlich weniger Daten bei den jeweiligen Nutzern der Versionverwaltung notwendig.
 
 Nachteil dieser Variante ist häufig der initiale Aufwand, da eine zentrale Komponente bereitgestellt werden muss. Zudem 
-sind zentrale Systeme generell störanfälliger und weniger ausfallsicher. Der Vorteil des ``single point of truth'' führt 
-auch zum Nachteil des ``single point of failure'', wodurch Probleme alle Teilnehmer gleichzeitig betreffen.
+sind zentrale Systeme generell störanfälliger und weniger ausfallsicher. Der Vorteil des \glqq single point of truth\grqq{} führt
+auch zum Nachteil des \glqq single point of failure\grqq{}, wodurch Probleme alle Teilnehmer gleichzeitig betreffen.
 Je nach verwendeter Versionierungsstrategie, kann es zudem zu einer zentralen Sperrung einzelner Bereiche der Softwarequellen kommen, wenn diese für eine exklusive Bearbeitung gesperrt werden.
 
 \paragraph{Dezentrale Versionsverwaltungssysteme} benötigen im Gegensatz keine zentrale Instanz und können problemlos in 
@@ -226,13 +226,13 @@ Viele Softwareanwendungen müssen kompiliert werden, um von einem System ausgef�
 
 Ziel bei der Erstellung eines Build-Skriptes ist es, einen konsistenten und transparenten Ablauf zu 
 befolgen. Dies wird unter anderem durch die korrekte Versionsverwaltung der einzelnen Komponenten, Konfigurationen und 
-Abhängigkeiten erreicht. Mit diesen Informationen können erstellte Produkte, auch ``build artifacts'' oder Artefakte 
+Abhängigkeiten erreicht. Mit diesen Informationen können erstellte Produkte, auch \glqq build artifacts\grqq{} oder Artefakte
 genannt, in einem zentralen Artefakt-Lager abgelegt werden. Dies gewährleistet sowohl einen schnellen Zugriff auf 
 Teilartefakte, als auch einen konsistentes Ergebnis bei der Erstellung der Auslieferung.
 
 \subsubsection{Risiken von Build-Scripten}
 
-Build-Scripte, die gemeinsam mit der Anwendung wachsen und an Komplexität gewinnen, stellen ein Risiko dar. Die Skripte sollten als Teil der Anwendung verstanden werden und gleichwertigen Qualitätskriterien unterzogen werden. Nur wenig gewartet Build-Skripte weisen meist eine hohe Komplexität auf. Im fortgeschrittenen Fall kann dies zur  ``integration angst'' führen. Eine geringe Commit-Frequenz und eine sehr defensive Programmierung sind die Folge und behindern das Voranschreiten der Softwareanwendung deutlich\footcite[vgl.][]{ci-is-not-build-systems}.
+Build-Scripte, die gemeinsam mit der Anwendung wachsen und an Komplexität gewinnen, stellen ein Risiko dar. Die Skripte sollten als Teil der Anwendung verstanden werden und gleichwertigen Qualitätskriterien unterzogen werden. Nur wenig gewartet Build-Skripte weisen meist eine hohe Komplexität auf. Im fortgeschrittenen Fall kann dies zur  \glqq integration angst\grqq{} führen. Eine geringe Commit-Frequenz und eine sehr defensive Programmierung sind die Folge und behindern das Voranschreiten der Softwareanwendung deutlich\footcite[vgl.][]{ci-is-not-build-systems}.
 
 Werden bei einem Build-Script Aspekte der vorangegangen Abschnitte zu Versions-, Konfigurations- und Abhängigkeitsverwaltung nicht berücksichtigt, können zudem inkonsistente und damit nicht 
 wiederholbare Resultate erzeugt werden. Diese können zu schwer oder nicht auffindbaren Fehlern führen.
@@ -247,7 +247,7 @@ Auslieferung der richtigen Artefakte.
 Sowohl bei der Erstellung, als auch bei der Auslieferung ist insbesondere auf eine vollständige Beschreibung der 
 notwendigen Schritte zu achten. Gerade auf Entwicklungssystemen können Abhängigkeiten vorhanden sein, welche zwar für die 
 Funktionalität der Anwendung sorgen, allerdings nicht beschrieben wurden. Bei der Auslieferung auf andere Systeme können 
-diese ``Schattenabhängigkeiten'' dann zu unerwartetem Verhalten oder Abstürzen führen. 
+diese \glqq Schattenabhängigkeiten\grqq{} dann zu unerwartetem Verhalten oder Abstürzen führen.
 Auch an dieser Stelle bietet sich die Virtualisierung der verwendeten Systeme an. Dadurch kann sichergestellt werden, 
 dass die Anwendung immer unter den gleichen, richtigen Bedingungen ausgeführt wird. Wird die Virtualisierungsumgebung 
 voll automatisch erstellt, ist zudem gesichert, dass alle Abhängigkeiten beschrieben sein müssen.
@@ -259,10 +259,10 @@ Anwendung.
 
 Bei der Auslieferung der Software können grob zwei Stufen der Automatisierung unterschieden werden. Eine Stufe ist die 
 manuell angestoßene Auslieferung, bei der der Zeitpunkt der Auslieferung davon bestimmt wird, wann das automatisierte 
-oder automatisiert-moderierte Script ausgeführt wird. Diese Stufe wird auch als ``Continuous Delivery'' bezeichnet. Eine andere Stufe ist die vollautomatisierte Auslieferung. Dabei wird der 
-Zeitpunkt lediglich von der Durchlaufzeit einer Änderung durch die Qualitätskontrolle bestimmt. Da diese Auslieferung kontinuierlich alle Änderungen Ausliefert, wir diese Stufe auch als ``Continuous Deployment'' bezeichnet.
-Des Weiteren werden unterschiedliche Auslieferungsstrategien (``deployment strategies'') unterschieden, es seien an 
-dieser Stelle nur exemplarisch das ``blue green deployment'' und das ``canary deployment''\footcite[261-264 Deploying and Releasing Applications][]
+oder automatisiert-moderierte Script ausgeführt wird. Diese Stufe wird auch als \glqq Continuous Delivery\grqq{} bezeichnet. Eine andere Stufe ist die vollautomatisierte Auslieferung. Dabei wird der
+Zeitpunkt lediglich von der Durchlaufzeit einer Änderung durch die Qualitätskontrolle bestimmt. Da diese Auslieferung kontinuierlich alle Änderungen Ausliefert, wir diese Stufe auch als \glqq Continuous Deployment\grqq{} bezeichnet.
+Des Weiteren werden unterschiedliche Auslieferungsstrategien (\glqq deployment strategies\grqq{}) unterschieden, es seien an
+dieser Stelle nur exemplarisch das \glqq blue green deployment\grqq{} und das \glqq canary deployment\grqq{}\footcite[261-264 Deploying and Releasing Applications][]
 {humble2010} genannt. Die Auslieferungsstrategien werden dabei je nach Anforderungen ausgewählt und haben Vorzüge wie 
 Ausfallsicherheit, Bewertung der ausgelieferten Änderung oder Skalierbarkeit der Zielsysteme.
 
@@ -297,11 +297,11 @@ Da Tests und Software-Metriken gut anwendbare Möglichkeiten sind, um automatisi
 
 Im Folgenden werden kurz bekanntere Metriken vorgestellt.\footcite[S.249 ff][]{software-quality2008}
 
-\paragraph{LOC und NCSS} sind Kenngrößen für den Umfang des Sofware-Codes. ``Lines of Code'' (LOC) geben die Anzahl von Code-Zeilen an. ``Non Commented Source Statements'' (NCSS) ist die gleiche Kenngröße, allerdings abzüglich der Kommentarzeilen. Beide Metriken haben nur ein sehr schwache Aussage über den Umfang des Software-Codes.
+\paragraph{LOC und NCSS} sind Kenngrößen für den Umfang des Sofware-Codes. \glqq Lines of Code\grqq{} (LOC) geben die Anzahl von Code-Zeilen an. \glqq Non Commented Source Statements\grqq{} (NCSS) ist die gleiche Kenngröße, allerdings abzüglich der Kommentarzeilen. Beide Metriken haben nur ein sehr schwache Aussage über den Umfang des Software-Codes.
 
 \paragraph{Halstead-Metrik} bezeichnet eine Kenngröße für die Programmkomplexität. Die Ermittlung erfolgt durch die Analyse der lexikalischen Struktur vom Software-Code. Dabei wird der Code in Operatoren und Operanden eingeteilt und deren Auftrittscharakteristik analysiert. Kritik an dieser Metrik entsteht durch die offene Definition von Operanden und Operationen. Als Folge sind verschiedene Programmiersprachen nur bedingt Vergleichbar durch diese Metrik. Des Weiteren wird in Frage gestellt, ob alle Kerngrößen der Metrik überhaupt mit der lexikalischen Analyse ermittelt werden können.
 
-\paragraph{McCabe-Metrik} bezeichnet eine weitere Kennzahl für die Programmkomplexität. Zentrale Größe der Metrik ist die ``zyklomatische Komplexität'' als Maß der Anzahl von Kanten und Knoten eines Kontrollflussgraphen der Software-Anwendung. Somit korreliert die zyklomatische Komplexität mit den möglichen Anwendungsdurchläufen und -zuständen.
+\paragraph{McCabe-Metrik} bezeichnet eine weitere Kennzahl für die Programmkomplexität. Zentrale Größe der Metrik ist die \glqq zyklomatische Komplexität\grqq{} als Maß der Anzahl von Kanten und Knoten eines Kontrollflussgraphen der Software-Anwendung. Somit korreliert die zyklomatische Komplexität mit den möglichen Anwendungsdurchläufen und -zuständen.
 
 \paragraph{Komponenten-Metriken} bezeichnen eine Sammlung von Umfangs- und Komplexitätsmetriken für objektorientierten Software-Code. Eine Aussage über den Umfang von Klassen wird unter anderem durch die Anzahl von Attributen und Methoden getätigt. Die Komplexität wird durch die Tiefe und Häufigkeit von objektorientierten Techniken gemessen. Diese Techniken sind unter anderem Vererbung, Überladung und Überschreiben von Methoden und Attributen. Daher lässt sich mit letzteren Metriken auch eine Aussage über die Code-Kopplung vornehmen.
 
@@ -337,12 +337,12 @@ Continuous-Integration wurde sehr treffend beschrieben \footcite[vgl.][]{fowler2
 
 \blockquote {Continuous-Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible.}
 
-Continuous-Integration wurde erstmals von Kent Beck als Teil einer Reihe von Praktiken des Entwicklungsvorgehens ``Extreme Programming''\footcite[vgl.][]{kent1999} beschrieben. Dabei sollte die Integration der einzelnen Entwickler-Codeständen gefördert werden. Entwickler sollen ihre Änderungen täglich oder häufiger abgleichen und durch einen automatisierten Vorgang als lauffähig beweisen. Damit konnten Fehler nahe des Zeitpunkt des Auftretens gefunden werden. Fehler, die erst mit der Integration von Änderungen anderer Entwickler auftreten, können so gefunden werden. Damit fordert Continuous-Integration eine aussagekräftige Testabdeckung mit automatischen Tests. Des Weiteren können und sollten Entwickler einen entdeckten Fehler direkt beheben, da sonst alle anderen Teammitglieder behindert werden.
+Continuous-Integration wurde erstmals von Kent Beck als Teil einer Reihe von Praktiken des Entwicklungsvorgehens \glqq Extreme Programming\grqq{}\footcite[vgl.][]{kent1999} beschrieben. Dabei sollte die Integration der einzelnen Entwickler-Codeständen gefördert werden. Entwickler sollen ihre Änderungen täglich oder häufiger abgleichen und durch einen automatisierten Vorgang als lauffähig beweisen. Damit konnten Fehler nahe des Zeitpunkt des Auftretens gefunden werden. Fehler, die erst mit der Integration von Änderungen anderer Entwickler auftreten, können so gefunden werden. Damit fordert Continuous-Integration eine aussagekräftige Testabdeckung mit automatischen Tests. Des Weiteren können und sollten Entwickler einen entdeckten Fehler direkt beheben, da sonst alle anderen Teammitglieder behindert werden.
 
 \subsection{Vorgehensweise mit Continuous-Integration}
 
 Als erstes wird einen Basis zur Integration der gemeinsamen Arbeit genutzt. Ein Versionsverwaltungssystem bildet diese Grundlage. Dadurch werden nachvollziehbar, zeitlich sortiert und wiederherstellbar alle Änderungen gesammelt. Alle Änderungen sollen, auf einem gemeinsamen Stand, regelmäßig zusammengeführt werden. Die Arbeitsweise, alle Änderungen auf einem Zweig zu sammeln und kontinuierlich zu integrieren, wird auch Trunk-Based-
-Development genannt. Abgeleitet von der Bezeichnung des häufig genutzt Versionsverwaltungssystems Subversion. Der Hauptzweig in Subversion wird im Allgemeinen als ``Trunk'' bezeichnet. Während Continuous-Integration und Trunk-Based-Development als getrennte Methodiken geführt werden\footcite[vgl.][]{trunkbaseddevelopment}, treten beide Begriffe häufig in Kombination oder synonym auf\footcite[vgl.][]{fowler-feature-branch}.
+Development genannt. Abgeleitet von der Bezeichnung des häufig genutzt Versionsverwaltungssystems Subversion. Der Hauptzweig in Subversion wird im Allgemeinen als \glqq Trunk\grqq{} bezeichnet. Während Continuous-Integration und Trunk-Based-Development als getrennte Methodiken geführt werden\footcite[vgl.][]{trunkbaseddevelopment}, treten beide Begriffe häufig in Kombination oder synonym auf\footcite[vgl.][]{fowler-feature-branch}.
 
 Neben einem Integrationssystem ist auch eine einheitliche Form der Erstellung der Software notwendig. Ein einheitliches Verständnis der Codebasis, verlangt auch ein einheitliches Verständnis der Erstellung Software. Die Software sollte daher, wie in Kapitel~\ref{sec:automation-software}~\nameref{sec:automation-software} beschrieben, erstellt werden.
 
@@ -363,7 +363,7 @@ gepflegt. Dieses Verhalten widerspricht offensichtlich der langfristigen Wertsch
 Continuous-Integration. Menschliche Schwächen sind auch in Continuous-Integration noch ein Problem. Mit regelmäßigem 
 Training, Erfahrung und Selbstdisziplin kann dem entgegen gewirkt werden. In Kapitel~\ref{sec:human-fail} wird das Thema 
 Entwicklerdisziplin erneut aufgegriffen und auf die Gratwanderung von gesunder Entwicklungskultur und destruktiver 
-``blaming culture'' eingegangen.
+\glqq blaming culture\grqq{} eingegangen.
 
 \section{Virtualisierung}
 
@@ -371,8 +371,8 @@ Im Kapitel ~\ref{sec:automation-software}~\nameref{sec:automation-software} wurd
 genannt. Gerade bei der vollautomatisierten Bereitstellung von Systemen, können Stärken der Virtualisierung genutzt werden.
 
 Virtualisierung bietet eine Abstraktionsschicht für verschiedene Komponenten. Dies ermöglicht Abhängigkeiten zu Hardware, 
-Software und deren Konfiguration transparent zu gestalten. Der unter Programmierern bekannte Spruch, ``It works on my 
-machine'', verdeutlicht das Problem. Häufig benötigen Komponenten einer Softwareanwendung andere Anwendungen um lauffähig 
+Software und deren Konfiguration transparent zu gestalten. Der unter Programmierern bekannte Spruch, \glqq It works on my
+machine\grqq{}, verdeutlicht das Problem. Häufig benötigen Komponenten einer Softwareanwendung andere Anwendungen um lauffähig
 zu sein. Abhängigkeiten zum Betriebssystem, zu Software von Drittanbietern oder zu Hardwarekomponenten sind Bestandteil 
 vieler Softwareanwendungen. Im Verlauf der Anwendungsentwicklung ist es daher wichtig, diese Abhängigkeiten zu 
 beschreiben. Diese Beschreibung ist eine wertvolle Basis, um ein System inklusive aller Abhängigkeiten zur Verfügung zu stellen.
@@ -408,9 +408,9 @@ grundlegend verwendet wird. Außerdem kommen einige git-spezifische Merkmale hin
 wichtig werden.
 
 Git wurde vom Linux-Schöpfer Linus Torwalds im April 2005 initiiert, aus der Not heraus sich vom vorher verwendeten 
-``BitKeeper''-System zu lösen, da diese nicht mehr mit der eigenen Open-Source-Lizenz in Einklang zubringen war. Git 
+\glqq BitKeeper\grqq{}-System zu lösen, da diese nicht mehr mit der eigenen Open-Source-Lizenz in Einklang zubringen war. Git
 wurde von vornherein als verteiltes, vor Verfälschungen sicheres und effizientes Versionsverwaltungssystem entworfen. 
-Diese Eigenschaften und die Software-Plattform ``GitHub'', machten Git in den letzten 13 Jahren zum de-facto Standard für 
+Diese Eigenschaften und die Software-Plattform \glqq GitHub\grqq{}, machten Git in den letzten 13 Jahren zum de-facto Standard für
 Versionsverwaltung\footcite[vgl.][]{heise-torvald-git2015}.
 
 Als dezentrales Versionsverwaltungssystem ist einer der großen Vorteile von Git, dass die vollständige Historie der Dateien lokal verfügbar ist. Während zentrale Versionsverwaltungssysteme immer einen dedizierten Server benötigen, können dezentrale Varianten über Peer-To-Peer-Schnittstellen kommunizieren. Diese Eigenschaft sorgt neben einer hohen Ausfallsicherheit und Datenredundanz, auch für eine hohe Flexibilität und die Möglichkeit, zahlreiche Arbeitsweisen von Softwareentwicklern zu unterstützen.
@@ -420,7 +420,7 @@ Als dezentrales Versionsverwaltungssystem ist einer der großen Vorteile von Git
 Die Verwendung von git gestaltet sich vergleichsweise einfach. In wenigen Schritten kann Git installiert \footcite[vgl.][]{git-scm-install} und mit der Verwendung begonnen werden. 
 Git nutzt bestimmte Artefakte, um seine Aufgaben zu erfüllen. Darunter Repositories, Commits, Branches und Tags. Zudem 
 werden Mechanismen bereitgestellt, um mit diesen Artefakten zu interagieren. Neben zu erwartenden Mechanismen wie 
-Hinzufügen und Löschen, werden auch Speichern- und Ladeaktionen (``push'' und ``pull'') angeboten\footcite[vgl.][]{git-essentials-2017}.
+Hinzufügen und Löschen, werden auch Speichern- und Ladeaktionen (\glqq push\grqq{} und \glqq pull\grqq{}) angeboten\footcite[vgl.][]{git-essentials-2017}.
 
 \begin{figure}[htbp]
   \includegraphics[
@@ -438,7 +438,7 @@ Commits, Trees, Blobs, sowie die lokale Konfiguration. Repositories können ande
 referenziert werden, dabei können viele gängige Protokolle verwendet werden (http, ssh, ftp, absolute Pfade)
 
 \paragraph{Commits} sind zeitlich determinierte, persönliche und kommentierte Referenzen auf einen konkreten Arbeitsstand 
-(``Snapshot'') des Repositories. Ein Commit kann auf mehrere Eltern-Commits verweisen und kann von beliebig vielen 
+(\glqq Snapshot\grqq{}) des Repositories. Ein Commit kann auf mehrere Eltern-Commits verweisen und kann von beliebig vielen
 anderen Commits referenziert werden. Bei Betrachtung aller Commits, bilden dieser daher einen gerichteten Graphen. 
 Mehrere Eltern-Commits entstehen bei der Zusammenführung von Branches.
 
@@ -473,7 +473,7 @@ Differenzmengen, wie etwa in Subversion abgelegt, sondern immer vollständige Da
 Mozilla-Projekt\footcite[vgl.][]{kernel-git-svn} kann dies eine Speicherplatzreduktion erreichen. Im Allgemeinen kann dies aber nicht bestätigt werden\footcite[vgl.][]{svn-vs-git}. Durch die vollständige Speicherung der Inhalte in jedem vernetzten Git-Repository, ist der Speicherbedarf insgesamt höher. Insbesondere für große Dateien, mit nur geringfügigen Änderungen ergeben sich deutliche Unterschiede zu Versionssystemen mit Differenzmengen. Für schlecht komprimierbare Dateien oder Dateien mit schlechten Differenzmengen, wie etwa Binärdateien, sollte allerdings grundsätzlich ein Artefakt-
 Repository in Betracht gezogen werden. 
 
-Seit wenigen Jahre wird ``Git Large File Storage'' (Git LFS)\footcite{git-lfs} angeboten. Dadurch werden ausgewählte Dateien nur als Referenz in Git gesichert. Dies schwächt den früheren Nachteil deutlich ab.
+Seit wenigen Jahre wird \glqq Git Large File Storage\grqq{} (Git LFS)\footcite{git-lfs} angeboten. Dadurch werden ausgewählte Dateien nur als Referenz in Git gesichert. Dies schwächt den früheren Nachteil deutlich ab.
 
 Um die interne Arbeitsweise von Git zu erläutern, müssen die Zusammenhänge von Commits, Trees, Blobs und Hashes 
 verdeutlicht werden.
@@ -530,8 +530,8 @@ In Anlehnung an viele bekannte Modelle unterscheidet Gitflow zwischen Produktivz
 Anpassung(hotfix), Auslieferungszweig(release), Entwicklungszweig(development) und zahlreichen Feature- und Bug-Zweigen.
 
 Gitflow unterscheidet wie viele andere Git-Arbeitsmodelle zwischen langlebigen und kurzlebigen Branches. Die langlebigen 
-Branches sind hierbei ``master'' und ``development''. Alle anderen Branches sind kurzlebige Branches(``supporting 
-branches''), die immer erst erstellt werden, wenn sie notwendig sind und gelöscht werden, sobald sie ihren Zweck erfüllt 
+Branches sind hierbei \glqq master\grqq{} und \glqq development\grqq{}. Alle anderen Branches sind kurzlebige Branches(\glqq supporting
+branches\grqq{}), die immer erst erstellt werden, wenn sie notwendig sind und gelöscht werden, sobald sie ihren Zweck erfüllt
 haben.
 
 \begin{figure}[htbp]
@@ -565,8 +565,8 @@ Feature Branching wird kontrovers diskutiert\footcite[vgl.][]{fowler-feature-bra
 Dabei wird angemahnt, dass die Abspaltung in einen Branch, das Problem der Zusammenführung von Codeänderungen nicht 
 behebt, sondern verschlimmert. So wird der Aufwand, der benötigt wird um zwei Verzweigungen zusammenzuführen, potentiell 
 immer höher, um so mehr Änderungen hinzukommen. Die Aufwandserhöhung kann soweit gehen, dass ein psychologischer Faktor 
-hinzukommt, der die Entscheidung zur Zusammenführung weiter belastet. Diese Zusammenführung wird dann auch als ``big 
-scary merge'' oder ``big bang merge'' bezeichnet.
+hinzukommt, der die Entscheidung zur Zusammenführung weiter belastet. Diese Zusammenführung wird dann auch als \glqq big
+scary merge\grqq{} oder \glqq big bang merge\grqq{} bezeichnet.
 
-Kontrovers dazu wird hervorgehoben, dass Feature-Branches Blockaden im Arbeitsfluss vermeiden und durch Entwicklerdisziplin und Automatisierung, die Angst vor dem ``big scary merge'' mildern. Dazu wird verlangt, Feature-Branches nur für kleine Änderungen zu verwenden und durch Hilfe von Automatisierung, schnelle Rückmeldung über die Codequalität zu erhalten. Des Weiteren werden durch moderne ``pull based''\footcite[vgl.][]{github-about-pull} Verzweigungsstrategien, Entwickler dazu angehalten Codeprüfungen durch andere Entwickler einzufordern. Diese 
+Kontrovers dazu wird hervorgehoben, dass Feature-Branches Blockaden im Arbeitsfluss vermeiden und durch Entwicklerdisziplin und Automatisierung, die Angst vor dem \glqq big scary merge\grqq{} mildern. Dazu wird verlangt, Feature-Branches nur für kleine Änderungen zu verwenden und durch Hilfe von Automatisierung, schnelle Rückmeldung über die Codequalität zu erhalten. Des Weiteren werden durch moderne \glqq pull based\grqq{}\footcite[vgl.][]{github-about-pull} Verzweigungsstrategien, Entwickler dazu angehalten Codeprüfungen durch andere Entwickler einzufordern. Diese
 Lösungsstrategien werden in Kapitel~\ref{ch:visu_meth} weiterführend betrachtet.
