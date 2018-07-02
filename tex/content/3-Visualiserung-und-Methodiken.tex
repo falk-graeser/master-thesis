@@ -292,17 +292,6 @@ Werden die Prinzipien befolgt, ergeben sich Vorteile für die Wartbarkeit, Wiede
 
 Eine modernere Form der Modularisierung sind die \glqq serviceorientierten Architekturen\grqq{}. Diese beschreiben Anwendungsszenarien in verschiedenen Granularität. Die Kapselung in Services ermöglichen die Komposition und Orchestrierung von komplexen Vorgängen. Der serviceorientierte Ansatz nutzt die Prinzipien der Modularisierung und bietet die Vorteile unter neuem Namen an.
 
-\subsection{Fortgeschrittene Nutzung von Versionsverwaltung}
-
-Wie auch mit jeder anderen Versionsverwaltung, so ist es auch beim Arbeiten mit Git essentiell, seine Arbeit zu strukturieren. Wird Git lediglich als bequeme Variante für eine regelmäßige Sicherung des Arbeitsstandes genutzt, dann entsteht sehr schnell eine schwer zu lesende, an Bedeutung mangelnde Versionshistorie. Wichtig ist es die getätigte Arbeit in semantisch zusammenhängenden, möglichst kleine und prägnanten Commits zu gliedern. Ein Commit sollte immer nur eine Änderung zusammenfassen. Dadurch ist es möglich feingranulare Commit-Nachrichten zu verfassen.
-Zusammen mit nachvollziehbaren und klaren Commit-Nachrichten, entsteht so eine gut leserliche und die Dokumentation unterstützende Versionshistorie.\footcite[vgl.][Kap. Making only one change per commit]{git-essentials-2017}
-
-\footcite[Writing commit messages before starting to code][]{git-essentials-2017}
-
-Including the whole change in one commit
-
-Describing the change, not what have you done
-
 \subsection{Testgetriebene Entwicklung}
 \label{test-driven-development}
 
@@ -314,6 +303,16 @@ Red-Green-Refactor
 ]{tdd-java} fordert immer nur minimale Anpassungen vorzunehmen, bis der Test vollständig ist. Nach jeder Anpassung, die den Test fehlschlagen lässt, muss die getestete Implementierung so angepasst werden, dass der Test erfolgreich verläuft. Ist der Test vollständig muss abschließend die Implementierung einem Refactoring unterzogen werden. Basierend auf der begrenzten gedanklichen Kapazität eines Entwicklers, soll so immer nur ein Gesichtspunkt der Entwicklung betrachtet werden. Zuerst soll das korrekte Verhalten der Software sichergestellt werden. Danach ist die korrekte Struktur der Software herzustellen. Die Dualität der Betrachtung und der minimal inkrementelle Ansatz sollen ein hoch qualitatives Resultat ergeben.
 
 Über die Lehrmethoden von TDD sind bekannte Verbindungen von Anforderungsmanagement und Testfallerstellung, wieder in den Fokus gerückt. Unter der Bezeichnung \glqq Behaviour-Driven-Development\grqq{}\footcite{bdd-north} entstand ein Verfahren zur Verbindung beider Bereiche. Mittels einer der Umgangssprache nahen DSL wird versucht eine leserliche Dokumentation zu erstellen. Nutzerszenarien werden in einer Gegeben-Wenn-Dann-Notation\footcite{fowler-gwt} verfasst und können durch die strukturierte Notation direkt mit Test-Code verknüpft werden. Damit wird angestrebt die Barrieren zwischen Projektteilnehmern ohne Programmierkenntnissen, Testern und Entwicklern zu verringern.
+
+\subsection{Fortgeschrittene Nutzung von Versionsverwaltung}
+
+Die Versionsverwaltung ist nicht nur eine Ablage für Quellcode, sondern auch Teil der Dokumentation eines Projektes. Daher ist es wichtig die veröffentlichten und geteilten Änderungen zu strukturieren. In einem ideal Szenario besteht jeder Commit nur aus einer sehr kleinen, nur eine Datei betreffenden Änderung, die durch eine Aussagekräftige Commit-Message in Kontext gesetzt wird\footcite[vgl.][Kap. Making only one change per commit]{git-essentials-2017}. Eine Folge von zusammenhängenden Änderungen sollte zudem ein gemeinsames Label teilen. Dieses kann später für Filterungen verwendet werden. Dadurch ist es auch lange Zeit später möglich zusammenhängende Commits zu finden.
+
+Wird ein zentrales Versionsverwaltungssystem zusammen mit Continuous-Integration verwendet, ist außerdem die Build-Integrität sicherzustellen. Keiner der Commits sollte den Build fehlschlagen lassen. 
+
+Die Verwendung einer dezentralen Versionsverwaltung und Feature-Branches erleichtert das Erstellen von Commits. Zum eine ist die Build-Integrität abgeschwächt. Dies ermöglicht es, zugunsten eines einfache Commits, die Build-Integrität erst mit den nachfolgenden Commits herzustellen. Zum anderen lassen sich in einer dezentralen Versionsverwaltung die Commits nachträglich verändern. Dies ermöglicht die Commits unter Umständen verständlicher zu strukturieren.
+
+Eine Variante verständliche und gut strukturierte Commit-Nachrichten zu verfassen, ist es die Commit-Nachrichten vor der Implementierung der Änderung zu verfassen\footcite[Writing commit messages before starting to code][]{git-essentials-2017}. Ähnlich wie in Kapitel~\ref{test-driven-development}~\nameref{test-driven-development}, wird der Fokus auf das Ergebnis, nicht die Implementierung gelenkt. Es wird somit beschrieben, welches Ziel der Commit verfolgt, nicht welche Änderungen durchgeführt wurden. Die dokumentierenden Qualitäten der Versionhistorie werden dadurch deutlich verbessert.
 
 \subsection{Verwendung von Monorepo-Repositories}
 
