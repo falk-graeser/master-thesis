@@ -1,18 +1,22 @@
 \chapter{Problemanalyse}
 
-Continuous-Integration und Feature-Branches sind beides Methodiken um die Kollaboration von Entwicklern zu koordinieren. Beide sind aus der fortschreitenden Entwicklung in der Informatik hervorgegangen. Haben neue Techniken und Methoden aufgegriffen und sind zu Teilen repräsentativ für die Zeit in der sie entstanden sind. Während Continuous-Integration nach Stabilität und Kontinuität strebt, entstand die Feature-Branch-Methodik in einer Zeit, in der Flexibilität immer wichtiger wird.
+Continuous-Integration und Feature-Branches sind beides Methodiken um die Kollaboration von Entwicklern zu koordinieren. Beide sind aus der fortschreitenden Entwicklung in der Informatik hervorgegangen. Haben neue Techniken und Methoden aufgegriffen und sind zu Teilen repräsentativ für die Zeit in der sie entstanden sind. Während Continuous-Integration nach Stabilität und Kontinuität strebt, entstand die Feature-Branch-Methodik in einer Zeit, in der Flexibilität immer wichtiger wurde.
 
-Die Kollaboration von Entwicklern ist ein grundsätzliches Problem. Zum einen erfordert es Interaktion und Kommunikation. Zum anderen ermöglicht es andere Sichtweisen und Problemlösungen. Ein einzelner Entwickler bleibt zumeist in dem von ihm selbst gesteckten Rahmen.
+Die Kollaboration von Entwicklern führt zu nicht trivialen Situation. Zum einen erfordert es Interaktion und Kommunikation. Zum anderen ermöglicht es andere Sichtweisen und Problemlösungen. Ein einzelner Entwickler bleibt zumeist in dem von ihm selbst gesteckten Rahmen.
 
-In professioneller und kommerzieller Softwareentwicklung sollte stets das Ergebnis im Fokus stehen. Ergebnisorientierte Softwareentwicklung beginnt bei der Anforderungsaufnahme. Die Anforderungsaufnahme ist meist aufgrund der vielen Daten und daraus resultierenden Interpretationen eine Herausforderung für sich. Die Anforderungen wiederum müssen die Basis für die weitere Softwareentwicklung darstellen und über den vollen Prozess der Erstellung von Software, als notwendiges Erfolgskriterium herangezogen werden.
+In professioneller Softwareentwicklung sollte stets das Ergebnis im Fokus stehen. Ergebnisorientierte Softwareentwicklung beginnt bei der Anforderungsaufnahme. Die Anforderungsaufnahme ist meist aufgrund der vielen Daten und daraus resultierenden Interpretationen eine Herausforderung für sich. Die Anforderungen wiederum müssen die Basis für die weitere Softwareentwicklung darstellen und über den vollen Prozess der Erstellung von Software, als notwendiges Erfolgskriterium herangezogen werden.
 
-Die letzten 30 Jahre der Softwareentwicklung mussten sich mit dieser Herausforderung auseinander setzen. Nicht immer ist dies erfolgreich gewesen und zahlreiche Projekte sind daran gescheitert. Über die Zeit haben klassische Bereiche der Informatik, in praxistauglicher Form, Einzug in die kommerzielle Softwareentwicklung gehalten. Software-Validierung und Komplexitätsanalysen, sowie formale Sprachen werden genutzt, um Software gewinnbringend zu entwickeln. Software in moderner Entwicklung, wird semantisch und syntaktisch analysiert um Schwierigkeiten, Probleme und Fehler zu finden. Komplexitätsanalysen helfen, schlecht skalierbare Softwarebestandteile zu identifizieren und formale Sprachen werden unter anderem genutzt, um domainspezifische Bereiche, getrennte von Entwicklungsdetails, zu formulieren.
+Die letzten 30 Jahre der Softwareentwicklung mussten sich mit dieser Herausforderung auseinander setzen. Nicht immer ist dies erfolgreich gewesen und zahlreiche Projekte sind daran gescheitert.
+
+TODO: Quellen für Projektscheitern
+
+Über die Zeit haben klassische Bereiche der Informatik, in praxistauglicher Form, Einzug in die kommerzielle Softwareentwicklung gehalten. Software-Validierung und Komplexitätsanalysen, sowie formale Sprachen werden genutzt, um Software gewinnbringend zu entwickeln. Software in moderner Entwicklung, wird semantisch und syntaktisch analysiert um Probleme und Fehler zu finden. Komplexitätsanalysen helfen, schlecht skalierbare Softwarebestandteile zu identifizieren und formale Sprachen werden unter anderem genutzt, um domainspezifische Bereiche getrennt von Entwicklungsdetails zu formulieren.
 
 Trotz der fortschrittlichen Entwicklungsmöglichkeiten, scheitern viele Softwareentwicklungen noch daran diese anzuwenden.
 
-Der Konflikt von Continuous-Integration und Feature-Branches verdeutlicht Teile des Problems. Über den Verlauf der nachfolgenden Kapitel wird schrittweise beleuchtet, welche Bestandteile beide Methodiken ausmacht. Worin der Konflikt besteht, den beiden Methodiken mit sich bringen und welche Lösungsansätze dafür gefunden worden.
+Der Konflikt von Continuous-Integration und Feature-Branches verdeutlicht Teile des Problems. Über den Verlauf der nachfolgenden Kapitel wird schrittweise beleuchtet, welche Bestandteile beide Methodiken ausmacht. Worin der Konflikt beider Methodiken besteht und welche Lösungsansätze dafür existierten. In Kapitel~\ref{ch:visu_meth} werden weiterführende Methoden besprochen und entwickelt.
 
-Als Einstieg werden die Vorgehensmodelle der letzten 30 Jahre beleuchtet und auf die sich verändernde Entwicklungskultur eingegangen.
+Als Einstieg werden die bekannteren Vorgehensmodelle der letzten 30 Jahre beleuchtet und auf die sich verändernde Entwicklungskultur eingegangen.
 
 \section{Vorgehensmodelle}
 
@@ -68,7 +72,7 @@ Programmierte Prüfungen, auch Tests genannt, zu erstellen kann sehr komplex und
 
 \subsection{Funktionale Tests}
 
-Den jeweiligen Schwerpunkten eines Tests geschuldet, werden Tests auf verschiedenen Abstraktionsebenen der Software ausgeführt. Es wird zunächst zwischen funktionalen und nicht-funktionalen Testkriterien unterteilt.
+Abhängig von den Vor- und Nachteilen der verschiedenen Testarten, werden Tests auf verschiedenen Abstraktionsebenen der Software ausgeführt. Es wird zunächst zwischen funktionalen und nicht-funktionalen Testkriterien unterteilt.
 Bei den funktionalen Tests wird weiter zwischen Akzeptanz-, Integrations- und Unittests unterschieden\footcite[S.159][]{software-quality2008}. 
 
 \paragraph{Akzeptanztest}
@@ -86,17 +90,17 @@ werden für Objektklassen- und Methodentests verwendet. Das erwartet Verhalten d
 
 Die nicht-funktionalen Testkriterien betreffen Merkmale, welche nicht einem einzelnen Anwendungsfall zugeordnet werden können. Es werden Leistungsaspekte und unterbewusste Kriterien geprüft. Solche Merkmale sind zum Beispiel Reaktionszeit der Anwendung, wie viele Aktionen pro Zeiteinheit die Anwendung bewältigen kann und wie gut die Anwendung nutzbar ist (Usability). Nicht-funktionale Tests sollten zudem weiter nach der Möglichkeit der Bewertung ihrer Ergebnisse unterteilt werden. Gut zu bewerten sind Leistungs- und Sicherheitstests. Weniger gut zu bewerten sind Explorativ- und Usability-Tests.
 
-\paragraph{Leistungstests} oder auch Performance-Tests werden genutzt, um die Leistungsfähigkeit einer Anwendung zu erproben. Kriterien wie Anfragen pro Zeiteinheit, maximale Anzahl paralleler Anfragen und Reaktionszeit, sowie Anfragedauer werden getestet.
+\paragraph{Leistungstests} oder auch Performance-Tests werden genutzt, um die Leistungsfähigkeit einer Softwareanwendung zu erproben. Kriterien wie Anfragen pro Zeiteinheit, maximale Anzahl paralleler Anfragen und Reaktionszeit, sowie Anfragedauer werden getestet.
 
-\paragraph{Sicherheitstests} werden genutzt um Schwachstellen einer Anwendung zu finden. Es werden Listen von bekannten Sicherheitsproblemen\footcite[vgl.][]{owasp-vulnerability} genutzt und in der Anwendung geprüft.
+\paragraph{Sicherheitstests} werden genutzt um Schwachstellen einer Softwareanwendung zu finden. Es werden Listen von bekannten Sicherheitsproblemen\footcite[vgl.][]{owasp-vulnerability} genutzt und in der Anwendung geprüft.
 
-\paragraph{Explorativ-Tests} werden manuell durchgeführt und versuchen Fehler zu finden, die auf anderen Wegen nicht oder kaum zu entdecken sind.
+\paragraph{Explorativ-Tests} werden manuell durchgeführt und versuchen Fehler zu finden, die auf anderen Wegen nicht oder kaum zu entdecken sind. Explorative Tests sollen, durch kreative und unerwartet Verwendung der Software, bisher unbekannte Schwäche finden.
 
-\paragraph{Usability-Tests} werden genutzt um die Benutzbarkeit der Anwendung zu ermitteln. Während Akzeptanztests ermitteln ob Funktionalitäten verfügbar sind, untersuchen Usability-Tests ob die Funktionalitäten benutzbar sind. Usability-Tests werden meist manuell durchgeführt und sind aufgrund ihrer subjektiven Natur schwer zu bewerten. Es ist daher üblich, auf eine Untergruppe dieser Tests zu prüfen, wie zum Beispiel die Barrierefreiheit einer Anwendung.
+\paragraph{Usability-Tests} werden genutzt um die Benutzbarkeit der Softwareanwendung zu ermitteln. Während Akzeptanztests ermitteln ob Funktionalitäten verfügbar sind, untersuchen Usability-Tests ob die Funktionalitäten benutzbar sind. Usability-Tests werden meist manuell durchgeführt und sind aufgrund ihrer subjektiven Natur schwer zu bewerten. Es ist daher üblich, auf eine Untergruppe dieser Tests zu prüfen, wie zum Beispiel die Barrierefreiheit einer Anwendung.
 
 \subsection{Testperspektiven}
 
-Die Abbildung~\ref{agile-testing-quadrants} fasst die verschiedenen Tests anhand der Art der Durchführung und anhand ihrer Perspektive auf die Tests, in vier Quadranten zusammen\footcite[vgl.][Kapitel: The Agile testing matrix]{cd-docker-jenkins}.
+Die Abbildung~\ref{agile-testing-quadrants} fasst die verschiedenen Tests anhand der Art der Durchführung und anhand ihrer Perspektive auf die Tests, in vier Quadranten zusammen.
 
 \begin{figure}[htbp]
   \includegraphics[
@@ -104,11 +108,12 @@ Die Abbildung~\ref{agile-testing-quadrants} fasst die verschiedenen Tests anhand
     height=\textheight,
     keepaspectratio
   ]{resources/agile-testing-matrix.pdf}
-  \caption{Agile Testing Matrix}
+  \caption{Agile Testing Matrix\protect\footnotemark}
   \label{agile-testing-quadrants}
 \end{figure}
+\footcitetext[vgl.][Kapitel: The Agile testing matrix]{cd-docker-jenkins}
 
-\paragraph{Business-Facing} gliedert Tests, welche aus Anwendersicht wichtig sind und den kommerziellen Erfolg der Anwendung sicherstellen. Diese decken zum einen Akzeptanztests ab und stellen die Hauptfunktionalitäten sicher, zum anderen Usability-Tests um die Nutzerfreundlichkeit und Bedienbarkeit zu prüfen.
+\paragraph{Business-Facing} gliedert Tests, welche aus Anwendersicht wichtig sind und den kommerziellen Erfolg der Softwareanwendung sicherstellen. Diese decken zum einen Akzeptanztests ab und stellen die Hauptfunktionalitäten sicher, zum anderen Usability-Tests um die Nutzerfreundlichkeit und Bedienbarkeit zu prüfen.
 
 \paragraph{Support Team} gliedert Tests, welche Regressions-Sicherheit sicherstellen. Da die Anlaufstelle für Fehler im Allgemeinen der Support ist, wurde hier diese Bezeichnung gewählt.
 
@@ -130,14 +135,14 @@ Im Nachfolgenden wird beschrieben wie Software in einen wohldefinierten, funktio
 Programmversionen können bei fast jeder käuflich zu erwerbenden Softwareanwendung unterschieden werden. Potentielle 
 Anwender können so bereits vor Erwerb der Software transparent nachvollziehen, um welche Auflage es sich handelt. Anwender können erwartet für ihre Programmversion Fehlerkorrekturen zu erhalten. Um das Fehlverhalten verschiedener Versionen nachvollziehen und beheben zu können, ist es notwendig diese zur Verfügung zu haben. Der jeweilige Quellcode sollte daher in einer entsprechenden Ablage verfügbar sein.
 
-Die einfachste Form der Ablage ist eine manuelle Kopie der Softwareanwendung. Mit der Weiterentwicklung der Anwendung und 
+Die einfachste Form der Ablage ist eine manuelle Kopie der Softwareanwendung. Mit der Weiterentwicklung der Softwareanwendung und
 dem Entstehen weiterer Programmversionen zeigen sich schnell Schwächen dieses Systems. Wenn in einer frühen 
 Programmversion ein Fehler gefunden und behoben wird, sollte dieser auch in allen anderen folgenden Versionen behoben 
 werden. Dadurch entsteht mit dieser einfachen Ablage ein erheblicher Mehraufwand. Fortschrittliche 
 Versionsverwaltungssysteme bieten Möglichkeiten diesen Mehraufwand zu reduzieren.
 
 Zustandssicherheit ist ein besonders wichtiges Merkmal für Versionverwaltungs- oder auch Versionskontrollsysteme.
-Die Reproduzierbarkeit eines definierten Zustandes der Softwarequellen. Der definierte Zustand der Anwendung ergibt sich 
+Die Reproduzierbarkeit eines definierten Zustandes der Softwarequellen. Der definierte Zustand der Softwareanwendung ergibt sich
 aus der Abfolge aller Änderungen, die an der Softwareanwendung vorgenommen wurden, bis zu der jeweiligen Programmversion. 
 
 Als weiteres Merkmal ist die Transparenz aller getätigten Änderungen anzuführen. Die Nachvollziehbarkeit der Änderungen 
@@ -158,108 +163,95 @@ sind zentrale Systeme generell störanfälliger und weniger ausfallsicher. Der V
 auch zum Nachteil des \glqq single point of failure\grqq{}, wodurch Probleme alle Teilnehmer gleichzeitig betreffen.
 Je nach verwendeter Versionierungsstrategie, kann es zudem zu einer zentralen Sperrung einzelner Bereiche der Softwarequellen kommen, wenn diese für eine exklusive Bearbeitung gesperrt werden.
 
-\paragraph{Dezentrale Versionsverwaltungssysteme} benötigen im Gegensatz keine zentrale Instanz und können problemlos in 
-einem losen Verbund von Einzelsystemen betrieben werden. 
-Durch die optionale Verwendung einer zentralen Instanz, ergibt sich eine hohe Flexibilität für den Entwickler. Änderungen 
-können vom Entwickler nach Belieben verschoben und kombiniert werden.
-Häufig werden jedoch Restriktionen hingenommen, die ein kontrolliertes gemeinsamen Arbeiten ermöglichen. Beim gemeinsame 
-Arbeiten ist besonders auf die Veränderung bereits geteilter Inhalte zu achten.
+\paragraph{Dezentrale Versionsverwaltungssysteme} benötigen im Gegensatz keine zentrale Instanz und können problemlos in einem losen Verbund von Einzelsystemen betrieben werden. 
+Häufig wird innerhalb des dezentralen Verbundes eine Instanz als Hauptknoten vereinbart. Da der Abgleich mit dem Hauptknoten nicht für jeden Änderung erfolgen muss, ergibt sich eine hohe Flexibilität für den Entwickler. Änderungen können vom Entwickler nach Belieben verschoben und kombiniert werden.
+Häufig werden jedoch Restriktionen hingenommen, die ein kontrolliertes gemeinsamen Arbeiten ermöglichen. Beim gemeinsame Arbeiten ist besonders auf die Veränderung bereits geteilter Inhalte zu achten.
  
-Dezentrale Systeme verwalten jeweils eigenständig eine Kopie der geteilten Inhalte. Dadurch ergibt sich eine hohe 
-Redundanz, welche sich positiv auf die Ausfallsicherheit und Verfügbarkeit der Inhalte auswirkt. Im Gegensatz dazu 
-entsteht ein Mehraufwand bei der Koordinierung der Einzelsysteme und in Summe ein höherer Speicheraufwand.
+Dezentrale Systeme verwalten jeweils eigenständig eine Kopie der geteilten Inhalte. Dadurch ergibt sich eine hohe Redundanz, welche sich positiv auf die Ausfallsicherheit und Verfügbarkeit der Inhalte auswirkt. Im Gegensatz dazu entsteht ein Mehraufwand bei der Koordinierung der Einzelsysteme und in Summe ein höherer Speicheraufwand.
 
 \subsection{Konfigurationsverwaltung}
 \label{subsec:konfigurationsverwaltung}
 
-Konfigurationsverwaltung ist eine wichtige Basis für die automatisierte Erstellung eines Softwareprojektes. Sie definiert 
-wie alle Teilstücke, auch Artefakte genannt, in einem Softwareprojekt miteinander interagieren. Im Detail wird dabei 
-Erstellung, Identifikation, Validierung und Ablage geregelt. Die Definition und Konfiguration der Ausführungsumgebung der 
+Konfigurationsverwaltung ist eine wichtige Basis für die automatisierte Erstellung eines Softwareprojektes. Sie definiert wie alle Teilstücke, auch Artefakte genannt, in einem Softwareprojekt miteinander interagieren. Im Detail wird dabei Erstellung, Identifikation, Validierung und Ablage geregelt. Die Definition und Konfiguration der Ausführungsumgebung der 
 Artefakte ist ebenso ein Teil des Konfigurationsmanagement. \footcite[vgl.][]{humble2010}
 
-Ein lockerer Umgang mit der Konfigurationsverwaltung kann gerade zu Beginn eines Projektes ohne nennenswerte Folgen 
-einhergehen. Spätestens aber während der Weiterentwicklung der Softwareanwendung sind Folgen deutlich zu spüren. Hierbei 
-wird auch von der Alterung des Softwaresystem gesprochen.\footcite[vgl.][]{software-quality2008}. Gerade wenn sich unbemerkt die 
-Version oder Konfiguration der Software eines Drittanbieters ändert, kann dies schwer zu identifizierende Probleme nach 
-sich ziehen. In anderen Fällen reicht es allerdings auch, wenn sich die Konfiguration zwischen Entwicklungs- und 
-Produktivumgebung leicht unterscheidet. Konfigurations- und Abhängigkeitsfehler können leicht einen sehr hohen 
+Ein lockerer Umgang mit der Konfigurationsverwaltung kann gerade zu Beginn eines Projektes ohne nennenswerte Folgen einhergehen. Wird die Software über einen längeren Zeitraum entwickelt, treten nach und nach mehr Defekte auf. Diese sind unter anderem auf ein mangelndes Konfigurationsmanagement zurück zuführen. Hierbei wird auch von der Alterung des Softwaresystem gesprochen.\footcite[vgl.][]{software-quality2008}. Gerade wenn sich unbemerkt die Version oder Konfiguration der Software eines Drittanbieters ändert, kann dies schwer zu identifizierende Probleme nach sich ziehen. In anderen Fällen reicht es auch, wenn sich die Konfiguration zwischen Entwicklungs- und Produktivumgebung leicht unterscheidet. Konfigurations- und Abhängigkeitsfehler können leicht einen sehr hohen 
 Behebungsaufwand verursachen.
 
 Im Idealfall kann eine vollständige Konfigurationsverwaltung:
 \begin{itemize}
-\item ein durch Betriebssystem und installierte Anwendungen definiertes System bereitstellen, wobei Versionen und Konfiguration alle Elemente Teil der Definition sind.
-\item auf jeder Umgebung jeden dieser Bestandteile einzeln inkrementell verändern und diese Änderungen über alle Systeme synchronisieren.
-\item alle Änderungen mit Zeitpunkt und Verursacher einfach darstellen
+\item ein durch Betriebssystem und installierte Softwareanwendungen definiertes System bereitstellen, wobei Versionen und Konfiguration alle Elemente Teil der Definition sind.
+\item Systeme aktualisieren, sowie Abhängigkeiten und Konfigurationen synchronisieren.
+\item alle Änderungen mit Zeitpunkt und Autor übersichtlich darstellen
 \item Sicherheitsregeln und Konventionen über alle Systeme sicherstellen
 \item alle diese Funktionalitäten barrierefrei dem Entwicklungsteam zur Verfügung stellen
 \end{itemize}
 
 Alle Forderungen sind nicht immer notwendig, helfen allerdings erheblich bei der Wartung und Betreuung der einzelnen Systeme. 
-Eine Virtualisierung der Systeme und eine Versionsverwaltung der zugehörigen Konfiguration und Scripte ist ebenfalls 
-hilfreich. Ein solches System skaliert gut und ist mit geringem Aufwand zu warten.\footcite[vgl.][]{humble2010}
+Eine Virtualisierung der verwalteten Systeme und eine Versionsverwaltung der verwendeten Konfiguration und Skripte ist ebenfalls
+hilfreich. Die Einhaltung der Richtlinien garantiert die gute Skalierung und Wartbarkeit für das Konfigurations- und Systemmanagement. Das Hinzufügen und Administrieren neuer System bleibt somit beherrschbar\footcite[vgl.][]{humble2010}.
 
 \subsection{Abhängigkeitsverwaltung}
 \label{subsec:dependency-management}
 
-In der Abhängigkeitsverwaltung werden die Softwareabhängigkeiten der Anwendung beschrieben. In auf  Komponenten 
-basierenden Anwendungen schließt dies die eigenen, internen Abhängigkeiten mit ein. Diese Abhängigkeiten, meist Module 
+In der Abhängigkeitsverwaltung werden die Softwareabhängigkeiten der Softwareanwendung beschrieben. In auf Komponenten
+basierenden Softwareanwendungen schließt dies die eigenen, internen Abhängigkeiten mit ein. Diese Abhängigkeiten, meist Module
 genannt, sollen die mit monolithischen Strukturen einhergehenden Nachteile unterbinden. Monolithen weisen häufig eine 
 schwache Softwarearchitektur auf und entwickeln sich daher entsprechend schlecht weiter. Mögliche Skalierungen des 
 Systems oder ein Austausch von einzelnen Bestandteilen sind mit einem erheblichen Mehraufwand verbunden.
 
-Die Aufteilung einer Anwendung auf mehrere Komponenten erhöht hingegen die Skalierbarkeit und Austauschbarkeit. Zudem 
+Die Aufteilung einer Softwareanwendung auf mehrere Komponenten erhöht hingegen die Skalierbarkeit und Austauschbarkeit. Zudem
 ergeben sich Vorteile für das verteilte Arbeiten von Teams. 
-Eine zu starke Aufteilung der Anwendungsstruktur oder eine Teilung an der falsche Stelle, kann hingegen zu gegenteiligen 
+Eine zu starke Aufteilung der Softwareanwendungsstruktur oder eine Teilung an der falsche Stelle, kann hingegen zu gegenteiligen
 Effekten führen. Ein deutlicher Mehraufwand und eine schlechte Skalierbarkeit sind die Folge. Um die verschiedenen Module 
 und Pakete zu organisieren empfiehlt sich eine Abhängigkeitsverwaltung. Mit einer Abhängigkeitsverwaltung können Abhängigkeiten durch Identifikationsterme und Versionsnummern eindeutig beschreiben. Dadurch lassen sich Schwierigkeiten unter den Abhängigkeiten leichter erkennen und Aktualisierungen der Versionen entsprechend der Abhängigkeiten vornehmen.
 
 Für die automatisierte Erstellung der Softwareanwendung ist es erforderlich, ähnlich wie bereits bei der 
 Versionsverwaltung, ein eindeutiges Abhängigkeitsnetz zu beschreiben. Zum Auflösen der Abhängigkeiten werden meist 
-mehrdeutige Ausdrücke verwendet, die eine Bandbreite an Versionen der Abhängigkeiten erlauben. Wird die Anwendung 
+mehrdeutige Ausdrücke verwendet, die eine Bandbreite an Versionen der Abhängigkeiten erlauben. Wird die Softwareanwendung
 erstellt und ausgeliefert, sollte allerdings eindeutig sein, welche Abhängigkeiten verwendet werden. Daher werden in 
 vielen Packetverwaltungen diese Informationen in einer Lock-Datei festgehalten. Es wird zudem angeraten, diese Datei in 
-die Versionkontrolle aufzunehmen.\footcite[vgl.][]{composer-why-lock-in-vcs} Das Festhalten der exakten Versionsnummern der verwendeten Abhängigkeiten ist ein deutlicher Vorteil. Dadurch ist möglich immer wieder zu dem in der Version gesicherten Zustand der Anwendung zurückzukehren. Ohne dies wären die Abhängigkeiten der Anwendung variabel.
+die Versionkontrolle aufzunehmen.\footcite[vgl.][]{composer-why-lock-in-vcs} Das Festhalten der exakten Versionsnummern der verwendeten Abhängigkeiten ist ein deutlicher Vorteil. Dadurch ist möglich immer wieder zu dem in der Version gesicherten Zustand der Softwareanwendung zurückzukehren. Ohne dies wären die Abhängigkeiten der Anwendung variabel.
 
 \subsection{Automatisierte Erstellung und Auslieferung}
 
-Viele Softwareanwendungen müssen kompiliert werden, um von einem System ausgeführt werden zu können. Die Kompilierung von kleine Programmen ist eine schnelle und wenig aufwändige Aufgabe. Durch das Wachstum einer Softwareanwendung und das Hinzukommen weiterer Abhängigkeiten und Konfigurationen wird die Ausführung deutlich zeitintensiver und es werden mehr Einzelschritte benötigt. Der vollständige Ablauf wird dann im Allgemeine Build genannt. Die beim Build ausgeführten Ablaufbeschreibungen werden meist als Build-Skripte bezeichnet. 
+Viele Softwareanwendungen müssen kompiliert werden, um von einem System ausgeführt werden zu können. Die Kompilierung von kleine Programmen ist eine schnelle und wenig aufwändige Aufgabe. Durch das Wachstum einer Softwareanwendung und das Hinzukommen weiterer Abhängigkeiten und Konfigurationen wird die Ausführung deutlich zeitintensiver und es werden mehr Einzelschritte benötigt. Der vollständige Ablauf wird dann im Allgemeine \glqq Build\grqq{} genannt. Die beim Build ausgeführten Ablaufbeschreibungen werden meist als Build-Skripte bezeichnet. Allgemein wird für den gesamten Vorgang auch von Build-Prozess gesprochen.
 
-Ziel bei der Erstellung eines Build-Skriptes ist es, einen konsistenten und transparenten Ablauf zu 
-befolgen. Dies wird unter anderem durch die korrekte Versionsverwaltung der einzelnen Komponenten, Konfigurationen und 
-Abhängigkeiten erreicht. Mit diesen Informationen können erstellte Produkte, auch \glqq build artifacts\grqq{} oder Artefakte
-genannt, in einem zentralen Artefakt-Lager abgelegt werden. Dies gewährleistet sowohl einen schnellen Zugriff auf 
-Teilartefakte, als auch einen konsistentes Ergebnis bei der Erstellung der Auslieferung.
+Build-Skripte werden häufig nicht als Software-Code wahrgenommen und nicht mit den gleichen Qualitätsanforderungen behandelt. Häufig werden sie nicht in ein Versionsverwaltungssystem aufgenommen und Entwicklungsprinzipien, wie Modularität und Lesbarkeit, werden vernachlässigt\footcite[vgl.][Kap. Build and Deployment Scripting]{humble2010}.
 
-\subsubsection{Risiken von Build-Scripten}
+Build-Skripte sollten den Prinzipen von Domain-Driven-Design\footcite[vgl.][The Building Blocks of a Model-Driven Design]{evans-domain-driven} und Modularisierung folgen. Deutlich Abgrenzbare Phasen und sollten in eigene Skripte ausgelagert werden\footcite[vgl.][Kap. Principles and Practices of Build and Deployment Scripting]{humble2010}.
 
-Build-Scripte, die gemeinsam mit der Anwendung wachsen und an Komplexität gewinnen, stellen ein Risiko dar. Die Skripte sollten als Teil der Anwendung verstanden werden und gleichwertigen Qualitätskriterien unterzogen werden. Nur wenig gewartet Build-Skripte weisen meist eine hohe Komplexität auf. Im fortgeschrittenen Fall kann dies zur  \glqq integration angst\grqq{} führen. Eine geringe Commit-Frequenz und eine sehr defensive Programmierung sind die Folge und behindern das Voranschreiten der Softwareanwendung deutlich\footcite[vgl.][]{ci-is-not-build-systems}.
+Build-Skripte müssen konsistent wiederholbar sein\footcite[vgl.][Sektion: Ensure the Deployment Process Is Idempotent]{humble2010}. Dafür ist es notwendig bei jeder Ausführung einen wohl definierten, bekannten Zustand herzustellen, auf dem die Software erstellt werden kann. Darauf aufbauend muss jede Komponente einer Software erstellt werden und abschließend die Software selbst.
 
-Werden bei einem Build-Script Aspekte der vorangegangen Abschnitte zu Versions-, Konfigurations- und Abhängigkeitsverwaltung nicht berücksichtigt, können zudem inkonsistente und damit nicht 
+Die erstellten Komponenten und Teilkomponenten werden auch \glqq build artifacts\grqq{} oder Artefakte genannt. Die Build-Artefakte sollten eindeutig gekennzeichnet werden. Die Kennzeichnung muss einen Rückschluss erlauben, welchen Stand des Software-Codes das Artefakt enthält. 
+Eindeutig gekennzeichnete Artefakte können gesammelt und zentral bereit gestellt werden. Die Verwendung des Artefaktes beschleunigt den Software-Erstellungsvorgang, unter Berücksichtigung der Eindeutigkeit und Wiederholbarkeit des Ergebnisses. 
+Die zentrale Sammlung von eindeutig gekennzeichneten Build-Artefakten, wird als \glqq build repository\grqq{} bezeichnet.
+
+\subsubsection{Risiken von Build-Skripten}
+
+Build-Skripte gewinnen an Komplexität, wenn sie gemeinsam mit der Softwareanwendung wachsen. Die Skripte sollten als Teil der Anwendung verstanden werden und gleichwertigen Qualitätskriterien unterzogen werden. Nur wenig gewartet Build-Skripte weisen meist eine hohe Komplexität auf.
+
+Zu komplexe Build-Skripte, lange Wartezeiten im Build-Prozess und damit lange Rückmeldungszeiten, führen zu einer geringeren Commit-Frequenz und damit einhergehend zu komplizierten Zusammenführungen von Änderungen. Durch das Zusammenspiel der verschiedenen Probleme, wurde das zurückhaltende Interagieren mit dem Versionsverwaltungssystem und dem Continuous-Integration-Prozess auch als \glqq integration angst\grqq{} bezeichnet. Insgesamt wird das Voranschreiten der Softwareanwendung dadurch deutlich behindert\footcite[vgl.][S. 3 ff]{ci-is-not-build-systems}.
+
+Werden bei einem Build-Skript Aspekte der vorangegangen Abschnitte zu Versions-, Konfigurations- und Abhängigkeitsverwaltung nicht berücksichtigt, können zudem inkonsistente und damit nicht
 wiederholbare Resultate erzeugt werden. Diese können zu schwer oder nicht auffindbaren Fehlern führen.
 
 \subsubsection{Automatisierte Auslieferung}
 
-Die Auslieferung der Software ist direkt mit der Erstellung verwoben. Die Verfügbarkeit aller Abhängigkeiten auf dem 
-Zielsystem und die richtige Konfiguration aller Anwendungsbestandteile ist notwendig für die Lauffähigkeit der Software. 
-Ein vollständiges Konfigurationsmanagement beschreibt die Systemabhängigkeiten und sorgt folglich für die korrekte 
-Auslieferung der richtigen Artefakte.
+Die Auslieferung der Software ist direkt mit der Erstellung verwoben. Die Verfügbarkeit aller Abhängigkeiten auf dem Zielsystem und die richtige Konfiguration aller Softwareanwendungsbestandteile ist notwendig für die Lauffähigkeit der Software.
+Ein vollständiges Konfigurationsmanagement beschreibt die Systemabhängigkeiten und sorgt folglich für die korrekte Zulieferung der richtigen Artefakte.
 
-Sowohl bei der Erstellung, als auch bei der Auslieferung ist insbesondere auf eine vollständige Beschreibung der 
-notwendigen Schritte zu achten. Gerade auf Entwicklungssystemen können Abhängigkeiten vorhanden sein, welche zwar für die 
-Funktionalität der Anwendung sorgen, allerdings nicht beschrieben wurden. Bei der Auslieferung auf andere Systeme können 
-diese \glqq Schattenabhängigkeiten\grqq{} dann zu unerwartetem Verhalten oder Abstürzen führen.
-Auch an dieser Stelle bietet sich die Virtualisierung der verwendeten Systeme an. Dadurch kann sichergestellt werden, 
-dass die Anwendung immer unter den gleichen, richtigen Bedingungen ausgeführt wird. Wird die Virtualisierungsumgebung 
-voll automatisch erstellt, ist zudem gesichert, dass alle Abhängigkeiten beschrieben sein müssen.
-Abschließend können diese Umgebungen archiviert und zusammen mit der Programmversion abgelegt werden. Dies unterstützt 
-die Konsistenz, Transparenz sowie Skalierbarkeit[quote virtualiserung mit docker] des Entwicklungsprozesses für die 
-Anwendung.
+Über den Erstellungsprozess von Software ist die Eindeutigkeit der verwendeten Artefakte und des Ergebnisses besonders wichtig. Eine eindeutige Beschreibung des Zielsystems ist genauso wichtig, wie die eindeutige Beschreibung der Abhängigkeiten der Software.
+
+Werden Teile der Software auf dedizierten, manuell erstellten und gewarteten Systemen entwickelt, können diese Systeme undokumentierte Abhängigkeiten bereitstellen. Werden diese Abhängigkeiten von der Software eingebunden, führt dies auf anderen Systemen ohne diese Abhängigkeit, zum Absturz. Ist die Abhängigkeit auf einem neuen Zielsystem vorhanden, allerdings in einer anderen Version, kann dies zu unerwartetem Verhalten oder ebenfalls zum Absturz führen.
+
+An dieser Stelle bietet sich die Virtualisierung der verwendeten Systeme an. Dadurch kann sichergestellt werden, dass die Software immer unter den gleichen, definierten Bedingungen ausgeführt wird. Die vollständig automatisierte Erstellung von Virtualisierungsumgebung sichert die vollständige Beschreibung aller Abhängigkeiten. Nicht oder falsch Beschriebene Abhängigkeiten führen zu reproduzierbaren Fehlern.
+Automatisch erstellt Systeme, die für die Virtualisierung verwendet werden, können archiviert und mit der Version der Software verknüpft werden. Dadurch steht eine besonders effiziente und nachvollziehbare Methodik zur Verfügung, um einen reproduzierbaren Stand der Software bereit stellen zu können. Dies unterstützt die Konsistenz, Transparenz, sowie Skalierbarkeit des Entwicklungsprozesses für die Software\footcite[vgl.][Kap. Why are containers important?]{learn-docker}.
 
 \subsubsection{Varianten der Softwareauslieferung}
 
-Bei der Auslieferung der Software können grob zwei Stufen der Automatisierung unterschieden werden. Eine Stufe ist die 
-manuell angestoßene Auslieferung, bei der der Zeitpunkt der Auslieferung davon bestimmt wird, wann das automatisierte 
-oder automatisiert-moderierte Script ausgeführt wird. Diese Stufe wird auch als \glqq Continuous Delivery\grqq{} bezeichnet. Eine andere Stufe ist die vollautomatisierte Auslieferung. Dabei wird der
+Bei der Auslieferung der Software können grob zwei Stufen der Automatisierung unterschieden werden. Eine Stufe ist die manuell angestoßene Auslieferung, bei der der Zeitpunkt der Auslieferung davon bestimmt wird, wann das automatisierte 
+oder automatisiert-moderierte Skript ausgeführt wird. Diese Stufe wird auch als \glqq Continuous Delivery\grqq{} bezeichnet. Eine andere Stufe ist die vollautomatisierte Auslieferung. Dabei wird der
 Zeitpunkt lediglich von der Durchlaufzeit einer Änderung durch die Qualitätskontrolle bestimmt. Da diese Auslieferung kontinuierlich alle Änderungen Ausliefert, wir diese Stufe auch als \glqq Continuous Deployment\grqq{} bezeichnet.
 Des Weiteren werden unterschiedliche Auslieferungsstrategien (\glqq deployment strategies\grqq{}) unterschieden, es seien an
 dieser Stelle nur exemplarisch das \glqq blue green deployment\grqq{} und das \glqq canary deployment\grqq{}\footcite[261-264 Deploying and Releasing Applications][]
@@ -272,16 +264,16 @@ werden Continuous-Deployment-Strategien nicht weiter betrachtet.
 \subsection{Validierung und Test}
 
 Die Validierung einer Software ist ein sehr komplexes Unterfangen. Die vollständige Richtigkeit eines Programmes 
-zu beweisen, scheitert bereits bei kleinen Anwendungen, da die Programmkomplexität mit ihrem Umfang stark steigt. Zudem 
+zu beweisen, scheitert bereits bei kleinen Softwareanwendungen, da die Programmkomplexität mit ihrem Umfang stark steigt. Zudem
 können nur Teile validiert und getestet werden, welche im Vorfeld bestimmt worden sind. Unklare, mehrdeutige oder 
 fehlende Anforderung machen einen Test unvollständig oder nehmen dem Test die Aussagekraft\footcite[S. 243 Kapitel 4.6][]{software-quality2008}.
 
 Da eine Software nicht in verhältnismäßiger Zeit getestet werden kann, muss eine Strategie gewählt werden. Es muss
-bestimmt werden, welche Teile der Anwendung getestet werden. Die Vollständigkeit der Tests, auch Testabdeckung genannt, wird gemessen durch die Nachverfolgung, welche Teile der Softwareanwendung beim Test durchlaufen werden. Bei der Entscheidung, welche Strategie gewählt wird, fallen verschiedene Kriterien ins Gewicht. Zum einen muss betrachtet werden, welche Anforderungen mit welchem Testverfahren getestet werden können. Zum anderen, welche Granularität für jeden Test verwendet wird.
+bestimmt werden, welche Teile der Softwareanwendung getestet werden. Die Vollständigkeit der Tests, auch Testabdeckung genannt, wird gemessen durch die Nachverfolgung, welche Teile der Softwareanwendung beim Test durchlaufen werden. Bei der Entscheidung, welche Strategie gewählt wird, fallen verschiedene Kriterien ins Gewicht. Zum einen muss betrachtet werden, welche Anforderungen mit welchem Testverfahren getestet werden können. Zum anderen, welche Granularität für jeden Test verwendet wird.
 Je nachdem, welche Strategie gewählt wird, hat dies Auswirkungen auf die Ausführungszeit der Tests. Diese Zeit wirkt sich 
 direkt auf die Produktivität des Entwicklungsteams aus. Ohne die Testresultate kann kaum eine Aussage über die 
-Funktionsfähigkeit der Anwendung getroffen werden. Damit ist die Freigabe einer Softwareanwendung oder eines Inkrementes 
-der Anwendung direkt von der Durchlaufgeschwindigkeit der Tests abhängig.
+Funktionsfähigkeit der Softwareanwendung getroffen werden. Damit ist die Freigabe einer Softwareanwendung oder eines Inkrementes
+der Softwareanwendung direkt von der Durchlaufgeschwindigkeit der Tests abhängig.
 
 Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung(Test-Suite). Jeder Fehler, der nicht von der Testsammlung erfasst wurde, muss spätestens nach der Beseitigung des Fehlers auch durch die Testsammlung validiert werden. Diese Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests\footcite[vgl.][]{software-quality2008}. Ein direkter Nachteil einer großen Test-Suite ist der Aufwand für ihre Pflege. Testabdeckung, Wartbarkeit der Tests und Aussagekraft der Tests sollte daher in der Teststrategie gegeneinander abgewogen werden.
 
@@ -291,7 +283,7 @@ Software-Metriken können systematisch und quantitativ Aspekte des Software-Code
 
 Eine nützliche Software-Metrik sollte mehrere Gütekriterien erfüllen. Die Metrik sollte objektiv sein, was bei einer maschinellen Erhebung und Verarbeitung weitestgehend gegeben ist. Die Ergebnisse einer Metrik sollten wiederholbar und damit robust sein. Zudem sollten die Ergebnisse vergleichbar sein, um verschieden Software-Stände gegeneinander bewerten zu können. Eine Metrik sollte mit dem untersuchten Merkmal korrelieren. Die Korrelation ist immer dann besonders hoch, wenn der mit der Metrik erhobene Wert sich stark ändert, wenn auch das betrachtet Merkmal sich ändert. Abschließend sollte die Erhebung der Metrik in Relation zu der Güte ihrer Aussage stehen. Metriken mit einem hohen Erhebungsaufwand, aber ohne Relevanz für den Entscheidungsprozess, sind nicht wertvoll.\footcite[S.248 ff][]{software-quality2008}
 
-Da Tests und Software-Metriken gut anwendbare Möglichkeiten sind, um automatisiert Einschätzungen der Software vorzunehmen, werden diese Bereiche erneut im Kapitel~\ref{subsec:main-metrics} aufgegriffen und näher auf deren Anwendung eingegangen.
+Da Tests und Software-Metriken gut anwendbare Möglichkeiten sind, um automatisiert Einschätzungen der Software vorzunehmen, werden diese Bereiche erneut im Kapitel~\ref{subsec:main-metrics} aufgegriffen und näher auf deren Softwareanwendung eingegangen.
 
 Im Folgenden werden kurz bekanntere Metriken vorgestellt.\footcite[S.249 ff][]{software-quality2008}
 
@@ -299,7 +291,7 @@ Im Folgenden werden kurz bekanntere Metriken vorgestellt.\footcite[S.249 ff][]{s
 
 \paragraph{Halstead-Metrik} bezeichnet eine Kenngröße für die Programmkomplexität. Die Ermittlung erfolgt durch die Analyse der lexikalischen Struktur vom Software-Code. Dabei wird der Code in Operatoren und Operanden eingeteilt und deren Auftrittscharakteristik analysiert. Kritik an dieser Metrik entsteht durch die offene Definition von Operanden und Operationen. Als Folge sind verschiedene Programmiersprachen nur bedingt Vergleichbar durch diese Metrik. Des Weiteren wird in Frage gestellt, ob alle Kerngrößen der Metrik überhaupt mit der lexikalischen Analyse ermittelt werden können.
 
-\paragraph{McCabe-Metrik} bezeichnet eine weitere Kennzahl für die Programmkomplexität. Zentrale Größe der Metrik ist die \glqq zyklomatische Komplexität\grqq{} als Maß der Anzahl von Kanten und Knoten eines Kontrollflussgraphen der Software-Anwendung. Somit korreliert die zyklomatische Komplexität mit den möglichen Anwendungsdurchläufen und -zuständen.
+\paragraph{McCabe-Metrik} bezeichnet eine weitere Kennzahl für die Programmkomplexität. Zentrale Größe der Metrik ist die \glqq zyklomatische Komplexität\grqq{} als Maß der Anzahl von Kanten und Knoten eines Kontrollflussgraphen der Softwareanwendung. Somit korreliert die zyklomatische Komplexität mit den möglichen Anwendungsdurchläufen und -zuständen.
 
 \paragraph{Komponenten-Metriken} bezeichnen eine Sammlung von Umfangs- und Komplexitätsmetriken für objektorientierten Software-Code. Eine Aussage über den Umfang von Klassen wird unter anderem durch die Anzahl von Attributen und Methoden getätigt. Die Komplexität wird durch die Tiefe und Häufigkeit von objektorientierten Techniken gemessen. Diese Techniken sind unter anderem Vererbung, Überladung und Überschreiben von Methoden und Attributen. Daher lässt sich mit letzteren Metriken auch eine Aussage über die Code-Kopplung vornehmen.
 
@@ -321,7 +313,7 @@ Verfahren der Software-Verifikation sind die Deduktion, Modellprüfung und der a
 
 \paragraph{Deduktion} ist stark aus der klassischen mathematischen Beweisführung entlehnt. Dabei werden Vor- und Nachbedingung durch Umformungen sukzessive ineinander überführt. Für vollständige Softwareanwendungen ist dieses Verfahren ist ein großteils manueller Vorgang. Allerdings gehört die automatisierte Deduktion, als elementarer Bestandteil zu vielen Entwicklungsumgebungen\footcite[vgl.][S. 2]{automated-deduction}. Unter anderem sind dadurch Kontrollflussanalysen möglich. Unerreichbare oder nicht vollständige Ausdrücke, können so aufgezeigt werden.
 
-\paragraph{Modellprüfung} überführt ein Programm in eine Kripke-Struktur, ähnlich einem endlichen Automaten und beweist oder widerlegt diese Struktur mithilfe von Traversierungsalgorithmen. Die algorithmische Komplexität dieses Verfahrens sorgt für eine weitestgehend ausschließliche Anwendung für sicherheitskritische Software-Systeme.
+\paragraph{Modellprüfung} überführt ein Programm in eine Kripke-Struktur, ähnlich einem endlichen Automaten und beweist oder widerlegt diese Struktur mithilfe von Traversierungsalgorithmen. Die algorithmische Komplexität dieses Verfahrens sorgt für eine weitestgehend ausschließliche Softwareanwendung für sicherheitskritische Software-Systeme.
 
 \paragraph{Abstrakte Interpretation} ist eine semi-formale Verifikationstechnik. Sie kombiniert statische Programmanalyse und Generalisierung von Datenbereichen, um verschieden dynamische Eigenschaften eines Programmes zu verifizieren.
 
@@ -348,7 +340,7 @@ Neben einem Integrationssystem ist auch eine einheitliche Form der Erstellung de
 \subsection{Vorteile von Continuous-Integration}
 
 Wird der Codestand aller Entwickler häufig integriert und nach jeder Änderung durch einen automatisierten Build verifiziert, erhalten alle Beteiligten regelmäßig Resonanz zum gemeinsamen Codestand.
-Die häufige Integration von Quellcode fördert zudem die Verwendung von modernen Entwicklungspraktiken. Modularisierung, Konfigurationsmanagement, automatische Erstellung und Wiederverwendbarkeit von Artefakten, sowie das Achten auf Testbarkeit der Anwendung sind wichtig. Die vollständige Erfüllung dieser Kriterien fordert und fördert eine gute Entwicklungskultur.
+Die häufige Integration von Quellcode fördert zudem die Verwendung von modernen Entwicklungspraktiken. Modularisierung, Konfigurationsmanagement, automatische Erstellung und Wiederverwendbarkeit von Artefakten, sowie das Achten auf Testbarkeit der Softwareanwendung sind wichtig. Die vollständige Erfüllung dieser Kriterien fordert und fördert eine gute Entwicklungskultur.
 
 \subsection{Nachteile von Continuous-Integration}
 
@@ -370,30 +362,29 @@ genannt. Gerade bei der vollautomatisierten Bereitstellung von Systemen, können
 
 Virtualisierung bietet eine Abstraktionsschicht für verschiedene Komponenten. Dies ermöglicht Abhängigkeiten zu Hardware, 
 Software und deren Konfiguration transparent zu gestalten. Der unter Programmierern bekannte Spruch, \glqq It works on my
-machine\grqq{}, verdeutlicht das Problem. Häufig benötigen Komponenten einer Softwareanwendung andere Anwendungen um lauffähig
-zu sein. Abhängigkeiten zum Betriebssystem, zu Software von Drittanbietern oder zu Hardwarekomponenten sind Bestandteil 
-vieler Softwareanwendungen. Im Verlauf der Anwendungsentwicklung ist es daher wichtig, diese Abhängigkeiten zu 
+machine\grqq{}, verdeutlicht das Problem. Häufig benötigen die Komponenten einer Softwareanwendung weitere Abhängigkeiten. Abhängigkeiten zum Betriebssystem, zu Software von Drittanbietern oder zu Hardwarekomponenten sind Bestandteil
+vieler Softwareanwendungen. Im Verlauf der Softwareentwicklung ist es daher wichtig, diese Abhängigkeiten zu
 beschreiben. Diese Beschreibung ist eine wertvolle Basis, um ein System inklusive aller Abhängigkeiten zur Verfügung zu stellen.
 
 Die manuelle Bereitstellung eines Systems ist aufwändig und verzögert damit zusammenhängende Entwicklungsabläufe. Eine 
 automatisierte Erstellung und Bereitstellung der benötigten Systeme ist daher empfehlenswert. Um unerwartetes Verhalten 
-der auf den Systemen ausgeführten Anwendungen zu vermeiden, sollten die Systeme vollständig beschrieben sein. Die 
+der auf den Systemen ausgeführten Softwareanwendungen zu vermeiden, sollten die Systeme vollständig beschrieben sein. Die
 automatische Generierung der virtuellen Umgebung und die Ablage in gepackter Form in einem Archiv bietet weitere 
 Vorteile. Der Zugriff auf die Virtualisierung und damit die Bereitstellung der Systeme wird dadurch besonders transparent 
 und wenig aufwändig.
 
-Durch die Virtualisierung kann ein System reproduzierbar und schnell in einem vorher definierten Zustand bereit gestellt werden. Dies verkürzt Arbeitsabläufe für den Test einer Anwendung. Zum einen können schnell Änderungen an der Anwendung getestet werden, zum anderen kann die Anwendung in zahlreichen Konfigurations- und Abhängigkeitskombinationen getestet werden.
+Durch die Virtualisierung kann ein System reproduzierbar und schnell in einem vorher definierten Zustand bereit gestellt werden. Dies verkürzt Arbeitsabläufe für den Test einer Softwareanwendung. Zum einen können schnell Änderungen an der Softwareanwendung getestet werden, zum anderen kann die Anwendung in zahlreichen Konfigurations- und Abhängigkeitskombinationen getestet werden.
 
 \subsection{Virtualisierung mit Virtual-Machines}
 
-Virtualisierung mit Virutal-Machines abstrahiert eine vollständige Systemumgebung. Diese ermöglicht unter anderem ein Betriebssystem innerhalb eines anderen Betriebssystems zu betreiben. Da eine vollständige Systemumgebung mit Hardwarekomponenten emuliert wird, lassen sich Anwendungen auf verschiedenen Virtual-Machines komplett unabhängig voneinander betreiben. 
-Durch die Vollständigkeit der Virtualisierung ist der Systemressourcenverbrauch signifikant höher als beim Betrieb einer Anwendung in einem nicht virtualisierten System. Virtuelle Maschinen skalieren somit gut in Erstellung und Verwaltung. Im Gegensatz dazu skaliert der Systemressourcenverbrauch deutlich schlechter. Durch den geringeren Verwaltungsaufwand können dennoch große Cluster kosteneffizient betrieben werden, wie viele Cloud-Services zeigen\footcite[vgl.][]{a-cloud-guru-cost}.
+Virtualisierung mit Virutal-Machines abstrahiert eine vollständige Systemumgebung. Diese ermöglicht unter anderem ein Betriebssystem innerhalb eines anderen Betriebssystems zu betreiben. Da eine vollständige Systemumgebung mit Hardwarekomponenten emuliert wird, lassen sich Softwareanwendungen auf verschiedenen Virtual-Machines komplett unabhängig voneinander betreiben.
+Durch den höhren Abstraktionsgrad der Virtualisierung, ist der Systemressourcenverbrauch signifikant höher, als beim Betrieb einer Softwareanwendung in einem nicht virtualisierten System. Virtuelle Maschinen skalieren somit gut in Erstellung und Verwaltung. Im Gegensatz dazu skaliert der Systemressourcenverbrauch deutlich schlechter. Durch den geringeren Verwaltungsaufwand können dennoch große Cluster kosteneffizient betrieben werden, wie viele Cloud-Services zeigen\footcite[vgl.][]{a-cloud-guru-cost}.
 
 \subsection{Containerverwaltung mit Docker}
 
-Docker ist keine Virtualisierung im eigentlichen Sinne. Ein Docker-Container ist eine standardisierte Umgebung in der ein Anwendung laufen kann. Ein Docker-Server verwaltet die Docker-Container und regelt deren Sicherheit- und Leistungsbedürfnisse. Docker läuft somit als Anwendung auf einem System und ist an dessen Spezifikationen für Betriebssysteme und Hardwarekomponenten gebunden\footcite[vgl.][Kap. Why are containers important]{learn-docker}.
+Docker ist keine Virtualisierung im eigentlichen Sinne. Ein Docker-Container ist eine standardisierte Umgebung in der ein Softwareanwendung laufen kann. Ein Docker-Server verwaltet die Docker-Container und regelt deren Sicherheit- und Leistungsbedürfnisse. Docker läuft somit als Anwendung auf einem System und ist an dessen Spezifikationen für Betriebssysteme und Hardwarekomponenten gebunden\footcite[vgl.][Kap. Why are containers important]{learn-docker}.
 
-Anwendungen werden in Form von Docker-Images abgespeichert und können dann in unbegrenzt vielen Docker-Container ausgeführt werden. Änderungen im Inhalt des Docker-Containers sind auf diesen beschränkt und haben keinen Einfluss auf das Docker-Image aus dem er erstellt wurde.
+Softwareanwendungen werden in Form von Docker-Images abgespeichert und können dann in unbegrenzt vielen Docker-Container ausgeführt werden. Änderungen im Inhalt des Docker-Containers sind auf diesen beschränkt und haben keinen Einfluss auf das Docker-Image aus dem er erstellt wurde.
 
 Mit Docker und virtuellen Maschinen wurden zwei Möglichkeiten geschaffen, Software weiter zu vereinheitlichen. Standardisierung ist eine wesentliche Basis für Modularisierung und Automatisierung.
 

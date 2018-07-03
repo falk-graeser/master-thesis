@@ -38,7 +38,7 @@ must be able to control software development practice. If we don’t measure
 it, however, we will never have that control.}\footcite{demarco1986}
 \\
 
-Um Änderungen an einer Software-Anwendung zu bewerten und automatisiert Entscheidungen zu treffen, müssen die Änderungen quantifiziert und mit Vergleichswerten in Beziehung gesetzt werden. Für die Quantifizierung können Software-Metriken aus  Kapitel~\ref{subsubsec:base-metrics} verwendet werden. Da Aussagen über Programmkomplexität und Umfang kein hinreichende Bewertung ermöglichen, müssen zudem Verfahren zur Verifikation herangezogen werden. Die übliche Variante hierfür, ist eine umfangreiche Test-Suite und je nach Anwendung auch Verfahren, wie die in Kapitel~\ref{subsubsec:base-verification} beschriebene Modellprüfung und die abstrakte Interpretation.
+Um Änderungen an einer Softwareanwendung zu bewerten und automatisiert Entscheidungen zu treffen, müssen die Änderungen quantifiziert und mit Vergleichswerten in Beziehung gesetzt werden. Für die Quantifizierung können Software-Metriken aus  Kapitel~\ref{subsubsec:base-metrics} verwendet werden. Da Aussagen über Programmkomplexität und Umfang kein hinreichende Bewertung ermöglichen, müssen zudem Verfahren zur Verifikation herangezogen werden. Die übliche Variante hierfür, ist eine umfangreiche Test-Suite und je nach Anwendung auch Verfahren, wie die in Kapitel~\ref{subsubsec:base-verification} beschriebene Modellprüfung und die abstrakte Interpretation.
 
 In der Praxis werden automatisiert oft nur Tests verwendet. Der geringer Aufwand für ihre Erstellung und eine gute Skalierbarkeit sorgen für einen flexiblen Einsatz. 
 
@@ -123,13 +123,13 @@ Das Konfigurationsmanagement aus der automatisierten Softwareerstellung kann auc
 
 Eine automatisierte Übersicht hat sowohl für vollautomatische Virtualisierungen Vorteile, als auch für teil-automatisierte oder manuell geführte Systemlandschaften.
 
-In einer vollautomatisierten Virtualisierung werden Systeme automatisch bereitgestellt, verwaltet und wieder entfernt. Eine aussagekräftige Übersicht erleichtert sowohl die Fehlersuche, als auch das Erstellen von Auswertungen zu den Systemen. Viele Virtualisierungs-Verwaltungen sollten bereits zahlreiche Auswertungsmöglichkeiten bereitstellen. Aufgrund der allgemeingültigen Natur der Verwaltungen, werden diese aber nur bedingt auf spezifische Merkmale der Anwendungen eingehen können. Die semantischen Zusatzinformationen aus der Konfigurationsverwaltung gleichen diesen Nachteil aus.
+In einer vollautomatisierten Virtualisierung werden Systeme automatisch bereitgestellt, verwaltet und wieder entfernt. Eine aussagekräftige Übersicht erleichtert sowohl die Fehlersuche, als auch das Erstellen von Auswertungen zu den Systemen. Viele Virtualisierungs-Verwaltungen sollten bereits zahlreiche Auswertungsmöglichkeiten bereitstellen. Aufgrund der allgemeingültigen Natur der Verwaltungen, werden diese aber nur bedingt auf spezifische Merkmale der Softwareanwendungen eingehen können. Die semantischen Zusatzinformationen aus der Konfigurationsverwaltung gleichen diesen Nachteil aus.
 
 Auch im Fall einer manuellen oder teil-automatisierten Virtualisierung oder Systemverwaltung bringt eine Systemübersicht Vorteile. Während in der vollautomatisierten Variante eine Systemübersicht meist automatisch mit erstellt wird, müssen im manuellen Fall die Übersichten extra erstellt werden. Wechselnde Belegungen der einzelnen Systeme sind häufig gegeben. Wird eine Umgebung benötigt für ein Testszenario, ist es häufig schwer festzustellen, welche Systeme verfügbar sind. In Kombination mit der Konfigurationsverwaltung können Systeme nicht nur anhand ihrer Verfügbarkeit beurteilt werden, sondern auch bezüglich ihrer Systemkompatibilität. Somit kann die Systemübersicht als Grundlage zur Verwaltung des Systempools verwendet werden.
 
 Unabhängig von der verwendeten Systemverwaltung kann die Systemübersicht auch als Dashboard verwendet werden. Wird die Systemübersicht um Absprünge zum Build-Server und zur Systemverwaltung ergänzt, erreicht man einen übersichtlichen und zentralen Einstiegspunkt in den Systemlandschaft.
 
-Eine Konfigurations- und Systemübersicht ist somit eine hilfreiche, kombinierte Ansicht. Zahlreiche Anwendungen sind denkbar, hängen allerdings stark von den verfügbaren Schnittstellen ab. Im Rahmen eines automatisierten Softwareerstellungsprozesses können bereits viele notwendige Informationen gesammelt werden. Daher sollte es immer möglich sein eine aussagekräftige Übersicht zu generieren.
+Eine Konfigurations- und Systemübersicht ist somit eine hilfreiche, kombinierte Ansicht. Zahlreiche Softwareanwendungen sind denkbar, hängen allerdings stark von den verfügbaren Schnittstellen ab. Im Rahmen eines automatisierten Softwareerstellungsprozesses können bereits viele notwendige Informationen gesammelt werden. Daher sollte es immer möglich sein eine aussagekräftige Übersicht zu generieren.
 
 \subsection{Übersichten für die Konfigurations- und Abhängigkeitsverwaltung}
 
@@ -144,13 +144,13 @@ Um diesen Szenarien vorzubeugen und sie abzuschwächen, ist eine automatisierte 
 
 Übersichten sind eine sinnvolle Ergänzung in einer Projekt- und Systemübersicht. In der automatisierten Softwareerstellung liegt der Fokus allerdings in der automatischen Bewertung der Software und ihrer Komponenten. Wird wie in Kapitel~\ref{subsec:dependency-management}~\nameref{subsec:dependency-management} eine Abhängigkeitsverwaltung verwendet, können weitere Maßnahmen zur Qualitätskontrolle ergriffen werden. Es sollte zudem zwischen internen und externen Abhängigkeiten unterschieden werden, da für die unterschiedlichen Typen, unterschiedliche Maßnahmen ergriffen werden können. Das Kapitel~\ref{par:structure-metrics}~\nameref{par:structure-metrics} beschreibt die Basis für diese Metriken. Zusätzlich sollten Abhängigkeiten auch nach ihrem Alter und ihrer abgeschätzten Qualität beurteilt werden.
 
-Summiert und über einen längeren Zeitraum betrachtet bieten diese Informationen die Möglichkeit die Entwicklung der Anwendung besser zu beurteilen. Es können Strategien zur schrittweisen Verbesserung (refactoring) der Software ermittelt werden. Weiter können neue Änderungen beurteilt werden. Der Grad ihrer Vernetzung, der Aktualität der verwendeten Abhängigkeiten und wie gut sie sich in das Gesamtbild der Anwendung integrieren.
+Summiert und über einen längeren Zeitraum betrachtet bieten diese Informationen die Möglichkeit die Entwicklung der Softwareanwendung besser zu beurteilen. Es können Strategien zur schrittweisen Verbesserung (refactoring) der Software ermittelt werden. Weiter können neue Änderungen beurteilt werden. Der Grad ihrer Vernetzung, der Aktualität der verwendeten Abhängigkeiten und wie gut sie sich in das Gesamtbild der Anwendung integrieren.
 
 \subsubsection{Interne Abhängigkeiten}
 
-Interne Abhängigkeiten sind meist das Resultat aus einer Modularisierung der Anwendung. Abgrenzungskriterien können hierfür logische, strukturelle oder ästhetische Gründe sein. Logische Gründe basieren auf dem Domainmodell der Anwendung und beschreiben unterschiedliche Ausprägungen und Ebenen der Anwendung. Strukturelle Gründe können Umfang eines Moduls, Wiederverwendbarkeit eines Moduls zwischen Modulen und Anwendungen oder eine klare Trennung der Verwendung von Bestandteilen des Moduls sein. Ästhetische Gründe begründen sich auf vereinbarten Coding-Guidelines, populären Softwareentwicklungsstrategien oder schlicht dem subjektiven Entwicklerempfinden. Interne Abhängigkeiten tendieren oft dazu weniger lose gekoppelt zu sein und implizite, nicht definierte Abhängigkeiten aufzuweisen.
+Interne Abhängigkeiten sind meist das Resultat aus einer Modularisierung der Softwareanwendung. Abgrenzungskriterien können hierfür logische, strukturelle oder ästhetische Gründe sein. Logische Gründe basieren auf dem Domainmodell der Anwendung und beschreiben unterschiedliche Ausprägungen und Ebenen der Anwendung. Strukturelle Gründe können Umfang eines Moduls, Wiederverwendbarkeit eines Moduls zwischen Modulen und Anwendungen oder eine klare Trennung der Verwendung von Bestandteilen des Moduls sein. Ästhetische Gründe begründen sich auf vereinbarten Coding-Guidelines, populären Softwareentwicklungsstrategien oder schlicht dem subjektiven Entwicklerempfinden. Interne Abhängigkeiten tendieren oft dazu weniger lose gekoppelt zu sein und implizite, nicht definierte Abhängigkeiten aufzuweisen.
 
-Vorteilhaft an internen Abhängigkeiten ist der hohe Einfluss, der auf sie genommen werden kann. Gut verfügbare Quellen und Zugriff die zugehörige Infrastruktur, sollten gegeben sein. Dadurch können interne Anwendung isoliert getestet und mit Metriken geprüft werden. Dadurch können Kopplungsgrad und Abhängigkeiten gut inspiziert und optimiert werden. Weiter ergibt sich durch den direkten Zugriff auf die Quellen, auch die Möglichkeit eigenständig Regeln für die Erstellung von Versionen der Abhängigkeiten festzulegen. Komponenten die häufig zusammen verwendet werden, sollten im Falle einer Major-Version diesen Sprung der Version gemeinsam vollziehen. Häufig ist diese Strategie auch noch für Minor-Versionen sinnvoll. Dadurch lässt sich bereit anhand der Komponentendarstellung ein gemeinsames Bild zeichnen. Stark veraltet Versionen sind bei internen Abhängigkeiten nur bedingt ein Problem, da kritische Versionen oder Fehler in der Regel gut kommuniziert werden.
+Vorteilhaft an internen Abhängigkeiten ist der hohe Einfluss, der auf sie genommen werden kann. Gut verfügbare Quellen und Zugriff die zugehörige Infrastruktur, sollten gegeben sein. Dadurch können interne Softwareanwendung isoliert getestet und mit Metriken geprüft werden. Dadurch können Kopplungsgrad und Abhängigkeiten gut inspiziert und optimiert werden. Weiter ergibt sich durch den direkten Zugriff auf die Quellen, auch die Möglichkeit eigenständig Regeln für die Erstellung von Versionen der Abhängigkeiten festzulegen. Komponenten die häufig zusammen verwendet werden, sollten im Falle einer Major-Version diesen Sprung der Version gemeinsam vollziehen. Häufig ist diese Strategie auch noch für Minor-Versionen sinnvoll. Dadurch lässt sich bereit anhand der Komponentendarstellung ein gemeinsames Bild zeichnen. Stark veraltet Versionen sind bei internen Abhängigkeiten nur bedingt ein Problem, da kritische Versionen oder Fehler in der Regel gut kommuniziert werden.
 
 \subsubsection{Externe Abhängigkeiten}
 
@@ -160,14 +160,14 @@ Externe Abhängigkeiten bergen immer auch ein Risiko. Dieses Risiko ergibt sich 
 
 Die Aktualisierung von externen Abhängigkeiten sollte im Allgemeinen nur in kontrolliertem Maße erfolgen. Sicherheitskritische Updates sollten steht priorisiert werden. Aktualisierungen anderer Art sind allerdings kritisch zu sehen, da sie häufig mit Anpassung in den internen Strukturen zur Folge haben. Es muss somit abgewogen werden ob die notwendigen Anpassungen durch entsprechende Vorteile der Aktualisierung gedeckt werden.
 
-Unabhängig des Abhängigkeitstyps sollte immer verhindert werden, dass die Abhängigkeiten unkontrolliert aktualisiert werden. Insbesondere wenn Major-Updates von Abhängigkeiten ohne Prüfung und Test genutzt werden, können leicht Schnittstellen brechen oder unerwartete Verhaltensmuster in der Anwendung auftreten.
+Unabhängig des Abhängigkeitstyps sollte immer verhindert werden, dass die Abhängigkeiten unkontrolliert aktualisiert werden. Insbesondere wenn Major-Updates von Abhängigkeiten ohne Prüfung und Test genutzt werden, können leicht Schnittstellen brechen oder unerwartete Verhaltensmuster in der Softwareanwendung auftreten.
 
 \subsubsection{Darstellung der Abhängigkeiten}
 \label{subsubsec:illustrate-dependencies}
 
 In einer stark modularisierten Softwareanwendung existieren in der Regel sehr viele Abhängigkeiten. Starke Wiederverwendung von Modulen erhöht die Anzahl von Querreferenzen. Viele Module verwenden daher oft gleiche Module und Bilden daher zahlreiche Verbindungen. Eine einfache Darstellung dieser Verbindungen ist kaum möglich. 
 
-Für die nachfolgenden Vergleiche werden zwei PHP-Projekte verwendet. In beiden Projekten wird als Paketverwaltung Composer\footcite{composer-web} genutzt. Composer beschreibt Abhängikeiten mittels einer eigenen DSL\footcite{composer-json}, welche auf Yaml\footcite{yaml-homepage} basierenden . Das erste Projekt ist eine Open-Source-Wiki-Anwendung \glqq Wikia\grqq{}\footcite{wikia-github}. Sie zählt zu den größten Open-Source-PHP-Projekten\footcite{largest-php-apps-2018}. Das zweite Projekt ist eine mittel große Individualsoftware für ein Content-Management-System.
+Für die nachfolgenden Vergleiche werden zwei PHP-Projekte verwendet. In beiden Projekten wird als Paketverwaltung Composer\footcite{composer-web} genutzt. Composer beschreibt Abhängikeiten mittels einer eigenen DSL\footcite{composer-json}, welche auf Yaml\footcite{yaml-homepage} basierenden . Das erste Projekt ist eine Open-Source-Wiki-Software \glqq Wikia\grqq{}\footcite{wikia-github}. Sie zählt zu den größten Open-Source-PHP-Projekten\footcite{largest-php-apps-2018}. Das zweite Projekt ist eine mittel große Individualsoftware für ein Content-Management-System.
 
 Beide Projekte haben eine ähnliche Fülle an Abhängigkeiten und werden in einem ähnlichen Fachgebiet genutzt. Die unterschiedliche Entwicklungskultur, kann aber unter Umständen Einfluss auf das Softwareergebnis haben.
 
@@ -268,7 +268,7 @@ Unabhängig von der verwendeten Lösung, müssen die Systeme in einen definierte
 
 \section{Best Practices in der Softwareentwicklung}
 
-Feature-Branches verhindern keine Hindernisse, die beim Zusammenführen von Änderungen auftreten. Sie helfen lediglich, das Auftreten der Probleme, durch die Hindernisse, zu einem gewählten Zeitpunkt zu verschieben. Daher sind Entwickler, auch mit Features-Branches, darauf angewiesen Entwicklungsmuster anzuwenden und sich mit der Softwarearchitektur der Anwendung auseinanderzusetzen.
+Feature-Branches verhindern keine Hindernisse, die beim Zusammenführen von Änderungen auftreten. Sie helfen lediglich, das Auftreten der Probleme, durch die Hindernisse, zu einem gewählten Zeitpunkt zu verschieben. Daher sind Entwickler, auch mit Features-Branches, darauf angewiesen Entwicklungsmuster anzuwenden und sich mit der Softwarearchitektur der Softwareanwendung auseinanderzusetzen.
 
 Viele dieser Entwicklungsmuster und -verfahren werden unter dem Begriff \glqq Best Practices\grqq{} geführt. Sie unterstützen Entwickler in Entwurfsentscheidungen und geben Rahmen für Standards in der Softwareentwicklung. Viele der Best-Practices zielen zudem auf Verbesserungen für Wartbarkeit, Robustheit und allgemeine geringere Umsetzungsaufwände.
 
@@ -288,7 +288,7 @@ Durch die Einhaltung der Prinzipien, werden mögliche Änderungen auf ein Modul 
 \paragraph{Separation of Concerns} ist ein Basisprinzip moderner Softwareentwicklung. Während Information-Hiding auf einer niedrigen Modulebene ansetzt, versucht die \glqq Aufteilung nach Anliegen\grqq{} höher anzusetzen. Die Teile eines Moduls sollen nach möglich Anliegen  mit möglich wenig Überlappungen eingeteilt werden.
 \paragraph{Low Coupling Cohesion} beschreibt das Verbindungs- und Kommunikationsverhalten der Module. Es wird eine hohe Kohäsion innerhalb eines Moduls angestrebt und eine geringe zu anderen Modulen.
 
-Werden die Prinzipien befolgt, ergeben sich Vorteile für die Wartbarkeit, Wiederverwendbarkeit und Robustheit der Anwendung. Die Konzentrierten Verbindungen sorgen zudem für eine geringere Schnittmenge von Änderungen durch Entwickler.
+Werden die Prinzipien befolgt, ergeben sich Vorteile für die Wartbarkeit, Wiederverwendbarkeit und Robustheit der Softwareanwendung. Die Konzentrierten Verbindungen sorgen zudem für eine geringere Schnittmenge von Änderungen durch Entwickler.
 
 Eine modernere Form der Modularisierung sind die \glqq serviceorientierten Architekturen\grqq{}. Diese beschreiben Anwendungsszenarien in verschiedenen Granularität. Die Kapselung in Services ermöglichen die Komposition und Orchestrierung von komplexen Vorgängen. Der serviceorientierte Ansatz nutzt die Prinzipien der Modularisierung und bietet die Vorteile unter neuem Namen an.
 
@@ -357,7 +357,7 @@ Ist das Release definiert, sollen eine Reihe an Fragen einfach zu beantworten se
 \item Wie verhalten sich die Metriken der Feature-Branches untereinander und zum Haupt-Branch?
 \end{itemize}
 
-Des Weiteren sollte die Anwendung an einen bestehenden Continuous-Prozess möglich sein. Es sollte daher eine REST-API bereit gestellt werden. Die API soll primär die Daten für Metriken und Testergebnisse entgegennehmen.
+Des Weiteren sollte die Anbindung an einen bestehenden Continuous-Prozess möglich sein. Es sollte daher eine REST-API bereit gestellt werden. Die API soll primär die Daten für Metriken und Testergebnisse entgegennehmen.
 
 \subsection{Nutzungsszenarien (Use-Cases)}
 
@@ -418,6 +418,17 @@ Um die Abhängigkeiten abzubilden und die verfügbaren Feature-Branches für ein
 
 Beschreibung von PHPMetrics
 
+\section{Umfrage zum Nutzungsverhalten von Versionsverwaltungssystemen und Tests}
+
+Umfragezeitraum 1 Monate, 185 Antworten, 46 verwertbar, 29 abgeschlossen
+2 Konzeptor
+14 Projektmanager
+23 Softwareentwickler
+3 Tester
+1 Systemadministrator
+
+Verteilungskreis IT-Nah, soziale Kanäle
+Fragebogen - Likertskala
 
 \section{Motivation, Disziplin und Verantwortung - Faktor Mensch}
 \label{sec:human-fail}
