@@ -238,8 +238,8 @@ wiederholbare Resultate erzeugt werden. Diese können zu schwer oder nicht auffi
 
 \subsubsection{Automatisierte Auslieferung}
 
-Die Auslieferung der Software ist direkt mit der Erstellung verwoben. Die Verfügbarkeit aller Abhängigkeiten auf dem Zielsystem und die richtige Konfiguration aller Softwareanwendungsbestandteile ist notwendig für die Lauffähigkeit der Software.
-Ein vollständiges Konfigurationsmanagement beschreibt die Systemabhängigkeiten und sorgt folglich für die korrekte Zulieferung der richtigen Artefakte.
+Die Auslieferung der Software ist direkt mit der Erstellung verwoben. Die Verfügbarkeit aller Abhängigkeiten auf dem Zielsystem und die richtige Konfiguration aller Softwarebestandteile ist notwendig für die Lauffähigkeit der Software.
+Ein vollständiges Konfigurationsmanagement beschreibt die Systemabhängigkeiten und sorgt folglich für die korrekte Zulieferung der beschriebenen Artefakte.
 
 Über den Erstellungsprozess von Software ist die Eindeutigkeit der verwendeten Artefakte und des Ergebnisses besonders wichtig. Eine eindeutige Beschreibung des Zielsystems ist genauso wichtig, wie die eindeutige Beschreibung der Abhängigkeiten der Software.
 
@@ -268,12 +268,8 @@ zu beweisen, scheitert bereits bei kleinen Softwareanwendungen, da die Programmk
 können nur Teile validiert und getestet werden, welche im Vorfeld bestimmt worden sind. Unklare, mehrdeutige oder 
 fehlende Anforderung machen einen Test unvollständig oder nehmen dem Test die Aussagekraft\footcite[S. 243 Kapitel 4.6][]{software-quality2008}.
 
-Da eine Software nicht in verhältnismäßiger Zeit getestet werden kann, muss eine Strategie gewählt werden. Es muss
-bestimmt werden, welche Teile der Softwareanwendung getestet werden. Die Vollständigkeit der Tests, auch Testabdeckung genannt, wird gemessen durch die Nachverfolgung, welche Teile der Softwareanwendung beim Test durchlaufen werden. Bei der Entscheidung, welche Strategie gewählt wird, fallen verschiedene Kriterien ins Gewicht. Zum einen muss betrachtet werden, welche Anforderungen mit welchem Testverfahren getestet werden können. Zum anderen, welche Granularität für jeden Test verwendet wird.
-Je nachdem, welche Strategie gewählt wird, hat dies Auswirkungen auf die Ausführungszeit der Tests. Diese Zeit wirkt sich 
-direkt auf die Produktivität des Entwicklungsteams aus. Ohne die Testresultate kann kaum eine Aussage über die 
-Funktionsfähigkeit der Softwareanwendung getroffen werden. Damit ist die Freigabe einer Softwareanwendung oder eines Inkrementes
-der Softwareanwendung direkt von der Durchlaufgeschwindigkeit der Tests abhängig.
+Da eine Software nicht in verhältnismäßiger Zeit getestet werden kann, muss eine Strategie gewählt werden. Es muss bestimmt werden, welche Teile der Softwareanwendung getestet werden. Die Vollständigkeit der Tests, auch Testabdeckung genannt, wird gemessen. Die meisten Werkzeuge messen die Testabdeckung, durch die Nachverfolgung der von den Test durchlaufenen Teile der Softwareanwendung. Bei der Entscheidung, welche Strategie gewählt wird, fallen verschiedene Kriterien ins Gewicht. Zum einen muss betrachtet werden, welche Anforderungen mit welchem Testverfahren getestet werden können. Zum anderen, welche Granularität für jeden Test verwendet wird.
+Je nachdem, welche Strategie gewählt wird, hat dies Auswirkungen auf die Ausführungszeit der Tests. Diese Zeit wirkt sich direkt auf die Produktivität des Entwicklungsteams aus. Ohne die Testresultate kann keine Aussage über die Funktionsfähigkeit der Softwareanwendung getroffen werden. Damit ist die Freigabe einer Softwareanwendung oder eines Inkrementes der Softwareanwendung direkt von der Durchlaufgeschwindigkeit der Tests abhängig. 
 
 Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung(Test-Suite). Jeder Fehler, der nicht von der Testsammlung erfasst wurde, muss spätestens nach der Beseitigung des Fehlers auch durch die Testsammlung validiert werden. Diese Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests\footcite[vgl.][]{software-quality2008}. Ein direkter Nachteil einer großen Test-Suite ist der Aufwand für ihre Pflege. Testabdeckung, Wartbarkeit der Tests und Aussagekraft der Tests sollte daher in der Teststrategie gegeneinander abgewogen werden.
 
@@ -281,25 +277,25 @@ Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung(Test-Suite
 \label{subsubsec:base-metrics}
 Software-Metriken können systematisch und quantitativ Aspekte des Software-Codes erfassen. Als Teilaspekt der Code-Analyse können Software-Metriken dazu verwendet werden, Kenngrößen des Software-Systems zu quantifizieren und damit Bewertung und Vergleich mit anderen Code-Ständen ermöglichen.\footcite[S.247][]{software-quality2008}
 
-Eine nützliche Software-Metrik sollte mehrere Gütekriterien erfüllen. Die Metrik sollte objektiv sein, was bei einer maschinellen Erhebung und Verarbeitung weitestgehend gegeben ist. Die Ergebnisse einer Metrik sollten wiederholbar und damit robust sein. Zudem sollten die Ergebnisse vergleichbar sein, um verschieden Software-Stände gegeneinander bewerten zu können. Eine Metrik sollte mit dem untersuchten Merkmal korrelieren. Die Korrelation ist immer dann besonders hoch, wenn der mit der Metrik erhobene Wert sich stark ändert, wenn auch das betrachtet Merkmal sich ändert. Abschließend sollte die Erhebung der Metrik in Relation zu der Güte ihrer Aussage stehen. Metriken mit einem hohen Erhebungsaufwand, aber ohne Relevanz für den Entscheidungsprozess, sind nicht wertvoll.\footcite[S.248 ff][]{software-quality2008}
+Eine nützliche Software-Metrik sollte mehrere Gütekriterien erfüllen. Die Metrik sollte objektiv sein, was bei einer maschinellen Erhebung und Verarbeitung weitestgehend gegeben ist. Die Ergebnisse einer Metrik sollten wiederholbar und damit robust sein. Zudem sollten die Ergebnisse vergleichbar sein, um verschieden Softwareversionen gegeneinander bewerten zu können. Eine Metrik sollte mit dem untersuchten Merkmal korrelieren. Die Korrelation ist immer dann besonders hoch, wenn der mit der Metrik erhobene Wert sich stark ändert, wenn auch das betrachtet Merkmal sich ändert. Abschließend sollte die Erhebung der Metrik in Relation zu der Güte ihrer Aussage stehen. Metriken mit einem hohen Erhebungsaufwand, aber ohne Relevanz für den Entscheidungsprozess, sind nicht wertvoll.\footcite[S.248 ff][]{software-quality2008}
 
 Da Tests und Software-Metriken gut anwendbare Möglichkeiten sind, um automatisiert Einschätzungen der Software vorzunehmen, werden diese Bereiche erneut im Kapitel~\ref{subsec:main-metrics} aufgegriffen und näher auf deren Softwareanwendung eingegangen.
 
 Im Folgenden werden kurz bekanntere Metriken vorgestellt.\footcite[S.249 ff][]{software-quality2008}
 
-\paragraph{LOC und NCSS} sind Kenngrößen für den Umfang des Sofware-Codes. \glqq Lines of Code\grqq{} (LOC) geben die Anzahl von Code-Zeilen an. \glqq Non Commented Source Statements\grqq{} (NCSS) ist die gleiche Kenngröße, allerdings abzüglich der Kommentarzeilen. Beide Metriken haben nur ein sehr schwache Aussage über den Umfang des Software-Codes.
+\paragraph{LOC und NCSS} sind Kenngrößen für den Umfang des Sofware-Codes. \glqq Lines of Code\grqq{} (LOC) geben die Anzahl von Code-Zeilen an. \glqq Non Commented Source Statements\grqq{} (NCSS) ist die gleiche Kenngröße, allerdings abzüglich der Kommentarzeilen. Beide Metriken haben nur ein sehr schwache Aussage über den Umfang des Software-Codes, da die Anzahl an Zeilen mit keiner Qualitätsgröße sinnvoll korreliert.
 
 \paragraph{Halstead-Metrik} bezeichnet eine Kenngröße für die Programmkomplexität. Die Ermittlung erfolgt durch die Analyse der lexikalischen Struktur vom Software-Code. Dabei wird der Code in Operatoren und Operanden eingeteilt und deren Auftrittscharakteristik analysiert. Kritik an dieser Metrik entsteht durch die offene Definition von Operanden und Operationen. Als Folge sind verschiedene Programmiersprachen nur bedingt Vergleichbar durch diese Metrik. Des Weiteren wird in Frage gestellt, ob alle Kerngrößen der Metrik überhaupt mit der lexikalischen Analyse ermittelt werden können.
 
 \paragraph{McCabe-Metrik} bezeichnet eine weitere Kennzahl für die Programmkomplexität. Zentrale Größe der Metrik ist die \glqq zyklomatische Komplexität\grqq{} als Maß der Anzahl von Kanten und Knoten eines Kontrollflussgraphen der Softwareanwendung. Somit korreliert die zyklomatische Komplexität mit den möglichen Anwendungsdurchläufen und -zuständen.
 
-\paragraph{Komponenten-Metriken} bezeichnen eine Sammlung von Umfangs- und Komplexitätsmetriken für objektorientierten Software-Code. Eine Aussage über den Umfang von Klassen wird unter anderem durch die Anzahl von Attributen und Methoden getätigt. Die Komplexität wird durch die Tiefe und Häufigkeit von objektorientierten Techniken gemessen. Diese Techniken sind unter anderem Vererbung, Überladung und Überschreiben von Methoden und Attributen. Daher lässt sich mit letzteren Metriken auch eine Aussage über die Code-Kopplung vornehmen.
+\paragraph{Komponenten-Metriken} bezeichnen eine Sammlung von Umfangs- und Komplexitätsmetriken für objektorientierten Software. Eine Aussage über den Umfang von Klassen wird unter anderem durch die Anzahl von Attributen und Methoden getätigt. Die Komplexität wird durch die Tiefe und Häufigkeit von objektorientierten Techniken gemessen. Diese Techniken sind unter anderem Vererbung, Überladung und Überschreiben von Methoden und Attributen. Komponenten-Komplexitätsmetriken liefern zudem eine Aussage zum Kopplungsgrad der Klassen untereinander.
 
 \paragraph{Struktur-Metriken}\label{par:structure-metrics}, insbesondere mit den Kopplungsmetriken, als wichtigste Untergruppe, beschreiben ebenfalls die Programmkomplexität. Besonders wichtig sind die Kenngrößen Fan-In und Fan-Out. Fan-Out ist die Anzahl an Verwendungen einer Klasse in anderen Klassen. Fan-In die Anzahl der verwendeten anderen Klassen in einer Klasse. 
 
 \subsubsection{Software-Verifikation}
 \label{subsubsec:base-verification}
-Verfahren der Software-Verifikation sind die Deduktion, Modellprüfung und der abstrakten Interpretation\footcite[S. 333 ff][]{software-quality2008}. Welches Verfahren angewendet wird, ist abhängig von einer Kombination aus Aussagekraft und dem Aufwand, der dafür aufgewendet werden kann. Ein aufwändiges, manuelles Verfahren skaliert vergleichsweise schlecht, wie in Abbildung~\ref{software-quali-verification} dargestellt\footcite[S. 337][]{software-quality2008}.
+Verfahren der Software-Verifikation sind die Deduktion, Modellprüfung und der abstrakten Interpretation\footcite[S. 333 ff][]{software-quality2008}. Welches Verfahren angewendet wird, ist abhängig von einer Kombination aus Aussagekraft und dem Aufwand, der dafür aufgewendet werden kann. Ein aufwändiges, manuelles Verfahren skaliert vergleichsweise schlecht, wie in Abbildung~\ref{software-quali-verification} dargestellt.
 
 \begin{figure}[htbp]
   \includegraphics[
@@ -307,11 +303,12 @@ Verfahren der Software-Verifikation sind die Deduktion, Modellprüfung und der a
     height=\textheight,
     keepaspectratio
   ]{resources/software-quali-verification.pdf}
-  \caption{Verhältnis von Ausdrucksstärker und Skalierbarkeit der Verifikationstechniken}
+  \caption{Verhältnis von Ausdrucksstärke und Skalierbarkeit der Verifikationstechniken\protect\footnotemark}
   \label{software-quali-verification}
 \end{figure}
+\footcitetext[vgl.][S. 337]{software-quality2008}
 
-\paragraph{Deduktion} ist stark aus der klassischen mathematischen Beweisführung entlehnt. Dabei werden Vor- und Nachbedingung durch Umformungen sukzessive ineinander überführt. Für vollständige Softwareanwendungen ist dieses Verfahren ist ein großteils manueller Vorgang. Allerdings gehört die automatisierte Deduktion, als elementarer Bestandteil zu vielen Entwicklungsumgebungen\footcite[vgl.][S. 2]{automated-deduction}. Unter anderem sind dadurch Kontrollflussanalysen möglich. Unerreichbare oder nicht vollständige Ausdrücke, können so aufgezeigt werden.
+\paragraph{Deduktion} ist stark aus der klassischen mathematischen Beweisführung entlehnt. Dabei werden Vor- und Nachbedingung durch Umformungen sukzessive ineinander überführt. Für vollständige Softwareanwendungen ist dieses Verfahren, ein großteils manueller Vorgang. Für Teile der Software wird die Deduktion auch automatisiert verwendet. Einfache Kontrollflussanalysen erlauben automatisierte Beurteilungen von Code-Abschnitten. Nicht erreichbare Code-Abschnitte, unvollständige Ausdrücke oder Typ-Fehler in Methodenaufrufen, können gut erkannte werden. In vielen Entwicklungsumgebungen ist diese Form der Deduktion bereits integriert\footcite[vgl.][S. 2]{automated-deduction}. Unter anderem sind dadurch Kontrollflussanalysen möglich. Unerreichbare oder nicht vollständige Ausdrücke, können so aufgezeigt werden.
 
 \paragraph{Modellprüfung} überführt ein Programm in eine Kripke-Struktur, ähnlich einem endlichen Automaten und beweist oder widerlegt diese Struktur mithilfe von Traversierungsalgorithmen. Die algorithmische Komplexität dieses Verfahrens sorgt für eine weitestgehend ausschließliche Softwareanwendung für sicherheitskritische Software-Systeme.
 
@@ -334,43 +331,29 @@ Continuous-Integration wurde erstmals von Kent Beck als Teil einer Reihe von Pra
 Als erstes wird einen Basis zur Integration der gemeinsamen Arbeit genutzt. Ein Versionsverwaltungssystem bildet diese Grundlage. Dadurch werden nachvollziehbar, zeitlich sortiert und wiederherstellbar alle Änderungen gesammelt. Alle Änderungen sollen, auf einem gemeinsamen Stand, regelmäßig zusammengeführt werden. Die Arbeitsweise, alle Änderungen auf einem Zweig zu sammeln und kontinuierlich zu integrieren, wird auch Trunk-Based-
 Development genannt. Abgeleitet von der Bezeichnung des häufig genutzt Versionsverwaltungssystems Subversion. Der Hauptzweig in Subversion wird im Allgemeinen als \glqq Trunk\grqq{} bezeichnet. Während Continuous-Integration und Trunk-Based-Development als getrennte Methodiken geführt werden\footcite[vgl.][]{trunkbaseddevelopment}, treten beide Begriffe häufig in Kombination oder synonym auf\footcite[vgl.][]{fowler-feature-branch}.
 
-Neben einem Integrationssystem ist auch eine einheitliche Form der Erstellung der Software notwendig. Ein einheitliches Verständnis der Codebasis, verlangt auch ein einheitliches Verständnis der Erstellung Software. Die Software sollte daher, wie in Kapitel~\ref{sec:automation-software}~\nameref{sec:automation-software} beschrieben, erstellt werden.
+Neben einem Integrationssystem ist auch eine einheitliche Form der Erstellung der Software notwendig. Ein einheitliches Verständnis der Codebasis, verlangt auch ein einheitliches Verständnis der Erstellung der Software. Die Software sollte daher, wie in Kapitel~\ref{sec:automation-software}~\nameref{sec:automation-software} beschrieben, erstellt werden.
 
 
 \subsection{Vorteile von Continuous-Integration}
 
-Wird der Codestand aller Entwickler häufig integriert und nach jeder Änderung durch einen automatisierten Build verifiziert, erhalten alle Beteiligten regelmäßig Resonanz zum gemeinsamen Codestand.
+Wird der Codestand aller Entwickler häufig integriert und nach jeder Änderung durch einen automatisierten Build verifiziert, erhalten alle Beteiligten regelmäßig Rückmeldung zum gemeinsamen Codestand.
 Die häufige Integration von Quellcode fördert zudem die Verwendung von modernen Entwicklungspraktiken. Modularisierung, Konfigurationsmanagement, automatische Erstellung und Wiederverwendbarkeit von Artefakten, sowie das Achten auf Testbarkeit der Softwareanwendung sind wichtig. Die vollständige Erfüllung dieser Kriterien fordert und fördert eine gute Entwicklungskultur.
 
 \subsection{Nachteile von Continuous-Integration}
 
-Während die Vorteile von Continuous-Integration deutlich sind, gibt es auch Kosten die mit dieser Technik einhergehen. 
-Die komplette Automatisierung erfordert einen erheblichen Aufwand in der initialen Einrichtung und einen häufig 
-unterschätzten Aufwand in der Aufrechterhaltung. Gerade weniger wichtige Projekten oder Projekte unter besonders hohem 
-Druck, neigen dazu wichtige Bestandteile von Continuous-Integration zu vernachlässigen. Mögliche Symptome sind das Sinken 
-der Testabdeckung. Oder Teile des Konfigurationsmanagements werden umgangen und essentielle Abhängigkeiten von Hand 
-gepflegt. Dieses Verhalten widerspricht offensichtlich der langfristigen Wertschöpfung und bricht mit den Prinzipien von 
-Continuous-Integration. Menschliche Schwächen sind auch in Continuous-Integration noch ein Problem. Mit regelmäßigem 
-Training, Erfahrung und Selbstdisziplin kann dem entgegen gewirkt werden. In Kapitel~\ref{sec:human-fail} wird das Thema 
-Entwicklerdisziplin erneut aufgegriffen und auf die Gratwanderung von gesunder Entwicklungskultur und destruktiver 
-\glqq blaming culture\grqq{} eingegangen.
+Während die Vorteile von Continuous-Integration deutlich sind, gibt es auch Kosten, die mit dieser Technik einhergehen. Die komplette Automatisierung erfordert einen erheblichen Aufwand in der initialen Einrichtung und einen häufig unterschätzten Aufwand in der Aufrechterhaltung. 
+Gerade weniger wichtige Projekten oder Projekte unter besonders hohem zeitlichen Druck, neigen dazu wichtige Bestandteile von Continuous-Integration zu vernachlässigen. Mögliche Symptome sind das Sinken der Testabdeckung. Oder Teile des Konfigurationsmanagements werden umgangen und essentielle Abhängigkeiten von Hand gepflegt. Dieses Verhalten widerspricht offensichtlich der langfristigen Wertschöpfung und bricht mit den Prinzipien von Continuous-Integration. Menschliche Schwächen sind auch in Continuous-Integration noch ein Problem. Mit regelmäßigem 
+Training, Erfahrung und Selbstdisziplin kann dem entgegen gewirkt werden. In Kapitel~\ref{sec:human-fail} wird das Thema Entwicklerdisziplin erneut aufgegriffen.
 
 \section{Virtualisierung}
 
-Im Kapitel ~\ref{sec:automation-software}~\nameref{sec:automation-software} wurden bereits Stärken der Virtualisierung 
-genannt. Gerade bei der vollautomatisierten Bereitstellung von Systemen, können Stärken der Virtualisierung genutzt werden.
+Im Kapitel ~\ref{sec:automation-software}~\nameref{sec:automation-software} wurden bereits Stärken der Virtualisierung genannt. Gerade bei der vollautomatisierten Bereitstellung von Systemen, können Stärken der Virtualisierung genutzt werden.
 
-Virtualisierung bietet eine Abstraktionsschicht für verschiedene Komponenten. Dies ermöglicht Abhängigkeiten zu Hardware, 
-Software und deren Konfiguration transparent zu gestalten. Der unter Programmierern bekannte Spruch, \glqq It works on my
-machine\grqq{}, verdeutlicht das Problem. Häufig benötigen die Komponenten einer Softwareanwendung weitere Abhängigkeiten. Abhängigkeiten zum Betriebssystem, zu Software von Drittanbietern oder zu Hardwarekomponenten sind Bestandteil
-vieler Softwareanwendungen. Im Verlauf der Softwareentwicklung ist es daher wichtig, diese Abhängigkeiten zu
-beschreiben. Diese Beschreibung ist eine wertvolle Basis, um ein System inklusive aller Abhängigkeiten zur Verfügung zu stellen.
+Virtualisierung bietet eine Abstraktionsschicht für verschiedene Komponenten. Dies ermöglicht Abhängigkeiten zu Hardware, Software und deren Konfiguration transparent zu gestalten. Der unter Programmierern bekannte Spruch, \glqq It works on my machine\grqq{}, verdeutlicht das Problem. Häufig benötigen die Komponenten einer Softwareanwendung weitere Abhängigkeiten. Abhängigkeiten zum Betriebssystem, zu Software von Drittanbietern oder zu Hardwarekomponenten sind Bestandteil
+vieler Softwareanwendungen. Im Verlauf der Softwareentwicklung ist es daher wichtig, diese Abhängigkeiten zu beschreiben. Diese Beschreibung ist eine wertvolle Basis, um ein System inklusive aller Abhängigkeiten zur Verfügung zu stellen.
 
-Die manuelle Bereitstellung eines Systems ist aufwändig und verzögert damit zusammenhängende Entwicklungsabläufe. Eine 
-automatisierte Erstellung und Bereitstellung der benötigten Systeme ist daher empfehlenswert. Um unerwartetes Verhalten 
-der auf den Systemen ausgeführten Softwareanwendungen zu vermeiden, sollten die Systeme vollständig beschrieben sein. Die
-automatische Generierung der virtuellen Umgebung und die Ablage in gepackter Form in einem Archiv bietet weitere 
-Vorteile. Der Zugriff auf die Virtualisierung und damit die Bereitstellung der Systeme wird dadurch besonders transparent 
+Die manuelle Bereitstellung eines Systems ist aufwändig und verzögert damit zusammenhängende Entwicklungsabläufe. Eine automatisierte Erstellung und Bereitstellung der benötigten Systeme ist daher empfehlenswert. Um unerwartetes Verhalten 
+der auf den Systemen ausgeführten Softwareanwendungen zu vermeiden, sollten die Systeme vollständig beschrieben sein. Die automatische Generierung der virtuellen Umgebung und die Ablage in gepackter Form in einem Archiv bietet weitere Vorteile. Der Zugriff auf die Virtualisierung und damit die Bereitstellung der Systeme wird dadurch besonders transparent 
 und wenig aufwändig.
 
 Durch die Virtualisierung kann ein System reproduzierbar und schnell in einem vorher definierten Zustand bereit gestellt werden. Dies verkürzt Arbeitsabläufe für den Test einer Softwareanwendung. Zum einen können schnell Änderungen an der Softwareanwendung getestet werden, zum anderen kann die Anwendung in zahlreichen Konfigurations- und Abhängigkeitskombinationen getestet werden.
@@ -396,11 +379,8 @@ im kommerziellen Bereich\footcite[vgl.][]{g2crowd2018}, wird nun anhand von Git 
 grundlegend verwendet wird. Außerdem kommen einige git-spezifische Merkmale hinzu, welche bei der visuellen Aufbereitung 
 wichtig werden.
 
-Git wurde vom Linux-Schöpfer Linus Torwalds im April 2005 initiiert, aus der Not heraus sich vom vorher verwendeten 
-\glqq BitKeeper\grqq{}-System zu lösen, da diese nicht mehr mit der eigenen Open-Source-Lizenz in Einklang zubringen war. Git
-wurde von vornherein als verteiltes, vor Verfälschungen sicheres und effizientes Versionsverwaltungssystem entworfen. 
-Diese Eigenschaften und die Software-Plattform \glqq GitHub\grqq{}, machten Git in den letzten 13 Jahren zum de-facto Standard für
-Versionsverwaltung\footcite[vgl.][]{heise-torvald-git2015}.
+Git wurde vom Linux-Schöpfer Linus Torvalds im April 2005 initiiert, aus der Not heraus sich vom vorher verwendeten \glqq BitKeeper\grqq{}-System zu lösen, da diese nicht mehr mit der eigenen Open-Source-Lizenz in Einklang zubringen war. Git wurde von vornherein als verteiltes, vor Verfälschungen sicheres und effizientes Versionsverwaltungssystem entworfen. 
+Diese Eigenschaften und die Software-Plattform \glqq GitHub\grqq{}, machten Git in den letzten 13 Jahren zum de-facto Standard für Versionsverwaltung\footcite[vgl.][]{heise-torvald-git2015}.
 
 Als dezentrales Versionsverwaltungssystem ist einer der großen Vorteile von Git, dass die vollständige Historie der Dateien lokal verfügbar ist. Während zentrale Versionsverwaltungssysteme immer einen dedizierten Server benötigen, können dezentrale Varianten über Peer-To-Peer-Schnittstellen kommunizieren. Diese Eigenschaft sorgt neben einer hohen Ausfallsicherheit und Datenredundanz, auch für eine hohe Flexibilität und die Möglichkeit, zahlreiche Arbeitsweisen von Softwareentwicklern zu unterstützen.
 
@@ -448,11 +428,11 @@ erhalten oder dieses aktualisieren.
 \paragraph{Trees} sind Referenzen von Blobs, und stellen damit im einfachsten Fall eine Ansicht eines Verzeichnisses und 
 seiner Dateien dar.
 
-\paragraph{Hashes} sind im allgemeinen Abbildung einer großen Abbildung von Zeichen auf eine deutlich geringere Menge. 
-Die Abbildung führt immer zur gleichen Ergebnismenge. In Git werden Hashes als allgemeine Referenzierungsmöglichkeit 
-verwendet. Alle Relationen werden darüber beschrieben und sind daher über alle Repositories gleich. Git verwendet für die 
-Bildung der Hashes den SHA1-Alogrithmus. Die Forderung statt des SHA1- den SHA256-Algorithmus zu verwenden, wurde 
-abgelehnt. Linus Torvalds schätzt die Sicherheitsbedenken als nicht zutreffend ein\footcite[vgl.][]{git-sha-torvalds}. Diese 
+\paragraph{Hashes} sind die Ergebnisse einer Hash-Funktion. Hash-Funktionen bilden eine eindeutige Abbildung einer Eingangsmenge auf eine Ausgabemenge. Dadurch ist es möglich auch komplexere Eingabewerte auf einen kürzen Eingabewert abzubilden. Unter anderem werden Hash-Funktion für Hash-Tabellen als Index verwendet. 
+
+In Git werden Hashes als allgemeine Referenzierungsmöglichkeit verwendet. Alle Relationen werden darüber beschrieben und sind daher über alle Repositories gleich. Git verwendet für die Bildung der Hashes den SHA1-Alogrithmus. 
+
+Die Forderung statt des SHA1- den SHA256-Algorithmus zu verwenden, wurde abgelehnt. Linus Torvalds schätzt die Sicherheitsbedenken als nicht zutreffend ein\footcite[vgl.][]{git-sha-torvalds}. Diese 
 Aussage wurde auch von GitHub bestätigt\footcite[vgl.][]{git-sha-github}.
 
 \subsection{Interne Arbeitsweise}
@@ -467,7 +447,7 @@ Seit wenigen Jahre wird \glqq Git Large File Storage\grqq{} (Git LFS)\footcite{g
 Um die interne Arbeitsweise von Git zu erläutern, müssen die Zusammenhänge von Commits, Trees, Blobs und Hashes 
 verdeutlicht werden.
 
-Die Git-Objekte werden von Git immer anhand ihres Hashes abgelegt. Dabei wird ein 40-stelliger SHA1-Hash verwendet. Die 
+Die Git-Artefakte werden von Git immer anhand ihres Hashes abgelegt. Dabei wird ein 40-stelliger SHA1-Hash verwendet. Die 
 notwendigen Stellen zu Referenzierung sind aber häufig deutlich geringer, so können im allgemeinen Gebrauch deutlich 
 verkürzte Zeichenketten verwendet werden. Im allgemeinen etwa 5 Stellen oder bei großen Projekten, wie dem Linux-Kernel, 
 12 Stellen.
@@ -529,9 +509,11 @@ haben.
     height=\textheight,
     keepaspectratio
   ]{resources/git-flow.pdf}
-  \caption{Gitflow-Workflow}
+  \caption{Gitflow-Workflow\protect\footnotemark}
   \label{git-flow}
 \end{figure}
+\footcitetext[vgl.][]{nvie-git-branch-model}
+
 Der konkrete Arbeitsfluss wird in der Abbildung~\ref{git-flow} zusammengefasst. Es wird deutlich, dass nur Commits von 
 Release- und Hotfix-Branches auf den Master-Branch gelangen können. Desweiteren ist herauszustellen, dass nach der 
 Erstellung des Release-Branches keine Änderungen mehr vom Development-Branch zugeführt werden. Diese Trennung der 
