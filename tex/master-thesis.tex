@@ -17,7 +17,8 @@
 \usepackage[
 backend=biber,
 style=numeric,
-citestyle=authortitle
+citestyle=authortitle,
+sorting=ynt
 ]{biblatex}
 \usepackage{footnote}
 \addbibresource{literature.bib}
@@ -58,11 +59,12 @@ citestyle=authortitle
 }
 
 \begin{document}
+\frontmatter
 
 \maketitle
 
 \tableofcontents
-
+\mainmatter
 \include{content/1-Abstract}
 
 \include{content/2-Problemanalyse}
@@ -71,7 +73,8 @@ citestyle=authortitle
 
 \include{content/4-Zusammenfassung}
 
-\chapter{Literaturverzeichnis}
+\appendix
+\pagenumbering{roman}
 
 \printbibliography
 
