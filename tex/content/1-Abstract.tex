@@ -5,24 +5,24 @@ eine anerkannte Basis für hochqualitative Softwareentwicklung. Knapp 20 Jahre n
 verbreitet und wird vollautomatisiert für Continuous-Deployment genutzt.
 
 Kern von Continuous-Integration ist das kontinuierliche Zusammenführen aller Änderungen, die von Softwareentwicklern eingebracht werden. Continuous-Integration fordert und fördert die Integration dieser Änderungen.
-Allerdings fordert gerade diese andauernde und nicht zu umgehende Integration, ein hohes Maß an Kommunikation und erfahrenen Softwareentwicklern.
+Allerdings fordert gerade diese andauernde und nicht zu umgehende Integration, ein hohes Maß an Kommunikation und erfahrene Softwareentwickler.
 
 Die Anforderung \glqq wann immer der automatische Software-Build fehlschlägt, muss das gesamte Team mit allem stoppen und das Problem sofort beheben\grqq{}\footcite[vgl.][]{humble2010} ist einer der Kernpunkte von Continuous-Integration. Wird das Problem nicht behoben, ist das ganze Team blockiert. Im ungünstigeren Fall werden weiterhin Änderungen zu einem bereits fehlschlagendem Problem hinzugefügt und die Behebung wird zunehmend komplizierter.
 
-Mit dem Erstarken von dezentralen Versionsverwaltungssystemen gab es eine Alternative zur stetigen Integration. Für jede Anforderung konnte nun mit geringem Aufwand ein eigener Arbeitszweig erstellt werden. Dieser Arbeitszweig wird einzeln entwickelt, getestet und nur im Falle eines positiven Testergebnisses, wieder in den Hauptzweig integriert. Üblicherweise wird für jedes Feature ein solcher Branch erstellt.
+Mit dem Erstarken von dezentralen Versionsverwaltungssystemen gibt es eine Alternative zur stetigen Integration. Für jede Anforderung konnte nun mit geringem Aufwand ein eigener Arbeitszweig erstellt werden. Dieser Arbeitszweig wird einzeln entwickelt, getestet und nur im Falle eines positiven Testergebnisses, wieder in den Hauptzweig integriert. Üblicherweise wird für jedes Feature ein solcher Branch erstellt.
 
-Während viele Softwareentwickler dies als kompetente Lösungsstrategie annahmen\footcite{ci-is-dead}, verweigerte sich Martin Fowler auch weiterhin dem Feature-Branch-Modell\footcite{fowler-feature-branch}.
+Während viele Softwareentwickler dies als kompetente Lösungsstrategie erachten\footcite{ci-is-dead}, sprach sich Martin Fowler im Jahr 2009 intensiv gegen das Feature-Branch-Modell aus\footcite{fowler-feature-branch}.
 
-Während viele moderne kommerzielle Lösungen dieses Verfahren adaptiert haben und zahlreiche Werkzeuge zur Unterstützung anbieten, gibt es immer noch deutliche Schwierigkeiten. Häufig entwickeln sich \glqq kurzlebige und kleine\grqq{}
-Entwicklungszweige zu \glqq großen und langlebigen\grqq{} Veränderungen. Diese betreffen schnell verschiedene Komponenten der Anwendung und werden immer schwieriger zu integrieren.
+Während viele moderne und professionelle Lösungen Verfahren für Feature-Branches adaptiert haben und zahlreiche Werkzeuge zur Unterstützung anbieten, gibt es immer noch deutliche Schwierigkeiten. Häufig entwickeln sich \glqq kurzlebige und kleine\grqq{}
+Entwicklungszweige zu \glqq großen und langlebigen\grqq{} Veränderungen. Diese betreffen schnell verschiedene Komponenten der Softwareanwendung und werden immer schwieriger zu integrieren.
 
 \section{Zielstellung}
 
 Ziel der Arbeit ist es den Konflikt von \glqq Feature-Branches\grqq{} und \glqq Continuous-Integration\grqq{} aufzuarbeiten, sowie visuelle und methodische Lösungsansätze anzubieten. 
 
-Dazu werden zunächst die Grundlagen und die beiden Begrifflichkeiten selbst erläutert. Es wird auf die automatische Erstellung von lauffähiger Software aus Softwarequellen eingegangen. Die Validierung durch Tests und die Einschätzung der Software durch Software-Metriken wird betrachtet. Schließlich werden Methodiken und Visualisierungen erläutert, welche die beiden vermeintlich konträren Entwicklungsmethoden näher zusammen bringen.
+Dazu werden zunächst die Grundlagen und die beiden Begrifflichkeiten selbst erläutert. Es wird auf die automatische Erstellung von lauffähiger Software aus Softwarequellen eingegangen. Die Validierung durch Tests und die Einschätzung der Software durch Software-Metriken wird betrachtet. Schließlich werden Methodiken und Visualisierungen erläutert, welche die beiden vermeintlich konträren Entwicklungsmethoden näher zusammenbringt.
 
-Weiter werden die Ergebnisse eine Umfrage zu "Nutzungsverhalten von Versionsverwaltungssystemen und Tests" erläutert. Die Ergebnisse sollen Schlüsse zur Notwendigkeit und zu Problemen der unterstützenden Bereiche der Versionsverwaltung und des Tests liefern. Schließlich wird in einem Prototyp versucht die aufgearbeitet Methoden exemplarisch anzuwenden und zu verdeutlichen.
+Weiter werden die Ergebnisse eine Umfrage zu \glqq Nutzungsverhalten von Versionsverwaltungssystemen und Tests\grqq{} erläutert. Die Ergebnisse sollen das Nutzungsverhalten von Versionsverwaltungssystemen und Tests aufzeigen. Als Basis für sowohl Continuous-Integration, als Feature-Branches, können die Ergebnisse der Umfrage eine weitere Perspektive zur Problemstellung beitragen. Schließlich werden anhand eines Prototyp Ansätze für die entwickelten und gesammelten Methoden aufzeigt.
 
 Die Masterarbeit soll sich zudem mit folgenden Thesen auseinander setzen:
 \begin{itemize}
@@ -35,4 +35,6 @@ Dabei sollen Indizien oder sogar Beweise jeweils für deren Bestätigung bzw. Fa
 \section{Abgrenzung}
 
 Continuous-Integration und Feature-Branches haben einen starken Einfluss auf den Software-Entwicklungsprozess in dem sie angewendet werden. Daher existieren unter anderem Schnittmengen zu den Themenbereichen Anforderungsmanagement, Psychologie und Continuous-Deployment. 
-Da der Fokus der Arbeit auf dem Konflikt der beiden Methodiken liegt, werden die benannten Bereiche nur angeschnitten. Das Anforderungsmanagement und die psychologische Komponente sind beide notwendig für die Durchführung, von Continuous-Integration und Feature-Branches. Allerdings üben weder das Anforderungsmanagement, noch psychologische Einflussfaktoren eine deutlichen Einfluss auf den Konflikt zwischen Continuous-Integration und Feature-Branches aus. Continuous-Deployment würde ebenso den Rahmen der Betrachtung überschreiten. Continuous-Deployment-Prinzipien greifen primär nachdem die Änderungen von Entwicklern integriert wurden. Als Teilaspekt von Continuous-Deployment wird Continuous-Delivery stärker beleuchtet.
+Da der Fokus der Arbeit auf dem Konflikt der beiden Methodiken liegt, werden die benannten Bereiche nur angeschnitten. Das Anforderungsmanagement und die psychologische Komponente sind beide notwendig, für die Durchführung von Continuous-Integration und Feature-Branches. Allerdings üben weder das Anforderungsmanagement, noch psychologische Einflussfaktoren eine deutlichen Einfluss auf den Konflikt zwischen Continuous-Integration und Feature-Branches aus. 
+
+Continuous-Deployment würde ebenso den Rahmen der Betrachtung überschreiten. Continuous-Deployment-Prinzipien greifen primär, nachdem Änderungen von Entwicklern integriert wurden. Als Teilaspekt von Continuous-Deployment, wird Continuous-Delivery stärker beleuchtet.
