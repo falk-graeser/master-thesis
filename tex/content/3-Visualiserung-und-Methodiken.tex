@@ -179,13 +179,13 @@ Beide Projekte haben eine ähnliche Fülle an Abhängigkeiten und werden in eine
     height=\textheight,
     keepaspectratio
   ]{resources/dependency-graph.pdf}
-  \caption{Gerichteter Graph für Abhängigkeiten}
+  \caption{Ausschnitt des Gerichteter Graph für Abhängigkeiten der Individualsoftware}
   \label{dependency-graph}
 \end{figure}
 
-In Abbildung~\ref{dependency-graph} wurden die Abhängigkeiten der beiden Projekte in gerichtet Graphen transformiert. Dafür wurde eine PHP-Bibliothek \glqq clue/graph-composer\grqq{} verwendet.
+In Abbildung~\ref{dependency-graph} wird ein Ausschnitt der Abhängigkeiten der Individualsoftware dargestellt. Die vollständige Abbildung wäre zu umfangreich, um sie sinnvoll darzustellen. Zur Erstellung des Graphen wurde eine PHP-Bibliothek \glqq clue/graph-composer\grqq{} verwendet.
 
-Auffällig bei beiden Projekten sind zentrale Knoten, also Abhängigkeiten die von vielen anderen Abhängigkeiten genutzt werden oder diese nutzen. Des weiteren könnten Gruppen von Abhängigkeiten ausgemacht werden. Solche Gruppen können ein eigenes, größtenteils abgrenzbares Abhängigkeitsnetz spannen. Damit dies möglich ist, müssten die Abhängigkeiten entsprechend gewichtet angeordnet sein. Im Falle des Graph-Composer-Werkzeuges erscheint dies nur mangelhaft zu gelingen. 
+Die Betrachtung des vollständigen Graphen für beide Projekte, lässt Ähnlichkeiten erkennen. Auffällig bei beiden Projekten sind zentrale Knoten, also Abhängigkeiten die von vielen anderen Abhängigkeiten genutzt werden oder diese nutzen. Des weiteren könnten Gruppen von Abhängigkeiten ausgemacht werden. Solche Gruppen können ein eigenes, größtenteils abgrenzbares Abhängigkeitsnetz spannen. Damit dies möglich ist, müssten die Abhängigkeiten entsprechend gewichtet angeordnet sein. Im Falle des Graph-Composer-Werkzeuges erscheint dies nur mangelhaft zu gelingen. 
 
 Abschließend sind in der Individualsoftware noch eine Reihe an unerwarteten Blattknoten erkennbar. Diese deuten auf schlecht gepflegte Abhängigkeiten hin. Unzureichende gepflegte Abhängigkeiten entstehen in der Regel, wenn die betroffenen Module nur im Gesamtkontext geprüft werden. Dadurch sind für diese Module, implizit Abhängigkeiten verfügbar, die sonst nicht nicht bereitgestellt werden könnten.
 
@@ -328,6 +328,122 @@ In jedem Versionsverwaltungssystem ist hingegen die erhöhte Commit-Frequenz sp�
 Trotz der Schwierigkeiten nutzen große Unternehmen wie Google, Facebook und Twitter sehr große Monorepos. Für alle drei Unternehmen ist die Verwendung von Monorepos allerdings mit großem Aufwand verbunden. Google entwickelte eine eigene Versionsverwaltung, Facebook investiert in Mercurial und Twitter verwendet eine speziell angepasste Git-Variante\footcite{monorepos-wild}.
 Bei entsprechender Größe des Projektes, ist allerdings auch für kleinere Unternehmen die Verwendung von Monorepos nützlich\footcite{hackernoon-positive-monorepo}.
 
+\section{Umfrage zum Nutzungsverhalten von Versionsverwaltungssystemen und Tests}
+
+Um die Verwendung von Versionsverwaltung und die Anwendung von Tests in Kontext setzen zu können, wurde ein Umfrage durchgeführt.
+Ziel der Umfrage ist es mögliche Schwächen und Mängel im Umgang mit Versionsverwaltung und Tests aufzudecken. Weiter wird versucht mögliche Korrelationen zwischen spezifischen Versionsverwaltungssystemen und spezifischen Tests zu erkennen.
+
+Die Umfrage wurde ausschließlich als Online-Umfrage durchgeführt. Als Umfrage Werkzeug wurde die selbst gehostete Open-Source-Anwendung \glqq LimeSurvey\grqq{}\footcite[][]{limesurvey} verwendet. Über einen Zeitraum von einem Monat konnten Teilnehmer den Fragebogen ausfüllen. Die Umfrage wurde über soziale Medien verteilt und einem Verteiler innerhalb einer Firma.
+
+Die Umfrage enthielt 33 Fragen in 3 Fragegruppen. Der erste Teil erhob Daten zur Einordnung des Teilnehmers. Der zweite Teile beschäftigte sich mit der Nutzung von Versionsverwaltung und der abschließende dritte Teil mit der Verwendung von Tests.
+
+Über den Umfragezeitraum sind 185 Antworten angefangen worden. Davon enthielten 46 Antworten verwertbare Ergebnisse, aber nur 29 Antworten wurden vollständig abgeschlossen. Die weit auseinander gehenden Zahlen lassen auf mögliche technische Schwierigkeiten schließen.
+
+Der Großteil der Fragen bedient sich einer fünf-geteilten Likert-Skala. Zudem ist möglich Antworten zu ignorieren, daher ist der Auswertung eine sechste spalte sichtbare. Das parametrische Verfahren  der Likert-Skala bietet deutliche Vorteile bezüglich der Zusammenfassung und Auswertung der Antworten. Die Likert-Skala setzt voraus, dass die Antwortmöglichkeiten einen gleichen Abstand zueinander aufweisen. Weiter wird eine Normalverteilung unter den Teilnehmern vorausgesetzt. 
+
+Die Umfrage wurde in einer spezifischen Firma verbreitet und die Teilnehmerzahl ist deutlich unterhalb einer repräsentativen Menge geblieben. Beide Faktoren lassen die Vermutung zu, dass keine Normalverteilung unter den Teilnehmern gegeben sein wird. Die Ergebnisse sind daher nur sehr begrenzt anwendbar.
+
+Auch der konstante Abstand der Antworten ist nicht sichergestellt. Die Abfolge der Antworten wird unter Umständen nicht von jedem Teilnehmer als gleichwertige Abstufung wahrgenommen.
+
+\subsection{Teilnehmerzusammensetzung}
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+    {resources/survey-participants.pdf}
+  \caption{Auswertung zur Teilnehmerzusammensetzung (Tätigkeit, Erfahrung, Firmengröße}
+\end{figure}
+Die auswertbaren Umfrageteilnehmer gaben größtenteils an Softwareentwickler oder Projektmanager zu sein. Weiter sind die Gruppen mit 1-5 Jahren und 5-10 Jahren Berufserfahrung am stärksten vertreten. Abschließend ist noch die Zusammensetzung der Firmengrößen hervorzuheben. Der größte Teil der Teilnehmer gab an in kleinen und mittelständischen Unternehmen zu arbeiten.
+
+Die Gruppe der Softwareentwickler wird teilweise explizit hervorgehoben, als besonders relevante Gruppierung für das Thema.
+
+\subsection{Nutzung von Versionsverwaltung}
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+    {resources/survey-vcs-usage.pdf}
+  \caption{Auswertung der Versionsverwaltung (Gesamt, SVN, Git)}
+\end{figure}
+
+\paragraph{Generelle Verwendung}
+
+Die Verwendung einer Versionsverwaltung wurde von 88\% angegeben. Im Gegensatz zu den in  Kap.~\ref{distributed-vcs-git} aufgeführten Statistik, wird hautsächlich Git verwendet. Bezogen auf die Umfrageteilnehmer, welche eine Versionsverwaltung nutzen, gaben 94\% der Umfrageteilnehmer an Git zu verwenden. 58\% Gaben an Subversion zu verwenden, allerdings selten (26\%). 
+
+Bezogen auf die Gruppe der Softwareentwickler, wurde von jedem angegeben eine Versionsverwaltung zu nutzen, allerdings ignorierten fast 20\% die Frage. 91\% der Softwareentwickler gaben an Git zu verwenden. Weiter gaben 52\% der Softwareentwickler an Subversion zu verwenden.
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+    {resources/survey-vcs-content.pdf}
+  \caption{Auswertung der Abgelegten Inhalte (Quellcode, Binärdateien, Packetverwaltungsdateien)}
+\end{figure}
+
+\paragraph{Inhalte unter Versionsverwaltung}
+
+Dateien und Inhalte die in der Versionsverwaltung abgelegt werden, wurden von den Teilnehmern großteils als nicht-binär angegeben. Quelltexte werden von (97\%) der Teilnehmer abgelegt. Build-Skripte(85\%) und Migrations-Skripte(91\%) werden ebenfalls vom Großteil versioniert. Die Mehrheit der Teilnehmer verwendet die Versionsverwaltung nur für kleine Mediendateien (79\%) und kein größeren (62\%).
+
+Während für die meisten Dateien und Inhalte sich deutliche Muster ergaben, war die Ablage von Packetverwaltungs-Lockfiles oder anderen Build-Identifikations-Dateien nicht eindeutig. Betrachtet auf die Menge der Entwickler, nutzen 22\% keine Versionsverwaltung für diesen Dateityp.
+
+\paragraph{Verwendung von Branches und Tags}
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+    {resources/survey-vcs-branches.pdf}
+  \caption{Auswertung der Verwendung von Branches, Tags und Feature-Branches}
+\end{figure}
+
+Branches(97\%) und Tags(91\%) werden grundsätzlich verwendet. Die Verwendung von Feature-Branches ist durchweg zu verzeichnen, aber korreliert weniger mit der grundsätzlichen Verwendung von Branches. Die hohe Nutzung von Branches korreliert mit der generellen Verwendung von Git.
+
+\paragraph{Merge-Konflikte}
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+    {resources/survey-vcs-merge.pdf}
+  \caption{Auswertung der Auftrittswahrscheinlichkeit von Merge-Konflikten}
+\end{figure}
+
+Die Auswertung der Angaben zu Merge-Konflikten zeigt einen Trend zu einem regelmäßigem Auftreten von Merge-Konflikten. Mit einer Wahrscheinlichkeit von 53\% treten sowohl bei Pull-, als auch bei Push- und Merge-Operationen Merge-Konflikte auf. Dieser Wert ist für den Merge von Branches am höchsten mit 82\%. 
+
+\subsection{Verwendung von Tests}
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+    {resources/survey-test-usage.pdf}
+  \caption{Auswertung der Nutzung von Unit-, Funktions- und Oberfächentests}
+\end{figure}
+
+Test werden vom Großteil der Teilnehmer verwendet. Insbesondere Unit-(72\%), Funktions- und Integrationstests(68\%) wurden mit einer hohen Nutzung angegeben. Sichtbar weniger wurden Oberflächentests mit 48\% verwendet.
+
+\paragraph{Weiterführende Tests}
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+    {resources/survey-test-usage-special.pdf}
+  \caption{Auswertung der Nutzung von System-, Use-Case- und Behavior-Driven-Tests}
+\end{figure}
+
+Werden die Angaben zu weiterführenden Testvarianten betrachtet, fallen die deutlich niedrigeren Nutzungsangaben auf. Durchweg wurden Systemtests(24\%), Use-Case-Tests(36\%) und Behavior-Driven-Tests(12\%) deutlich geringer gewählt. Insbesondere bei der Zusammensetzung der Zustimmung wird dies deutlich. Während bei Unit- und Funktionalen-Tests mit 54\% \glqq immer\grqq{} und \glqq häufig\grqq{} gewählt wurden, beliefen sich die Angaben für System-, Use-Case- und Behavior-Driven-Tests nur auf 11\%.
+
+Bezogen auf die Gruppe der Softwareentwickler ist hervorzuheben, dass 10\% der Entwickler weder Unit- noch Funktionstests durchführen. Für die weiterführende Test liegt die Gruppe der Softwareentwickler, die diese nicht verwenden zwischen 30\% und 40\%.
+
+\paragraph{Nutzung von Metriken}
+
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+    {resources/survey-test-usage-metric.pdf}
+  \caption{Auswertung der Metrik-Nutzung von Lines-Of-Code, Halstead, und McCabe(Zyklomatische Komplexität)}
+\end{figure}
+
+Im Vergleich zur Test-Nutzung werden Metriken deutlich weniger verwendet. Lines-Of-Code wurden mit angegebenen 20\% auf häufigsten Verwendet. Die Komplexitätsmetriken Halstead und McCabe wurden im Schnitt nur von 6\% der Teilnehmer verwendet. Wird die Gruppe auf die teilnehmenden Softwareentwickler beschränkt steigt dieser Wert auf ca. 10\%.
+
+Ergänzend gaben 88\% der Teilnehmer mit dem Begriff der Metrik vertraut zu sein und 80\% der Teilnehmer würde gerne mehr Metriken nutzen oder damit anfangen.
+
+\subsection{Bewertung der Umfrage}
+
+Aufgrund der nicht repräsentativen Teilnehmermenge ist es nicht möglich eine generelle Aussage zu treffen. Die Bewertung ist daher nur begrenzt verwendbar.
+
+Die Angaben des Teilnehmerfelds deuten auf gute Verwendung von Versionsverwaltungssystemen, sowie Unit- und Funktionstests. Bei den betrachteten weiterführenden Techniken ergeben sich durchweg geringere Verwendungen.
+
+Die Studie lässt keine Rückschlüsse zu warum die Verwendung gering ausfällt. Die Verwendung von Feature-Branches könnte durch eine durchgängige Verwendung von Continuous-Integration begründet sein. Die Mangelnde Verwendung von weiterführenden Tests und Metriken ist ohne weitere Studien nicht zu ermitteln.
+
 \section{Prototyp zur Feature-Branch-Visualisierung}
 
 Mit wachsender Beliebtheit von Feature-Branches, erweiterten auch die Anbieter für Continuous-Integration-Lösungen ihr Angebot. Viele Anbieter stellen umfangreiche Angebote für Continuous-Deployment bereit. Oftmals sind auch zusätzliche Optionen für Feature-Branches enthalten. Wie im Git-Workflow vorgestellt, werden diese Feature-Branches durch einen manuellen Merge-Befehl auf einem Release-Branch akkumuliert. Auf diese Weise werden kontinuierlich, wenn auch verzögert, die einzelnen Feature-Branches mit einander zusammengeführt. Das späte Feedback zum Zeitpunkt der Zusammenführung, kann zu Problemen und zur Verzögerungen beim Release führen. Eine direkte Alternative ist es, die jeweiligen Feature-Branches direkt zum Zeitpunkt ihrer Fertigstellung zusammenzuführen. Für jeden weiteren Feature-Branch, der zusammengeführt werden muss, ergeben sich allerdings die gleichen Problem, wie bereits zuvor.
@@ -417,18 +533,6 @@ Um die Abhängigkeiten abzubilden und die verfügbaren Feature-Branches für ein
 \paragraph{Release erstellen}
 
 Beschreibung von PHPMetrics
-
-\section{Umfrage zum Nutzungsverhalten von Versionsverwaltungssystemen und Tests}
-
-Umfragezeitraum 1 Monate, 185 Antworten, 46 verwertbar, 29 abgeschlossen
-2 Konzeptor
-14 Projektmanager
-23 Softwareentwickler
-3 Tester
-1 Systemadministrator
-
-Verteilungskreis IT-Nah, soziale Kanäle
-Fragebogen - Likertskala
 
 \section{Motivation, Disziplin und Verantwortung - Faktor Mensch}
 \label{sec:human-fail}
