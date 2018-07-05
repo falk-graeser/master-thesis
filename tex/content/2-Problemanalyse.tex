@@ -365,9 +365,11 @@ Durch den höhren Abstraktionsgrad der Virtualisierung, ist der Systemressourcen
 
 \subsection{Containerverwaltung mit Docker}
 
-Docker ist keine Virtualisierung im eigentlichen Sinne. Ein Docker-Container ist eine standardisierte Umgebung in der ein Softwareanwendung laufen kann. Ein Docker-Server verwaltet die Docker-Container und regelt deren Sicherheit- und Leistungsbedürfnisse. Docker läuft somit als Anwendung auf einem System und ist an dessen Spezifikationen für Betriebssysteme und Hardwarekomponenten gebunden\footcite[vgl.][Kap. Why are containers important]{learn-docker}.
+Docker ist keine Virtualisierung-Software im eigentlichen Sinne. Ein Docker-Container ist eine standardisierte Umgebung, in der ein Softwareanwendung laufen kann. Ein Docker-Server verwaltet die Docker-Container und regelt deren Sicherheits- und Leistungsbedürfnisse. Docker läuft somit als Anwendung auf einem System und ist an dessen Spezifikationen für Betriebssysteme und Hardwarekomponenten gebunden\footcite[vgl.][Kap. Why are containers important]{learn-docker}.
 
-Softwareanwendungen werden in Form von Docker-Images abgespeichert und können dann in unbegrenzt vielen Docker-Container ausgeführt werden. Änderungen im Inhalt des Docker-Containers sind auf diesen beschränkt und haben keinen Einfluss auf das Docker-Image aus dem er erstellt wurde.
+Softwareanwendungen werden in Form von Docker-Images abgespeichert und können in unbegrenzt vielen Docker-Container ausgeführt werden. Änderungen im Inhalt des Docker-Containers sind auf diesen beschränkt und haben keinen Einfluss auf das Docker-Image aus dem er erstellt wurde.
+
+Als größter Vorteil von Docker wird die Standardisierung der Softwareanwendung bewertet. Durch die Einheitliche Behandlungen der Software, lassen sich Konfiguration, Auslieferung und Aktualisierung deutlich vereinfachen und beschleunigen. Des Weiteren sind die Container voneinander getrennt und unterstützen somit Sicherheitsaspekte. Sowohl die Datenintegrität, als auch Softwarekompatibilität sind deutlich einfacher zu handhaben\footcite[vgl.][]{ten-benefits-docker}.
 
 Mit Docker und virtuellen Maschinen wurden zwei Möglichkeiten geschaffen, Software weiter zu vereinheitlichen. Standardisierung ist eine wesentliche Basis für Modularisierung und Automatisierung.
 
@@ -533,12 +535,8 @@ Prinzipiell ist diese Technik unabhängig von der verwendeten Versionsverwaltung
 Versionsverwaltungssysteme an Bedeutung. Der Grund dafür liegt in der deutlich einfacheren und weniger aufwändigen 
 Erstellung von Branches und deren Zusammenführung.
 
-Feature Branching wird kontrovers diskutiert\footcite[vgl.][]{fowler-feature-branch}\footcite[vgl.][]{ci-is-dead}\footcite[vgl.][]{fb-revisited}. 
-Dabei wird angemahnt, dass die Abspaltung in einen Branch, das Problem der Zusammenführung von Codeänderungen nicht 
-behebt, sondern verschlimmert. So wird der Aufwand, der benötigt wird um zwei Verzweigungen zusammenzuführen, potentiell 
-immer höher, um so mehr Änderungen hinzukommen. Die Aufwandserhöhung kann soweit gehen, dass ein psychologischer Faktor 
-hinzukommt, der die Entscheidung zur Zusammenführung weiter belastet. Diese Zusammenführung wird dann auch als \glqq big
-scary merge\grqq{} oder \glqq big bang merge\grqq{} bezeichnet.
+Die Methode Feature-Branches wird kontrovers diskutiert\footcite[vgl.][]{fb-revisited}. 
+Dabei wird angemahnt, dass die Abspaltung in einen Branch, das Problem der Zusammenführung von Codeänderungen nicht behebt, sondern verschlimmert\footcite[vgl.][]{fowler-feature-branch}. So wird der Aufwand, der benötigt wird um zwei Verzweigungen zusammenzuführen, potentiell immer höher, um so mehr Änderungen hinzukommen. Die Aufwandserhöhung kann soweit gehen, dass ein psychologischer Faktor 
+hinzukommt, der die Entscheidung zur Zusammenführung weiter belastet. Diese Zusammenführung wird dann auch als \glqq big scary merge\grqq{} oder \glqq big bang merge\grqq{} bezeichnet.
 
-Kontrovers dazu wird hervorgehoben, dass Feature-Branches Blockaden im Arbeitsfluss vermeiden und durch Entwicklerdisziplin und Automatisierung, die Angst vor dem \glqq big scary merge\grqq{} mildern. Dazu wird verlangt, Feature-Branches nur für kleine Änderungen zu verwenden und durch Hilfe von Automatisierung, schnelle Rückmeldung über die Codequalität zu erhalten. Des Weiteren werden durch moderne \glqq pull based\grqq{}\footcite[vgl.][]{github-about-pull} Verzweigungsstrategien, Entwickler dazu angehalten Codeprüfungen durch andere Entwickler einzufordern. Diese
-Lösungsstrategien werden in Kapitel~\ref{ch:visu_meth} weiterführend betrachtet.
+Kontrovers dazu wird hervorgehoben, dass Feature-Branches Blockaden im Arbeitsfluss vermeiden und durch Entwicklerdisziplin und Automatisierung, die Angst vor dem \glqq big scary merge\grqq{} mildern\footcite[vgl.][]{ci-is-dead}. Dazu wird verlangt, Feature-Branches nur für kleine Änderungen zu verwenden und durch Hilfe von Automatisierung, schnelle Rückmeldung über die Codequalität zu erhalten. Des Weiteren werden durch moderne \glqq pull based\grqq{}\footcite[vgl.][]{github-about-pull} Verzweigungsstrategien, Entwickler dazu angehalten Codeprüfungen durch andere Entwickler einzufordern. Diese Lösungsstrategien werden in Kapitel~\ref{ch:visu_meth} weiterführend betrachtet.
