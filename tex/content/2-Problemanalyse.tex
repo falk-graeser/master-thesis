@@ -525,15 +525,14 @@ Des Weiteren ist klar geregelt, dass alle Features immer erst im Development-Bra
 
 \section{Feature-Branches}
 \label{sec:feature-branches}
-Die Idee hinter einem Feature Branch ist, dass für jedes neue Merkmal, beziehungsweise für jede neue Anforderung ein 
+Die Idee hinter einem Feature-Branch ist, dass für jedes neue Merkmal, beziehungsweise für jede neue Anforderung ein 
 neuer Branch in der Versionsverwaltung erstellt wird. Ziel von Feature-Branches ist die Isolierung von Änderungen, um die 
 anderen Zweige nicht zu blockieren und Änderungen erst nach Test und Abnahme zusammenzuführen. Dabei sollen mehrere 
 Änderungen parallel entwickelt werden können, ohne dabei zu einem bestimmten Zeitpunkt alle Änderungen in einen 
 Hauptzweig übernehmen zu müssen.
 
 Prinzipiell ist diese Technik unabhängig von der verwendeten Versionsverwaltung, erhielt aber vor allem durch dezentrale 
-Versionsverwaltungssysteme an Bedeutung. Der Grund dafür liegt in der deutlich einfacheren und weniger aufwändigen 
-Erstellung von Branches und deren Zusammenführung.
+Versionsverwaltungssysteme an Bedeutung. Der Grund dafür liegt in der deutlich einfacheren und weniger aufwändigen Erstellung von Branches und deren Zusammenführung.
 
 Die Methode Feature-Branches wird kontrovers diskutiert\footcite[vgl.][]{fb-revisited}. 
 Dabei wird angemahnt, dass die Abspaltung in einen Branch, das Problem der Zusammenführung von Codeänderungen nicht behebt, sondern verschlimmert\footcite[vgl.][]{fowler-feature-branch}. So wird der Aufwand, der benötigt wird um zwei Verzweigungen zusammenzuführen, potentiell immer höher, um so mehr Änderungen hinzukommen. Die Aufwandserhöhung kann soweit gehen, dass ein psychologischer Faktor 
