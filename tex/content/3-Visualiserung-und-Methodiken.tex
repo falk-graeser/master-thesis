@@ -1,10 +1,10 @@
-\chapter[Methodiken und Visualisierung]{Methodiken und Visualisierung für Continuous Integration und Feature Branches}
+\chapter[Methodiken und Visualisierung]{Methodiken und Visualisierung für Continuous-Integration und Feature-Branches}
 \label{ch:visu_meth}
 
 Im vorangegangenen Kapitel wurde dargelegt, was Continuous-Integration und Feature-Branches sind und wie diese Techniken in der Softwareentwicklung angewendet werden. Zudem wird darauf eingegangen, welche Schwierigkeiten mit der Verwendung dieser Techniken einhergehen und dementsprechend eine Lösung erfordern. 
 Die nachfolgenden Abschnitte sollen mögliche Methodiken und Visualisierungen beleuchten und dadurch Lösungsansätze anbieten. Es wird auf Schwierigkeiten von bekannten Techniken und Methodiken eingegangen und erläutert, wie häufige Fallstricke vermieden werden können.
 
-\section{Continuous-Integration und Feature Branches}
+\section{Continuous-Integration und Feature-Branches}
 
 Continuous-Integration und Feature-Branches sind beides Techniken, um die Kollaboration zwischen Entwicklern zu fördern. Continuous-Integration fordert die Integration in den existierenden Codestand für jede Änderung. Durch die Verwendung des Trunk-Based-Developments, ist das gesamte Team von dieser Integration direkt betroffen. Ist die Integration fehlerhaft, wird somit für die Dauer der Behebung, das gesamte Team angehalten, bei der Behebung zu helfen. Der Feature-Branch-Ansatz hingegen, lässt Änderungen ohne Integration parallel existieren. Folgt man der Gitflow-Verwendung von Feature-Branches aus Kapitel~\ref{subsec:gitflow}, wird auch hier eine Integration gefordert. Allerdings erst deutlich verzögert, etwa zu einem Release. Feature-Branches bieten somit einen Integrationsvorgang, ohne das Team zu blockieren. Allerdings wird der Zeitpunkt der Integration verzögert. In dieser Zeitspanne können weitere Änderungen zum Integrations-Branch hinzukommen. Jeder dieser Änderungen muss wiederum in den Feature-Branch integriert werden. Damit steigt der Aufwand sukzessive, über die Lebensdauer des Feature-Branches. Im ungünstigsten Fall eskaliert dieser Vorgang in einem \glqq big scary merge\grqq{} oder \glqq big bang merge\grqq{}, wie in Kapitel~\ref{sec:feature-branches} beschrieben. Dieses Risiko sollte gemindert werden, durch eine regelmäßige und kontinuierliche Integration mit dem Integrations-Branch.\\
 
@@ -30,13 +30,12 @@ Die Bereitstellung in einem zentralen Repository ermöglicht es, statische und s
 \subsection{Bewertung von Änderungen - Software-Metriken}
 \label{subsec:main-metrics}
 
-Tom DeMarco schrieb über Software-Metriken:
+Tom DeMarco schrieb über Software-Metriken\footcite{demarco1986}:
 
 \blockquote{You can’t manage what you can’t control, and you can’t control what you
 don’t measure. To be effective software engineers or software managers, we
 must be able to control software development practice. If we don’t measure
-it, however, we will never have that control.}\footcite{demarco1986}
-\\
+it, however, we will never have that control.}
 
 Um Änderungen an einer Softwareanwendung zu bewerten und automatisiert Entscheidungen zu treffen, müssen die Änderungen quantifiziert und mit Vergleichswerten in Beziehung gesetzt werden. Für die Quantifizierung können Software-Metriken aus  Kapitel~\ref{subsubsec:base-metrics} verwendet werden. Da Aussagen über Programmkomplexität und Umfang kein hinreichende Bewertung ermöglichen, müssen zudem Verfahren zur Verifikation herangezogen werden. Die übliche Variante hierfür, ist eine umfangreiche Test-Suite und je nach Anwendung auch Verfahren, wie die in Kapitel~\ref{subsubsec:base-verification} beschriebene Modellprüfung und die abstrakte Interpretation.
 
