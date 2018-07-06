@@ -1,8 +1,40 @@
 \chapter{Zusammenfassung}
 
+Continuous-Integration und Feature-Branches schließen sich nicht generell aus. Beide Verfahren können sich ergänzen, wenn Abstriche hingenommen werden. Die Grundidee ist, Konflikte zwischen Feature-Branches frühzeitig zu erkennen. Dafür können die Feature-Branches automatisiert verglichen und frühzeitig Integrationskonflikte kommuniziert werden. Im nächsten Schritt Werden alle Feature-Branches ohne Integrationskonflikte automatisch durch einen Merge zusammengeführt. Diese automatisch integrierte Menge an Feature-Branches wird abschließen durch einen Software-Build validiert. Auf diese Weise entsteht für alle Feature-Branches ohne Konflikt, ein Continuous-Integration naher Zustand.
+
+Aufbauend auf diesem Ansatz, können die Vorteile von Feature-Branches genutzt werden, um die Nachteile von Continuous-Integration teilweise zu umgehen oder abzuschwächen.
+
+Feature-Branches verzögern die Integration von entwickelten Änderungen. Dieser Nachteil in kollaborativer Software-Entwicklung, wird durch die Kombination mit Continuous-Integration abgeschwächt. Der Vorteil der verzögerten Integration, ist die Möglichkeit ein Review durchzuführen, bevor die Änderung Teil der Softwareanwendung wird. 
+
+Darauf aufbauend, können entwickelte Änderungen vollständig getestet werden, bevor sie integriert werden. Continuous-Integration stellt die Integrität des Software-Inkrementes sicher. Scheitert diese Validerung fordert der Prozess von Continuous-Integration die Wiederherstellung der Integrität. Während dieser Wiederherstellung ist die Softwareentwicklung blockiert und kann keine neuen Software-Inkremente validieren. Feature-Branches umgehen die Blockade. Scheitert die Validerung eines Feature-Branches, sind entwickelte Änderungen auf anderen Branches nicht betroffen. Somit ist ein differenzierteres Vorgehen zur Beseitigung der fehlgeschlagenen Validierung möglich.
+
+Die kritische Betrachtung der angeführten Variante zur Kombination von Continous-Integration und Feature-Branches führt zu einem Problem. Der Continous-Integration nahe Zustand existiert nur für Feature-Branches ohne Merge-Konflikte.
+
+
+
+
+Zwar verschiebt die Verwendung der Feature-Branches den Integration-Zeitpunkt der Arbeitsstände, die Vorteile überwiegen allerdings in vielen Entwicklungsszenarien.
+
+Zwei Vorteile bei der Verwendung von Feature-Branches stechen besonders hervor. Ersterer ist die Möglichkeit das Code-Review vor der Integration vornehmen zu können. Reviews vor der Integration durchzuführen, ist gerade in größeren Teams wichtig. Da auf die Integration folgende Änderungen auf diesen aufbauen, ist das Review eine manuelle Schranke für alle Aspekte, die nicht über ein automatisches Verfahren geprüft werden können. Ein im Entwicklungsprozess fest eingegliederter Review-Schritt, erhöht die Qualität der Softwareentwicklung deutlich. 
+
+Der Zweite Vorteil ist die parallele Entwicklung ohne andere Teile des Teams zu beeinträchtigen.
+
+ und die Entwicklung der Softwareinkremente ohne dabei mit Fehlern das Team auszubremsen
+
+Aber die gewonnene Entwicklungsfreiheit fordert einen deutlichen Mehraufwand. Feature-Branches müssen ebenfalls den vollständigen automatischen Build durchlaufen. Die stetige Folge von Entwicklung, Review, Release verlangt ein hohes Maß an Automatisierung und Expertise. Werden diese Faktoren nicht berücksichtigt, können Feature-Branches schnell wieder zu den Missständen führen, die durch Continuous-Integration verringert wurden. Komplizierte Merge-Schritte, Fehleranfällige Software-Inkremente und ein deutlicher Mehraufwand für die Handhabung der Infrastruktur, um auftretende Fehler schnell zu beseitigen.
+
+Gerade der hohe initiale Aufwand ist für kleinere Entwicklungsfirmen eine nicht zu unterschätzende Herausforderung. Die Betrachtung der Umfrageergebnisse aus Kapitel~\ref{survey-vcs-test} deutet ebenfalls in diese Richtung. Der Großteil der Teilnehmer gab an in kleinen und mittelständigen Unternehmen zu arbeiten. Weiterführenden Verfahren wurden durchweg mit geringeren Verwendungszahlen angegeben. Dass kleinen Firmen das Kapital fehlt, um die notwendige Expertise zu erlangen, ist ein naheliegender Schluss.
+
+Um den Aufwand und die notwendige Expertise zu verringern, können standardisierte Werkzeuge eingesetzt werden. Virtualisierungs- und Container-Verwaltungssysteme wie Docker helfen entwickelte und Software zu verwenden. Visualisierungen für für Software-Abhängigkeiten und die verwendeten Systeme tragen dazu bei die Übersicht zu behalten. Werkzeuge wie PHPMetrics können Metriken mit wenig Aufwand ermitteln und für die automatisierte Softwareerstellung bereitstellen.
+
+
+
+
 während ci die last der integration auf den Schultern aller aushandelt, verlagert fb die integration auf den schultern des \glqq konfliktverursachers\grqq{} somit wird eine kommunikation gefördert, allerdings ohne blockierende nachteile (rote ci ampeln als anti-pattern)
 
 unabhängig von ci und fb sollten systeme clean code ansätze nutzen um gut skalierbare, wartungsarme systeme zu erstellen
+
+
 
 
 mergen, validieren, bewerten
