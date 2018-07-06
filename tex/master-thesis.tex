@@ -13,6 +13,7 @@
 \usepackage{listings}
 \usepackage{nameref}
 \usepackage{hyphenat}
+\usepackage[toc]{glossaries}
 \usepackage[left=4cm,right=2cm,top=3cm,bottom=3cm]{geometry}
 \usepackage[onehalfspacing]{setspace}
 \usepackage[
@@ -22,6 +23,7 @@ citestyle=authortitle,
 sorting=ynt
 ]{biblatex}
 \usepackage{footnote}
+\usepackage{masterTitle}
 \addbibresource{literature.bib}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -49,7 +51,9 @@ sorting=ynt
 }
 
 \author{Falk Gräser}
-
+\supervisorOne{Prof. Dr.-Ing. habil. Dirk Müller}
+\supervisorTwo{Ralph Engelmann}
+\dateofapplication{12. Januar 2018}
 \title{Entwicklung von Visualisierungs- und Integrationsansätzen für Continuous-Integration und Feature-Branches} 
 
 \includeonly{
@@ -58,13 +62,16 @@ sorting=ynt
 	content/3-Visualiserung-und-Methodiken,
 	content/4-Zusammenfassung
 }
-
+\input{content/5-Glossary}
 \begin{document}
 \frontmatter
 
 \maketitle
 
 \tableofcontents
+\listoffigures
+\printglossary
+
 \mainmatter
 \include{content/1-Abstract}
 
@@ -75,6 +82,11 @@ sorting=ynt
 \include{content/4-Zusammenfassung}
 
 \appendix
-\printbibliography[heading=bibintoc]
+\printbibliography[heading=bibnumbered]
+\chapter{Selbstständigkeitserklärung}
+Ich erkläre, dass ich die vorliegende Arbeit selbstständig, unter Angabe aller Zitate und nur unter Verwendung der angegebenen Literatur und Hilfsmittel angefertigt habe.
+\vspace{5em}
+\\
+Dresden, den \today
 
 \end{document}

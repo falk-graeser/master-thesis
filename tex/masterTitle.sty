@@ -1,0 +1,34 @@
+\ProvidesPackage{masterTitle}[]
+\newcommand*{\project}[1]{\gdef\@project{#1}}
+\newcommand*{\@project}{Masterarbeit}
+\newcommand*{\supervisorOne}[1]{\gdef\@supervisorOne{#1}}
+\newcommand*{\@supervisorOne}{\texttt{\string\supervisorOne} currently not set. Please fix this.}
+\newcommand*{\supervisorTwo}[1]{\gdef\@supervisorTwo{#1}}
+\newcommand*{\@supervisorTwo}{\texttt{\string\supervisorTwo} currently not set. Please fix this.}
+\newcommand*{\dateofapplication}[1]{\gdef\@dateofapplication{#1}}
+\newcommand*{\@dateofapplication}{\texttt{\string\dateofapplication} currently not set. Please fix this.}
+\renewcommand*{\maketitle}{%
+\begin{titlepage}
+\vspace{1cm}
+{\centering
+	{\scshape\LARGE Hochschule für Technik und Wirtschaft Dresden \par}
+	\vspace{1cm}
+	{\scshape\Large\@project\unskip\strut\par}
+	\vspace{2.5cm}
+	{\LARGE\bfseries\@title\unskip\strut\par}
+	\vspace{2cm}
+	{\Large\itshape\@author\unskip\strut\par}
+}
+\vfill
+
+\noindent\rule{14cm}{0.4pt}\par
+Fakultät Informatik/Mathematik\par
+Studiengang Master Angewandte Informatik\par
+Erster Betreuer: \@supervisorOne\unskip\strut\par
+Zweiter Betreuer: \@supervisorTwo\unskip\strut\par
+Datum der Anmeldung: \@dateofapplication\par
+Datum der Abgabe: \@date\par
+
+\end{titlepage}
+}
+\endinput
