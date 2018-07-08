@@ -22,6 +22,9 @@ style=numeric,
 citestyle=authortitle,
 sorting=ynt
 ]{biblatex}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tocbibind}
+\usepackage[withpage]{acronym}
 \usepackage{footnote}
 \usepackage{masterTitle}
 \addbibresource{literature.bib}
@@ -64,25 +67,22 @@ sorting=ynt
 }
 \input{content/5-Glossary}
 \begin{document}
+
 \frontmatter
 
 \maketitle
-
 \cleardoublepage
 
-
-\vfill
-{\centering
-In Gedenken an Alfred Mießler.
-}
-\vfill
-\blockquote {In theory, theory and practice are the same. In practice, they’re not. \\- Yoggi Berra}
-\vfill
-{\centering
-Dank an Lisa und Pavel für ihre unerschütterliche Unterstützung.
-}
+\begin{center}
+	\vspace*{5cm}
+	In Gedenken an Alfred Mießler.
+	\blockquote {\centering In theory, theory and practice are the same. In practice, they’re not. \\Yoggi Berra}
+	\vfill
+	Liebsten Dank an Lisa und Pavel für ihre unerschütterliche Unterstützung.
+\end{center}
 
 \tableofcontents
+\input{content/6-Abkuerzungsverzeichnis}
 \listoffigures
 \printglossary
 

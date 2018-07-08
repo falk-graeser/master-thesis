@@ -8,8 +8,6 @@ In professioneller Softwareentwicklung sollte stets das Ergebnis im Fokus stehen
 
 Die letzten 30 Jahre der Softwareentwicklung mussten sich mit dieser Herausforderung auseinander setzen. Nicht immer ist dies erfolgreich gewesen und zahlreiche Projekte sind daran gescheitert.
 
-TODO: Quellen für Projektscheitern
-
 Über die Zeit haben klassische Bereiche der Informatik, in praxistauglicher Form, Einzug in die kommerzielle Softwareentwicklung gehalten. Software-Validierung und Komplexitätsanalysen, sowie formale Sprachen werden genutzt, um Software gewinnbringend zu entwickeln. Software in moderner Entwicklung, wird semantisch und syntaktisch analysiert um Probleme und Fehler zu finden. Komplexitätsanalysen helfen, schlecht skalierbare Softwarebestandteile zu identifizieren und formale Sprachen werden unter anderem genutzt, um domainspezifische Bereiche getrennt von Entwicklungsdetails zu formulieren.
 
 Trotz der fortschrittlichen Entwicklungsmöglichkeiten, scheitern viele Softwareentwicklungen noch daran diese anzuwenden.
@@ -58,7 +56,7 @@ Basis des neuen Vorgehens.
 Die Prinzipien des \glqq Agilen Manifestes\grqq{} stellen hohe Ansprüche an Entwickler und erzwingen ein Umdenken im Umgang mit dem Projektprozess. Während in den statischen Vorgehensmodellen jede Phase eine längere zeitliche Periode einnimmt, so werden diese Phasen in agilen Vorgehen deutlich verkürzt und verschwimmen teilweise. Dadurch werden Kommunikationszyklen verkürzt und Informationsflüsse deutlich beschleunigt.
 Durch die schnellere Zyklen sinkt die benötigte Zeit zur Reaktion auf Probleme und Hindernisse. Damit ist es möglich, kontinuierlich und zeitnah Verbesserungen für den Entwicklungsprozess und die Softwareanwendung einzubringen. 
 
-Agile Vorgehensmodelle und Techniken aus der Lean-Bewegungen setzen stark auf eine Arbeitseinteilung anhand von Produktmerkmalen(Features)[quote Scrum, quote Kanban]. Der von der agilen Bewegung angestrebte starke Produktfokus und die kurzen Iterationen vereinfachen die Bewertung des Projektprozesses und der verwendeten Hilfsmittel.
+Agile Vorgehensmodelle und Techniken aus der Lean-Bewegungen setzen stark auf eine Arbeitseinteilung anhand von Produktmerkmalen(Features)\footcite[vgl.][Kap. 6. Product Backlog]{rubin-scrum}. Der von der agilen Bewegung angestrebte starke Produktfokus und die kurzen Iterationen vereinfachen die Bewertung des Projektprozesses und der verwendeten Hilfsmittel.
 
 Der hohe Fokus auf Produktmerkmale und das Prinzip zur frühen und kontinuierlichen Auslieferung von wertvoller Software\footcite[vgl.][]{agile-manifest-principles} helfen die Akzeptanz für die Software zu steigern. Außerdem können falsch interpretierte Anforderungen früher erkannt werden. 
 
@@ -149,7 +147,7 @@ Als weiteres Merkmal ist die Transparenz aller getätigten Änderungen anzuführ
 hilft oft bei der Koordinierung der Entwicklung mit mehreren Programmierern. Außerdem ist es sehr hilfreich zu wissen, 
 welcher andere Projektteilnehmer bei Problemen mit einem Code-Abschnitt gefragt werden kann. 
 
-Über die Entstehung von Versionsverwaltungssysteme[quote Soft.Quali] haben sich vor allem zwei Prinzipien herausgebildet: 
+Über die Entstehung von Versionsverwaltungssysteme\footcite[vgl.][S.417]{software-quality2008} haben sich vor allem zwei Prinzipien herausgebildet: 
 zentrale und dezentrale Versionsverwaltungssysteme. Zwar unterscheiden sich die Versionsverwaltungssysteme auch in 
 anderen Merkmalen, zum Beispiel in der Ablage der Quellen und deren Änderungen, diese Merkmale haben aber nahezu keinen 
 Einfluss auf die Verwendung im Softwareentwicklungsprozess.
@@ -316,11 +314,17 @@ Verfahren der Software-Verifikation sind die Deduktion, Modellprüfung und der a
 
 \vspace{1em}
 
-Für die vollautomatische Betrachtung von Software-Änderungen sind daher die abstrakte Interpretation und die bereits beschriebenen Software-Tests besser geeignet. 
+Für die vollautomatische Betrachtung von Software-Änderungen sind daher die abstrakte Interpretation und die bereits beschriebenen Software-Tests besser geeignet.
+
+\subsection{Continuous-Delivery}
+
+Continuous-Delivery(\acs{cd}) beschreibt den automatisch ablaufenden Softwareerstellungsprozess. Die Vorbedingung zu Continuous-Delivery ist die vollständig automatisierte Erstellung der Software. Dadurch ist möglich die Erstellung durch einen Build-Server durchzuführen. Build-Server sind spezialisiert darauf Aufträge für die Erstellung und den Test von Software auszuführen. Wird der Auftrag für die Erstellung der Software an einen Auslöser gebunden, ist dies ein Continuous-Delivery-Prozess. Üblicherweise ist ein solcher Auslöser das Veröffentlichen einer Änderung in einem Versionsverwaltungssystem. Der anlaufenden Prozess nutzt diese neuste Version, um einen aktuellen Stand der Software zu erstellen und zu testen.
+
+Continuous-Delivery stellt eine Version der Software bereit. Abgrenzend dazu ist Continuous-Deployment zu erwähnen. Continuous-Deployment lieft die Softwareanwendung zusätzlich aus. Für den Konflikt aus Continuous-Integration und Feature-Branches ist dies nicht relevant.
 
 \section{Continuous-Integration}
 
-Continuous-Integration wurde sehr treffend beschrieben \footcite[vgl.][]{fowler2006}
+Continuous-Integration (\acs{ci}) wurde sehr treffend beschrieben \footcite[vgl.][]{fowler2006}
 
 \blockquote {Continuous-Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible.}
 
@@ -525,17 +529,14 @@ Des Weiteren ist klar geregelt, dass alle Features immer erst im Development-Bra
 
 \section{Feature-Branches}
 \label{sec:feature-branches}
-Die Idee hinter einem Feature-Branch ist, dass für jedes neue Merkmal, beziehungsweise für jede neue Anforderung ein 
-neuer Branch in der Versionsverwaltung erstellt wird. Ziel von Feature-Branches ist die Isolierung von Änderungen, um die 
-anderen Zweige nicht zu blockieren und Änderungen erst nach Test und Abnahme zusammenzuführen. Dabei sollen mehrere 
-Änderungen parallel entwickelt werden können, ohne dabei zu einem bestimmten Zeitpunkt alle Änderungen in einen 
-Hauptzweig übernehmen zu müssen.
+Die Idee hinter einem Feature-Branch ist, dass für jedes neue Merkmal, beziehungsweise für jede neue Anforderung ein neuer Branch in der Versionsverwaltung erstellt wird. Ziel von Feature-Branches ist die Isolierung von Änderungen, um die anderen Zweige nicht zu blockieren und Änderungen erst nach Test und Abnahme zusammenzuführen. Dabei sollen mehrere Änderungen parallel entwickelt werden können, ohne dabei zu einem bestimmten Zeitpunkt alle Änderungen in einen Hauptzweig übernehmen zu müssen.
 
-Prinzipiell ist diese Technik unabhängig von der verwendeten Versionsverwaltung, erhielt aber vor allem durch dezentrale 
-Versionsverwaltungssysteme an Bedeutung. Der Grund dafür liegt in der deutlich einfacheren und weniger aufwändigen Erstellung von Branches und deren Zusammenführung.
+Prinzipiell ist diese Technik unabhängig von der verwendeten Versionsverwaltung, erhielt aber vor allem durch dezentrale Versionsverwaltungssysteme an Bedeutung. Der Grund dafür liegt in der deutlich einfacheren und weniger aufwändigen Erstellung von Branches und deren Zusammenführung.
 
 Die Methode Feature-Branches wird kontrovers diskutiert\footcite[vgl.][]{fb-revisited}. 
 Dabei wird angemahnt, dass die Abspaltung in einen Branch, das Problem der Zusammenführung von Codeänderungen nicht behebt, sondern verschlimmert\footcite[vgl.][]{fowler-feature-branch}. So wird der Aufwand, der benötigt wird um zwei Verzweigungen zusammenzuführen, potentiell immer höher, um so mehr Änderungen hinzukommen. Die Aufwandserhöhung kann soweit gehen, dass ein psychologischer Faktor 
 hinzukommt, der die Entscheidung zur Zusammenführung weiter belastet. Diese Zusammenführung wird dann auch als \glqq big scary merge\grqq{} oder \glqq big bang merge\grqq{} bezeichnet.
 
-Kontrovers dazu wird hervorgehoben, dass Feature-Branches Blockaden im Arbeitsfluss vermeiden und durch Entwicklerdisziplin und Automatisierung, die Angst vor dem \glqq big scary merge\grqq{} mildern\footcite[vgl.][]{ci-is-dead}. Dazu wird verlangt, Feature-Branches nur für kleine Änderungen zu verwenden und durch Hilfe von Automatisierung, schnelle Rückmeldung über die Codequalität zu erhalten. Des Weiteren werden durch moderne \glqq pull based\grqq{}\footcite[vgl.][]{github-about-pull} Verzweigungsstrategien, Entwickler dazu angehalten Codeprüfungen durch andere Entwickler einzufordern. Diese Lösungsstrategien werden in Kapitel~\ref{ch:visu_meth} weiterführend betrachtet.
+Kontrovers dazu wird hervorgehoben, dass Feature-Branches Blockaden im Arbeitsfluss vermeiden und durch Entwicklerdisziplin und Automatisierung, die Angst vor dem \glqq big scary merge\grqq{} mildern\footcite[vgl.][]{ci-is-dead}. Dazu wird verlangt, Feature-Branches nur für kleine Änderungen zu verwenden und durch Hilfe von Automatisierung, schnelle Rückmeldung über die Codequalität zu erhalten. Des Weiteren werden durch moderne \glqq pull based\grqq{}\footcite[vgl.][]{github-about-pull} Verzweigungsstrategien, Entwickler dazu angehalten Codeprüfungen durch andere Entwickler einzufordern. 
+
+Die Codeprüfung oder auch Review wird als großer Vorteil gegenüber Continuous-Integration gewertet. Bei Continuous-Integration können Reviews erst nach der Integration durchgeführt werden. Feature-Branches können jederzeit veröffentlicht werden. Daher können Reviews auch ohne vorherige Integration erfolgen. 
