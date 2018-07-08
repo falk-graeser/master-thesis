@@ -286,13 +286,9 @@ Viele dieser Entwicklungsmuster und -verfahren werden unter dem Begriff \glqq Be
 
 \subsection{Modularisierung von Software}
 
-Viele Probleme bei Continuous-Integration und Feature-Branches entstehen durch die Notwendigkeit von komplizierten Merge-Verfahren. 
+Viele Probleme bei Continuous-Integration und Feature-Branches entstehen durch Merge-Konflikte. Diese Merge-Konflikte müssen in teilweise sehr komplizierten Merge-Verfahren aufgelöst werden. Merge-Konflikte treten auf, wenn Änderungen aus verschiedenen Commits die gleichen Dateien betreffen. Besonders bei Komponenten der Softwareanwendung, die stark gekoppelte Abhängigkeiten verwenden, treten Merge-Konflikte besonders häufig auf. Wird eine Software von Beginn an lose gekoppelt entwickelt, ergeben sich oft deutlich weniger Abhängigkeiten und komplizierte Merge-Schritte werden vermieden.
 
-
-
-Viele komplizierte Merge-Schritte begründen sich häufig durch einen zu hohen Kopplungsgrad der Software. Wenn Komponenten stark gekoppelt sind, ist es oft notwendig mit mehreren Entwicklern in gleichen Code-Abschnitten zu interagieren. Wird eine Software von Beginn an lose gekoppelt entwickelt, ergeben sich oft deutlich weniger Abhängigkeiten und komplizierte Merge-Schritte werden vermieden.
-
-Die lose Kopplung einer Software kann, durch das Einhalten der Prinzipien zur Modularisierung\footcite{2012-barth-modularisation}, erreicht werden. 
+Die lose Kopplung einer Software kann, durch das Befolgen der Prinzipien zur Modularisierung\footcite{2012-barth-modularisation}, erreicht werden. 
 
 \paragraph{Information Hiding} ist ein von Parnas\footcite{1972-parnas} geprägter Begriff. Als Basis für die Modularisierung und Dekomposition von Software wird drei Schritten gefolgt:
 \begin{itemize}
@@ -314,9 +310,19 @@ Eine modernere Form der Modularisierung sind die \glqq serviceorientierten Archi
 Testgetriebene Entwicklung, oder auch Test-Driven-Development(TDD) wurde bereits von Kent Beck 1999 als \glqq test-first\grqq{}-Ansatz propagiert. Seitdem hat dieses Vorgehen viele Anhänger gewonnen. Es fordert ein Umdenken beim Entwickler. Zuerst muss das Ergebnis einer Änderung oder einer Neuerung bekannt sein und erst danach kann der umsetzende Code entwickelt werden\footcite[vgl.][Kap. Understanding TDD]{tdd-java}. Die Umkehrung des Zeitpunktes, wann die Tests verfasst werden, fördert die Qualität der Entwicklung. Es werden die Anzahl der auftretenden Fehler reduziert, entkoppelte Strukturen gefördert und die Anzahl der nachträglich auftretenden Fehler deutlich gemindert\footcite[vgl.][]{tdd-ci-effectivness}.
 Insbesondere im Continuous-Integration-Bereich ist TDD als Continuous-Testing sinnvoll, da nur kontinuierlich getesteter Code auch kontinuierlich zuverlässig integriert werden kann.
 
-Die Art und Weise der Anwendung von TDD kann stark variieren. Daher wird eine stark iterative Variante des Schreibens von Tests angestrebt. Das \glqq Red Green Refactoring\grqq{}\footcite[vgl.][Kap. Red-Green-Refactor]{tdd-java} fordert immer nur minimale Anpassungen vorzunehmen, bis der Test vollständig ist. Nach jeder Anpassung, die den Test fehlschlagen lässt, muss die getestete Implementierung so angepasst werden, dass der Test erfolgreich verläuft. Ist der Test vollständig , sollte abschließend die Implementierung einem Refactoring unterzogen werden. Basierend auf der begrenzten gedanklichen Kapazität eines Entwicklers, soll so immer nur ein Gesichtspunkt der Entwicklung betrachtet werden. Zuerst soll das korrekte Verhalten der Software sichergestellt werden. Danach ist die korrekte Struktur der Software herzustellen. Die Dualität der Betrachtung und der minimal inkrementelle Ansatz sollen ein hoch qualitatives Resultat ergeben.
+Die Art und Weise der Anwendung von TDD kann stark variieren. Daher wird eine stark iterative Variante des Schreibens von Tests angestrebt. Das \glqq Red Green Refactoring\grqq{}\footcite[vgl.][Kap. Red-Green-Refactor]{tdd-java} fordert immer nur minimale Anpassungen vorzunehmen, bis der Test vollständig ist. Nach jeder Anpassung, die den Test fehlschlagen lässt, muss die getestete Implementierung so angepasst werden, dass der Test erfolgreich verläuft. Ist der Test vollständig, sollte abschließend die Implementierung einem Refactoring unterzogen werden. Basierend auf der begrenzten gedanklichen Kapazität eines Entwicklers, soll immer nur ein Gesichtspunkt der Entwicklung betrachtet werden. Zuerst soll das korrekte Verhalten der Software sichergestellt werden. Danach ist die korrekte Struktur der Software herzustellen. Die Dualität der Betrachtung und der minimal inkrementelle Ansatz sollen ein hoch qualitatives Resultat ergeben.
 
 Über die Lehrmethoden von TDD sind bekannte Verbindungen von Anforderungsmanagement und Testfallerstellung, wieder in den Fokus gerückt. Unter der Bezeichnung \glqq Behaviour-Driven-Development\grqq{}\footcite{bdd-north} entstand ein Verfahren zur Verbindung beider Bereiche. Mittels einer der Umgangssprache nahen DSL wird versucht eine leserliche Dokumentation zu erstellen. Nutzerszenarien werden in einer Gegeben-Wenn-Dann-Notation\footcite{fowler-gwt} verfasst und können durch die strukturierte Notation direkt mit Test-Code verknüpft werden. Damit wird angestrebt die Barrieren zwischen Projektteilnehmern ohne Programmierkenntnissen, Testern und Entwicklern zu verringern.
+
+Neben dem Erfolg von TDD wurde auch Kritik geäußert. Unter anderem wurde der starke Fokus auf Unit-Tests kritisiert. Dieser soll in der Historie von TDD begründet sein\footcite[vgl.][]{conciso-tdd-critique}. Der Fokus auf Unit-Tests wird kritisiert, da der Fokus auf die Integration von Komponenten verloren geht und die Funktionalität des Systems nicht überprüft wird. Weiter wird kritisiert, dass TDD schlechtes Design fördert\footcite[vgl.][]{hansson-tdd-is-dead}. Das Prinzip die Softwareanwendung leicht zugänglich für Tests zu gestalten, soll die Architektur nachhaltig schädigen.
+
+Die Kritik weist Schwächen auf. TDD fordert die Erstellung von Tests. Die Begrenzung der Tests auf Unit-Tests wird allerdings an keiner Stelle gefordert. Der ursprüngliche Test-Frist Ansatz von Kent Beck ist besonders Intuitiv, wenn er für Unit-Tests verwendet wird. Die Annahme, dass er auf Unit-Tests beschränkt wird, würde TDD allerdings nicht gerecht. 
+
+Weiter ist eine sehr subjektive Einschätzung, dass TDD die Softwarearchitektur schwächt. Eine zu strikte Befolgung aller Prinzipien von TDD oder Modularisierung kann zu ungünstigen Entscheidungen im Software-Design führen. Die Korrekte Anwendung der Prinzipen liegt daher in der Hand des Entwicklers. In einer kritischen Auseinandersetzung von Kent Beck, Martin Fowler und David Heinemeier Hansson zum Thema TDD, formuliert Kent Beck die folgende Aussage:
+
+\blockquote {Design(and TDD) is a question of trade–offs. They should never be ignored. You should always be aware of the trade–offs you make. You have to be a good designer to make the right ones.}\footcite[vgl.][S. 36]{aalborg-tdd-15-years}
+
+Test-Driven-Development ist sinnvoller Ansatz um nachhaltig hochqualitativen Software-Code zu verfassen. TDD fördert durch den Fokus auf gut zu testenden Software-Code lose gekoppelte Software-Komponenten. Allerdings entbindet das TDD-Vorgehen den Softwareentwickler nicht von den zu treffenden Softwarearchitekturentscheidungen.
 
 \subsection{Fortgeschrittene Nutzung von Versionsverwaltung}
 
@@ -336,8 +342,8 @@ Eine Variante diese Aufwände zu reduzieren und Tests, sowie Auslieferung von So
 
 Die Verwendung eines Monorepos vereinfacht zwar die Abhängigkeitsverwaltung, birgt allerdings Schwierigkeiten für größere Repositories. Während in Repositories getrennte Abhängigkeiten, auch die Commits logisch und physisch getrennt sind, fällt diese Barriere in Monorepos. Es müssen daher zusätzliche Mechanismen für die Übersicht geschaffen werden.
 
-Ein weiterer Punkt ist die Performance. Abhängig vom gewählten Versionsverwaltungssystem, können gerade mit Git hier Probleme auftreten. Da Git immer die vollständige Historie bereit hält, sind Performance-Probleme spürbar\footcite{atlassian-monorepo-git}. In zentralen Systemen wie SVN können für Monorepos gezielte Teilebereiche des Repos verwendet werden. 
-In jedem Versionsverwaltungssystem ist hingegen die erhöhte Commit-Frequenz spürbar. Merges treten deutlich häufiger auf, zusätzliche manuelle Eingriffe sind teilweise notwendig.
+Ein weiterer Punkt ist die Performance. Abhängig vom gewählten Versionsverwaltungssystem, können gerade durch die Verwendung von Git Probleme auftreten. Da Git immer die vollständige Historie bereit hält, sind Performance-Probleme nachweisbar\footcite{atlassian-monorepo-git}. In zentralen Systemen wie SVN können für Monorepos gezielte Teilebereiche des Repos verwendet werden. 
+In jedem Versionsverwaltungssystem ist hingegen die erhöhte Commit-Frequenz spürbar. Merge-Commits treten deutlich häufiger auf, zusätzliche manuelle Eingriffe sind teilweise notwendig.
 
 Trotz der Schwierigkeiten nutzen große Unternehmen wie Google, Facebook und Twitter sehr große Monorepos. Für alle drei Unternehmen ist die Verwendung von Monorepos allerdings mit großem Aufwand verbunden. Google entwickelte eine eigene Versionsverwaltung, Facebook investiert in Mercurial und Twitter verwendet eine speziell angepasste Git-Variante\footcite{monorepos-wild}.
 Bei entsprechender Größe des Projektes, ist allerdings auch für kleinere Unternehmen die Verwendung von Monorepos nützlich\footcite{hackernoon-positive-monorepo}.
