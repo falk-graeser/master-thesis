@@ -192,6 +192,14 @@ hilfreich. Die Einhaltung der Richtlinien garantiert die gute Skalierung und War
 \subsection{Abhängigkeitsverwaltung}
 \label{subsec:dependency-management}
 
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+  {resources/dependency-mgmg-composer-wikia.pdf}
+  \caption{Ausschnitt der composer.json und der composer.lock des Wikia-Projektes\protect\footnotemark}
+  \label{dependency-mgmg-composer-wikia}
+\end{figure}
+\footcitetext[vgl.][composer.json]{wikia-github}
+
 In der Abhängigkeitsverwaltung werden die Softwareabhängigkeiten der Softwareanwendung beschrieben. In auf Komponenten
 basierenden Softwareanwendungen schließt dies die eigenen, internen Abhängigkeiten mit ein. Diese Abhängigkeiten, meist Module
 genannt, sollen die mit monolithischen Strukturen einhergehenden Nachteile unterbinden. Monolithen weisen häufig eine 
@@ -204,12 +212,10 @@ Eine zu starke Aufteilung der Softwareanwendungsstruktur oder eine Teilung an de
 Effekten führen. Ein deutlicher Mehraufwand und eine schlechte Skalierbarkeit sind die Folge. Um die verschiedenen Module 
 und Pakete zu organisieren empfiehlt sich eine Abhängigkeitsverwaltung. Mit einer Abhängigkeitsverwaltung können Abhängigkeiten durch Identifikationsterme und Versionsnummern eindeutig beschreiben. Dadurch lassen sich Schwierigkeiten unter den Abhängigkeiten leichter erkennen und Aktualisierungen der Versionen entsprechend der Abhängigkeiten vornehmen.
 
-Für die automatisierte Erstellung der Softwareanwendung ist es erforderlich, ähnlich wie bereits bei der 
-Versionsverwaltung, ein eindeutiges Abhängigkeitsnetz zu beschreiben. Zum Auflösen der Abhängigkeiten werden meist 
-mehrdeutige Ausdrücke verwendet, die eine Bandbreite an Versionen der Abhängigkeiten erlauben. Wird die Softwareanwendung
-erstellt und ausgeliefert, sollte allerdings eindeutig sein, welche Abhängigkeiten verwendet werden. Daher werden in 
-vielen Packetverwaltungen diese Informationen in einer Lock-Datei festgehalten. Es wird zudem angeraten, diese Datei in 
-die Versionkontrolle aufzunehmen.\footcite[vgl.][]{composer-why-lock-in-vcs} Das Festhalten der exakten Versionsnummern der verwendeten Abhängigkeiten ist ein deutlicher Vorteil. Dadurch ist möglich immer wieder zu dem in der Version gesicherten Zustand der Softwareanwendung zurückzukehren. Ohne dies wären die Abhängigkeiten der Anwendung variabel.
+Für die automatisierte Erstellung der Softwareanwendung ist es erforderlich, ähnlich wie bereits bei der Versionsverwaltung, ein eindeutiges Abhängigkeitsnetz zu beschreiben. Zum Auflösen der Abhängigkeiten werden meist mehrdeutige Ausdrücke verwendet, die eine Bandbreite an Versionen der Abhängigkeiten erlauben. Wird die Softwareanwendung erstellt und ausgeliefert, sollte allerdings eindeutig sein, welche Abhängigkeiten verwendet werden. Daher werden in 
+vielen Packetverwaltungen diese Informationen in einer Lock-Datei festgehalten. Es wird zudem angeraten, diese Datei in die Versionkontrolle aufzunehmen.\footcite[vgl.][]{composer-why-lock-in-vcs} Das Festhalten der exakten Versionsnummern der verwendeten Abhängigkeiten ist ein deutlicher Vorteil. Dadurch ist möglich immer wieder zu dem in der Version gesicherten Zustand der Softwareanwendung zurückzukehren. Ohne dies wären die Abhängigkeiten der Anwendung variabel.
+
+In Abbildung \ref{dependency-mgmg-composer-wikia} ist ein Ausschnitt einer composer.json und der zugehörigen Lock-Datei zu sehen. Beide Dateien sind im JSON-Format und nutzen jeweils eine DSL für die Packetverwaltung Composer\footcite{composer-json}. In der Abbildung wird die Verwendung von regulären Ausdrücken in Verbindung mit einem Paketnamen dargestellt. Zudem wird die Präzisierung der Paketdatei zur Lock-Datei deutlich.
 
 \subsection{Automatisierte Erstellung und Auslieferung}
 
