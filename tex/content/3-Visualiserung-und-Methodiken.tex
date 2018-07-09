@@ -56,6 +56,9 @@ Das Zusammenführen von Änderungen ist ein schwieriges Unterfangen. Während de
 Fastforward-Merge ist ein Fachbegriff, der in der Versionsverwaltung mit Git verwendet wird. Es bezieht sich auf das Verschieben eines Branch-Zeigers zu einem anderen Branch-Zeiger, ohne die Zusammenführung von Änderung. Es werden lediglich bestehende Änderung des abzweigenden Branches auf den Basis-Branch übertragen.
 Fastforward-Merges sind gut zu automatisieren, da sie komplett ohne manuellen Eingriff von Git durchgeführt werden können. Dadurch können verschiedene automatisierte Verfahren auf Basis eines Fastforward-Merges aufgebaut werden.
 
+Es ist eine gängiges Verfahren nur Fastforward-Merges zu erlauben. Dadurch wird die Verantwortung eines potentiellen Merge-Konfliktes immer zum Autor der Änderung delegiert.
+In der Strategie \glqq Read-Only-Master-Branch\grqq{}\footcite{master-read-only} wird dies deutlich. Ziel der Methodik ist es Änderungen durch einen Merge immer vollautomatisch auf einen Integrations-Branch überführen zu können. Die Garantie keinen Merge-Konflikt zu erhalten, ist nur bei einem Fastforward-Merge gegeben. Ist diese Voraussetzung geschaffen, kann allen Entwicklern die Rechte entzogen werden auf dem Master-Branch zu veröffentlichen. Dadurch sind sie gezwungen auf den automatisierten Merge zurückzugreifen. Der automatisierten Vorgang ist nur die einzige Möglichkeit Änderungen zu veröffentlichen und kann als Aufhänger für zahlreiche automatisierte Qualitätssicherungsmaßnahmen genutzt werden. Üblicherweise sollte die Ausführung bestehende Test-Suits eine der Qualitätsmaßnahmen sein.
+
 \subsubsection{Flüchtige Release-Branches}
 \label{temporary-releases}
 
