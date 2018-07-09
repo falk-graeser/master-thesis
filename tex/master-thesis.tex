@@ -26,6 +26,8 @@ sorting=ynt
 \usepackage{tocbibind}
 \usepackage[withpage]{acronym}
 \usepackage{footnote}
+\usepackage{listings}
+\usepackage{parcolumns}
 \usepackage{masterTitle}
 \addbibresource{literature.bib}
 
@@ -35,7 +37,8 @@ sorting=ynt
 \definecolor{backcolor}{rgb}{0.95,0.95,0.92}
 
 \lstset{
-    basicstyle=\ttfamily,
+    basicstyle=\tiny\ttfamily,
+    frame=tlrb,
     backgroundcolor=\color{backcolor},   
     commentstyle=\color{codegreen},
     keywordstyle=\color{blue},
@@ -52,6 +55,7 @@ sorting=ynt
     showtabs=false,                  
     tabsize=2,
 }
+\renewcommand{\lstlistingname}{Code}
 
 \author{Falk Gräser}
 \supervisorOne{Prof. Dr.-Ing. habil. Dirk Müller}
@@ -75,10 +79,11 @@ sorting=ynt
 
 \begin{center}
 	\vspace*{5cm}
-	In Gedenken an Alfred Mießler.
+	Dank und Liebe an Alfred Mießler und Andrea Gräser für ihre Motivation auf dem Weg zum Masterabschluss.
+	\vspace*{1cm}
 	\blockquote {\centering In theory, theory and practice are the same. In practice, they’re not. \\Yoggi Berra}
 	\vfill
-	Liebsten Dank an Lisa und Pavel für ihre unerschütterliche Unterstützung.
+	Es ist mir zudem ein Anliegen Lisa und Pavel für ihre unerschütterliche Unterstützung zu danken.
 \end{center}
 
 \tableofcontents

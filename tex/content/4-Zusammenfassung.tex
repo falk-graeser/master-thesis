@@ -20,6 +20,22 @@ Das Gedankenexperiment zum erschwerten Continuous-Integration-Prozess offenbart 
 
 Unabhängig von den gewählten Entwicklungsansätzen können durch Metriken\\ Schwachpunkte in den Softwarekomponenten gefunden werden. Hohe Komplexität oder Komponenten mit besonders vielen Abhängigkeiten lassen sich gut durch Metriken ausfindig machen. Visualisierung der Metriken erleichtern deren Interpretation bei besonders umfangreichen Softwareanwendungen. 
 
+\section{Bewertung der Hypothesen}
+
+In den vorangegangenen Absätzen wurde die Annäherung von Continuous-Integration und Feature-Branches dargelegt. An keiner Stelle konnte jedoch ein vollständiger Hybrid beschrieben werden. Die anfängliche Hypothese \glqq Feature-Branches und Continous-Integration sind unvereinbare Prinzipien.\grqq{} ist somit korrekt. Die Kombination aus Feature-Branches und den Ansätzen von Continuous-Integration führt jedoch zu einem fortschrittlichen Softwareentwicklungsprozess.
+
+Dieser fortschrittliche Entwicklungsprozess weist weiterhin Schwächen auf und erfordert einen hohen initialen Aufwand, sowie ein hohes Maß an Expertise von den Softwareentwicklern. Dies führt zur zweiten Hypothese. 
+
+\glqq Continuous-Delivery ist zu komplex, um es in jedem Projekt zu verwenden.\grqq{}
+\\
+Die Hypothese zielt nicht auf den Konflikt zwischen Feature-Branches und Continuous-Integration. Vielmehr wird die Komplexität des automatisierten Softwareerstellungsprozesses kritisiert. Dies führt wieder zu den beiden Voraussetzungen des hohen initial Aufwandes und der notwendigen Expertise. Somit ist die Hypothese korrekt. Es existieren Software-Projekte in denen weder die Mittel für den initial Aufwand, noch für die notwendige Expertise vorhanden sind. Besteht jedoch bereits die notwendige Infrastruktur, sind die notwendige Expertise und die Anwendungskosten gering. 
+\\
+Abschließend wird die Hypothese zur Qualitätsverbesserung geprüft.
+
+\glqq Der Einsatz von Continuous-Delivery steigert die Qualität des Entwicklungsprozesses.\grqq{}
+\\
+Continuous-Delivery fordert eine Standardisierung der Auslieferung der Softwareanwendung. Zudem werden Methoden zur Verbesserung der Testabdeckung und der Absicherung von Abhängigkeiten propagiert. Durch die mangelnde einheitliche Definition von Continuous-Delivery kann die Hypothese jedoch nicht als korrekt gewertet werden. Es ist theoretisch möglich einen Continuous-Delivery-Prozess zu erstellen, der keine Auswirkung auf die Qualität der Softwareanwendung ausübt.
+
 \section{Ausblick}
 
 Die weitere Betrachtung des Themas könnte vor allem in zwei Richtungen führen. Zum einen kann der eigentliche Vorgang verbessert werden, Änderungen mit einem Merge zusammenzuführen. Es existieren bereits semantische Verfahren, um die Durchführung eines Merge zu optimieren. Dadurch treten weniger Merge-Konflikte auf. Ebenso existieren Studien, die existierende Software-Repositories analysieren. Die darin existierenden Merge-Entscheidungen werden genutzt, um ein neurales Netz anzulernen. Beide Verfahren haben das Potential die Kombination aus Continuous-Integration und Feature-Branches effizienter zu gestalten.

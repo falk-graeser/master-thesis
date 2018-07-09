@@ -56,17 +56,66 @@ Das Zusammenführen von Änderungen ist ein schwieriges Unterfangen. Während de
 Fastforward-Merge ist ein Fachbegriff, der in der Versionsverwaltung mit Git verwendet wird. Es bezieht sich auf das Verschieben eines Branch-Zeigers zu einem anderen Branch-Zeiger, ohne die Zusammenführung von Änderung. Es werden lediglich bestehende Änderung des abzweigenden Branches auf den Basis-Branch übertragen.
 Fastforward-Merges sind gut zu automatisieren, da sie komplett ohne manuellen Eingriff von Git durchgeführt werden können. Dadurch können verschiedene automatisierte Verfahren auf Basis eines Fastforward-Merges aufgebaut werden.
 
+Das folgende Beispiel erläutert kurz wie ein Branch in einem beliebigen Zustand, in einen Fastforward-Zustand gebracht werden kann.
+
+\begin{minipage}{.45\textwidth}
+\begin{lstlisting}[caption={Der development Branch schlägt fehl beim Fastforward-Merge}, frame=none,label={lst:fast-forward-merge-fail}]
+$ git log --oneline --graph --decorate --all
+* 49f3ba1 (HEAD -> master) master - some changes
+| * fadd355 (development) development
+|/
+* eb0ec1a master 1.0
+$
+$
+$
+$
+$ git merge development --ff-only
+fatal: Not possible to fast-forward, aborting.
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}
+\begin{lstlisting}[caption={Nach einem Merge ist der Fastforward-Merge möglich},frame=none,label={lst:fast-forward-merge-success}]
+$ git checkout development
+Switched to branch 'development'
+$ git merge master --quiet
+git merge development --ff-only --quiet
+$ git log --oneline --graph --decorate --all
+*   382c62f (HEAD -> master, development) Merge [..]
+|\
+| * 49f3ba1 master - some changes
+* | fadd355 development
+|/
+* eb0ec1a master 1.0
+\end{lstlisting}
+\end{minipage}
+\\
+Im Code-Block~\ref{lst:fast-forward-merge-fail} wurde eine einfach Änderung dem Master-Branch hinzugefügt. Dadurch schlägt der Fastforward-Merge mit dem Development-Branch fehl. Wird wie im Code-Block~\ref{lst:fast-forward-merge-success}, der Development-Branch vorher mit dem Master-Branch gemerged, ist der Fastforward-Merge erfolgreich. Die Situation bedingt, dass alle Merge-Konflikte erst auf dem Development-Branch gelöst werden, bevor sie den Master-Branch betreffen.
+
 Es ist eine gängiges Verfahren nur Fastforward-Merges zu erlauben. Dadurch wird die Verantwortung eines potentiellen Merge-Konfliktes immer zum Autor der Änderung delegiert.
 In der Strategie \glqq Read-Only-Master-Branch\grqq{}\footcite{master-read-only} wird dies deutlich. Ziel der Methodik ist es Änderungen durch einen Merge immer vollautomatisch auf einen Integrations-Branch überführen zu können. Die Garantie keinen Merge-Konflikt zu erhalten, ist nur bei einem Fastforward-Merge gegeben. Ist diese Voraussetzung geschaffen, kann allen Entwicklern die Rechte entzogen werden auf dem Master-Branch zu veröffentlichen. Dadurch sind sie gezwungen auf den automatisierten Merge zurückzugreifen. Der automatisierten Vorgang ist nur die einzige Möglichkeit Änderungen zu veröffentlichen und kann als Aufhänger für zahlreiche automatisierte Qualitätssicherungsmaßnahmen genutzt werden. Üblicherweise sollte die Ausführung bestehende Test-Suits eine der Qualitätsmaßnahmen sein.
 
 \subsubsection{Flüchtige Release-Branches}
 \label{temporary-releases}
 
-Ein Release-Branch ist die Basis für alle release-fähigen Feature-Branches. Nachd der Erstellung des Release-Branches, werden schrittweise alle Feature-Branches, durch einen Merge auf den Release-Branch zusammengeführt. Ist der Vorgang abgeschlossen, wird der letzte Commit des Release-Branches mit einem Tag markiert. Der Release-Branch und alle Feature-Branches können theoretisch ab diesem Moment gelöscht werden. Der Release-Tag kann auf ein beliebiges System ausgeliefert werden.
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+  {resources/simple-release.pdf}
+  \caption{Einfacher Release-Ablauf}
+  \label{simple-release}
+\end{figure}
+
+Ein Release-Branch ist die Basis für alle release-fähigen Feature-Branches. Nach der Erstellung des Release-Branches, werden schrittweise alle Feature-Branches, durch einen Merge auf den Development-Branch zusammengeführt. Ist der Vorgang abgeschlossen, wird der letzte Commit zum Anfang des Release-Branches. Fehler werden direkt auf dem Release-Branch behoben. Ist das Release vollständig und abgenommen, wird ein Merge mit dem Master-Branch durchgeführt und ein Tag wird auf dem letzten Commit platziert. Bei diesem Vorgehen fungiert der Development als Grenze zwischen Development und Release-Branch. Ab der Erstellung des Release-Branches, dürfen keine Änderungen mehr vom Development-Branch zum Release-Branch erfolgen. Korrekturen erfolgen nur auf dem Release-Branch und werden zurück zum Development-Branch gespielt.
 
 Dieses Vorgehen kann zu Problemen führen, wenn Änderungen eines Feature-Branches wieder aus dem Release-Branch entfernt werden müssen. Zudem treten mögliche Merge\hyp{}Fehler und \hyp{}Probleme erst beim Zusammenführen mit dem Release-Branch auf.
 
-Abhilfe könnte ein \glqq flüchtiger\grqq{}-Release-Branch schaffen. Dazu müssten alle Feature-Branches markiert werden, die für ein Release vorgesehen sind. Ein automatisierter Vorgang kann daraufhin alle markierten Feature-Branches auf ihre Kompatibilität prüfen. Alle kompatiblen Feature-Branches werden durch einen Merge auf einem Release-Branch zusammengefasst. Feature-Branches sind dann kompatibel, wenn sie sich ohne Merge-Konflikte auf den Release-Branch integrieren lassen. Das Ergebnis sollte nun von einem automatisierten Software-Build erstellt, validiert und gemessen werden. Ist der Software-Build erfolgreich, steht ein automatisch erstelltes Software-Inkrement. Dieses Software-Inkrement kann beliebig ausgeliefert werden. Schlägt der Software-Build fehl, existiert eine syntaktischer oder semantischer Fehler, der durch den Merge der Feature-Branches entstanden ist. Da der vollständige Vorgang automatisch abläuft, können Konflikte zwischen Feature-Branches frühzeitig erkannt und behoben werden. Im Gegensatz zu einem regulären Release-Branch, ist diese Variante nur flüchtig und wird vom System nach der Validierung und Messung wieder entfernt. Ein regulärer Release-Branch würde zahlreiche Merge-Commits enthalten und ließe sich durch die vielen Zwischenstände nur schwer für das Verfahren verwenden.
+\begin{figure}[htbp]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+  {resources/sketchy-release.pdf}
+  \caption{flüchtiger Release-Ablauf}
+  \label{sketchy-release}
+\end{figure}
+
+Abhilfe könnte ein \glqq flüchtiger\grqq{}-Release-Branch oder auch \glqq Sketchy\grqq{}-Release-Branch schaffen. Dazu müssten alle Feature-Branches markiert werden, die für ein Release vorgesehen sind. Ein automatisierter Vorgang kann daraufhin alle markierten Feature-Branches auf ihre Kompatibilität prüfen. Alle kompatiblen Feature-Branches werden durch einen Merge auf einem Release-Branch zusammengefasst. Feature-Branches sind dann kompatibel, wenn sie sich ohne Merge-Konflikte auf den Release-Branch integrieren lassen. In der Abbildung~\ref{sketchy-release} ist das Feature Nummer 3 nicht kompatibel und wird daher nicht im flüchtigen Release aufgenommen. Das Ergebnis sollte nun von einem automatisierten Software-Build erstellt, validiert und gemessen werden. Ist der Software-Build erfolgreich, steht ein automatisch erstelltes Software-Inkrement. Dieses Software-Inkrement kann beliebig ausgeliefert werden. Schlägt der Software-Build fehl, existiert eine syntaktischer oder semantischer Fehler, der durch den Merge der Feature-Branches entstanden ist. Da der vollständige Vorgang automatisch abläuft, können Konflikte zwischen Feature-Branches frühzeitig erkannt und behoben werden. Im Gegensatz zu einem regulären Release-Branch, ist diese Variante nur flüchtig und wird vom System nach der Validierung und Messung wieder entfernt. Ein regulärer Release-Branch würde zahlreiche Merge-Commits enthalten und ließe sich durch die vielen Zwischenstände nur schwer für das Verfahren verwenden. Zudem würde dieses Vorgehen mit dem Definierten Vorgehen brechen. Der Release-Branch darf nach der Erstellung keine Änderungen aus Feature-Branches mehr erhalten.
 
 Ein Nachteil des Verfahrens ist die Auswahl der Feature-Branches. Die Reihenfolge mit der die Feature-Branches in einem Merge-Verfahren getestet werden, ist maßgeblich für die auftretenden Konflikte. Die Auswahl eines einzigen Feature-Branches ist möglich, wenn dieser mit allen weiteren im Konflikt steht. Sind alle anderen ohne Konflikt kombinierbar, wäre das möglicherweise eine schlechte Auswahl. Eine Auswahlstrategie ist daher ratsam, die Auswahl nach Priorität der Features wäre naheliegend.
 
