@@ -1,12 +1,14 @@
 \chapter[Methodiken und Visualisierung]{Methodiken und Visualisierung für Continuous-Integration und Feature-Branches}
 \label{ch:visu_meth}
 
-Im vorangegangenen Kapitel wurde dargelegt, was Continuous-Integration und Feature-Branches sind und wie diese Techniken in der Softwareentwicklung angewendet werden. Zudem wird darauf eingegangen, welche Schwierigkeiten mit der Verwendung dieser Techniken einhergehen und dementsprechend Lösungen erfordern. 
+Im vorangegangenen Kapitel wurde dargelegt, was Continuous-Integration und Feature-Branches sind und wie diese Techniken in der Softwareentwicklung angewendet werden. Zudem wird darauf eingegangen, welche Schwierigkeiten mit der Verwendung dieser Techniken einhergehen und dementsprechende Lösungen erfordern. 
 Die nachfolgenden Abschnitte sollen mögliche Methodiken und Visualisierungen beleuchten und dadurch Lösungsansätze anbieten. Es wird auf Schwierigkeiten von bekannten Techniken und Methodiken eingegangen und erläutert, wie häufige Probleme vermieden werden können.
 
 \section{Continuous-Integration und Feature-Branches}
 
-Continuous-Integration und Feature-Branches sind beide Techniken, um die Kollaboration zwischen Entwicklern zu fördern. Continuous-Integration fordert die Integration in den existierenden Codestand für jede Änderung. Durch die Verwendung des Trunk-Based-Developments, ist das gesamte Team von dieser Integration direkt betroffen. Ist die Integration fehlerhaft, wird somit für die Dauer der Behebung das gesamte Team angehalten, bei der Behebung zu helfen. Der Feature-Branch-Ansatz hingegen lässt Änderungen ohne Integration parallel existieren. Folgt man der Gitflow-Verwendung von Feature-Branches aus Kapitel~\ref{subsec:gitflow}, wird auch hier eine Integration gefordert. Allerdings erst deutlich verzögert, etwa zu einem Release. Feature-Branches bieten somit einen Integrationsvorgang, ohne das Team zu blockieren. Allerdings wird der Zeitpunkt der Integration verzögert. In dieser Zeitspanne können weitere Änderungen hinzukommen. Jeder dieser Änderungen muss wiederum auf den Release-Branch integriert werden. Damit steigt der Aufwand sukzessive, über die Lebensdauer des Feature-Branches. Im ungünstigsten Fall eskaliert dieser Vorgang in einem \glqq big scary merge\grqq{} oder \glqq big bang merge\grqq{}, wie in Kapitel~\ref{sec:feature-branches} beschrieben. Dieses Risiko sollte gemindert werden, durch eine regelmäßige und kontinuierliche Integration mit dem Integrations-Branch.\\
+Continuous-Integration und Feature-Branches sind beide Techniken, um die Kollaboration zwischen Entwicklern zu fördern. Continuous-Integration fordert die Integration in den existierenden Codestand für jede Änderung. Durch die Verwendung des Trunk-Based-Developments, ist das gesamte Team von dieser Integration direkt betroffen. 
+
+Ist die Integration fehlerhaft, wird für die Dauer der Behebung das gesamte Team aufgefordert, bei der Behebung zu helfen. Der Feature-Branch-Ansatz hingegen lässt Änderungen ohne Integration parallel existieren. Folgt man der Gitflow-Verwendung von Feature-Branches aus Kapitel~\ref{subsec:gitflow}, wird auch hier eine Integration gefordert. Allerdings erst deutlich verzögert, etwa zu einem Release. Feature-Branches bieten somit einen Integrationsvorgang, ohne das Team zu blockieren. Allerdings wird der Zeitpunkt der Integration verzögert. In dieser Zeitspanne können weitere Änderungen hinzukommen. Jeder dieser Änderungen muss wiederum auf den Release-Branch integriert werden. Damit steigt der Aufwand sukzessive, über die Lebensdauer des Feature-Branches. Im ungünstigsten Fall eskaliert dieser Vorgang in einem \glqq big scary merge\grqq{} oder \glqq big bang merge\grqq{}, wie in Kapitel~\ref{sec:feature-branches} beschrieben. Dieses Risiko sollte gemindert werden, durch eine regelmäßige und kontinuierliche Integration mit dem Integrations-Branch.\\
 
 \blockquote {Continuously is more often than you think.}\footcite[vgl.][Kap. Continuous Integration]{humble2010}\\
 
@@ -43,9 +45,9 @@ In der Praxis werden automatisiert oft nur Tests verwendet. Der geringer Aufwand
 
 Einzelne Ergebnisse durch Metriken können nicht für die Bewertung eines automatischen Software-Builds verwendet werden. Die Abbildung auf eine einheitliche Skala oder der Vergleich mit Fixpunkten erlaubt eine Bewertung der Ergebnisse. Die Auswahl der Fixpunkte ist stark abhängig von der verwendeten Metrik. Komplexitäts-, Umfangs- und Strukturmetriken liefern Werte, die nur schwer automatisiert zu bewerten sind. Hier bietet sich die Betrachtung der kurz- und langfristigen Änderung an. Sprunghafte Änderungen sollten dabei von besonderer Signifikanz sein. Prüfungen auf den Grad der Erfüllung eines Aspektes sind gut zu automatisieren. 
 
-Die Testabdeckung einer Softwareanwendung kann auf 80\% festgelegt werden und darf an keiner Stelle unterschritten werden. Eine solche Prüfung sollte einen direkten Einfluss, auf das Ergebnis des automatisierten Software-Builds ausüben. Wird die Testabdeckung von 80\% angestrebt, kann dieser Zielwert auch schrittweise erreicht werden. Angefangen auf dem Wert der aktuellen Testabdeckung, wieder dieser Grenzwert schrittweise erhöht. Wird die Testabdeckung überschritten, passt sich der Grenzwert nach oben an. Auf diese Weise ist die Erhöhung möglich, allerdings nicht die Verringerung der Testabdeckung. Sinkt die Testabdeckung unter den neuen Grenzwert, schlägt der Software-Build fehl. Diese schrittweise Erhöhung ist ebenso für andere Grenzwerte denkbar.
+Die Testabdeckung einer Softwareanwendung kann auf 80\% festgelegt werden und darf an keiner Stelle unterschritten werden. Eine solche Prüfung sollte einen direkten Einfluss, auf das Ergebnis des automatisierten Software-Builds ausüben. Wird die Testabdeckung von 80\% noch angestrebt, kann dieser Zielwert auch schrittweise erreicht werden. Angefangen auf dem Wert der aktuellen Testabdeckung, wird dieser Grenzwert schrittweise erhöht. Wird die Testabdeckung überschritten, passt sich der Grenzwert nach oben an. Auf diese Weise ist die Erhöhung möglich, allerdings nicht die Verringerung der Testabdeckung. Sinkt die Testabdeckung unter den neuen Grenzwert, schlägt der Software-Build fehl. Diese schrittweise Erhöhung ist ebenso für andere Grenzwerte denkbar.
 
-Die Verwendung von Metriken und Testfällen erlauben keine grundsätzliche Aussage über die Qualität der Software. Richtig angewendet und gewartet erlauben sie eine zuverlässige Absicherung des automatischen Software-Builds.
+Die Verwendung von Metriken und Testfällen erlauben keine grundsätzliche Aussage über die Qualität der Software. Richtig angewendet und gewartet erlauben sie jedoch eine zuverlässige Absicherung des automatischen Software-Builds.
 
 \subsection{Automatisches Zusammenführen}
 
@@ -56,7 +58,7 @@ Das Zusammenführen von Änderungen ist ein schwieriges Unterfangen. Während de
 Fastforward-Merge ist ein Fachbegriff, der in der Versionsverwaltung mit Git verwendet wird. Es bezieht sich auf das Verschieben eines Branch-Zeigers zu einem anderen Branch-Zeiger, ohne die Zusammenführung von Änderung. Es werden lediglich bestehende Änderung des abzweigenden Branches auf den Basis-Branch übertragen.
 Fastforward-Merges sind gut zu automatisieren, da sie komplett ohne manuellen Eingriff von Git durchgeführt werden können. Dadurch können verschiedene automatisierte Verfahren auf Basis eines Fastforward-Merges aufgebaut werden.
 
-Das folgende Beispiel erläutert kurz wie ein Branch in einem beliebigen Zustand, in einen Fastforward-Zustand gebracht werden kann.
+Das folgende Beispiel erläutert kurz, wie ein Branch in einem beliebigen Zustand, in einen Fastforward-Zustand gebracht werden kann.
 
 \begin{minipage}{.45\textwidth}
 \begin{lstlisting}[caption={Der development Branch schlägt fehl beim Fastforward-Merge}, frame=none,label={lst:fast-forward-merge-fail}]
@@ -89,10 +91,10 @@ $ git log --oneline --graph --decorate --all
 \end{lstlisting}
 \end{minipage}
 \\
-Im Code-Block~\ref{lst:fast-forward-merge-fail} wurde eine einfach Änderung dem Master-Branch hinzugefügt. Dadurch schlägt der Fastforward-Merge mit dem Development-Branch fehl. Wird wie im Code-Block~\ref{lst:fast-forward-merge-success}, der Development-Branch vorher mit dem Master-Branch gemerged, ist der Fastforward-Merge erfolgreich. Die Situation bedingt, dass alle Merge-Konflikte erst auf dem Development-Branch gelöst werden, bevor sie den Master-Branch betreffen.
+Im Code-Block~\ref{lst:fast-forward-merge-fail} wurde eine einfach Änderung dem Master-Branch hinzugefügt. Dadurch schlägt der Fastforward-Merge mit dem Development-Branch fehl. Wird wie im Code-Block~\ref{lst:fast-forward-merge-success}, der Development-Branch vorher mit dem Master-Branch kombiniert, ist der Fastforward-Merge erfolgreich. Der Fastforward-Merge bedingt, dass alle Merge-Konflikte erst auf dem Development-Branch gelöst werden, bevor sie den Master-Branch betreffen.
 
 Es ist eine gängiges Verfahren nur Fastforward-Merges zu erlauben. Dadurch wird die Verantwortung eines potentiellen Merge-Konfliktes immer zum Autor der Änderung delegiert.
-In der Strategie \glqq Read-Only-Master-Branch\grqq{}\footcite{master-read-only} wird dies deutlich. Ziel der Methodik ist es Änderungen durch einen Merge immer vollautomatisch auf einen Integrations-Branch überführen zu können. Die Garantie keinen Merge-Konflikt zu erhalten, ist nur bei einem Fastforward-Merge gegeben. Ist diese Voraussetzung geschaffen, kann allen Entwicklern die Rechte entzogen werden auf dem Master-Branch zu veröffentlichen. Dadurch sind sie gezwungen auf den automatisierten Merge zurückzugreifen. Der automatisierten Vorgang ist nur die einzige Möglichkeit Änderungen zu veröffentlichen und kann als Aufhänger für zahlreiche automatisierte Qualitätssicherungsmaßnahmen genutzt werden. Üblicherweise sollte die Ausführung bestehende Test-Suits eine der Qualitätsmaßnahmen sein.
+In der Strategie \glqq Read-Only-Master-Branch\grqq{}\footcite{master-read-only} wird dies deutlich. Ziel der Methodik ist es Änderungen durch einen Merge immer vollautomatisch auf einen Integrations-Branch überführen zu können. Die Garantie keinen Merge-Konflikt zu erzeugen, ist nur bei einem Fastforward-Merge gegeben. Ist diese Voraussetzung geschaffen, kann allen Entwicklern die Rechte entzogen werden auf dem Master-Branch zu veröffentlichen. Dadurch sind sie gezwungen auf den automatisierten Merge zurückzugreifen. Der automatisierten Vorgang ist nun die einzige Möglichkeit Änderungen zu veröffentlichen und kann als Aufhänger für zahlreiche automatisierte Qualitätssicherungsmaßnahmen genutzt werden. Üblicherweise sollte die Ausführung bestehende Test-Suits eine der Qualitätsmaßnahmen sein.
 
 \subsubsection{Flüchtige Release-Branches}
 \label{temporary-releases}
@@ -104,7 +106,7 @@ In der Strategie \glqq Read-Only-Master-Branch\grqq{}\footcite{master-read-only}
   \label{simple-release}
 \end{figure}
 
-Ein Release-Branch ist die Basis für alle release-fähigen Feature-Branches. Nach der Erstellung des Release-Branches, werden schrittweise alle Feature-Branches, durch einen Merge auf den Development-Branch zusammengeführt. Ist der Vorgang abgeschlossen, wird der letzte Commit zum Anfang des Release-Branches. Fehler werden direkt auf dem Release-Branch behoben. Ist das Release vollständig und abgenommen, wird ein Merge mit dem Master-Branch durchgeführt und ein Tag wird auf dem letzten Commit platziert. Bei diesem Vorgehen fungiert der Development als Grenze zwischen Development und Release-Branch. Ab der Erstellung des Release-Branches, dürfen keine Änderungen mehr vom Development-Branch zum Release-Branch erfolgen. Korrekturen erfolgen nur auf dem Release-Branch und werden zurück zum Development-Branch gespielt.
+Ein Release-Branch ist die Integrationsbasis für alle release-fähigen Feature-Branches. Für die Erstellung des Release-Branches, werden schrittweise alle Feature-Branches, durch einen Merge auf den Development-Branch zusammengeführt. Ist der Vorgang abgeschlossen, wird der letzte Commit zum Anfang des Release-Branches. Fehler werden direkt auf dem Release-Branch behoben. Ist das Release vollständig und abgenommen, wird ein Merge mit dem Master-Branch durchgeführt und ein Tag wird auf dem letzten Commit platziert. Bei diesem Vorgehen fungiert der Development als Grenze zwischen Development und Release-Branch. Ab der Erstellung des Release-Branches, dürfen keine Änderungen mehr vom Development-Branch zum Release-Branch erfolgen. Korrekturen erfolgen nur auf dem Release-Branch und werden zurück zum Development-Branch gespielt.
 
 Dieses Vorgehen kann zu Problemen führen, wenn Änderungen eines Feature-Branches wieder aus dem Release-Branch entfernt werden müssen. Zudem treten mögliche Merge\hyp{}Fehler und \hyp{}Probleme erst beim Zusammenführen mit dem Release-Branch auf.
 
@@ -115,11 +117,11 @@ Dieses Vorgehen kann zu Problemen führen, wenn Änderungen eines Feature-Branch
   \label{sketchy-release}
 \end{figure}
 
-Abhilfe könnte ein \glqq flüchtiger\grqq{}-Release-Branch oder auch \glqq Sketchy\grqq{}-Release-Branch schaffen. Dazu müssten alle Feature-Branches markiert werden, die für ein Release vorgesehen sind. Ein automatisierter Vorgang kann daraufhin alle markierten Feature-Branches auf ihre Kompatibilität prüfen. Alle kompatiblen Feature-Branches werden durch einen Merge auf einem Release-Branch zusammengefasst. Feature-Branches sind dann kompatibel, wenn sie sich ohne Merge-Konflikte auf den Release-Branch integrieren lassen. In der Abbildung~\ref{sketchy-release} ist das Feature Nummer 3 nicht kompatibel und wird daher nicht im flüchtigen Release aufgenommen. Das Ergebnis sollte nun von einem automatisierten Software-Build erstellt, validiert und gemessen werden. Ist der Software-Build erfolgreich, steht ein automatisch erstelltes Software-Inkrement. Dieses Software-Inkrement kann beliebig ausgeliefert werden. Schlägt der Software-Build fehl, existiert eine syntaktischer oder semantischer Fehler, der durch den Merge der Feature-Branches entstanden ist. Da der vollständige Vorgang automatisch abläuft, können Konflikte zwischen Feature-Branches frühzeitig erkannt und behoben werden. Im Gegensatz zu einem regulären Release-Branch, ist diese Variante nur flüchtig und wird vom System nach der Validierung und Messung wieder entfernt. Ein regulärer Release-Branch würde zahlreiche Merge-Commits enthalten und ließe sich durch die vielen Zwischenstände nur schwer für das Verfahren verwenden. Zudem würde dieses Vorgehen mit dem Definierten Vorgehen brechen. Der Release-Branch darf nach der Erstellung keine Änderungen aus Feature-Branches mehr erhalten.
+Abhilfe könnte ein \glqq flüchtiger\grqq{}-Release-Branch oder auch \glqq Sketchy\grqq{}-Release-Branch schaffen. Dazu müssten alle Feature-Branches markiert werden, die für ein Release vorgesehen sind. Ein automatisierter Vorgang kann daraufhin alle markierten Feature-Branches auf ihre Kompatibilität prüfen. Alle kompatiblen Feature-Branches werden durch einen Merge auf einem Release-Branch zusammengefasst. Feature-Branches sind dann kompatibel, wenn sie sich ohne Merge-Konflikte auf den Release-Branch integrieren lassen. In der Abbildung~\ref{sketchy-release} ist das Feature Nummer 3 nicht kompatibel und wird daher nicht im flüchtigen Release aufgenommen. Das Ergebnis sollte nun von einem automatisierten Software-Build erstellt, validiert und gemessen werden. Ist der Software-Build erfolgreich, steht ein automatisch erstelltes Software-Inkrement bereit. Dieses Software-Inkrement kann beliebig ausgeliefert werden. Schlägt der Software-Build fehl, existiert eine syntaktischer oder semantischer Fehler, der durch den Merge der Feature-Branches entstanden ist. Da der vollständige Vorgang automatisch abläuft, können Konflikte zwischen Feature-Branches frühzeitig erkannt und behoben werden. Im Gegensatz zu einem regulären Release-Branch, ist diese Variante nur flüchtig und wird vom System nach der Validierung und Messung wieder entfernt. Ein regulärer Release-Branch würde zahlreiche Merge-Commits enthalten und ließe sich durch die vielen Zwischenstände nur schwer für das Verfahren verwenden. Zudem würde dieses Vorgehen mit dem Definierten Vorgehen brechen. Der Release-Branch darf nach der Erstellung keine Änderungen aus Feature-Branches mehr erhalten.
 
-Ein Nachteil des Verfahrens ist die Auswahl der Feature-Branches. Die Reihenfolge mit der die Feature-Branches in einem Merge-Verfahren getestet werden, ist maßgeblich für die auftretenden Konflikte. Die Auswahl eines einzigen Feature-Branches ist möglich, wenn dieser mit allen weiteren im Konflikt steht. Sind alle anderen ohne Konflikt kombinierbar, wäre das möglicherweise eine schlechte Auswahl. Eine Auswahlstrategie ist daher ratsam, die Auswahl nach Priorität der Features wäre naheliegend.
+Ein Nachteil des Verfahrens ist die Auswahl der Feature-Branches. Die Reihenfolge mit der die Feature-Branches durch das Merge-Verfahren getestet werden, ist maßgeblich für die auftretenden Konflikte. Die alleinige Auswahl eines einzigen Feature-Branches ist möglich, wenn dieser mit allen weiteren im Konflikt steht. Sind alle anderen ohne Konflikt kombinierbar, wäre das möglicherweise eine schlechte Auswahl. Eine Auswahlstrategie ist daher ratsam. Die Auswahl nach Priorität der Features wäre naheliegend.
 
-Existierenden Konflikte zwischen Feature-Branches können durch einen Merge unter den Feature-Branches beseitigt werden. Dies führt zu einem weiteren Nachteil des Verfahrens. Werden Feature-Branches durch einen Merge kombiniert, können diese nicht mehr unabhängig entwickelt werden. Die kombinierten Feature-Branches werden dadurch in einem Continuous-Integration nahen zustanden überführt. Die Vorteile von Feature-Branches werden dadurch geschwächt.
+Existierenden Konflikte zwischen Feature-Branches können durch einen Merge unter den Feature-Branches beseitigt werden. Dies führt zu einem weiteren Nachteil des Verfahrens. Werden Feature-Branches durch einen Merge kombiniert, können diese nicht mehr unabhängig entwickelt werden. Die kombinierten Feature-Branches werden dadurch in einem Continuous-Integration nahen Zustand überführt. Die Vorteile von Feature-Branches werden dadurch geschwächt.
 
 Das Verfahren ist daher schlechter, wenn viele Konflikte unter den Feature-Branches auftreten. Existieren viele Abhängigkeiten innerhalb der entwickelten Softwareanwendung, steigt die Wahrscheinlichkeit für einen Merge-Konflikt. Somit ist die Effizienz des Verfahrens abhängig von der Kopplung der Komponenten in der Softwareanwendung.
 
@@ -129,11 +131,9 @@ In einem optimalen Szenario ist das Verfahren mit Continuous-Integration verglei
 
 Angesichts der Komplexität von Softwareanwendungen mit der Entwickler häufig konfrontiert sind, ist es essentiell die entscheidenden Informationen zusammenzutragen. Je nach Situation können dabei andere Ansichten und Übersichten wichtig sein. In stark gewachsenen Softwareprojekten können mit speziellen Visualisierungen Engpässe und interne Abgrenzungen gefunden werden. Es können Wachstum und Fortschritt eines Projektes visualisiert werden. Viele Ansichten erleichtern zudem die Kommunikation zwischen Projektteilnehmern. Technisch komplexe und schwer zu fassende Daten, können so leichter zugänglich gemacht werden.
 
-Wesentlich bei diesen Ansichten ist der Aufwand für ihre Erstellung. Ansichten die einen hohen manuellen Aufwand erfordern, veralten schnell und werden nicht mehr genutzt. Im schlimmsten Fall liefern veraltet Ansichten falsche Informationen. Somit ist es entscheidend diese Ansichten und Übersichten automatisch zu erstellen. Über Metriken aus dem automatisierten Softwareerstellungsprozess, können die notwendigen Messwerte ermittelt werden. 
+Wesentlich bei diesen Ansichten ist der Aufwand für ihre Erstellung. Ansichten die einen hohen manuellen Aufwand erfordern, werden selten aktualisiert, veralten schnell und werden nicht mehr genutzt. Im schlimmsten Fall liefern veraltet Ansichten falsche Informationen. Somit ist es entscheidend diese Ansichten und Übersichten automatisch zu erstellen. Über Metriken aus dem automatisierten Softwareerstellungsprozess, können die notwendigen Messwerte ermittelt werden. 
 
-Da in graphische Übersichten Trends und Schwerpunkte erkannt werden sollen, bieten graphische Übersichten einen Vorteil gegenüber rein textbasierten Darstellungen. Ein einfacher und schneller Eindruck vom Projektfortschritt und der -Qualität kann damit erlangt werden.
-
-Bewertungen von Feature-Branches und Releases können damit unterstützt werden.
+Da in graphische Übersichten Trends und Schwerpunkte leicht erkannt werden können, bieten graphische Übersichten einen Vorteil gegenüber rein textbasierten Darstellungen. Ein einfacher und schneller Eindruck vom Projektfortschritt und der -Qualität kann dadurch erlangt werden. Bewertungen von Feature-Branches und Releases können damit unterstützt werden.
 
 \subsection{Übersicht zu Branches}
 
@@ -168,13 +168,13 @@ Die zusätzlichen Informationen, aus dem Versionsverwaltungssystem, Tests und Me
 \subsection{Konfigurations- und Systemübersicht}
 \label{subsubsec:configuration-system-overview}
 
-Das Konfigurationsmanagement aus der automatisierten Softwareerstellung kann auch für eine System- und Konfigurationsübersicht verwendet werden. Zusammen mit Daten aus einer Systemüberwachung oder Virtualisierungs-Verwaltung lassen sich umfangreiche Rückschlüsse ziehen. 
+Das Konfigurationsmanagement aus der automatisierten Softwareerstellung kann auch für eine System- und Konfigurationsübersicht verwendet werden. Zusammen mit Daten aus der Systemüberwachung oder der Verwaltung für virtuelle Systeme lassen sich umfangreiche Rückschlüsse ziehen. 
 
 Eine automatisierte Übersicht ist in verschiedenen Einsatzgebieten von Vorteil. Unabhängig davon ob eine voll automatisierte Virtualisierungs- und Container-Verwaltung eingesetzt wird oder ein manuelle administrierter Rechnerverbund.
 
-In einer vollautomatisierten Virtualisierung werden Systeme automatisch bereitgestellt, verwaltet und wieder entfernt. Eine aussagekräftige Übersicht erleichtert sowohl die Fehlersuche als auch das Erstellen von Auswertungen zu den Systemen. Viele Virtualisierungs\hyp{}Verwaltungen sollten bereits zahlreiche Auswertungsmöglichkeiten bereitstellen. Aufgrund der allgemeingültigen Natur der Verwaltungen, werden diese aber nur bedingt auf spezifische Merkmale der Softwareanwendungen eingehen können. Die semantischen Zusatzinformationen aus der Konfigurationsverwaltung gleichen diesen Nachteil aus.
+In einer vollautomatisierten Virtualisierung werden Anwendungssysteme automatisch bereitgestellt, verwaltet und wieder entfernt. Eine aussagekräftige Übersicht erleichtert sowohl die Fehlersuche, als auch das Erstellen von Auswertungen zu den Anwendungssystemen. Viele Virtualisierungs\hyp{}Verwaltungen sollten bereits zahlreiche Auswertungsmöglichkeiten bereitstellen. Aufgrund der allgemeingültigen Natur der Verwaltungen, werden diese aber nur bedingt auf spezifische Merkmale der Softwareanwendungen eingehen können. Die semantischen Zusatzinformationen aus der Konfigurationsverwaltung können diesen Nachteil ausgleichen.
 
-Auch im Fall einer manuellen oder teil-automatisierten Virtualisierung oder Systemverwaltung bringt eine Systemübersicht Vorteile. Während in der vollautomatisierten Variante eine Systemübersicht meist automatisch mit erstellt wird, müssen im manuellen Fall die Übersichten extra erstellt werden. Wechselnde Belegungen der einzelnen Systeme sind häufig gegeben. Wird eine Umgebung benötigt für ein Testszenario, ist es häufig schwer festzustellen, welche Systeme verfügbar sind. In Kombination mit der Konfigurationsverwaltung können Systeme nicht nur anhand ihrer Verfügbarkeit beurteilt werden, sondern auch bezüglich ihrer Systemkompatibilität. Somit kann die Systemübersicht als Grundlage zur Verwaltung des Systempools verwendet werden.
+Auch im Fall einer manuellen oder teil-automatisierten Virtualisierung oder Systemverwaltung bringt eine Systemübersicht Vorteile. Während in der vollautomatisierten Variante eine Systemübersicht meist automatisch erstellt wird, müssen im manuell verwaltetem Fall die Übersichten zusätzlich erstellt werden. Wechselnde Belegungen der einzelnen Anwendungssysteme sind häufig gegeben. Wird eine Umgebung benötigt für ein Testszenario, ist es häufig schwer festzustellen, welche Anwendungssysteme verfügbar sind. In Kombination mit der Konfigurationsverwaltung können Anwendungssysteme nicht nur anhand ihrer Verfügbarkeit beurteilt werden, sondern auch bezüglich ihrer Systemkompatibilität. Somit kann die Systemübersicht als Grundlage zur Verwaltung des Systempools verwendet werden.
 
 Unabhängig von der verwendeten Systemverwaltung kann die Systemübersicht auch als Dashboard verwendet werden. Die Verwendung soll den Zugriff auf die dargestellten Systeme vereinfachen. Ist ein System auffällig, kann dieses direkt aus dem Dashboard heraus angewählt werden. Eine solche Schnittstelle muss sehr modular und flexibel angelegt sein, um die zahlreichen verschiedenen Administrationssysteme anbinden zu können. Ist die Bedingung erfüllt, ergibt sich ein zentraler und übersichtlicher Einstieg zu den verwalteten Systemen.
 
@@ -184,12 +184,12 @@ Eine Konfigurations- und Systemübersicht ist somit eine hilfreiche, kombinierte
 
 Eine Abhängigkeitsverwaltung für die verwendeten Software-Bibliotheken beschreibt eindeutig, welche Komponenten und Versionen verwendet werden. Die Abhängigkeitsverwaltung löst dabei alle Anforderungen zu einer eindeutigen, möglichst aktuellen Gruppe an Komponenten auf. 
 
-Die Komposition der Abhängigkeiten ist ein komplizierter und komplexer Vorgang. Abhängigkeiten können weitere neue Abhängigkeiten in den Vorgang einbringen. Viele der Abhängigkeitsverwaltungen nutzen reguläre Ausdrücke, um die benötigten Versionen der Abhängigkeiten zu beschreiben. Die von alle Abhängigkeiten spezifizierten Ausdrücke werden miteinander ausgewertet. Das Ergebnis ist eine eindeutig beschriebene Zuordnung von Abhängigkeiten und Versionsnummern oder eine Liste an Konflikten, die konkurrierende Abhängigkeiten beschreiben.
+Die Komposition der Abhängigkeiten ist ein komplizierter und komplexer Vorgang. Abhängigkeiten können weitere neue Abhängigkeiten in den Vorgang einbringen. Viele der Abhängigkeitsverwaltungen nutzen reguläre Ausdrücke, um die benötigten Versionen der Abhängigkeiten zu beschreiben. Die von allen Abhängigkeiten spezifizierten Ausdrücke werden miteinander ausgewertet. Das Ergebnis ist eine eindeutig beschriebene Zuordnung von Abhängigkeiten und Versionsnummern oder eine Liste an Konflikten, die konkurrierende Abhängigkeiten beschreiben.
 
 Um die Wartbarkeit der Softwareanwendung zu gewährleisten, ist es sinnvoll die Abhängigkeiten so simpel wie möglich zu halten. Muss eine Abhängigkeit aktualisiert werden, sollte schnell deutlich werden, welche anderen Abhängigkeiten betroffen sind.
 Aber auch aus Gründen der Robustheit sind übersichtliche und transparente Abhängigkeiten wichtig. Wenn Abhängigkeiten weitere Abhängigkeiten in das System einbringen, entstehen schnell größere Kaskaden. Zentrale, stark gekoppelte Komponenten in Abhängigkeitskaskaden sind problematisch. In schwierigen Fällen, müssen alle Abhängigkeiten der Komponente ebenfalls aktualisiert werden.
 
-Um diesen Szenarien vorzubeugen und sie abzuschwächen, ist eine automatisierte Aufbereitung der Abhängigkeiten sinnvoll. Ziel der Aufbereitung muss es sein, potentiell Schwachpunkte im System visuell darzustellen. Knotenpunkte mit vielen Abhängigkeiten müssen klar heraus stechen. Komponenten mit besonders hoher Komplexität sollten leicht zu finden sein.
+Um diesen Szenarien vorzubeugen oder sie abzuschwächen, ist eine automatisierte Aufbereitung der Abhängigkeiten sinnvoll. Ziel der Aufbereitung muss es sein, potentiell Schwachpunkte im System visuell darzustellen. Knotenpunkte mit vielen Abhängigkeiten müssen klar heraus stechen. Komponenten mit besonders hoher Komplexität sollten leicht zu finden sein.
 
 Im Weiteren Verlauf wird zwischen internen und externen Abhängigkeiten unterschieden. Für die unterschiedlichen Typen, können unterschiedliche Maßnahmen ergriffen werden. Interne Abhängigkeiten sind all jene Komponenten, welche im direkten Einfluss der Softwareentwicklung liegen. Externe Abhängigkeiten sind im Gegensatz außerhalb des Einflusses der Softwareentwicklung. Meist können diese Abhängigkeiten nicht verändert werden.
 
@@ -210,16 +210,16 @@ Externe Abhängigkeiten sind häufig standardisierte Bibliotheken für Zugriffe,
 
 Externe Abhängigkeiten bergen immer auch ein Risiko. Dieses Risiko ergibt sich zum Teil durch die schwer einzuschätzende Qualität. Robustheit und Fehleranfälligkeit sind bedingt definierbar. Ebenso sind sicherheitskritische Probleme und Leistungsschwächen nur bedingt abschätzbar. Ein anderer Teil des Risikos ist die Öffnung der eigenen Software für potentiell gefährliche Softwarebestandteile. Häufig sind Abhängigkeiten zu komplex, um sie vollständig zu untersuchen oder die Abhängigkeiten liegen nur in gepackter, nicht lesbarer Form vor. Der Schutz vor solchen Softwarebestandteilen ist nur bedingt möglich. Der wirksamste Schutz gegen dieses Risiko ist die Verwendung von quelloffener Software mit einer aktiven Entwickler-Community. Aber auch in diesem Szenario ist Schadsoftware möglich.
 
-Die Aktualisierung von externen Abhängigkeiten sollte im Allgemeinen nur in kontrolliertem Maße erfolgen. Sicherheitskritische Updates sollten stets priorisiert werden. Aktualisierungen anderer Art sind allerdings kritisch zu sehen, da sie häufig Anpassungen in den internen Strukturen zur Folge haben. Es muss somit abgewogen werden ob die notwendigen Anpassungen durch entsprechende Vorteile der Aktualisierung gedeckt werden.
+Die Aktualisierung von externen Abhängigkeiten sollte im Allgemeinen nur in kontrolliertem Maße erfolgen. Sicherheitskritische Updates sollten stets priorisiert werden. Aktualisierungen anderer Art sind allerdings kritisch zu sehen, da sie häufig Anpassungen in den internen Strukturen zur Folge haben. Es muss somit abgewogen werden, ob die notwendigen Anpassungen durch entsprechende Vorteile der Aktualisierung gedeckt werden.
 
 Unabhängig des Abhängigkeitstyps sollte immer verhindert werden, dass die Abhängigkeiten unkontrolliert aktualisiert werden. Insbesondere wenn Major-Updates von Abhängigkeiten ohne Prüfung und Test genutzt werden, können leicht Schnittstellen brechen oder unerwartete Verhaltensmuster in der Softwareanwendung auftreten.
 
 \subsubsection{Darstellung der Abhängigkeiten}
 \label{subsubsec:illustrate-dependencies}
 
-In einer stark modularisierten Softwareanwendung existieren in der Regel sehr viele Abhängigkeiten. Starke Wiederverwendung von Modulen erhöht die Anzahl von Querreferenzen. Viele Module verwenden daher oft gleiche Module und Bilden daher zahlreiche Verbindungen. Eine einfache Darstellung dieser Verbindungen ist kaum möglich. 
+In einer stark modularisierten Softwareanwendung existieren in der Regel sehr viele Abhängigkeiten. Starke Wiederverwendung von Modulen erhöht die Anzahl von Querreferenzen. Viele Module verwenden gleiche Module und bilden zahlreiche Verbindungen. Eine einfache Darstellung dieser Verbindungen ist kaum möglich. 
 
-Für die nachfolgenden Vergleiche werden zwei PHP-Projekte verwendet. In beiden Projekten wird als Paketverwaltung Composer\footcite{composer-web} genutzt. Composer beschreibt Abhängikeiten mittels einer eigenen DSL\footcite{composer-json}, welche auf Yaml\footcite{yaml-homepage} basierenden . Das erste Projekt ist eine Open-Source-Wiki-Software \glqq Wikia\grqq{}\footcite{wikia-github}. Sie zählt zu den größten Open-Source-PHP-Projekten\footcite{largest-php-apps-2018}. Das zweite Projekt ist eine mittelgroße Individualsoftware für ein Content-Management-System.
+Für die nachfolgenden Vergleiche werden zwei \acs{php}-Projekte verwendet. In beiden Projekten wird als Paketverwaltung Composer\footcite{composer-web} genutzt. Composer beschreibt Abhängikeiten mittels einer eigenen DSL\footcite{composer-json}, welche auf \acs{yaml}\footcite{yaml-homepage} basierenden . Das erste Projekt ist eine Open-Source-Wiki-Software \glqq Wikia\grqq{}\footcite{wikia-github}. Sie zählt zu den größten Open-Source-PHP-Projekten\footcite{largest-php-apps-2018}. Das zweite Projekt ist eine mittelgroße Individualsoftware für ein Content-Management-System.
 
 Beide Projekte haben eine ähnliche Fülle an Abhängigkeiten und werden in einem ähnlichen Fachgebiet genutzt. Die unterschiedliche Entwicklungskultur, kann aber unter Umständen Einfluss auf das Softwareergebnis haben.
 
@@ -231,13 +231,13 @@ Beide Projekte haben eine ähnliche Fülle an Abhängigkeiten und werden in eine
     height=\textheight,
     keepaspectratio
   ]{resources/dependency-graph.pdf}
-  \caption{Ausschnitt des Gerichteter Graph für Abhängigkeiten der Individualsoftware}
+  \caption{Ausschnitt des gerichteter Graph für Abhängigkeiten der Individualsoftware}
   \label{dependency-graph}
 \end{figure}
 
 In Abbildung~\ref{dependency-graph} wird ein Ausschnitt der Abhängigkeiten der Individualsoftware dargestellt. Die vollständige Abbildung wäre zu umfangreich, um sie sinnvoll darzustellen. Zur Erstellung des Graphen wurde eine PHP-Bibliothek \glqq clue/graph-composer\grqq{} verwendet.
 
-Die Betrachtung des vollständigen Graphen für beide Projekte, lässt Ähnlichkeiten erkennen. Auffällig bei beiden Projekten sind zentrale Knoten, also Abhängigkeiten die von vielen anderen Abhängigkeiten genutzt werden oder diese nutzen. Des weiteren könnten Gruppen von Abhängigkeiten ausgemacht werden. Solche Gruppen können ein eigenes, größtenteils abgrenzbares Abhängigkeitsnetz spannen. Damit dies möglich ist, müssten die Abhängigkeiten entsprechend gewichtet angeordnet sein. Im Falle des Graph-Composer-Werkzeuges erscheint dies nur mangelhaft zu gelingen. 
+Die Betrachtung des vollständigen Graphen für beide Projekte, lässt Ähnlichkeiten erkennen. Auffällig bei beiden Projekten sind zentrale Knoten, also Abhängigkeiten die von vielen anderen Abhängigkeiten genutzt werden oder diese nutzen. Des weiteren können Gruppen von Abhängigkeiten ausgemacht werden. Solche Gruppen können ein eigenes, größtenteils abgrenzbares Abhängigkeitsnetz spannen. Damit dies möglich ist, müssten die Abhängigkeiten entsprechend gewichtet angeordnet sein. Im Falle des Graph-Composer-Werkzeuges erscheint dies nur mangelhaft zu gelingen. 
 
 Abschließend sind in der Individualsoftware noch eine Reihe an unerwarteten Blattknoten erkennbar. Diese deuten auf schlecht gepflegte Abhängigkeiten hin. Unzureichende gepflegte Abhängigkeiten entstehen in der Regel, wenn die betroffenen Module nur im Gesamtkontext geprüft werden. Dadurch sind für diese Module implizite Abhängigkeiten verfügbar, die sonst nicht nicht bereitgestellt werden könnten.
 
@@ -255,7 +255,7 @@ Abschließend sind in der Individualsoftware noch eine Reihe an unerwarteten Bla
 
 In Abbildung~\ref{dependency-circle-plot} werden zwei Kreisdiagramme verwendet um die Abhängigkeitszu\hyp{} und abflüsse zu verdeutlichen. Das linke Diagramm stellt die Abhängigkeiten der Individualsoftware dar. Das rechte Diagramm visualisiert die Abhängigkeiten von Wikia. Die Wahl des Kreisdiagramms ergibt sich durch seine Eignung gruppierte Ab- und Zuströme zu visualisieren\footcite{visualizing-graph-data}. 
 
-Als Basis für die beiden Diagramme wurden die im Versionsverwaltungssystem gesichert Dateien der Paketverwaltung verwendet. Das beschreibende Format ist eine DSL von Composer\footcite{composer-json} und wird primär für PHP-Projekte verwendet. Die Ansicht wurde mit Hilfe eines JavaScript-Werkzeuges \glqq Dependency Wheel\grqq{}\footcite{composer-dependency-wheel} erstellt.
+Die Kreisdiagramme wurden mit Hilfe eines JavaScript-Werkzeuges \glqq Dependency Wheel\grqq{}\footcite{composer-dependency-wheel} erstellt.
 
 Die grauen Abhängigkeitsteile stellen direkte Abhängigkeiten des Projektes dar, während die farbigen Stränge die Verbindungen der Abhängigkeiten visualisieren.
 
@@ -296,7 +296,7 @@ Die Identifizierung der Gruppe der komplexesten Klassen oder die Gruppe der Klas
 \end{figure}
 \paragraph{Kreis- und Ringdiagramme} eignen sich gut um Zusammensetzungen darzustellen. Werden mehrere Zusammensetzungen als Ringdiagramme verschachtelt, lassen diese sich in Grenzen auch vergleichen. Kreisdiagrammen können verhältnismäßig schlecht kleinere Anteile darstellen. Unter anderem Beschriftungen können bei kleinen Teilen nur schwer dargestellt werden.
 
-Besonders Verhältnisse zwischen Größen können mit Kreisdiagrammen gut dargestellt werden. Ähnlich zum Balkendiagramm, können sie sortiert und gruppiert Mehrheitsverhältnisse darstellen. Insbesondere Verhältnisse, die die Vertikale oder Horizontale Linie überschreiten, können gut argumentiert werden. So ist zum Beispiel die 50\% Marke in einem Kreisdiagramm eine gute Orientierungshilfe. Im Vergleich zum Balkendiagramm lassen sich diskrete Werte schwerer visualisieren.
+Besonders Verhältnisse zwischen Größen können mit Kreisdiagrammen gut dargestellt werden. Ähnlich zum Balkendiagramm, können sie sortiert und gruppiert Mehrheitsverhältnisse darstellen. Insbesondere Verhältnisse, welche die vertikale oder horizontale Linie überschreiten, können gut argumentiert werden. So ist zum Beispiel die 50\% Marke in einem Kreisdiagramm eine gute Orientierungshilfe. Im Vergleich zum Balkendiagramm lassen sich diskrete Werte schwerer visualisieren.
 
 \begin{figure}[htbp]
   \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
@@ -304,19 +304,8 @@ Besonders Verhältnisse zwischen Größen können mit Kreisdiagrammen gut darges
   \caption{Blasendiagramm für Zyklomatische Komplexität}
   \label{bubble-complexity}
 \end{figure}
-\paragraph{Blasendiagramme} eigenen sich besonders für die relative Darstellung von Werten. Oftmals werden die Blasen zusätzlich an den Achsen eines Graphen dargestellt. Im dargestellten Beispiel wurden die Blasen sortiert aufgereiht. Jede Blase steht im Beispiel für eine Klasse und die Größe der Blase für den Wert ihrer Zyklomatische Komplexität. Die Farbe der Klasse stellt einen Index für ihre Wartbarkeit zusammen. Die Darstellung ist eine Zusammenfassung der PHPMetrics\hyp{}Bibliothek. 
-Die Darstellung vermittelt relativ einfach die Menge und Stärke von Komplexität und potentiellen Wartungsschwierigkeiten.
-
-
-\section{Automatisierte Systembereitstellung}
-
-Um Feature-Branches technisch zu unterstützen, müssen Tests und Metriken für jeden Feature-Branch ausgeführt werden. Damit dies automatisiert möglich ist, müssen die zugehörigen Testsysteme automatisch bereit stehen. Somit ist eine automatisierte Systembereitstellung notwendig.
-
-Die automatische Bereitstellung ist prinzipiell, sowohl mit Virtualisierung, als auch mit einem Containersystem möglich. Auch eine halbautomatisch administrierte Gruppe an Hardwaresystemen ist möglich, sollte allerdings in den meisten Situation deutlich unwirtschaftlicher sein als die virtuellen Lösungen.
-
-Die Entscheidung für eine Virtualisierungs- oder Containerlösung sollte von Fall zu Fall getroffen werden. Die schlankere und damit Resourcen schonendere Lösung, ist die Verwendung von Containern. Mit ihnen können problemlos einzelne Testsysteme oder komplexere Service und Systemverbände erstellt und verwaltet werden. Die Verwendung eines einzelnen Container-Systems ist nicht mehr möglich, wenn unterschiedliche Betriebs- oder Hardwaresysteme benötigt werden. In diesem Fall müssen mehrere Container-Systeme konfiguriert werden.
-
-Unabhängig von der verwendeten Lösung, müssen die Systeme in einen definierten Zustand geführt werden. Dieser Vorgang kann einen größeren Zeitraum in Anspruch nehmen und benötigt entsprechende manuelle Resourcen. Um diesen Zeitraum zu verringern, sollten anhand des Konfigurationsmanagements exemplarische Systeme vorbereitet und in gepackter Form abgelegt werden. Bei den meisten Lösungen wird diese Form \glqq Image\grqq{} genannt. Wie bereits bei \glqq Artefakt-Repositories\grqq{} angesprochen, sollten diese Images nachvollziehbar benannt und abgelegt werden. Es sollte möglich sein eine Verbindung zur jeweiligen System-Konfiguration herzustellen. Bestenfalls ist die System-Konfiguration in einer Versionsverwaltung abgelegt und die entsprechende Version kann ebenfalls zur Referenzierung des System-Images verwendet werden. Um die Übereinstimmung mit den verknüpften Übersichten zu gewährleisten, ist es sinnvoll diese im Rahmen der automatischen Systembereitstellung zu aktualisieren. Übersichten wie die Konfigurations\hyp{} und Systemübersicht aus Kapitel~\ref{subsubsec:configuration-system-overview} sollten stets aktuell sein.
+\paragraph{Blasendiagramme} eigenen sich besonders für die relative Darstellung von Werten. Oftmals werden die Blasen zusätzlich an den Achsen eines Graphen dargestellt. Im dargestellten Beispiel wurden die Blasen sortiert aufgereiht. Jede Blase steht im Beispiel für eine Klasse und die Größe der Blase für den Wert ihrer Zyklomatische Komplexität. Die Farbe der Klasse stellt einen Index für ihre Wartbarkeit dar. Die Darstellung ist eine Zusammenfassung der PHPMetrics\hyp{}Bibliothek\footcite{php-metrics-docu}. 
+Die Darstellung vermittelt relativ einfach die Menge und Stärke von Komplexität und potentiellen Wartungsschwierigkeiten. Der äußere rote und rötliche Rahmen, im Vergleich zum inneren grüneren Bereich, verdeutlicht das Verhältnis der Komplexitätsschwierigkeiten.
 
 \section{Best Practices in der Softwareentwicklung}
 
@@ -324,7 +313,7 @@ Feature-Branches verhindern keine Merge-Konflikte, die beim Zusammenführen von 
 
 Zudem unterstützen die nachfolgenden Methodiken das Verfahren \glqq \nameref{temporary-releases}\grqq{} aus Kapitel~\ref{temporary-releases}. Das Verfahren ist abhängig von Code-Kopplung und profitiert von einer besseren Testqualität.
 
-Viele dieser Entwicklungsmuster und -verfahren werden unter dem Begriff \glqq Best Practices\grqq{} geführt. Sie unterstützen Entwickler in Entwurfsentscheidungen und geben Rahmen für Standards in der Softwareentwicklung. Viele der Best-Practices zielen zudem auf Verbesserungen für Wartbarkeit, Robustheit und allgemeine geringere Umsetzungsaufwände.
+Viele dieser Entwicklungsmuster und -verfahren werden unter dem Begriff \glqq Best-Practices\grqq{} geführt. Sie unterstützen Entwickler in Entwurfsentscheidungen und geben Rahmen für Standards in der Softwareentwicklung. Viele der Best-Practices zielen zudem auf Verbesserungen für Wartbarkeit, Robustheit und allgemeine geringere Umsetzungsaufwände.
 
 \subsection{Modularisierung von Software}
 
@@ -358,9 +347,9 @@ Die Art und Weise der Anwendung von TDD kann stark variieren. Daher wird eine st
 
 Neben dem Erfolg von TDD wurde auch Kritik geäußert. Unter anderem wurde der starke Fokus auf Unit-Tests kritisiert. Dieser soll in der Historie von TDD begründet sein\footcite[vgl.][]{conciso-tdd-critique}. Der Fokus auf Unit-Tests wird kritisiert, da der Fokus auf die Integration von Komponenten verloren geht und die Funktionalität des Systems nicht überprüft wird. Weiter wird kritisiert, dass TDD schlechtes Design fördert\footcite[vgl.][]{hansson-tdd-is-dead}. Das Prinzip die Softwareanwendung leicht zugänglich für Tests zu gestalten, soll die Architektur nachhaltig schädigen.
 
-Die Kritik weist Schwächen auf. TDD fordert die Erstellung von Tests. Die Begrenzung der Tests auf Unit-Tests wird allerdings an keiner Stelle gefordert. Der ursprüngliche Test-Frist Ansatz von Kent Beck ist besonders Intuitiv, wenn er für Unit-Tests verwendet wird. Die Annahme, dass er auf Unit-Tests beschränkt wird, würde TDD allerdings nicht gerecht. 
+Die Kritik weist Schwächen auf. TDD fordert die Erstellung von Tests. Die Begrenzung der Tests auf Unit-Tests wird allerdings an keiner Stelle gefordert. Der ursprüngliche Test-Frist Ansatz von Kent Beck ist besonders intuitiv, wenn er für Unit-Tests verwendet wird. Die Annahme, dass er auf Unit-Tests beschränkt wird, würde TDD allerdings nicht gerecht. 
 
-Weiter ist eine sehr subjektive Einschätzung, dass TDD die Softwarearchitektur schwächt. Eine zu strikte Befolgung aller Prinzipien von TDD oder Modularisierung kann zu ungünstigen Entscheidungen im Software-Design führen. Die Korrekte Anwendung der Prinzipen liegt daher in der Hand des Entwicklers. In einer kritischen Auseinandersetzung von Kent Beck, Martin Fowler und David Heinemeier Hansson zum Thema TDD, formuliert Kent Beck die folgende Aussage:
+Weiter ist eine sehr subjektive Einschätzung, dass TDD die Softwarearchitektur schwächt. Eine zu strikte Befolgung aller Prinzipien von TDD oder Modularisierung kann zu ungünstigen Entscheidungen im Software-Design führen. Die Korrekte Anwendung der Prinzipen liegt allerdings in der Hand des Entwicklers. In einer kritischen Auseinandersetzung von Kent Beck, Martin Fowler und David Heinemeier Hansson zum Thema TDD, formuliert Kent Beck die folgende Aussage:
 
 \blockquote {Design(and TDD) is a question of trade–offs. They should never be ignored. You should always be aware of the trade–offs you make. You have to be a good designer to make the right ones.}\footcite[vgl.][S. 36]{aalborg-tdd-15-years}
 
@@ -368,11 +357,11 @@ Test-Driven-Development ist sinnvoller Ansatz um nachhaltig hochqualitativen Sof
 
 \subsection{Fortgeschrittene Nutzung von Versionsverwaltung}
 
-Die Versionsverwaltung ist nicht nur eine Ablage für Quellcode, sondern auch Teil der Dokumentation eines Projektes. Daher ist es wichtig die veröffentlichten und geteilten Änderungen zu strukturieren. In einem ideal Szenario besteht jeder Commit nur aus einer sehr kleinen, nur eine Datei betreffenden Änderung, die durch eine Aussagekräftige Commit-Message in Kontext gesetzt wird\footcite[vgl.][Kap. Making only one change per commit]{git-essentials-2017}. Eine Folge von zusammenhängenden Änderungen sollte zudem ein gemeinsames Label teilen. Dieses kann später für Filterungen verwendet werden. Dadurch ist es auch lange Zeit später möglich zusammenhängende Commits zu finden.
+Die Versionsverwaltung ist nicht nur eine Ablage für Quellcode, sondern auch Teil der Dokumentation eines Projektes. Daher ist es wichtig die veröffentlichten und geteilten Änderungen zu strukturieren. In einem ideal Szenario besteht jeder Commit nur aus einer sehr kleinen, nur eine Datei betreffenden Änderung, die durch eine aussagekräftige Commit-Message in Kontext gesetzt wird\footcite[vgl.][Kap. Making only one change per commit]{git-essentials-2017}. Eine Folge von zusammenhängenden Änderungen sollte zudem ein gemeinsames Label teilen. Dieses kann später für Filterungen verwendet werden. Dadurch ist es auch lange Zeit später möglich zusammenhängende Commits zu finden.
 
 Wird ein zentrales Versionsverwaltungssystem zusammen mit Continuous-Integration verwendet, ist außerdem die Build-Integrität sicherzustellen. Keiner der Commits sollte den Build fehlschlagen lassen. 
 
-Die Verwendung einer dezentralen Versionsverwaltung und Feature-Branches erleichtert das Erstellen von Commits. Zum einen ist die Build-Integrität abgeschwächt. Dies ermöglicht es, zugunsten eines einfachen Commits, die Build-Integrität erst mit den nachfolgenden Commits herzustellen. Zum anderen lassen sich in einer dezentralen Versionsverwaltung die Commits nachträglich verändern. Dies ermöglicht die Commits unter Umständen verständlicher zu strukturieren.
+Die Verwendung einer dezentralen Versionsverwaltung und Feature-Branches erleichtert das Erstellen von Commits. Zum einen ist die Notwendigkeit zur vollständigen Build-Integrität abgeschwächt. Dies ermöglicht es, zugunsten eines einfachen Commits, die Build-Integrität erst mit den nachfolgenden Commits herzustellen. Zum anderen lassen sich in einer dezentralen Versionsverwaltung die Commits nachträglich verändern. Dies ermöglicht die Commits unter Umständen verständlicher zu strukturieren.
 
 Eine Variante verständliche und gut strukturierte Commit-Nachrichten zu verfassen, ist es die Commit-Nachrichten vor der Implementierung der Änderung zu verfassen\footcite[Writing commit messages before starting to code][]{git-essentials-2017}. Ähnlich wie in Kapitel~\ref{test-driven-development}~\nameref{test-driven-development}, wird der Fokus auf das Ergebnis, nicht die Implementierung gelenkt. Es wird somit beschrieben, welches Ziel der Commit verfolgt, nicht welche Änderungen durchgeführt wurden. Die dokumentierenden Qualitäten der Versionshistorie werden dadurch deutlich verbessert.
 
@@ -384,7 +373,7 @@ Eine Variante diese Aufwände zu reduzieren und Tests, sowie Auslieferung von So
 
 Die Verwendung eines Monorepos vereinfacht zwar die Abhängigkeitsverwaltung, birgt allerdings Schwierigkeiten für größere Repositories. Während in Repositories getrennte Abhängigkeiten, auch die Commits logisch und physisch getrennt sind, fällt diese Barriere in Monorepos. Es müssen daher zusätzliche Mechanismen für die Übersicht geschaffen werden.
 
-Ein weiterer Punkt ist die Performance. Abhängig vom gewählten Versionsverwaltungssystem, können gerade durch die Verwendung von Git Probleme auftreten. Da Git immer die vollständige Historie bereit hält, sind Performance-Probleme nachweisbar\footcite{atlassian-monorepo-git}. In zentralen Systemen wie \acs{SVN} können für Monorepos gezielte Teilebereiche des Repos verwendet werden. 
+Ein weiterer Punkt ist die Performance. Abhängig vom gewählten Versionsverwaltungssystem, können gerade durch die Verwendung von Git Probleme auftreten. Da Git immer die vollständige Historie bereit hält, sind Performance-Probleme nachweisbar\footcite{atlassian-monorepo-git}. In zentralen Systemen wie \acs{svn} können für Monorepos gezielte Teilebereiche des Repos verwendet werden. 
 In jedem Versionsverwaltungssystem ist hingegen die erhöhte Commit-Frequenz spürbar. Merge-Commits treten deutlich häufiger auf, zusätzliche manuelle Eingriffe sind teilweise notwendig.
 
 Trotz der Schwierigkeiten nutzen große Unternehmen wie Google, Facebook und Twitter sehr große Monorepos. Für alle drei Unternehmen ist die Verwendung von Monorepos allerdings mit großem Aufwand verbunden. Google entwickelte eine eigene Versionsverwaltung, Facebook investiert in Mercurial und Twitter verwendet eine speziell angepasste Git-Variante\footcite{monorepos-wild}.
@@ -402,9 +391,9 @@ Die Umfrage enthielt 33 Fragen in 3 Fragegruppen. Der erste Teil erhob Daten zur
 
 Über den Umfragezeitraum sind 185 Antworten angefangen worden. Davon enthielten 46 Antworten verwertbare Ergebnisse, aber nur 29 Antworten wurden vollständig abgeschlossen. Die weit auseinander gehenden Zahlen lassen auf mögliche technische Schwierigkeiten schließen.
 
-Der Großteil der Fragen bedient sich einer fünf-geteilten Likert-Skala. Zudem ist möglich Antworten zu ignorieren, daher ist der Auswertung eine sechste spalte sichtbare. Das parametrische Verfahren  der Likert-Skala bietet deutliche Vorteile bezüglich der Zusammenfassung und Auswertung der Antworten. Die Likert-Skala setzt voraus, dass die Antwortmöglichkeiten einen gleichen Abstand zueinander aufweisen. Weiter wird eine Normalverteilung unter den Teilnehmern vorausgesetzt. 
+Der Großteil der Fragen bedient sich einer fünf-geteilten Likert-Skala. Zudem ist möglich Antworten zu ignorieren, daher ist der Auswertung eine sechste spalte sichtbar. Das parametrische Verfahren  der Likert-Skala bietet deutliche Vorteile bezüglich der Zusammenfassung und Auswertung der Antworten. Die Likert-Skala setzt voraus, dass die Antwortmöglichkeiten einen gleichen Abstand zueinander aufweisen. Weiter wird eine Normalverteilung unter den Teilnehmern vorausgesetzt. 
 
-Die Umfrage wurde in einer spezifischen Firma verbreitet und die Teilnehmerzahl ist deutlich unterhalb einer repräsentativen Menge geblieben. Beide Faktoren lassen die Vermutung zu, dass keine Normalverteilung unter den Teilnehmern gegeben sein wird. Die Ergebnisse sind daher nur sehr begrenzt anwendbar.
+Die Umfrage wurde in einer spezifischen Firma verbreitet und die Teilnehmerzahl ist deutlich unterhalb einer repräsentativen Menge geblieben. Beide Faktoren lassen die Vermutung zu, dass keine Normalverteilung unter den Teilnehmern gegeben ist. Die Ergebnisse sind daher nur sehr begrenzt anwendbar.
 
 Auch der konstante Abstand der Antworten ist nicht sichergestellt. Die Abfolge der Antworten wird unter Umständen nicht von jedem Teilnehmer als gleichwertige Abstufung wahrgenommen.
 
@@ -441,9 +430,11 @@ Bezogen auf die Gruppe der Softwareentwickler, wurde von jedem angegeben eine Ve
 
 \paragraph{Inhalte unter Versionsverwaltung}
 
-Dateien und Inhalte die in der Versionsverwaltung abgelegt werden, wurden von den Teilnehmern großteils als nicht-binär angegeben. Quelltexte werden von (97\%) der Teilnehmer abgelegt. Build-Skripte(85\%) und Migrations-Skripte(91\%) werden ebenfalls vom Großteil versioniert. Die Mehrheit der Teilnehmer verwendet die Versionsverwaltung nur für kleine Mediendateien (79\%) und kein größeren (62\%).
+Dateien und Inhalte die in der Versionsverwaltung abgelegt werden, wurden von den Teilnehmern großteils als nicht-binär angegeben. Quelltexte werden von (97\%) der Teilnehmer abgelegt. Build-Skripte (85\%) und Migrations-Skripte (91\%) werden ebenfalls vom Großteil versioniert. Die Mehrheit der Teilnehmer verwendet die Versionsverwaltung nur für kleine Mediendateien (79\%) und kein größeren (62\%).
 
 Während für die meisten Dateien und Inhalte sich deutliche Muster ergaben, war die Ablage von Paketverwaltungs-Lockfiles oder anderen Build-Identifikations-Dateien nicht eindeutig. Betrachtet auf die Menge der Entwickler, nutzen 22\% keine Versionsverwaltung für diesen Dateityp.
+
+\pagebreak
 
 \paragraph{Verwendung von Branches und Tags}
 
@@ -453,7 +444,7 @@ Während für die meisten Dateien und Inhalte sich deutliche Muster ergaben, war
   \caption{Auswertung der Verwendung von Branches, Tags und Feature-Branches}
 \end{figure}
 
-Branches(97\%) und Tags(91\%) werden grundsätzlich verwendet. Die Verwendung von Feature-Branches ist durchweg zu verzeichnen, aber korreliert weniger mit der grundsätzlichen Verwendung von Branches. Die hohe Nutzung von Branches korreliert mit der generellen Verwendung von Git.
+Branches (97\%) und Tags (91\%) werden grundsätzlich verwendet. Die Verwendung von Feature-Branches ist durchweg zu verzeichnen, aber korreliert weniger mit der grundsätzlichen Verwendung von Branches. Die hohe Nutzung von Branches korreliert mit der generellen Verwendung von Git.
 
 \paragraph{Merge-Konflikte}
 
@@ -465,6 +456,8 @@ Branches(97\%) und Tags(91\%) werden grundsätzlich verwendet. Die Verwendung vo
 
 Die Auswertung der Angaben zu Merge-Konflikten zeigt einen Trend zu einem regelmäßigem Auftreten von Merge-Konflikten. Mit einer Wahrscheinlichkeit von 53\% treten sowohl bei Pull-, als auch bei Push- und Merge-Operationen Merge-Konflikte auf. Dieser Wert ist für den Merge von Branches am höchsten mit 82\%. 
 
+\pagebreak
+
 \subsection{Verwendung von Tests}
 
 \begin{figure}[htbp]
@@ -473,7 +466,7 @@ Die Auswertung der Angaben zu Merge-Konflikten zeigt einen Trend zu einem regelm
   \caption{Auswertung der Nutzung von Unit-, Funktions- und Oberfächentests}
 \end{figure}
 
-Test werden vom Großteil der Teilnehmer verwendet. Insbesondere Unit-(72\%), Funktions- und Integrationstests(68\%) wurden mit einer hohen Nutzung angegeben. Sichtbar weniger wurden Oberflächentests mit 48\% verwendet.
+Test werden vom Großteil der Teilnehmer verwendet. Insbesondere Unit- (72\%), Funktions- und Integrationstests (68\%) wurden mit einer hohen Nutzung angegeben. Sichtbar weniger wurden Oberflächentests mit 48\% verwendet.
 
 \paragraph{Weiterführende Tests}
 
@@ -483,7 +476,7 @@ Test werden vom Großteil der Teilnehmer verwendet. Insbesondere Unit-(72\%), Fu
   \caption{Auswertung der Nutzung von System-, Use-Case- und Behavior-Driven-Tests}
 \end{figure}
 
-Werden die Angaben zu weiterführenden Testvarianten betrachtet, fallen die deutlich niedrigeren Nutzungsangaben auf. Durchweg wurden Systemtests(24\%), Use-Case-Tests(36\%) und Behavior-Driven-Tests(12\%) deutlich geringer gewählt. Insbesondere bei der Zusammensetzung der Zustimmung wird dies deutlich. Während bei Unit- und Funktionalen-Tests mit 54\% \glqq immer\grqq{} und \glqq häufig\grqq{} gewählt wurden, beliefen sich die Angaben für System-, Use-Case- und Behavior-Driven-Tests nur auf 11\%.
+Werden die Angaben zu weiterführenden Testvarianten betrachtet, fallen die deutlich niedrigeren Nutzungsangaben auf. Durchweg wurden Systemtests (24\%), Use-Case-Tests (36\%) und Behavior-Driven-Tests (12\%) deutlich geringer gewählt. Insbesondere bei der Zusammensetzung der Zustimmung wird dies deutlich. Während bei Unit- und Funktionalen-Tests mit 54\% \glqq immer\grqq{} und \glqq häufig\grqq{} gewählt wurden, beliefen sich die Angaben für System-, Use-Case- und Behavior-Driven-Tests nur auf 11\%.
 
 Bezogen auf die Gruppe der Softwareentwickler ist hervorzuheben, dass 10\% der Entwickler weder Unit- noch Funktionstests durchführen. Für die weiterführende Test liegt die Gruppe der Softwareentwickler, die diese nicht verwenden zwischen 30\% und 40\%.
 
@@ -495,7 +488,7 @@ Bezogen auf die Gruppe der Softwareentwickler ist hervorzuheben, dass 10\% der E
   \caption{Auswertung der Metrik-Nutzung von Lines-Of-Code, Halstead, und McCabe(Zyklomatische Komplexität)}
 \end{figure}
 
-Im Vergleich zur Test-Nutzung werden Metriken deutlich weniger verwendet. Lines-Of-Code wurden mit angegebenen 20\% auf häufigsten Verwendet. Die Komplexitätsmetriken Halstead und McCabe wurden im Schnitt nur von 6\% der Teilnehmer verwendet. Wird die Gruppe auf die teilnehmenden Softwareentwickler beschränkt steigt dieser Wert auf ca. 10\%.
+Im Vergleich zur Test-Nutzung werden Metriken deutlich weniger verwendet. Lines-Of-Code wurden mit angegebenen 20\% auf häufigsten Verwendet. Die Komplexitätsmetriken Halstead und McCabe wurden im Schnitt nur von 6\% der Teilnehmer verwendet. Wird die Gruppe auf die teilnehmenden Softwareentwickler beschränkt, steigt dieser Wert auf ca. 10\%.
 
 Ergänzend gaben 88\% der Teilnehmer mit dem Begriff der Metrik vertraut zu sein und 80\% der Teilnehmer würde gerne mehr Metriken nutzen oder damit anfangen.
 
@@ -509,7 +502,7 @@ Die Studie lässt keine Rückschlüsse zu warum die Verwendung gering ausfällt.
 
 \section{Prototyp zur Feature-Branch-Visualisierung}
 
-Das angestrebte Vorgehen der \glqq flüchtigen\grqq{} Releases setzt ein hohes Maß an Automatisierung der Softwareentwicklung voraus. Ein Prototyp der dieses Vorgehen visualisieren oder steuern soll, muss folglich sich in diese Automatisierung integrieren. Es müssen daher Schnittstellen zu Build-Servern, Ticketverwaltungssystemen und Versionsverwaltungssystemen angebunden werden. Um die zahlreichen möglichen Schnittstellen zu reduzieren, werden die Anwendungsszenarien daher über eine allgemeingültige \acs{rest}-Schnittstelle abgebildet. Je nach Szenario können dadurch die einzelnen Anwendungsszenarien über die \acs{rest}Endpunkte abgewickelt werden.
+Das angestrebte Vorgehen der \glqq flüchtigen\grqq{} Releases setzt ein hohes Maß an Automatisierung der Softwareentwicklung voraus. Ein Prototyp der dieses Vorgehen visualisieren oder steuern soll, muss folglich sich in diese Automatisierung integrieren. Es müssen daher Schnittstellen zu Build-Servern, Ticketverwaltungssystemen und Versionsverwaltungssystemen angebunden werden. Um die zahlreichen möglichen Schnittstellen zu reduzieren, werden die Anwendungsszenarien daher über eine allgemeingültige \acs{rest}-Schnittstelle abgebildet. Je nach Szenario können dadurch die einzelnen Anwendungsszenarien über die \acs{rest}-Endpunkte abgewickelt werden.
 
 Zusätzlich sollten Übersichten bereitgestellt werden, um die gesammelten Informationen darzustellen. Die verwalteten Projekte, welche Releases den Projekten zugeordnete wurden und welche Abhängigkeiten die Projekte besitzen. 
 
@@ -566,7 +559,7 @@ Um ein Release abzuschließen, müssen alle Feature-Branches ohne Konflikt zusam
 
 \subsection{Grundlagen der Umsetzung}
 
-Da der Prototyp als Unterstützung für bestehende Werkzeuge agieren soll, bietet sich ein modernes Web-Framework an. Durch die berufliche Prägung des Autors der Masterarbeit, liegt der Fokus zudem auf \acs{PHP}. Die Wahl für ein modernes und flexibles Framework fällt daher auf Symfony, welches sich durch Flexibilität und Modularität auszeichnet. Zudem existiert für Symfony eine sehr aktive Community, welche Zahlreiche Werkzeug und Hilfsbibliotheken bereit stellt. Durch Symfony ergibt sich als bevorzugte Abhängigkeitsverwaltung Composer.  
+Da der Prototyp als Unterstützung für bestehende Werkzeuge agieren soll, bietet sich ein modernes Web-Framework an. Durch die berufliche Prägung des Autors der Masterarbeit, liegt der Fokus zudem auf \acs{php}. Die Wahl für ein modernes und flexibles Framework fällt daher auf Symfony, welches sich durch Flexibilität und Modularität auszeichnet. Zudem existiert für Symfony eine sehr aktive Community, welche zahlreiche Werkzeuge und Hilfsbibliotheken bereitstellt. Durch Symfony ergibt sich als bevorzugte Abhängigkeitsverwaltung Composer.  
 
 \subsection{Domainmodell}
 
@@ -579,7 +572,9 @@ Das betrachtete Problem betrifft sowohl Repository-Artefakte, als auch Projekt- 
   \label{class-chart-release-warden}
 \end{figure}
 
-In Abbildung~\ref{class-chart-release-warden} wird das Domainmodell in einem \acs{UML}-Klassendiagramm dargestellt. Das Domainmodell beschreibt ein betrachtetes Projekt(Project) mit seinen Abhängigkeiten(Dependency) und den Releases für das Projekt. 
+\vspace{2em}
+
+In Abbildung~\ref{class-chart-release-warden} wird das Domainmodell in einem \acs{uml}-Klassendiagramm dargestellt. Das Domainmodell beschreibt ein betrachtetes Projekt(Project) mit seinen Abhängigkeiten(Dependency) und den Releases für das Projekt. 
 Um die Abhängigkeiten abzubilden und die verfügbaren Feature-Branches für ein Release zu selektieren, werden somit auch die Repositories und ihre Branches und Tags benötigt.
 
 \subsection{Umsetzung der Nutzerszenarien}
@@ -587,8 +582,6 @@ Um die Abhängigkeiten abzubilden und die verfügbaren Feature-Branches für ein
 \paragraph{Projekt registrieren}
 
 Um ein Projekt zu registrieren wird der Pfad zu einer \glqq composer.json\grqq{}-Datei angegeben. Die Datei beschreibt den Namen, das zugehörige Repository und die Abhängigkeiten des Projektes.
-
-\pagebreak
 
 \paragraph{Branches auflisten}
 
@@ -630,14 +623,14 @@ Gerade in Anbetracht der Zeit, die viele der Methodiken bereits bekannt sind, is
 
 Motivation kann durch drei Bereiche getragen werden\footcite[vgl.][]{codingame-drive}\footcite[vgl.][Kap. Autonomie ff.]{pink-drive}:
 \begin{itemize}
-\item Autonomie - die Möglichkeit sich selbst zu organisieren. Autonomie soll die eigenen Fähigkeiten möglichst voll nutzen.
+\item Autonomie - die Möglichkeit sich selbst zu organisieren. Autonomie soll eine Person ermächtigen ihre Fähigkeiten zu nutzen.
 \item Können - die Möglichkeit sich weiterzuentwickeln und Neues zu entdecken.
 \item Bestimmung - die Möglichkeit an etwas mit Bedeutung mitzuwirken.
 \end{itemize}
 
 Die Einteilung ist eine Zusammenfassung mehrere einzelner Theorien und in manchen Teilen populärwissenschaftlich\footcite[vgl.][]{drive-scholarly-review}. 
 
-Basierend auf den drei Bereichen, können die Methodiken besser argumentiert und die generelle Bereitschaft zur Einführung gestärkt werden. Generell sollte jeder Teilnehmer einer Methodik sich darin wiederfinden. Methodiken die sich nicht im Alltag des Entwicklungsteams wiederfinden, werden auf lange Sicht verschwinden oder zur Belastung.
+Basierend auf den drei Bereichen, können neu eingeführte Methodiken besser argumentiert und die generelle Bereitschaft zur Einführung gestärkt werden. Generell sollte jeder Teilnehmer einer neuen Methodik sich möglichst gut darin wiederfinden. Methodiken die sich nicht im Alltag des Entwicklungsteams wiederfinden, werden auf lange Sicht verschwinden oder zur Belastung.
 
 \subsection{Disziplin}
 
@@ -645,7 +638,7 @@ Viele eingeführte Hilfsmittel, Methodiken oder Ideen verschwinden wieder. Oftma
 Disziplin greift nach der Motivation. Nach der Einführung einer neuen Methodik, benötigt es oft Disziplin diese aktiv zu nutzen\footcite[vgl.][]{screw-motivation}. Es benötigt konstante Arbeit und Reflexion zur Nutzung und Erhaltung einer neuen Methodik.
 
 Oftmals ist eine neue Methodik damit verbunden, alte Verhaltensweisen abzulegen.
-Gelernte Verhaltensweise lassen sich oft eine Folge von drei Punkten gliedern.
+Gelernte Verhaltensweise lassen sich oft in eine Folge von drei Punkten gliedern.
 \begin{itemize}
 \item Auslöser - die Situation, welche eine Gewohnheit auslöst oder diese einleitet.
 \item Verhalten - der Ablauf oder das Verhalten, welches die Gewohnheit darstellt.
@@ -662,10 +655,10 @@ Auch der Review-Prozess für Softwareänderungen kann hierbei unterstützen. Ent
 
 \subsection{Faktor Mensch}
 
-Die Erstellung von Software verlangt eine breite Palette an Fähigkeiten. Zudem fehlen in der Softwareerstellung viele der standardisierten Vorgehensweisen der Ingenieursdisziplinen. Häufig werden kreative und pragmatische Lösungen benötigt.
-
+Die Erstellung von Software verlangt eine breite Palette an Fähigkeiten. Zudem fehlen in der Softwareerstellung viele der standardisierten Vorgehensweisen der Ingenieursdisziplinen. Häufig werden kreative und pragmatische Lösungen benötigt. Kreativität ist nicht immer produktiv.
+\vspace{1em}\\
 \blockquote {discipline, the most lacking virtue in creative people (like programmers)}\footcite[][S.167]{git-essentials-2017}
 \vspace{1em}\\
 Die fehlenden Standards und Notwendigkeit für kreativen Lösungen von Entwicklern, sind ein zu respektierendes Risiko in der Softwareentwicklung. Fordernde und anspruchsvolle Methodiken sind nicht für alle Softwareentwickler geeignet. Laufende Projekte und bestehende Belastungen sind bei der Einführung neuer Methodiken stets zu beachten. Die Einführung neuer Methodiken in bereits belastete oder scheiternde Projekte führen oft zu schlimmeren Ergebnissen.
 
-Neue Methodiken sollten stets mit dem nötigen Raum eingeführt werden. Zudem sollte eine regelmäßige Betrachtung des Verhältnisses von Aufwand und Nutzen erfolgen.
+Neue Methodiken sollten stets mit dem nötigen Raum eingeführt werden. Zudem sollte eine regelmäßige Betrachtung, des Verhältnisses von Aufwand und Nutzen erfolgen.
