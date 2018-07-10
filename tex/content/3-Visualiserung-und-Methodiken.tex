@@ -6,7 +6,7 @@ Die nachfolgenden Abschnitte sollen mögliche Methodiken und Visualisierungen be
 
 \section{Continuous-Integration und Feature-Branches}
 
-Continuous-Integration und Feature-Branches sind beides Techniken, um die Kollaboration zwischen Entwicklern zu fördern. Continuous-Integration fordert die Integration in den existierenden Codestand für jede Änderung. Durch die Verwendung des Trunk-Based-Developments, ist das gesamte Team von dieser Integration direkt betroffen. Ist die Integration fehlerhaft, wird somit für die Dauer der Behebung das gesamte Team angehalten, bei der Behebung zu helfen. Der Feature-Branch-Ansatz hingegen lässt Änderungen ohne Integration parallel existieren. Folgt man der Gitflow-Verwendung von Feature-Branches aus Kapitel~\ref{subsec:gitflow}, wird auch hier eine Integration gefordert. Allerdings erst deutlich verzögert, etwa zu einem Release. Feature-Branches bieten somit einen Integrationsvorgang, ohne das Team zu blockieren. Allerdings wird der Zeitpunkt der Integration verzögert. In dieser Zeitspanne können weitere Änderungen hinzukommen. Jeder dieser Änderungen muss wiederum auf den Release-Branch integriert werden. Damit steigt der Aufwand sukzessive, über die Lebensdauer des Feature-Branches. Im ungünstigsten Fall eskaliert dieser Vorgang in einem \glqq big scary merge\grqq{} oder \glqq big bang merge\grqq{}, wie in Kapitel~\ref{sec:feature-branches} beschrieben. Dieses Risiko sollte gemindert werden, durch eine regelmäßige und kontinuierliche Integration mit dem Integrations-Branch.\\
+Continuous-Integration und Feature-Branches sind beide Techniken, um die Kollaboration zwischen Entwicklern zu fördern. Continuous-Integration fordert die Integration in den existierenden Codestand für jede Änderung. Durch die Verwendung des Trunk-Based-Developments, ist das gesamte Team von dieser Integration direkt betroffen. Ist die Integration fehlerhaft, wird somit für die Dauer der Behebung das gesamte Team angehalten, bei der Behebung zu helfen. Der Feature-Branch-Ansatz hingegen lässt Änderungen ohne Integration parallel existieren. Folgt man der Gitflow-Verwendung von Feature-Branches aus Kapitel~\ref{subsec:gitflow}, wird auch hier eine Integration gefordert. Allerdings erst deutlich verzögert, etwa zu einem Release. Feature-Branches bieten somit einen Integrationsvorgang, ohne das Team zu blockieren. Allerdings wird der Zeitpunkt der Integration verzögert. In dieser Zeitspanne können weitere Änderungen hinzukommen. Jeder dieser Änderungen muss wiederum auf den Release-Branch integriert werden. Damit steigt der Aufwand sukzessive, über die Lebensdauer des Feature-Branches. Im ungünstigsten Fall eskaliert dieser Vorgang in einem \glqq big scary merge\grqq{} oder \glqq big bang merge\grqq{}, wie in Kapitel~\ref{sec:feature-branches} beschrieben. Dieses Risiko sollte gemindert werden, durch eine regelmäßige und kontinuierliche Integration mit dem Integrations-Branch.\\
 
 \blockquote {Continuously is more often than you think.}\footcite[vgl.][Kap. Continuous Integration]{humble2010}\\
 
@@ -17,7 +17,7 @@ Angewendet auf die Integration von Feature-Branches sollten diese regelmäßig d
 
 Viele einzelne Integrationsschritte helfen die einzelnen Änderungen und ihre Motivation leichter zu erkennen. Dadurch sind komplizierte Merges leichter durchzuführen und es entstehen weniger Folgefehler.
  
-Zielstellung der Vereinigung von Continuous-Integration und Feature-Branches ist folglich eine kontinuierliche Integration ohne Blockaden für andere Entwickler. Es muss definiert werden, wie Entwicklungssysteme und -werkzeuge ineinander greifen und es sollten Regeln und Strukturen definiert werden, um einen Ablauf mit nur wenig Reibungspunkten zu gewährleisten.
+Zielstellung der Vereinigung von Continuous-Integration und Feature-Branches ist folglich eine kontinuierliche Integration ohne Blockaden für andere Entwickler. Es muss definiert werden, wie Entwicklungssysteme und -werkzeuge ineinander greifen und es sollten Regeln und Strukturen definiert werden, um einen Ablauf mit nur wenigen Reibungspunkten zu gewährleisten.
 
 \subsection{Automatisierter Test von Feature-Branches}
 
@@ -151,17 +151,7 @@ Durch diese Übersicht können schnell Entscheidungen getroffen werden, welche B
 
 \subsection{Übersicht zu Releases}
 
-\begin{figure}[htbp]
-  \includegraphics[
-    width=\textwidth,
-    height=\textheight,
-    keepaspectratio
-  ]{resources/release-branch_overview.pdf}
-  \caption{Prototyp - Releaseübersicht}
-  \label{prototype-release-overview}
-\end{figure}
-
-Angelehnt an die Branch-Übersicht und die angesprochenen \glqq flüchtigen\grqq{} Release-Branches, können auch Release-Ansichten bereit gestellt werden. Neben den bereits in der Branch-Übersicht erwähnten Kriterien, können weitere Kriterien visualisiert werden. Kriterien für das Zusammenspiel der für das Release geplanten Branches wären zum Beispiel:
+Angelehnt an die Branch-Übersicht und die angesprochenen \glqq flüchtigen\grqq{} Release-Branches, können auch Release-Ansichten bereitgestellt werden. Neben den bereits in der Branch-Übersicht erwähnten Kriterien, können weitere Kriterien visualisiert werden. Kriterien für das Zusammenspiel der für das Release geplanten Branches wären zum Beispiel:
 \begin{itemize}
 \item Konflikte zwischen Branches,
 \item Abschätzung zum Fortschritt des Releases,
@@ -203,7 +193,7 @@ Um diesen Szenarien vorzubeugen und sie abzuschwächen, ist eine automatisierte 
 
 Im Weiteren Verlauf wird zwischen internen und externen Abhängigkeiten unterschieden. Für die unterschiedlichen Typen, können unterschiedliche Maßnahmen ergriffen werden. Interne Abhängigkeiten sind all jene Komponenten, welche im direkten Einfluss der Softwareentwicklung liegen. Externe Abhängigkeiten sind im Gegensatz außerhalb des Einflusses der Softwareentwicklung. Meist können diese Abhängigkeiten nicht verändert werden.
 
-Ziel der Abhängigkeitsübersicht sollte es sein Komponenten mit vielen Abhängigkeiten zu finden. Auch komplexe Abhängigkeitsgeflechte oder alte Abhängigkeiten sollten identifiziert werden können. Beide Informationen können helfen eine Strategie zur schrittweisen Verbesserung(\gls{Refactoring}) zu erarbeiten.
+Ziel der Abhängigkeitsübersicht sollte es sein Komponenten mit vielen Abhängigkeiten zu finden. Auch komplexe Abhängigkeitsgeflechte oder alte Abhängigkeiten sollten identifiziert werden können. Beide Informationen können helfen eine Strategie zur schrittweisen Verbesserung (\gls{Refactoring}) zu erarbeiten.
 
 \subsubsection{Interne Abhängigkeiten}
 
@@ -265,7 +255,7 @@ Abschließend sind in der Individualsoftware noch eine Reihe an unerwarteten Bla
 
 In Abbildung~\ref{dependency-circle-plot} werden zwei Kreisdiagramme verwendet um die Abhängigkeitszu\hyp{} und abflüsse zu verdeutlichen. Das linke Diagramm stellt die Abhängigkeiten der Individualsoftware dar. Das rechte Diagramm visualisiert die Abhängigkeiten von Wikia. Die Wahl des Kreisdiagramms ergibt sich durch seine Eignung gruppierte Ab- und Zuströme zu visualisieren\footcite{visualizing-graph-data}. 
 
-Als Basis für die beiden Diagramme wurden die im Versionsverwaltungssystem gesichert Dateien der Packetverwaltung verwendet. Das beschreibende Format ist eine DSL von Composer\footcite{composer-json} und wird primär für PHP-Projekte verwendet. Die Ansicht wurde mit Hilfe eines JavaScript-Werkzeuges \glqq Dependency Wheel\grqq{}\footcite{composer-dependency-wheel} erstellt.
+Als Basis für die beiden Diagramme wurden die im Versionsverwaltungssystem gesichert Dateien der Paketverwaltung verwendet. Das beschreibende Format ist eine DSL von Composer\footcite{composer-json} und wird primär für PHP-Projekte verwendet. Die Ansicht wurde mit Hilfe eines JavaScript-Werkzeuges \glqq Dependency Wheel\grqq{}\footcite{composer-dependency-wheel} erstellt.
 
 Die grauen Abhängigkeitsteile stellen direkte Abhängigkeiten des Projektes dar, während die farbigen Stränge die Verbindungen der Abhängigkeiten visualisieren.
 
@@ -382,9 +372,9 @@ Die Versionsverwaltung ist nicht nur eine Ablage für Quellcode, sondern auch Te
 
 Wird ein zentrales Versionsverwaltungssystem zusammen mit Continuous-Integration verwendet, ist außerdem die Build-Integrität sicherzustellen. Keiner der Commits sollte den Build fehlschlagen lassen. 
 
-Die Verwendung einer dezentralen Versionsverwaltung und Feature-Branches erleichtert das Erstellen von Commits. Zum eine ist die Build-Integrität abgeschwächt. Dies ermöglicht es, zugunsten eines einfache Commits, die Build-Integrität erst mit den nachfolgenden Commits herzustellen. Zum anderen lassen sich in einer dezentralen Versionsverwaltung die Commits nachträglich verändern. Dies ermöglicht die Commits unter Umständen verständlicher zu strukturieren.
+Die Verwendung einer dezentralen Versionsverwaltung und Feature-Branches erleichtert das Erstellen von Commits. Zum einen ist die Build-Integrität abgeschwächt. Dies ermöglicht es, zugunsten eines einfachen Commits, die Build-Integrität erst mit den nachfolgenden Commits herzustellen. Zum anderen lassen sich in einer dezentralen Versionsverwaltung die Commits nachträglich verändern. Dies ermöglicht die Commits unter Umständen verständlicher zu strukturieren.
 
-Eine Variante verständliche und gut strukturierte Commit-Nachrichten zu verfassen, ist es die Commit-Nachrichten vor der Implementierung der Änderung zu verfassen\footcite[Writing commit messages before starting to code][]{git-essentials-2017}. Ähnlich wie in Kapitel~\ref{test-driven-development}~\nameref{test-driven-development}, wird der Fokus auf das Ergebnis, nicht die Implementierung gelenkt. Es wird somit beschrieben, welches Ziel der Commit verfolgt, nicht welche Änderungen durchgeführt wurden. Die dokumentierenden Qualitäten der Versionhistorie werden dadurch deutlich verbessert.
+Eine Variante verständliche und gut strukturierte Commit-Nachrichten zu verfassen, ist es die Commit-Nachrichten vor der Implementierung der Änderung zu verfassen\footcite[Writing commit messages before starting to code][]{git-essentials-2017}. Ähnlich wie in Kapitel~\ref{test-driven-development}~\nameref{test-driven-development}, wird der Fokus auf das Ergebnis, nicht die Implementierung gelenkt. Es wird somit beschrieben, welches Ziel der Commit verfolgt, nicht welche Änderungen durchgeführt wurden. Die dokumentierenden Qualitäten der Versionshistorie werden dadurch deutlich verbessert.
 
 \subsection{Verwendung von Monorepo-Repositories}
 
@@ -394,7 +384,7 @@ Eine Variante diese Aufwände zu reduzieren und Tests, sowie Auslieferung von So
 
 Die Verwendung eines Monorepos vereinfacht zwar die Abhängigkeitsverwaltung, birgt allerdings Schwierigkeiten für größere Repositories. Während in Repositories getrennte Abhängigkeiten, auch die Commits logisch und physisch getrennt sind, fällt diese Barriere in Monorepos. Es müssen daher zusätzliche Mechanismen für die Übersicht geschaffen werden.
 
-Ein weiterer Punkt ist die Performance. Abhängig vom gewählten Versionsverwaltungssystem, können gerade durch die Verwendung von Git Probleme auftreten. Da Git immer die vollständige Historie bereit hält, sind Performance-Probleme nachweisbar\footcite{atlassian-monorepo-git}. In zentralen Systemen wie SVN können für Monorepos gezielte Teilebereiche des Repos verwendet werden. 
+Ein weiterer Punkt ist die Performance. Abhängig vom gewählten Versionsverwaltungssystem, können gerade durch die Verwendung von Git Probleme auftreten. Da Git immer die vollständige Historie bereit hält, sind Performance-Probleme nachweisbar\footcite{atlassian-monorepo-git}. In zentralen Systemen wie \acs{SVN} können für Monorepos gezielte Teilebereiche des Repos verwendet werden. 
 In jedem Versionsverwaltungssystem ist hingegen die erhöhte Commit-Frequenz spürbar. Merge-Commits treten deutlich häufiger auf, zusätzliche manuelle Eingriffe sind teilweise notwendig.
 
 Trotz der Schwierigkeiten nutzen große Unternehmen wie Google, Facebook und Twitter sehr große Monorepos. Für alle drei Unternehmen ist die Verwendung von Monorepos allerdings mit großem Aufwand verbunden. Google entwickelte eine eigene Versionsverwaltung, Facebook investiert in Mercurial und Twitter verwendet eine speziell angepasste Git-Variante\footcite{monorepos-wild}.
@@ -446,14 +436,14 @@ Bezogen auf die Gruppe der Softwareentwickler, wurde von jedem angegeben eine Ve
 \begin{figure}[htbp]
   \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
     {resources/survey-vcs-content.pdf}
-  \caption{Auswertung der Abgelegten Inhalte (Quellcode, Binärdateien, Packetverwaltungsdateien)}
+  \caption{Auswertung der Abgelegten Inhalte (Quellcode, Binärdateien, Paketverwaltungsdateien)}
 \end{figure}
 
 \paragraph{Inhalte unter Versionsverwaltung}
 
 Dateien und Inhalte die in der Versionsverwaltung abgelegt werden, wurden von den Teilnehmern großteils als nicht-binär angegeben. Quelltexte werden von (97\%) der Teilnehmer abgelegt. Build-Skripte(85\%) und Migrations-Skripte(91\%) werden ebenfalls vom Großteil versioniert. Die Mehrheit der Teilnehmer verwendet die Versionsverwaltung nur für kleine Mediendateien (79\%) und kein größeren (62\%).
 
-Während für die meisten Dateien und Inhalte sich deutliche Muster ergaben, war die Ablage von Packetverwaltungs-Lockfiles oder anderen Build-Identifikations-Dateien nicht eindeutig. Betrachtet auf die Menge der Entwickler, nutzen 22\% keine Versionsverwaltung für diesen Dateityp.
+Während für die meisten Dateien und Inhalte sich deutliche Muster ergaben, war die Ablage von Paketverwaltungs-Lockfiles oder anderen Build-Identifikations-Dateien nicht eindeutig. Betrachtet auf die Menge der Entwickler, nutzen 22\% keine Versionsverwaltung für diesen Dateityp.
 
 \paragraph{Verwendung von Branches und Tags}
 
@@ -519,14 +509,18 @@ Die Studie lässt keine Rückschlüsse zu warum die Verwendung gering ausfällt.
 
 \section{Prototyp zur Feature-Branch-Visualisierung}
 
-Mit wachsender Beliebtheit von Feature-Branches, erweiterten auch die Anbieter für Continuous-Integration-Lösungen ihr Angebot. Viele Anbieter stellen umfangreiche Angebote für Continuous-Deployment bereit. Oftmals sind auch zusätzliche Optionen für Feature-Branches enthalten. Wie im Git-Workflow vorgestellt, werden diese Feature-Branches durch einen manuellen Merge-Befehl auf einem Release-Branch akkumuliert. Auf diese Weise werden kontinuierlich, wenn auch verzögert, die einzelnen Feature-Branches mit einander zusammengeführt. Das späte Feedback zum Zeitpunkt der Zusammenführung, kann zu Problemen und zur Verzögerungen beim Release führen. Eine direkte Alternative ist es, die jeweiligen Feature-Branches direkt zum Zeitpunkt ihrer Fertigstellung zusammenzuführen. Für jeden weiteren Feature-Branch, der zusammengeführt werden muss, ergeben sich allerdings die gleichen Problem, wie bereits zuvor.
-Eine mögliche Lösung wäre es Release bereits im Vorfeld zu definieren und die dazugehörigen Branches zu verfolgen. Somit können Konflikten in Codeständen und potentielle Fehlerquellen eher erkennen. Sind alle Feature-Branches konfliktfrei, können diese automatisch zu einem Release gebündelt werden. Jeder einzelne Branch kann durch Tests und Metriken unterstützt werden. Zudem können auf diese Weise Features zurückgehalten werden, die fertig gestellt wurden, aber aus politischen Gründen noch nicht Teil des Releases sein dürfen. 
-Die Behebung von Merge-Konflikten bedeutet, dass einer der beiden vom Konflikt betroffenen Branches, Teile des Codes des anderen Branches, mit aufnehmen muss. Daher ist es möglich, dass auch mit der Verwendung von Feature-Branches, das gezielte zurückhalten von Features, schwierig bleibt. Daher können dieses beiden Branches nicht ohne ein Feature-Toggle unabhängig von einander veröffentlicht werden.
+Das angestrebte Vorgehen der \glqq flüchtigen\grqq{} Releases setzt ein hohes Maß an Automatisierung der Softwareentwicklung voraus. Ein Prototyp der dieses Vorgehen visualisieren oder steuern soll, muss folglich sich in diese Automatisierung integrieren. Es müssen daher Schnittstellen zu Build-Servern, Ticketverwaltungssystemen und Versionsverwaltungssystemen angebunden werden. Um die zahlreichen möglichen Schnittstellen zu reduzieren, werden die Anwendungsszenarien daher über eine allgemeingültige \acs{rest}-Schnittstelle abgebildet. Je nach Szenario können dadurch die einzelnen Anwendungsszenarien über die \acs{rest}Endpunkte abgewickelt werden.
+
+Zusätzlich sollten Übersichten bereitgestellt werden, um die gesammelten Informationen darzustellen. Die verwalteten Projekte, welche Releases den Projekten zugeordnete wurden und welche Abhängigkeiten die Projekte besitzen. 
+
+Sowohl in der Projektdarstellung, als auch bei den Release-Ansichten werden die existierenden Branches dargestellt. Die Branch-Ansichten müssen Konflikte und Qualitätskriterien darstellen.
+
+Da absehbar ist, dass der angestrebte Rahmen den Aufwand sprengen würde, werden primär demonstrative Ansichten entwickelt. Die Ansichten sollen das erwartete Verhalten darstellen und als prototypische Basis für potentielle Anwender dienen.
 
 Der Prototyp soll somit die folgenden Punkte unterstützen:
 \begin{itemize}
 \item Gruppierung von Feature-Branches zu Releases,
-\item Darstellung der Untermenge an Branches, welche bereits zu einem Release kombiniert werden können,
+\item Darstellung der Untermenge an Branches, welche nicht zu einem Release kombiniert werden können,
 \item Darstellung der Testergebnisse, Testabdeckung und Code-Qualitätsmetriken und
 \item Bereitstellung einer API um Testergebnisse und Metriken mit einem Continuous-Integration-System zu synchronisieren.
 \end{itemize}
@@ -546,14 +540,14 @@ Ist das Release definiert, sollen eine Reihe an Fragen einfach zu beantworten se
 \item Wie verhalten sich die Metriken der Feature-Branches untereinander und zum Haupt-Branch?
 \end{itemize}
 
-Des Weiteren sollte die Anbindung an einen bestehenden Continuous-Prozess möglich sein. Es sollte daher eine REST-API bereit gestellt werden. Die API soll primär die Daten für Metriken und Testergebnisse entgegennehmen.
+Des Weiteren sollte die Anbindung an einen bestehenden Continuous-Prozess möglich sein. Es sollte daher eine REST-API bereitgestellt werden. Die API soll primär die Daten für Metriken und Testergebnisse entgegennehmen.
 
 \subsection{Nutzungsszenarien (Use-Cases)}
 
 Aus den Anforderungen ergeben sich einige Nutzungsszenarien. Es soll keine vollständige Projektspezifikation für den Prototypen erstellt werden, daher werden die Nutzungsszenarien nur angerissen. 
 
 \paragraph{Projekt registrieren}
-Um die Projekte zu analysieren, müssen sie angelegt werden. Im optimal Fall geschieht dies durch die Angabe eines Repositories. Aus diesem Repository können, anhand der Beschreibungsdatei der verwendeten Packetverwaltung, die weiteren Informationen gewonnen werden.
+Um die Projekte zu analysieren, müssen sie angelegt werden. Im optimal Fall geschieht dies durch die Angabe eines Repositories. Aus diesem Repository können, anhand der Beschreibungsdatei der verwendeten Paketverwaltung, die weiteren Informationen gewonnen werden.
 
 \paragraph{Branches auflisten}
 Um die Feature-Branches für ein Release zu selektieren, müssen alle verfügbaren Branches des Projektes dargestellt werden. 
@@ -572,44 +566,63 @@ Um ein Release abzuschließen, müssen alle Feature-Branches ohne Konflikt zusam
 
 \subsection{Grundlagen der Umsetzung}
 
-Da der Prototyp als Unterstützung für bestehende Werkzeuge agieren soll, bietet sich ein modernes Web-Framework an. Durch die berufliche Prägung des Autors der Masterarbeit, liegt der Fokus zudem auf PHP. Die Wahl für ein modernes und flexibles Framework fällt daher auf Symfony, welches sich durch Flexibilität und Modularität auszeichnet. Zudem existiert für Symfony eine sehr aktive Community, welche Zahlreiche Werkzeug und Hilfsbibliotheken bereit stellt. Durch Symfony ergibt sich als bevorzugte Abhängigkeitsverwaltung Composer.  
+Da der Prototyp als Unterstützung für bestehende Werkzeuge agieren soll, bietet sich ein modernes Web-Framework an. Durch die berufliche Prägung des Autors der Masterarbeit, liegt der Fokus zudem auf \acs{PHP}. Die Wahl für ein modernes und flexibles Framework fällt daher auf Symfony, welches sich durch Flexibilität und Modularität auszeichnet. Zudem existiert für Symfony eine sehr aktive Community, welche Zahlreiche Werkzeug und Hilfsbibliotheken bereit stellt. Durch Symfony ergibt sich als bevorzugte Abhängigkeitsverwaltung Composer.  
 
 \subsection{Domainmodell}
 
-Das betrachtete Problem betrifft sowohl Repository-Artefakte, als auch Projekt- und Release-Details. Weiter müssen Metriken und Testergebnisse protokolliert werden. Da die Erstellung von Metriken und Tests eine größere Zeitspanne benötigen kann, sollten die Ergebnisse persistiert werden. 
+Das betrachtete Problem betrifft sowohl Repository-Artefakte, als auch Projekt- und Release-Details. Weiter müssen Metriken und Testergebnisse protokolliert werden. Da die Erstellung von Metriken und Tests eine größere Zeitspanne benötigen kann, sollten die Ergebnisse gesichert werden. 
 
 \begin{figure}[htbp]
-  \includegraphics[
-    width=\textwidth,
-    height=\textheight,
-    keepaspectratio
-  ]{resources/ReleaseWardenClassChart.pdf}
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+  {resources/ReleaseWardenClassChart.pdf}
   \caption{Klassendiagramm für Domainmodell}
   \label{class-chart-release-warden}
 \end{figure}
 
-In Abbildung~\ref{class-chart-release-warden} wird das Domainmodell in einem UML-Klassendiagramm dargestellt. Das Domainmodell beschreibt ein betrachtetes Projekt(Project) mit seinen Abhängigkeiten(Dependency) und den Releases für das Projekt. 
+In Abbildung~\ref{class-chart-release-warden} wird das Domainmodell in einem \acs{UML}-Klassendiagramm dargestellt. Das Domainmodell beschreibt ein betrachtetes Projekt(Project) mit seinen Abhängigkeiten(Dependency) und den Releases für das Projekt. 
 Um die Abhängigkeiten abzubilden und die verfügbaren Feature-Branches für ein Release zu selektieren, werden somit auch die Repositories und ihre Branches und Tags benötigt.
 
 \subsection{Umsetzung der Nutzerszenarien}
 
 \paragraph{Projekt registrieren}
 
+Um ein Projekt zu registrieren wird der Pfad zu einer \glqq composer.json\grqq{}-Datei angegeben. Die Datei beschreibt den Namen, das zugehörige Repository und die Abhängigkeiten des Projektes.
+
+\pagebreak
+
 \paragraph{Branches auflisten}
 
+\begin{figure}[h]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+  {resources/prototype-project-show-branches.pdf}
+  \caption{Prototyp - Darstellung der Branches eines Projektes}
+  \label{prototype-project-show-branches}
+\end{figure}
+
+Über eine Schnittstelle zum Versionsverwaltungssystem werde die Branches eines Repositories ausgelesen. Eine weitere Schnittstelle zu einem Build-Server aktualisiert den Build-Erfolg des Branches, sowie Daten zu den Metriken des Branches.
+
 \paragraph{Release erstellen}
+
+Über die Projektansicht kann ein Release geplant werden. Die Planung des Releases erfordert das Selektieren der zur Veröffentlichung geplanten Branches.
+
+\begin{figure}[h]
+  \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
+  {resources/prototype-release-show-branches.pdf}
+  \caption{Prototyp - Darstellung der Branches eines Releases, Konflikte werden gruppiert}
+  \label{prototype-release-show-branches}
+\end{figure}
+
+\paragraph{Branch-Konflikte auflisten}
+
+Über eine Schnittstelle zum Versionsverwaltungssystem wird geprüft, welche Branches ohne Konflikt durch einen Merge kombiniert werden können. Es werden die Branches gruppiert, welche nicht automatisch integriert werden können. Die Anzahl der Konflikte wird angezeigt.
 
 \paragraph{Branch-Details anzeigen}
 
-\paragraph{Branch-Konflikte anzeigen}
-
-\paragraph{Release erstellen}
-
-Beschreibung von PHPMetrics
+Die Daten zum Build-Status, den verfügbaren Metriken und Datenverläufen sollten dargestellt werden.
 
 \section{Motivation, Disziplin und Verantwortung - Faktor Mensch}
 \label{sec:human-fail}
-Die vorangegangene Kapitel beschäftigen sich größtenteils mit Methodiken und Hilfsmitteln. Die Motivation dieser Methodiken und Hilfsmittel begrenzt sich unter anderem auf Wartbarkeit, Robustheit und Skalierbarkeit von Software. Dabei wird die Motivation für die Entwicklung, genauer für den Entwickler, weitestgehend ausgelassen.
+Die vorangegangenen Kapitel beschäftigen sich größtenteils mit Methodiken und Hilfsmitteln. Die Motivation dieser Methodiken und Hilfsmittel begrenzt sich unter anderem auf Wartbarkeit, Robustheit und Skalierbarkeit von Software. Dabei wird die Motivation für die Entwicklung, genauer für den Entwickler, weitestgehend ausgelassen.
 
 Gerade in Anbetracht der Zeit, die viele der Methodiken bereits bekannt sind, ist es hilfreich einen weiteren Aspekt hinzuziehen. Dieser Aspekt soll den psychischen Teil der Einführung einer neuen Methodik beleuchten.
 

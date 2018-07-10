@@ -113,11 +113,11 @@ Die Abbildung~\ref{agile-testing-quadrants} fasst die verschiedenen Tests anhand
 
 \paragraph{Business-Facing} gliedert Tests, welche aus Anwendersicht wichtig sind und den kommerziellen Erfolg der Softwareanwendung sicherstellen. Diese decken zum einen Akzeptanztests ab und stellen die Hauptfunktionalitäten sicher, zum anderen Usability-Tests um die Nutzerfreundlichkeit und Bedienbarkeit zu prüfen.
 
-\paragraph{Support Team} gliedert Tests, welche Regressions-Sicherheit sicherstellen. Da die Anlaufstelle für Fehler im Allgemeinen der Support ist, wurde hier diese Bezeichnung gewählt.
+\paragraph{Support-Team} gliedert Tests, welche Regressions-Sicherheit sicherstellen. Da die Anlaufstelle für Fehler im Allgemeinen der Support ist, wurde hier diese Bezeichnung gewählt.
 
-\paragraph{Critique Product} gliedert Tests, welche kritische Bereiche abdecken. Dies umfasst zum einen Randerscheinungen und Grenzfälle, welche nur explorativ entdeckt werden können und zum Anderen Leistungs- und Sicherheitstests.
+\paragraph{Critique-Product} gliedert Tests, welche kritische Bereiche abdecken. Dies umfasst zum einen Randerscheinungen und Grenzfälle, welche nur explorativ entdeckt werden können und zum anderen Leistungs- und Sicherheitstests.
 
-\paragraph{Technology Facing} gliedert Tests, welche häufig keinem direkt Anwendungsfall zugeordnet werden können. 
+\paragraph{Technology-Facing} gliedert Tests, welche häufig keinem direkt Anwendungsfall zugeordnet werden können. 
 Gegenüberliegende Ansichten stellen auch gegenläufige Interessen dar. Daher ist ein Gleichgewicht der Ansichten über den Quadranten erstrebenswert.
 
 \section{Automatisierung der Softwareerstellung}
@@ -139,7 +139,7 @@ Programmversion ein Fehler gefunden und behoben wird, sollte dieser auch in alle
 werden. Dadurch entsteht mit dieser einfachen Ablage ein erheblicher Mehraufwand. Fortschrittliche 
 Versionsverwaltungssysteme bieten Möglichkeiten diesen Mehraufwand zu reduzieren.
 
-Zustandssicherheit ist ein besonders wichtiges Merkmal für Versionverwaltungs- oder auch Versionskontrollsysteme.
+Zustandssicherheit ist ein besonders wichtiges Merkmal für Versionsverwaltungs- oder auch Versionskontrollsysteme (Version-Control-System - \acs{VCS}).
 Die Reproduzierbarkeit eines definierten Zustandes der Softwarequellen. Der definierte Zustand der Softwareanwendung ergibt sich
 aus der Abfolge aller Änderungen, die an der Softwareanwendung vorgenommen wurden, bis zu der jeweiligen Programmversion. 
 
@@ -153,8 +153,8 @@ anderen Merkmalen, zum Beispiel in der Ablage der Quellen und deren Änderungen,
 Einfluss auf die Verwendung im Softwareentwicklungsprozess.
 
 \paragraph{Zentrale Versionsverwaltungssysteme} folgen dem \glqq single point of truth\grqq{} Prinzip. Es existiert nur ein
-zentraler Punkt auf dem alle Versionstände gespeichert werden. Dies ermöglicht einen einfachen Kontrollfluss und führt nur zu geringfügigen Abweichungen unter allen beteiligten Entwicklern. Damit einhergehend ist eine Übersicht aller Änderungen problemlos möglich. 
-Da alle Daten zentral zur Verfügung stehen, werden deutlich weniger Daten bei den jeweiligen Nutzern der Versionverwaltung notwendig.
+zentraler Punkt auf dem alle Versionsinformationen gespeichert werden. Dies ermöglicht einen einfachen Kontrollfluss und führt nur zu geringfügigen Abweichungen unter allen beteiligten Entwicklern. Damit einhergehend ist eine Übersicht aller Änderungen problemlos möglich. 
+Da alle Daten zentral zur Verfügung stehen, werden deutlich weniger Daten bei den jeweiligen Nutzern der Versionsverwaltung notwendig.
 
 Nachteil dieser Variante ist häufig der initiale Aufwand, da eine zentrale Komponente bereitgestellt werden muss. Zudem 
 sind zentrale Systeme generell störanfälliger und weniger ausfallsicher. Der Vorteil des \glqq single point of truth\grqq{} führt
@@ -173,7 +173,7 @@ Dezentrale Systeme verwalten jeweils eigenständig eine Kopie der geteilten Inha
 Konfigurationsverwaltung ist eine wichtige Basis für die automatisierte Erstellung eines Softwareprojektes. Sie definiert wie alle Teilstücke, auch Artefakte genannt, in einem Softwareprojekt miteinander interagieren. Im Detail wird dabei Erstellung, Identifikation, Validierung und Ablage geregelt. Die Definition und Konfiguration der Ausführungsumgebung der 
 Artefakte ist ebenso ein Teil des Konfigurationsmanagement. \footcite[vgl.][]{humble2010}
 
-Ein lockerer Umgang mit der Konfigurationsverwaltung kann gerade zu Beginn eines Projektes ohne nennenswerte Folgen einhergehen. Wird die Software über einen längeren Zeitraum entwickelt, treten nach und nach mehr Defekte auf. Diese sind unter anderem auf ein mangelndes Konfigurationsmanagement zurück zuführen. Hierbei wird auch von der Alterung des Softwaresystem gesprochen.\footcite[vgl.][]{software-quality2008}. Gerade wenn sich unbemerkt die Version oder Konfiguration der Software eines Drittanbieters ändert, kann dies schwer zu identifizierende Probleme nach sich ziehen. In anderen Fällen reicht es auch, wenn sich die Konfiguration zwischen Entwicklungs- und Produktivumgebung leicht unterscheidet. Konfigurations- und Abhängigkeitsfehler können leicht einen sehr hohen 
+Ein lockerer Umgang mit der Konfigurationsverwaltung kann gerade zu Beginn eines Projektes ohne nennenswerte Folgen einhergehen. Wird die Software über einen längeren Zeitraum entwickelt, treten nach und nach mehr Defekte auf. Diese sind unter anderem auf ein mangelndes Konfigurationsmanagement zurück zu führen. Hierbei wird auch von der Alterung des Softwaresystem gesprochen.\footcite[vgl.][]{software-quality2008}. Gerade wenn sich unbemerkt die Version oder Konfiguration der Software eines Drittanbieters ändert, kann dies schwer zu identifizierende Probleme nach sich ziehen. In anderen Fällen reicht es auch, wenn sich die Konfiguration zwischen Entwicklungs- und Produktivumgebung leicht unterscheidet. Konfigurations- und Abhängigkeitsfehler können leicht einen sehr hohen 
 Behebungsaufwand verursachen.
 
 Im Idealfall kann eine vollständige Konfigurationsverwaltung:
@@ -208,14 +208,14 @@ Systems oder ein Austausch von einzelnen Bestandteilen sind mit einem erhebliche
 
 Die Aufteilung einer Softwareanwendung auf mehrere Komponenten erhöht hingegen die Skalierbarkeit und Austauschbarkeit. Zudem
 ergeben sich Vorteile für das verteilte Arbeiten von Teams. 
-Eine zu starke Aufteilung der Softwareanwendungsstruktur oder eine Teilung an der falsche Stelle, kann hingegen zu gegenteiligen
+Eine zu starke Aufteilung der Softwareanwendungsstruktur oder eine Teilung an der falschen Stelle, kann hingegen zu gegenteiligen
 Effekten führen. Ein deutlicher Mehraufwand und eine schlechte Skalierbarkeit sind die Folge. Um die verschiedenen Module 
 und Pakete zu organisieren empfiehlt sich eine Abhängigkeitsverwaltung. Mit einer Abhängigkeitsverwaltung können Abhängigkeiten durch Identifikationsterme und Versionsnummern eindeutig beschreiben. Dadurch lassen sich Schwierigkeiten unter den Abhängigkeiten leichter erkennen und Aktualisierungen der Versionen entsprechend der Abhängigkeiten vornehmen.
 
 Für die automatisierte Erstellung der Softwareanwendung ist es erforderlich, ähnlich wie bereits bei der Versionsverwaltung, ein eindeutiges Abhängigkeitsnetz zu beschreiben. Zum Auflösen der Abhängigkeiten werden meist mehrdeutige Ausdrücke verwendet, die eine Bandbreite an Versionen der Abhängigkeiten erlauben. Wird die Softwareanwendung erstellt und ausgeliefert, sollte allerdings eindeutig sein, welche Abhängigkeiten verwendet werden. Daher werden in 
-vielen Packetverwaltungen diese Informationen in einer Lock-Datei festgehalten. Es wird zudem angeraten, diese Datei in die Versionkontrolle aufzunehmen.\footcite[vgl.][]{composer-why-lock-in-vcs} Das Festhalten der exakten Versionsnummern der verwendeten Abhängigkeiten ist ein deutlicher Vorteil. Dadurch ist möglich immer wieder zu dem in der Version gesicherten Zustand der Softwareanwendung zurückzukehren. Ohne dies wären die Abhängigkeiten der Anwendung variabel.
+vielen Paketverwaltungen diese Informationen in einer Lock-Datei festgehalten. Es wird zudem angeraten, diese Datei in die Versionsverwaltung aufzunehmen.\footcite[vgl.][]{composer-why-lock-in-vcs} Das Festhalten der exakten Versionsnummern der verwendeten Abhängigkeiten ist ein deutlicher Vorteil. Dadurch ist möglich immer wieder zu dem in der Version gesicherten Zustand der Softwareanwendung zurückzukehren. Ohne dies wären die Abhängigkeiten der Anwendung variabel.
 
-In Abbildung \ref{dependency-mgmg-composer-wikia} ist ein Ausschnitt einer composer.json und der zugehörigen Lock-Datei zu sehen. Beide Dateien sind im JSON-Format und nutzen jeweils eine DSL für die Packetverwaltung Composer\footcite{composer-json}. In der Abbildung wird die Verwendung von regulären Ausdrücken in Verbindung mit einem Paketnamen dargestellt. Zudem wird die Präzisierung der Paketdatei zur Lock-Datei deutlich.
+In Abbildung \ref{dependency-mgmg-composer-wikia} ist ein Ausschnitt einer composer.json und der zugehörigen Lock-Datei zu sehen. Beide Dateien sind im JSON-Format und nutzen jeweils eine DSL für die Paketverwaltung Composer\footcite{composer-json}. In der Abbildung wird die Verwendung von regulären Ausdrücken in Verbindung mit einem Paketnamen dargestellt. Zudem wird die Präzisierung der Paketdatei zur Lock-Datei deutlich.
 
 \subsection{Automatisierte Erstellung und Auslieferung}
 
@@ -255,8 +255,8 @@ Automatisch erstellt Systeme, die für die Virtualisierung verwendet werden, kö
 \subsubsection{Varianten der Softwareauslieferung}
 
 Bei der Auslieferung der Software können grob zwei Stufen der Automatisierung unterschieden werden. Eine Stufe ist die manuell angestoßene Auslieferung, bei der der Zeitpunkt der Auslieferung davon bestimmt wird, wann das automatisierte 
-oder automatisiert-moderierte Skript ausgeführt wird. Diese Stufe wird auch als \glqq Continuous Delivery\grqq{} bezeichnet. Eine andere Stufe ist die vollautomatisierte Auslieferung. Dabei wird der
-Zeitpunkt lediglich von der Durchlaufzeit einer Änderung durch die Qualitätskontrolle bestimmt. Da diese Auslieferung kontinuierlich alle Änderungen Ausliefert, wir diese Stufe auch als \glqq Continuous Deployment\grqq{} bezeichnet.
+oder automatisiert-moderierte Skript ausgeführt wird. Diese Stufe wird auch als \glqq Continuous-Delivery\grqq{} bezeichnet. Eine andere Stufe ist die vollautomatisierte Auslieferung. Dabei wird der
+Zeitpunkt lediglich von der Durchlaufzeit einer Änderung durch die Qualitätskontrolle bestimmt. Da diese Auslieferung kontinuierlich alle Änderungen Ausliefert, wir diese Stufe auch als \glqq Continuous-Deployment\grqq{} bezeichnet.
 Des Weiteren werden unterschiedliche Auslieferungsstrategien (\glqq deployment strategies\grqq{}) unterschieden, es seien an
 dieser Stelle nur exemplarisch das \glqq blue green deployment\grqq{} und das \glqq canary deployment\grqq{}\footcite[261-264 Deploying and Releasing Applications][]
 {humble2010} genannt. Die Auslieferungsstrategien werden dabei je nach Anforderungen ausgewählt und haben Vorzüge wie 
@@ -366,12 +366,12 @@ Die manuelle Bereitstellung eines Systems ist aufwändig und verzögert damit zu
 der auf den Systemen ausgeführten Softwareanwendungen zu vermeiden, sollten die Systeme vollständig beschrieben sein. Die automatische Generierung der virtuellen Umgebung und die Ablage in gepackter Form in einem Archiv bietet weitere Vorteile. Der Zugriff auf die Virtualisierung und damit die Bereitstellung der Systeme wird dadurch besonders transparent 
 und wenig aufwändig.
 
-Durch die Virtualisierung kann ein System reproduzierbar und schnell in einem vorher definierten Zustand bereit gestellt werden. Dies verkürzt Arbeitsabläufe für den Test einer Softwareanwendung. Zum einen können schnell Änderungen an der Softwareanwendung getestet werden, zum anderen kann die Anwendung in zahlreichen Konfigurations- und Abhängigkeitskombinationen getestet werden.
+Durch die Virtualisierung kann ein System reproduzierbar und schnell in einem vorher definierten Zustand bereitgestellt werden. Dies verkürzt Arbeitsabläufe für den Test einer Softwareanwendung. Zum einen können schnell Änderungen an der Softwareanwendung getestet werden, zum anderen kann die Anwendung in zahlreichen Konfigurations- und Abhängigkeitskombinationen getestet werden.
 
 \subsection{Virtualisierung mit Virtual-Machines}
 
-Virtualisierung mit Virutal-Machines abstrahiert eine vollständige Systemumgebung. Diese ermöglicht unter anderem ein Betriebssystem innerhalb eines anderen Betriebssystems zu betreiben. Da eine vollständige Systemumgebung mit Hardwarekomponenten emuliert wird, lassen sich Softwareanwendungen auf verschiedenen Virtual-Machines komplett unabhängig voneinander betreiben.
-Durch den höhren Abstraktionsgrad der Virtualisierung, ist der Systemressourcenverbrauch signifikant höher, als beim Betrieb einer Softwareanwendung in einem nicht virtualisierten System. Virtuelle Maschinen skalieren somit gut in Erstellung und Verwaltung. Im Gegensatz dazu skaliert der Systemressourcenverbrauch deutlich schlechter. Durch den geringeren Verwaltungsaufwand können dennoch große Cluster kosteneffizient betrieben werden, wie viele Cloud-Services zeigen\footcite[vgl.][]{a-cloud-guru-cost}.
+Virtualisierung mit Virtual-Machines abstrahiert eine vollständige Systemumgebung. Diese ermöglicht unter anderem ein Betriebssystem innerhalb eines anderen Betriebssystems zu betreiben. Da eine vollständige Systemumgebung mit Hardwarekomponenten emuliert wird, lassen sich Softwareanwendungen auf verschiedenen Virtual-Machines komplett unabhängig voneinander betreiben.
+Durch den höheren Abstraktionsgrad der Virtualisierung, ist der Systemressourcenverbrauch signifikant höher, als beim Betrieb einer Softwareanwendung in einem nicht virtualisierten System. Virtuelle Maschinen skalieren somit gut in Erstellung und Verwaltung. Im Gegensatz dazu skaliert der Systemressourcenverbrauch deutlich schlechter. Durch den geringeren Verwaltungsaufwand können dennoch große Cluster kosteneffizient betrieben werden, wie viele Cloud-Services zeigen\footcite[vgl.][]{a-cloud-guru-cost}.
 
 \subsection{Containerverwaltung mit Docker}
 
@@ -383,7 +383,7 @@ Als größter Vorteil von Docker wird die Standardisierung der Softwareanwendung
 
 Mit Docker und virtuellen Maschinen wurden zwei Möglichkeiten geschaffen, Software weiter zu vereinheitlichen. Standardisierung ist eine wesentliche Basis für Modularisierung und Automatisierung.
 
-\section{Dezentrale Versionierung mit Git}
+\section{Dezentrale Versionsverwaltung mit Git}
 \label{distributed-vcs-git}
 
 Im Kapitel~\ref{subsec:konfigurationsverwaltung} Konfigurationsverwaltung wurde bereits auf das Thema Versionsverwaltung 
@@ -424,7 +424,7 @@ referenziert werden, dabei können viele gängige Protokolle verwendet werden (h
 anderen Commits referenziert werden. Bei Betrachtung aller Commits, bilden dieser daher einen gerichteten Graphen. 
 Mehrere Eltern-Commits entstehen bei der Zusammenführung von Branches.
 
-\paragraph{Branches} sind, im Gegensatz zu vielen anderen Versionverwaltungssystemen, in Git lediglich Verweise auf einen 
+\paragraph{Branches} sind, im Gegensatz zu vielen anderen Versionsverwaltungssystemen, in Git lediglich Verweise auf einen 
 bestimmten Commit. Wenn ein Branch aktiv ist, dann wird mit jedem Commit auf diesem Branch, der Verweis auf den neuen 
 Commit aktualisiert.
 
@@ -443,7 +443,7 @@ seiner Dateien dar.
 
 \paragraph{Hashes} sind die Ergebnisse einer Hash-Funktion. Hash-Funktionen bilden eine eindeutige Abbildung einer Eingangsmenge auf eine Ausgabemenge. Dadurch ist es möglich auch komplexere Eingabewerte auf einen kürzen Eingabewert abzubilden. Unter anderem werden Hash-Funktion für Hash-Tabellen als Index verwendet. 
 
-In Git werden Hashes als allgemeine Referenzierungsmöglichkeit verwendet. Alle Relationen werden darüber beschrieben und sind daher über alle Repositories gleich. Git verwendet für die Bildung der Hashes den SHA1-Alogrithmus. 
+In Git werden Hashes als allgemeine Referenzierungsmöglichkeit verwendet. Alle Relationen werden darüber beschrieben und sind daher über alle Repositories gleich. Git verwendet für die Bildung der Hashes den SHA1-Algorithmus. 
 
 Die Forderung statt des SHA1- den SHA256-Algorithmus zu verwenden, wurde abgelehnt. Linus Torvalds schätzt die Sicherheitsbedenken als nicht zutreffend ein\footcite[vgl.][]{git-sha-torvalds}. Diese 
 Aussage wurde auch von GitHub bestätigt\footcite[vgl.][]{git-sha-github}.
@@ -452,7 +452,7 @@ Aussage wurde auch von GitHub bestätigt\footcite[vgl.][]{git-sha-github}.
 
 Git verwendet intern einen Mix aus Referenzen, Indexierung, Komprimierung und Hashing. Zudem werden keine 
 Differenzmengen, wie etwa in Subversion abgelegt, sondern immer vollständige Dateiinhalte. Für manche Projekte, wie das 
-Mozilla-Projekt\footcite[vgl.][]{kernel-git-svn} kann dies eine Speicherplatzreduktion erreichen. Im Allgemeinen kann dies aber nicht bestätigt werden\footcite[vgl.][]{svn-vs-git}. Durch die vollständige Speicherung der Inhalte in jedem vernetzten Git-Repository, ist der Speicherbedarf insgesamt höher. Insbesondere für große Dateien, mit nur geringfügigen Änderungen ergeben sich deutliche Unterschiede zu Versionssystemen mit Differenzmengen. Für schlecht komprimierbare Dateien oder Dateien mit schlechten Differenzmengen, wie etwa Binärdateien, sollte allerdings grundsätzlich ein Artefakt-
+Mozilla-Projekt\footcite[vgl.][]{kernel-git-svn} kann dies eine Speicherplatzreduktion erreichen. Im Allgemeinen kann dies aber nicht bestätigt werden\footcite[vgl.][]{svn-vs-git}. Durch die vollständige Speicherung der Inhalte in jedem vernetzten Git-Repository, ist der Speicherbedarf insgesamt höher. Insbesondere für große Dateien, mit nur geringfügigen Änderungen ergeben sich deutliche Unterschiede zu Versionsverwaltungssystemen mit Differenzmengen. Für schlecht komprimierbare Dateien oder Dateien mit schlechten Differenzmengen, wie etwa Binärdateien, sollte allerdings grundsätzlich ein Artefakt-
 Repository in Betracht gezogen werden. 
 
 Seit wenigen Jahre wird \glqq Git Large File Storage\grqq{} (Git LFS)\footcite{git-lfs} angeboten. Dadurch werden ausgewählte Dateien nur als Referenz in Git gesichert. Dies schwächt den früheren Nachteil deutlich ab.
@@ -540,7 +540,7 @@ Die Idee hinter einem Feature-Branch ist, dass für jedes neue Merkmal, beziehun
 Prinzipiell ist diese Technik unabhängig von der verwendeten Versionsverwaltung, erhielt aber vor allem durch dezentrale Versionsverwaltungssysteme an Bedeutung. Der Grund dafür liegt in der deutlich einfacheren und weniger aufwändigen Erstellung von Branches und deren Zusammenführung.
 
 Die Methode Feature-Branches wird kontrovers diskutiert\footcite[vgl.][]{fb-revisited}. 
-Dabei wird angemahnt, dass die Abspaltung in einen Branch, das Problem der Zusammenführung von Codeänderungen nicht behebt, sondern verschlimmert\footcite[vgl.][]{fowler-feature-branch}. So wird der Aufwand, der benötigt wird um zwei Verzweigungen zusammenzuführen, potentiell immer höher, um so mehr Änderungen hinzukommen. Die Aufwandserhöhung kann soweit gehen, dass ein psychologischer Faktor 
+Dabei wird angemahnt, dass die Abspaltung in einen Branch, das Problem der Zusammenführung von Codeänderungen nicht behebt, sondern verschlimmert\footcite[vgl.][]{fowler-feature-branch}. So wird der Aufwand, der benötigt wird um zwei Verzweigungen zusammenzuführen, potentiell immer höher, umso mehr Änderungen hinzukommen. Die Aufwandserhöhung kann so weit gehen, dass ein psychologischer Faktor 
 hinzukommt, der die Entscheidung zur Zusammenführung weiter belastet. Diese Zusammenführung wird dann auch als \glqq big scary merge\grqq{} oder \glqq big bang merge\grqq{} bezeichnet.
 
 Kontrovers dazu wird hervorgehoben, dass Feature-Branches Blockaden im Arbeitsfluss vermeiden und durch Entwicklerdisziplin und Automatisierung, die Angst vor dem \glqq big scary merge\grqq{} mildern\footcite[vgl.][]{ci-is-dead}. Dazu wird verlangt, Feature-Branches nur für kleine Änderungen zu verwenden und durch Hilfe von Automatisierung, schnelle Rückmeldung über die Codequalität zu erhalten. Des Weiteren werden durch moderne \glqq pull based\grqq{}\footcite[vgl.][]{github-about-pull} Verzweigungsstrategien, Entwickler dazu angehalten Codeprüfungen durch andere Entwickler einzufordern. 
