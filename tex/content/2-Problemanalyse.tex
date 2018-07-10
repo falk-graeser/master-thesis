@@ -275,13 +275,13 @@ fehlende Anforderung machen einen Test unvollständig oder nehmen dem Test die A
 Da eine Software nicht vollständig in verhältnismäßiger Zeit getestet werden kann, muss eine Strategie gewählt werden. Es muss bestimmt werden, welche Teile der Softwareanwendung getestet werden. Die Vollständigkeit der Tests, auch Testabdeckung genannt, sollte gemessen werden. Die meisten Werkzeuge messen die Testabdeckung, durch die Nachverfolgung der von den Test durchlaufenen Teile der Softwareanwendung. Bei der Entscheidung, welche Strategie gewählt wird, fallen verschiedene Kriterien ins Gewicht. Zum einen muss betrachtet werden, welche Anforderungen mit welchem Testverfahren getestet werden können. Zum anderen, welche Granularität für jeden Test verwendet wird.
 Je nachdem, welche Strategie gewählt wird, hat dies Auswirkungen auf die Ausführungszeit der Tests. Diese Zeit wirkt sich direkt auf die Produktivität des Entwicklungsteams aus. Ohne die Testresultate kann keine Aussage über die Funktionsfähigkeit der Softwareanwendung getroffen werden. Damit ist die Freigabe einer Softwareanwendung oder eines Inkrementes der Softwareanwendung direkt von der Durchlaufgeschwindigkeit der Tests abhängig. 
 
-Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung(Test-Suite). Jeder Fehler, der nicht von der Testsammlung erfasst wurde, muss spätestens nach der Beseitigung des Fehlers auch durch die Testsammlung validiert werden. Diese Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests\footcite[vgl.][]{software-quality2008}. Ein direkter Nachteil einer großen Test-Suite ist der Aufwand für ihre Pflege. Testabdeckung, Wartbarkeit der Tests und Aussagekraft der Tests sollte daher in der Teststrategie gegeneinander abgewogen werden.
+Ein wichtiger Punkt ist hier auch die aktive Wartung der Testsammlung(\gls{Test-Suite}). Jeder Fehler, der nicht von der Testsammlung erfasst wurde, muss spätestens nach der Beseitigung des Fehlers auch durch die Testsammlung validiert werden. Diese Regressions-Sicherheit stellt in vielen Testsammlungen häufig den größten Teil der Tests\footcite[vgl.][]{software-quality2008}. Ein direkter Nachteil einer großen Test-Suite ist der Aufwand für ihre Pflege. Testabdeckung, Wartbarkeit der Tests und Aussagekraft der Tests sollte daher in der Teststrategie gegeneinander abgewogen werden.
 
 \subsubsection{Software-Metriken}
 \label{subsubsec:base-metrics}
 Software-Metriken können systematisch und quantitativ Aspekte des Software-Codes erfassen. Als Teilaspekt der Code-Analyse können Software-Metriken dazu verwendet werden, Kenngrößen des Software-Systems zu quantifizieren und damit Bewertung und Vergleich mit anderen Code-Ständen ermöglichen.\footcite[S.247][]{software-quality2008}
 
-Eine nützliche Software-Metrik sollte mehrere Gütekriterien erfüllen. Die Metrik sollte objektiv sein, was bei einer maschinellen Erhebung und Verarbeitung weitestgehend gegeben ist. Die Ergebnisse einer Metrik sollten wiederholbar und damit robust sein. Zudem sollten die Ergebnisse vergleichbar sein, um verschieden Softwareversionen gegeneinander bewerten zu können. Eine Metrik sollte mit dem untersuchten Merkmal korrelieren. Die Korrelation ist immer dann besonders hoch, wenn der mit der Metrik erhobene Wert sich stark ändert, wenn auch das betrachtet Merkmal sich ändert. Abschließend sollte die Erhebung der Metrik in Relation zu der Güte ihrer Aussage stehen. Metriken mit einem hohen Erhebungsaufwand, aber ohne Relevanz für den Entscheidungsprozess, sind nicht wertvoll.\footcite[S.248 ff][]{software-quality2008}
+Eine nützliche Software-Metrik sollte mehrere Gütekriterien erfüllen. Die \gls{Metrik} sollte objektiv sein, was bei einer maschinellen Erhebung und Verarbeitung weitestgehend gegeben ist. Die Ergebnisse einer Metrik sollten wiederholbar und damit robust sein. Zudem sollten die Ergebnisse vergleichbar sein, um verschieden Softwareversionen gegeneinander bewerten zu können. Eine Metrik sollte mit dem untersuchten Merkmal korrelieren. Die Korrelation ist immer dann besonders hoch, wenn der mit der Metrik erhobene Wert sich stark ändert, wenn auch das betrachtet Merkmal sich ändert. Abschließend sollte die Erhebung der Metrik in Relation zu der Güte ihrer Aussage stehen. Metriken mit einem hohen Erhebungsaufwand, aber ohne Relevanz für den Entscheidungsprozess, sind nicht wertvoll.\footcite[S.248 ff][]{software-quality2008}
 
 Da Tests und Software-Metriken gut anwendbare Möglichkeiten sind, um automatisiert Einschätzungen der Software vorzunehmen, werden diese Bereiche erneut im Kapitel~\ref{subsec:main-metrics} \glqq \nameref{subsec:main-metrics}\grqq{} aufgegriffen und näher auf deren Softwareanwendung eingegangen.
 
@@ -384,7 +384,7 @@ wichtig werden.
 Git wurde vom Linux-Schöpfer Linus Torvalds im April 2005 initiiert, aus der Not heraus sich vom vorher verwendeten \glqq BitKeeper\grqq{}-System zu lösen, da diese nicht mehr mit der eigenen Open-Source-Lizenz in Einklang zubringen war. Git wurde von vornherein als verteiltes, vor Verfälschungen sicheres und effizientes Versionsverwaltungssystem entworfen. 
 Diese Eigenschaften und die Software-Plattform \glqq GitHub\grqq{}, machten Git in den letzten 13 Jahren zum de-facto Standard für Versionsverwaltung\footcite[vgl.][]{heise-torvald-git2015}.
 
-Als dezentrales Versionsverwaltungssystem ist einer der großen Vorteile von Git, dass die vollständige Historie der Dateien lokal verfügbar ist. Während zentrale Versionsverwaltungssysteme immer einen dedizierten Server benötigen, können dezentrale Varianten über Peer-To-Peer-Schnittstellen kommunizieren. Diese Eigenschaft sorgt neben einer hohen Ausfallsicherheit und Datenredundanz, auch für eine hohe Flexibilität und die Möglichkeit, zahlreiche Arbeitsweisen von Softwareentwicklern zu unterstützen.
+Als dezentrales Versionsverwaltungssystem ist einer der großen Vorteile von Git, dass die vollständige Historie der Dateien lokal verfügbar ist. Während zentrale Versionsverwaltungssysteme immer einen dedizierten Server benötigen, können dezentrale Varianten über \gls{Peer-To-Peer}-Schnittstellen kommunizieren. Diese Eigenschaft sorgt neben einer hohen Ausfallsicherheit und Datenredundanz, auch für eine hohe Flexibilität und die Möglichkeit, zahlreiche Arbeitsweisen von Softwareentwicklern zu unterstützen.
 
 \subsection{Definition und Verwendung der Git-Artefakte}
 
@@ -442,7 +442,7 @@ Einschätzung wird von GitHub geteilt\footcite[vgl.][]{git-sha-github}.
 
 Git verwendet intern einen Mix aus Referenzen, Indexierung, Komprimierung und Hashing. Zudem werden keine 
 Differenzmengen, wie etwa in Subversion abgelegt, sondern immer vollständige Dateiinhalte. Für manche Projekte, wie das 
-Mozilla-Projekt\footcite[vgl.][]{kernel-git-svn} kann dies eine Speicherplatzreduktion erreichen. Im Allgemeinen kann dies aber nicht bestätigt werden\footcite[vgl.][]{svn-vs-git}. Durch die vollständige Speicherung der Inhalte in jedem vernetzten Git-Repository, ist der Speicherbedarf insgesamt höher. Insbesondere für große Dateien, mit nur geringfügigen Änderungen ergeben sich deutliche Unterschiede zu Versionsverwaltungssystemen mit Differenzmengen. Für schlecht komprimierbare Dateien oder Dateien mit schlechten Differenzmengen, wie etwa Binärdateien, sollte allerdings grundsätzlich ein Artefakt-
+Mozilla-Projekt\footcite[vgl.][]{kernel-git-svn} kann dies eine Speicherplatzreduktion erreichen. Im Allgemeinen kann dies aber nicht bestätigt werden\footcite[vgl.][]{svn-vs-git}. Durch die vollständige Speicherung der Inhalte in jedem vernetzten Git-\gls{Repository}, ist der Speicherbedarf insgesamt höher. Insbesondere für große Dateien, mit nur geringfügigen Änderungen ergeben sich deutliche Unterschiede zu Versionsverwaltungssystemen mit Differenzmengen. Für schlecht komprimierbare Dateien oder Dateien mit schlechten Differenzmengen, wie etwa Binärdateien, sollte allerdings grundsätzlich ein Artefakt-
 Repository in Betracht gezogen werden. 
 
 Seit wenigen Jahre wird \glqq Git Large File Storage\grqq{} (Git LFS) angeboten\footcite{git-lfs}. Dadurch werden ausgewählte Dateien nur als Referenz in Git gesichert. Dies schwächt den früheren Nachteil deutlich ab.
@@ -474,7 +474,7 @@ Wie auch beim Blob sind Trees nur eine Abbildung ihres Inhaltes. Da Trees aber a
 sind, referenzieren Trees andere Trees und Blobs. Damit würde eine Folge von Commits, die zuerst eine Datei erzeugt und 
 schließlich wieder entfernt, am Ende wieder auf den gleichen Tree verweisen.
 
-Commits schließlich verweisen auf einen oder mehrere Vorgänger-Commits, einen Tree, einen Autor und einen Commiter. Hat ein Commit mehr als einen Vorgänger, wird im Allgemeinen von einem Merge-Commit gesprochen.
+Commits schließlich verweisen auf einen oder mehrere Vorgänger-Commits, einen Tree, einen Autor und einen Commiter. Hat ein Commit mehr als einen Vorgänger, wird im Allgemeinen von einem \gls{Merge}-Commit gesprochen.
 
 Dieser einfache, gut skalierbare Aufbau ermöglicht eine sehr leichtgewichtige Erstellung von Branches und damit 
 zahlreiche flexible Arbeitsweisen.
@@ -487,7 +487,7 @@ rasante Verbreitung von Git, wurde GitHub bei Open-Source-Projekten schnell zur 
 Gemeinschaft hohen Einfluss.
 
 Der GitHub-\gls{Workflow} ist eine einfache Arbeitsweise, die auf Branches und manuellen Begutachtungen (Reviews) basiert. 
-Änderungen gelangen nur zurück auf den Hauptstrang, wenn sie zuvor einem Review unterzogen worden. Dieser Schritt ist ein 
+Änderungen gelangen nur zurück auf den Hauptstrang, wenn sie zuvor einem \gls{Review} unterzogen worden. Dieser Schritt ist ein
 entscheidender Unterschied zum Trunk-Based-Workflow der mit Continuous-Integration propagiert wird, da hier der Code-Review erst nach der Integration mit dem Hauptzweig durchgeführt werden kann.
 
 \subsection{Gitflow}
@@ -514,7 +514,7 @@ haben.
 \footcitetext[vgl.][]{nvie-git-branch-model}
 
 Der konkrete Arbeitsfluss wird in der Abbildung~\ref{git-flow} zusammengefasst. Es wird deutlich, dass nur Commits von 
-Release- und Hotfix-Branches auf den Master-Branch gelangen können. Desweiteren ist herauszustellen, dass nach der 
+\gls{Release}- und Hotfix-Branches auf den Master-Branch gelangen können. Desweiteren ist herauszustellen, dass nach der
 Erstellung des Release-Branches keine Änderungen mehr vom Development-Branch zugeführt werden. Diese Trennung der 
 Änderungsflüsse führt dazu, dass bereits an neuen Themen gearbeitet werden kann, ohne dass der Release behindert wird. 
 Des Weiteren ist klar geregelt, dass alle Features immer erst im Development-Branch integriert werden müssen.

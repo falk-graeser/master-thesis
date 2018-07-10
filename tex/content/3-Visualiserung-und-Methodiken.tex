@@ -147,7 +147,7 @@ Eine solche Übersicht müsste wichtigen Kriterien eines Branches gesammelt und 
 \item Kennzahlen des Branches zu Qualität und Fortschritt.
 \end{itemize}
 
-Durch diese Übersicht können schnell Entscheidungen getroffen werden, welche Branches in den Fokus der Entwicklung gerückt werden müssen. Alte oder bereits in den Codestand überführte Branches können gelöscht werden. Branches mit schlechten Kennzahlen können zu einem Refactoring eingeplant werden. 
+Durch diese Übersicht können schnell Entscheidungen getroffen werden, welche Branches in den Fokus der Entwicklung gerückt werden müssen. Alte oder bereits in den Codestand überführte Branches können gelöscht werden. Branches mit schlechten Kennzahlen können zu einem \gls{Refactoring} eingeplant werden.
 
 \subsection{Übersicht zu Releases}
 
@@ -197,7 +197,7 @@ Ziel der Abhängigkeitsübersicht sollte es sein Komponenten mit vielen Abhängi
 
 \subsubsection{Interne Abhängigkeiten}
 
-Interne Abhängigkeiten sind meist das Resultat der Modularisierung der Softwareanwendung. Abgrenzungskriterien können hierfür logische, strukturelle oder ästhetische Gründe sein. Logische Gründe basieren auf dem Domainmodell der Anwendung und beschreiben unterschiedliche Ausprägungen und Ebenen der Anwendung. Strukturelle Gründe können Umfang, Wiederverwendbarkeit oder Gruppierung eines Moduls sein. Ästhetische Gründe begründen sich auf vereinbarten Coding-Guidelines, populären Softwareentwicklungsstrategien oder schlicht dem subjektiven Entwicklerempfinden. Interne Abhängigkeiten tendieren oft dazu weniger lose gekoppelt zu sein und implizite, nicht definierte Abhängigkeiten aufzuweisen.
+Interne Abhängigkeiten sind meist das Resultat der Modularisierung der Softwareanwendung. Abgrenzungskriterien können hierfür logische, strukturelle oder ästhetische Gründe sein. Logische Gründe basieren auf dem Domainmodell der Anwendung und beschreiben unterschiedliche Ausprägungen und Ebenen der Anwendung. Strukturelle Gründe können Umfang, Wiederverwendbarkeit oder Gruppierung eines Moduls sein. Ästhetische Gründe begründen sich auf vereinbarten \gls{Coding-Guidelines}, populären Softwareentwicklungsstrategien oder schlicht dem subjektiven Entwicklerempfinden. Interne Abhängigkeiten tendieren oft dazu weniger lose gekoppelt zu sein und implizite, nicht definierte Abhängigkeiten aufzuweisen.
 
 Interne Abhängigkeiten liegen meist als Quelltexte vor und können daher angepasst werden. Häufig sind die Autoren der Abhängigkeit noch verfügbar und Informationen über die Abhängigkeiten können leicht erlangt werden.
 Ist die Abhängigkeit noch in der Entwicklung können gemeinem mit der Softwareanwendung Releases geplant werden. 
@@ -241,6 +241,8 @@ Die Betrachtung des vollständigen Graphen für beide Projekte, lässt Ähnlichk
 
 Abschließend sind in der Individualsoftware noch eine Reihe an unerwarteten Blattknoten erkennbar. Diese deuten auf schlecht gepflegte Abhängigkeiten hin. Unzureichende gepflegte Abhängigkeiten entstehen in der Regel, wenn die betroffenen Module nur im Gesamtkontext geprüft werden. Dadurch sind für diese Module implizite Abhängigkeiten verfügbar, die sonst nicht nicht bereitgestellt werden könnten.
 
+\pagebreak
+
 \paragraph{Kreisdiagramm}
 
 \begin{figure}[htbp]
@@ -279,8 +281,8 @@ Liniendiagramme eignen sich daher eher für langfristige Betrachtungen. Risikoab
 
 \begin{figure}[htbp]
   \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
-    {resources/900x300.pdf}
-  \caption{TODO Graphik zu Balkendiagrammen, horizontal, vertikal}
+    {resources/bar-chart.pdf}
+  \caption{Balkendiagramm zur Komplexität der Individualsoftware - Eine Klasse sticht hervor}
   \label{bar-chart}
 \end{figure}
 \paragraph{Balkendiagramme} eignen sich für vergleichende Ansichten. Kenngrößen können so in Kontext gesetzt werden. Die Vergleichsmöglichkeit erleichtert die Bewertung. Werden die Balken sortiert, können zudem Wertgruppen eingeteilt werden. Durch die Drehung des Balkendiagramms um 90 Grad, wird zudem der Fokus stärker auf die Sortierung gelenkt.
@@ -311,13 +313,13 @@ Die Darstellung vermittelt relativ einfach die Menge und Stärke von Komplexitä
 
 Feature-Branches verhindern keine Merge-Konflikte, die beim Zusammenführen von Änderungen auftreten. Sie helfen lediglich, das Auftreten der Konflikte, zu einem gewählten Zeitpunkt zu verschieben. Daher sind Entwickler, auch mit Features-Branches, darauf angewiesen Entwicklungsmuster anzuwenden und sich mit der Softwarearchitektur der Softwareanwendung auseinanderzusetzen.
 
-Zudem unterstützen die nachfolgenden Methodiken das Verfahren \glqq \nameref{temporary-releases}\grqq{} aus Kapitel~\ref{temporary-releases}. Das Verfahren ist abhängig von Code-Kopplung und profitiert von einer besseren Testqualität.
+Zudem unterstützen die nachfolgenden Methodiken das Verfahren \glqq \nameref{temporary-releases}\grqq{} aus Kapitel~\ref{temporary-releases}. Das Verfahren ist abhängig von \gls{Code-Kopplung} und profitiert von einer besseren Testqualität.
 
 Viele dieser Entwicklungsmuster und -verfahren werden unter dem Begriff \glqq Best-Practices\grqq{} geführt. Sie unterstützen Entwickler in Entwurfsentscheidungen und geben Rahmen für Standards in der Softwareentwicklung. Viele der Best-Practices zielen zudem auf Verbesserungen für Wartbarkeit, Robustheit und allgemeine geringere Umsetzungsaufwände.
 
 \subsection{Modularisierung von Software}
 
-Viele Probleme bei Continuous-Integration und Feature-Branches entstehen durch Merge-Konflikte. Diese Merge-Konflikte müssen in teilweise sehr komplizierten Merge-Verfahren aufgelöst werden. Merge-Konflikte treten auf, wenn Änderungen aus verschiedenen Commits die gleichen Dateien betreffen. Besonders bei Komponenten der Softwareanwendung, die stark gekoppelte Abhängigkeiten verwenden, treten Merge-Konflikte besonders häufig auf. Wird eine Software von Beginn an lose gekoppelt entwickelt, ergeben sich oft deutlich weniger Abhängigkeiten und komplizierte Merge-Schritte werden vermieden.
+Viele Probleme bei Continuous-Integration und Feature-Branches entstehen durch Merge-Konflikte. Diese Merge-Konflikte müssen in teilweise sehr komplizierten Merge\hyp{}Verfahren aufgelöst werden. Merge-Konflikte treten auf, wenn Änderungen aus verschiedenen Commits die gleichen Dateien betreffen. Besonders bei Komponenten der Softwareanwendung, die stark gekoppelte Abhängigkeiten verwenden, treten Merge-Konflikte besonders häufig auf. Wird eine Software von Beginn an lose gekoppelt entwickelt, ergeben sich oft deutlich weniger Abhängigkeiten und komplizierte Merge-Schritte werden vermieden.
 
 Die lose Kopplung einer Software kann, durch das Befolgen der Prinzipien zur Modularisierung\footcite{2012-barth-modularisation}, erreicht werden. 
 
@@ -349,11 +351,11 @@ Neben dem Erfolg von TDD wurde auch Kritik geäußert. Unter anderem wurde der s
 
 Die Kritik weist Schwächen auf. TDD fordert die Erstellung von Tests. Die Begrenzung der Tests auf Unit-Tests wird allerdings an keiner Stelle gefordert. Der ursprüngliche Test-Frist Ansatz von Kent Beck ist besonders intuitiv, wenn er für Unit-Tests verwendet wird. Die Annahme, dass er auf Unit-Tests beschränkt wird, würde TDD allerdings nicht gerecht. 
 
-Weiter ist eine sehr subjektive Einschätzung, dass TDD die Softwarearchitektur schwächt. Eine zu strikte Befolgung aller Prinzipien von TDD oder Modularisierung kann zu ungünstigen Entscheidungen im Software-Design führen. Die Korrekte Anwendung der Prinzipen liegt allerdings in der Hand des Entwicklers. In einer kritischen Auseinandersetzung von Kent Beck, Martin Fowler und David Heinemeier Hansson zum Thema TDD, formuliert Kent Beck die folgende Aussage:
+Weiter ist eine sehr subjektive Einschätzung, dass TDD die Softwarearchitektur negativ beeinflusst. Eine zu strikte Befolgung aller Prinzipien von TDD oder Modularisierung kann zu ungünstigen Entscheidungen im Software-Design führen. Die Korrekte Anwendung der Prinzipen liegt allerdings in der Hand des Entwicklers. In einer kritischen Auseinandersetzung von Kent Beck, Martin Fowler und David Heinemeier Hansson zum Thema TDD, formuliert Kent Beck die folgende Aussage:
 
-\blockquote {Design(and TDD) is a question of trade–offs. They should never be ignored. You should always be aware of the trade–offs you make. You have to be a good designer to make the right ones.}\footcite[vgl.][S. 36]{aalborg-tdd-15-years}
+\blockquote {Design (and TDD) is a question of trade–offs. They should never be ignored. You should always be aware of the trade–offs you make. You have to be a good designer to make the right ones.}\footcite[vgl.][S. 36]{aalborg-tdd-15-years}
 
-Test-Driven-Development ist sinnvoller Ansatz um nachhaltig hochqualitativen Software-Code zu verfassen. TDD fördert durch den Fokus auf gut zu testenden Software-Code lose gekoppelte Software-Komponenten. Allerdings entbindet das TDD-Vorgehen den Softwareentwickler nicht von den zu treffenden Softwarearchitekturentscheidungen.
+Test-Driven-Development ist sinnvoller Ansatz um nachhaltig hochqualitativen Software\hyp{}Code zu verfassen. TDD fördert durch den Fokus auf gut zu testenden Software-Code lose gekoppelte Software-Komponenten. Allerdings entbindet das TDD-Vorgehen den Softwareentwickler nicht von den zu treffenden Softwarearchitekturentscheidungen.
 
 \subsection{Fortgeschrittene Nutzung von Versionsverwaltung}
 
@@ -379,7 +381,7 @@ In jedem Versionsverwaltungssystem ist hingegen die erhöhte Commit-Frequenz sp�
 Trotz der Schwierigkeiten nutzen große Unternehmen wie Google, Facebook und Twitter sehr große Monorepos. Für alle drei Unternehmen ist die Verwendung von Monorepos allerdings mit großem Aufwand verbunden. Google entwickelte eine eigene Versionsverwaltung, Facebook investiert in Mercurial und Twitter verwendet eine speziell angepasste Git-Variante\footcite{monorepos-wild}.
 Bei entsprechender Größe des Projektes, ist allerdings auch für kleinere Unternehmen die Verwendung von Monorepos nützlich\footcite{hackernoon-positive-monorepo}.
 
-\section{Umfrage zum Nutzungsverhalten von Versionsverwaltungssystemen und Tests}
+\section[Umfrage zur Nutzung von VCS und Tests]{Umfrage zum Nutzungsverhalten von Versionsverwaltungssystemen und Tests}
 \label{survey-vcs-test}
 
 Um die Verwendung von Versionsverwaltung und die Anwendung von Tests in Kontext setzen zu können, wurde ein Umfrage durchgeführt.
@@ -399,7 +401,7 @@ Auch der konstante Abstand der Antworten ist nicht sichergestellt. Die Abfolge d
 
 \subsection{Teilnehmerzusammensetzung}
 
-\begin{figure}[htbp]
+\begin{figure}[h]
   \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
     {resources/survey-participants.pdf}
   \caption{Auswertung zur Teilnehmerzusammensetzung (Tätigkeit, Erfahrung, Firmengröße}
@@ -407,7 +409,7 @@ Auch der konstante Abstand der Antworten ist nicht sichergestellt. Die Abfolge d
 Die auswertbaren Umfrageteilnehmer gaben größtenteils an Softwareentwickler oder Projektmanager zu sein. Weiter sind die Gruppen mit 1-5 Jahren und 5-10 Jahren Berufserfahrung am stärksten vertreten. Abschließend ist noch die Zusammensetzung der Firmengrößen hervorzuheben. Der größte Teil der Teilnehmer gab an in kleinen und mittelständischen Unternehmen zu arbeiten.
 
 Die Gruppe der Softwareentwickler wird teilweise explizit hervorgehoben, als besonders relevante Gruppierung für das Thema.
-
+\pagebreak
 \subsection{Nutzung von Versionsverwaltung}
 
 \begin{figure}[htbp]
@@ -433,8 +435,6 @@ Bezogen auf die Gruppe der Softwareentwickler, wurde von jedem angegeben eine Ve
 Dateien und Inhalte die in der Versionsverwaltung abgelegt werden, wurden von den Teilnehmern großteils als nicht-binär angegeben. Quelltexte werden von (97\%) der Teilnehmer abgelegt. Build-Skripte (85\%) und Migrations-Skripte (91\%) werden ebenfalls vom Großteil versioniert. Die Mehrheit der Teilnehmer verwendet die Versionsverwaltung nur für kleine Mediendateien (79\%) und kein größeren (62\%).
 
 Während für die meisten Dateien und Inhalte sich deutliche Muster ergaben, war die Ablage von Paketverwaltungs-Lockfiles oder anderen Build-Identifikations-Dateien nicht eindeutig. Betrachtet auf die Menge der Entwickler, nutzen 22\% keine Versionsverwaltung für diesen Dateityp.
-
-\pagebreak
 
 \paragraph{Verwendung von Branches und Tags}
 
@@ -466,7 +466,7 @@ Die Auswertung der Angaben zu Merge-Konflikten zeigt einen Trend zu einem regelm
   \caption{Auswertung der Nutzung von Unit-, Funktions- und Oberfächentests}
 \end{figure}
 
-Test werden vom Großteil der Teilnehmer verwendet. Insbesondere Unit- (72\%), Funktions- und Integrationstests (68\%) wurden mit einer hohen Nutzung angegeben. Sichtbar weniger wurden Oberflächentests mit 48\% verwendet.
+Test werden vom Großteil der Teilnehmer verwendet. Insbesondere Unit- (72\%), Funktions\hyp{} und Integrationstests (68\%) wurden mit einer hohen Nutzung angegeben. Sichtbar weniger wurden Oberflächentests mit 48\% verwendet.
 
 \paragraph{Weiterführende Tests}
 
@@ -530,7 +530,7 @@ Ist das Release definiert, sollen eine Reihe an Fragen einfach zu beantworten se
 \item Welche Branches würde einen Konflikt mit welchem anderen Branch auslösen?
 \item Wie sieht die derzeit minimal release-fähige Untermenge an Feature-Branches aus?
 \item Welche Branches wurden erfolgreich getestet?
-\item Wie verhalten sich die Metriken der Feature-Branches untereinander und zum Haupt-Branch?
+\item Wie verhalten sich die Metriken der Feature-Branches untereinander und zum Haupt\hyp{}Branch?
 \end{itemize}
 
 Des Weiteren sollte die Anbindung an einen bestehenden Continuous-Prozess möglich sein. Es sollte daher eine REST-API bereitgestellt werden. Die API soll primär die Daten für Metriken und Testergebnisse entgegennehmen.
@@ -552,7 +552,7 @@ Die Release-Erstellung erfolgt durch die Wahl eines Namens und der Selektion der
 Um einen Branch zu bewerten, müssen Tests und Metriken für den Branch ausgeführt werden. Die Ausführung und die Sammlung der Daten werden außerhalb des Tools durchgeführt, daher werden diese Daten über eine API zugeführt.
 
 \paragraph{Branch-Konflikte anzeigen}
-Zur weiteren Bewertung der Branches müssen Merge-Konflikte zwischen den Branches ermittelt werden. Branches, die einen Konflikt aufweisen, sollten in der Release-Übersicht markiert und gruppiert werden.
+Zur weiteren Bewertung der Branches müssen Merge\hyp{}Konflikte zwischen den Branches ermittelt werden. Branches, die einen Konflikt aufweisen, sollten in der Release-Übersicht markiert und gruppiert werden.
 
 \paragraph{Release abschließen}
 Um ein Release abzuschließen, müssen alle Feature-Branches ohne Konflikt zusammengefasst werden. Dafür muss ein eigener Release-Branch erstellt werden. Auf den Release-Branch werden alle Feature-Branches durch einen Fast-Forward-Merge zusammengefasst. Abschließend wird das Release mit einem Tag versehen. Der Tag kann zum Vorgänger Tag um eine eine Major\hyp{}, Minor\hyp{} oder Patch\hyp{}Versionsnummer ansteigen.
@@ -563,7 +563,7 @@ Da der Prototyp als Unterstützung für bestehende Werkzeuge agieren soll, biete
 
 \subsection{Domainmodell}
 
-Das betrachtete Problem betrifft sowohl Repository-Artefakte, als auch Projekt- und Release-Details. Weiter müssen Metriken und Testergebnisse protokolliert werden. Da die Erstellung von Metriken und Tests eine größere Zeitspanne benötigen kann, sollten die Ergebnisse gesichert werden. 
+Das betrachtete Problem betrifft sowohl Repository-Artefakte, als auch Projekt- und Release\hyp{}Details. Weiter müssen Metriken und Testergebnisse protokolliert werden. Da die Erstellung von Metriken und Tests eine größere Zeitspanne benötigen kann, sollten die Ergebnisse gesichert werden. 
 
 \begin{figure}[htbp]
   \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]
@@ -581,7 +581,7 @@ Um die Abhängigkeiten abzubilden und die verfügbaren Feature-Branches für ein
 
 \paragraph{Projekt registrieren}
 
-Um ein Projekt zu registrieren wird der Pfad zu einer \glqq composer.json\grqq{}-Datei angegeben. Die Datei beschreibt den Namen, das zugehörige Repository und die Abhängigkeiten des Projektes.
+Um ein Projekt zu registrieren wird der Pfad zu einer \glqq composer.json\grqq{}\hyp{}Datei angegeben. Die Datei beschreibt den Namen, das zugehörige Repository und die Abhängigkeiten des Projektes.
 
 \paragraph{Branches auflisten}
 
@@ -650,7 +650,7 @@ Die Hemmschwelle zur Einführung einer neuen Methodik sollte möglichst gering g
 
 Auch eine Methodik die durch Träger und Fürsprecher eingeführt wird, sollte in der Verantwortung des ganzen Entwicklungsteam liegen. Die Einhaltung der Methodik sollte jeden in die Verantwortung ziehen. Wird die Methodik missachtet sollte ein direktes Feedback darauf hinweisen. Dieser Hinweis sollte auf keinen Fall öffentlich oder anklagend sein. Ebenso sollte jegliche Form der Bestrafung ausgeschlossen werden.
 
-Wie auch in vielen agilen Methodiken, ist eine gemeinsame Fürsprache, ein gemeinsames \glqq \gls{Commitment}\grqq{} notwendig. Ein gemeinsames Commitment sollte, wenn möglich, durch technische Hilfsmittel unterstütze werden. Für viele gemeinsame Regeln existieren automatisierte Prüfungen oder Integrationen für die Entwicklungsumgebung und den automatisierten Software-Erstellungsprozess.
+Wie auch in vielen agilen Methodiken, ist eine gemeinsame Fürsprache, ein gemeinsames \glqq \gls{Commitment}\grqq{} notwendig. Ein gemeinsames \gls{Commitment} sollte, wenn möglich, durch technische Hilfsmittel unterstütze werden. Für viele gemeinsame Regeln existieren automatisierte Prüfungen oder Integrationen für die Entwicklungsumgebung und den automatisierten Software-Erstellungsprozess.
 Auch der Review-Prozess für Softwareänderungen kann hierbei unterstützen. Entwickler sollten sich stets gegenseitig auf die Missachtung von Coding-Guidelines und Entwicklungsmustern hinweisen.
 
 \subsection{Faktor Mensch}
